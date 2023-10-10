@@ -1,25 +1,30 @@
+// App.js
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import PingTest from './components/PingTest';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+
+// Route Components 
+import Home from './components/travlog/Home';  
+import About from './components/feedback-report/About';
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <PingTest/ >
+        <Routes>
+          <Route path="/" element={<Home />} /> {/* Home page displaying travlog posts */}
+          <Route path="/about" element={<About />} />
+          {/* Add other routes as needed */}
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
 export default App;
+

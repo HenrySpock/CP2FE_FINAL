@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+.map-container {
+  height: 100vh; /* Adjust height as needed */
+  width: 100%; /* Ensure width is set */
+}
+
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+}  
