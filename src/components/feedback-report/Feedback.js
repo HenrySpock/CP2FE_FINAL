@@ -1,10 +1,12 @@
 // Feedback.js
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-function Feedback() {
+function Feedback() { 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [comment, setComment] = useState('');
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -30,6 +32,8 @@ function Feedback() {
   
       const data = await response.text();  // Adjust this line based on the response format you expect
       console.log('Feedback submitted successfully:', data);
+ 
+      navigate('/about');
     } catch (error) {
       console.error('There has been a problem with your fetch operation:', error);
     }
@@ -45,4 +49,4 @@ function Feedback() {
   );
 }
 
-export default Feedback;
+export default Feedback; 
