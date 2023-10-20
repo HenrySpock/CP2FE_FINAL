@@ -1,8 +1,17 @@
 // About.js
-import React from 'react';
+// import React from 'react';
 import { Link } from 'react-router-dom';
 
+import React, { useContext, useEffect } from 'react';
+import { UserContext } from '../user/UserContext';
+
 function About() {
+  const { user } = useContext(UserContext);
+
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+
   return (
     <div className="about-page">
       <h1>About Castle Tracker</h1>
