@@ -68,6 +68,15 @@ COPY public.forbidden_words (word_id, word, created_at, updated_at) FROM stdin;
 
 
 --
+-- Data for Name: friendships; Type: TABLE DATA; Schema: public; Owner: kodai
+--
+
+COPY public.friendships (friendship_id, user1, user2, accepted, denied, created_at, updated_at) FROM stdin;
+16	5	18	f	f	2023-10-20 06:13:08.064-05	2023-10-20 06:13:08.064-05
+\.
+
+
+--
 -- Data for Name: images; Type: TABLE DATA; Schema: public; Owner: kodai
 --
 
@@ -97,7 +106,9 @@ COPY public.messages (message_id, sender_id, recipient_id, content, created_at, 
 -- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: kodai
 --
 
-COPY public.notifications (notification_id, user_id, content, expiry_date, created_at, updated_at) FROM stdin;
+COPY public.notifications (notification_id, sender_id, recipient_id, type, content, expiry_date, dismissed, created_at, updated_at, user_id) FROM stdin;
+14	5	18	friend-request	bleh has sent you a friend request	\N	f	2023-10-20 06:12:16.519-05	2023-10-20 06:12:16.519-05	\N
+15	5	18	friend-request	bleh has sent you a friend request	2023-11-20 06:13:08.075-06	f	2023-10-20 06:13:08.076-05	2023-10-20 06:13:08.076-05	\N
 \.
 
 
@@ -131,6 +142,13 @@ SELECT pg_catalog.setval('public.forbidden_words_word_id_seq', 1, false);
 
 
 --
+-- Name: friendships_friendship_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
+--
+
+SELECT pg_catalog.setval('public.friendships_friendship_id_seq', 16, true);
+
+
+--
 -- Name: images_image_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
@@ -155,7 +173,7 @@ SELECT pg_catalog.setval('public.messages_message_id_seq', 1, false);
 -- Name: notifications_notification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.notifications_notification_id_seq', 1, false);
+SELECT pg_catalog.setval('public.notifications_notification_id_seq', 15, true);
 
 
 --

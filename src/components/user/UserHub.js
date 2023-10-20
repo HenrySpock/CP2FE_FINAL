@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import { UserContext } from './UserContext';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
+import NotificationCard from './NotificationCard';
 
 function UserHub() {
   const { user } = useContext(UserContext);
@@ -9,19 +10,8 @@ function UserHub() {
   const [travelogs, setTravelogs] = useState([]);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   const fetchUserTravelogs = async () => {
-  //     try {
-  //       const response = await axios.get(`http://localhost:5000/api/user/${user.user_id}/travelogs`);
-  //       setTravelogs(response.data);
-  //     } catch (error) {
-  //       console.error('Error fetching user travelogs:', error);
-  //     }
-  //   };
-
-  //   fetchUserTravelogs();
-  // }, [user.id]);
-
+  const [notifications, setNotifications] = useState([]);
+ 
   useEffect(() => {
     if (user) {  // Check if user is not null before proceeding
       const fetchUserTravelogs = async () => {
@@ -37,6 +27,48 @@ function UserHub() {
       fetchUserTravelogs();
     }
   }, [user]); 
+
+  useEffect(() => {
+    const fetchNotifications = async () => {
+      try {
+        // Make sure user is defined before trying to access user.user_id
+        if (user) {
+          console.log('user.user_id: ', user.user_id)
+          const response = await fetch(`http://localhost:5000/api/notifications/${user.user_id}`);
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+          }
+          const data = await response.json();
+          setNotifications(data);
+        }
+      } catch (error) {
+        console.error('Error fetching notifications:', error);
+      }
+    };
+
+    fetchNotifications();
+  }, [user]); 
+
+  const handleDeny = async (sender_id, recipient_id, notificationId) => {
+    try {
+      const response = await fetch('http://localhost:5000/api/friends/request/deny', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sender_id, recipient_id, notificationId })
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
+      }
+
+      const data = await response.json();
+      if (data.success) {
+        setNotifications(notifications => notifications.filter(notification => notification.notificationId !== notificationId));
+      }
+    } catch (error) {
+      console.error('Error denying friend request:', error);
+    }
+  };
 
   return (
   <div>
@@ -60,7 +92,12 @@ function UserHub() {
           </button>  
             <div>
               <h2>Notifications</h2>
-              {/* Display notifications here */}
+              {/* {notifications.map(notification => (
+                <NotificationCard key={notification.notification_id} notification={notification} />
+              ))} */}
+              {notifications.map(notification => (
+                <NotificationCard key={notification.notificationId} notification={notification} onDeny={handleDeny} />
+              ))}
             </div>
      
             <div>
