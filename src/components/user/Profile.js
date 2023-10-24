@@ -208,6 +208,7 @@ return (
         <button onClick={() => navigate('/hub')}>Return to User Hub</button>
         <button onClick={handleSave}>Save Details</button>
         <button onClick={() => navigate('/password')}>Edit Password</button>
+        <button onClick={() => navigate('/disconnections')}>Disconnections</button>
         <button onClick={handleDelete}>Delete Profile</button>
       </div>
       

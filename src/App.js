@@ -45,7 +45,7 @@ import { Navigate } from 'react-router-dom';
 import { UserContext } from './components/user/UserContext';
 import { UserProvider } from './components/user/UserContext';
  
-
+import { WebSocketProvider } from './components/interactions/WebSocketProvider';
 
 // Route Components 
 import Home from './components/travlog/Home';  
@@ -65,10 +65,15 @@ import Navbar from './components/site/Navbar';
 import Profile from './components/user/Profile'
 import Password from './components/user/Password'
 import PublicProfile from './components/interactions/PublicProfile'
+import Connections from './components/interactions/Connections';
+import Disconnections from './components/interactions/Disconnections';
 
 function App() { 
   return (
-    <UserProvider> 
+    <UserProvider>    
+
+      <WebSocketProvider> 
+ 
       <Router>
         <div className="App">
           {/* Include the Navbar component */}
@@ -90,10 +95,13 @@ function App() {
             <Route path="/profile" element={<Profile />} />
             <Route path="/password" element={<Password />} />
             <Route path="/public_profile/:username" element={<PublicProfile />} />
-
+            <Route path="/connections" element={<Connections />} />
+            <Route path="/disconnections" element={<Disconnections />} />
           </Routes>
         </div>
       </Router>
+
+       </WebSocketProvider>
     </UserProvider>
   );
 }
