@@ -54,9 +54,9 @@ export const WebSocketProvider = ({ children }) => {
                 console.log('notification-deleted event received with data:', data);
             
                 setNotifications(prevNotifications => {
-                    console.log('prevNotifications:', prevNotifications);
+                    // console.log('prevNotifications:', prevNotifications);
                     const updatedNotifications = prevNotifications.filter(notification => notification.notificationId !== notificationId);
-                    console.log('updatedNotifications:', updatedNotifications);
+                    // console.log('updatedNotifications:', updatedNotifications);
                     return updatedNotifications;
                 });
             });

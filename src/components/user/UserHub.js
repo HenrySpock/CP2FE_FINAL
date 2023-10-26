@@ -43,7 +43,7 @@ function UserHub() {
           // Assuming the data contains the IDs of the two users involved in the unfriend event 
         });
         socket.on('remove-follow-notification', (data) => {
-          console.log('Follow notification removed:', data);
+          // console.log('Follow notification removed:', data);
           console.log('data.notificationId for deleting: ', data.notificationId)
           deleteNotification(data.notificationId);  // Assuming data contains notificationId
         });
@@ -79,7 +79,7 @@ useEffect(() => {
       const fetchUserTravelogs = async () => {
         try {
           const response = await axios.get(`http://localhost:5000/api/user/${user.user_id}/travelogs`);
-          console.log('Fetch Response on User Hub: ', response.data)
+          // console.log('Fetch Response on User Hub: ', response.data)
           setTravelogs(response.data);
         } catch (error) {
           console.error('Error fetching user travelogs:', error);

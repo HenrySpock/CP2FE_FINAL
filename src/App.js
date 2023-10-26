@@ -67,6 +67,7 @@ import Password from './components/user/Password'
 import PublicProfile from './components/interactions/PublicProfile'
 import Connections from './components/interactions/Connections';
 import Disconnections from './components/interactions/Disconnections';
+import Messages from './components/interactions/Messages'
 
 function App() { 
   return (
@@ -97,6 +98,7 @@ function App() {
             <Route path="/public_profile/:username" element={<PublicProfile />} />
             <Route path="/connections" element={<Connections />} />
             <Route path="/disconnections" element={<Disconnections />} />
+            <Route path="/messages" element={<Messages />} />
           </Routes>
         </div>
       </Router>

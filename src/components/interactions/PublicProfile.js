@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import InteractionModal from './InteractionModal';
 import { UserContext } from '../user/UserContext';
 
@@ -9,9 +9,27 @@ function PublicProfile() {
   const contextValue = useContext(UserContext); 
   console.log('contextValue: ', contextValue)
   const { user: contextUser } = useContext(UserContext);
-  
+  const navigate = useNavigate();
   const [currentUser, setCurrentUser] = useState(null);
 
+  useEffect(() => {
+    const checkBlockStatus = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/users/${profileUser}/block-status/${currentUser}`);
+        if (!response.ok) throw new Error('Network response was not ok ' + response.statusText);
+        const data = await response.json();
+        if (data.isBlocked) {
+          navigate('/');
+        }
+      } catch (error) {
+        console.error('Error checking block status:', error);
+      }
+    };
+    if (currentUser) {
+      checkBlockStatus();
+    }
+  }, [profileUser, currentUser, navigate]);
+  
   useEffect(() => {
     if (contextUser) {
       setCurrentUser(contextUser.username);
@@ -94,8 +112,8 @@ function PublicProfile() {
           <div className='user-avatar'>
             <img src={userData.avatar || '/path/to/default/avatar.jpg'} alt={`${userData.username}'s avatar`} />
           </div>
-          <button onClick={toggleModal}>{isModalOpen ? 'Cancel' : 'Interact'}</button>
-          <InteractionModal
+          {/* <button onClick={toggleModal}>{isModalOpen ? 'Cancel' : 'Interact'}</button> */}
+          {/* <InteractionModal
             isOpen={isModalOpen}
             onClose={() => setIsModalOpen(false)}
             onBefriend={handleBefriend}
@@ -106,8 +124,24 @@ function PublicProfile() {
             onReport={handleReport}
             currentUser={currentUser}
             profileUser={profileUser}
-            
-          />
+          /> */}
+            {currentUser !== profileUser && (
+              <>
+                <button onClick={toggleModal}>{isModalOpen ? 'Cancel' : 'Interact'}</button>
+                <InteractionModal
+                  isOpen={isModalOpen}
+                  onClose={() => setIsModalOpen(false)}
+                  onBefriend={handleBefriend}
+                  friendshipStatus={friendshipStatus}
+                  setFriendshipStatus={setFriendshipStatus}
+                  onFollow={handleFollow}
+                  onBlock={handleBlock}
+                  onReport={handleReport}
+                  currentUser={currentUser}
+                  profileUser={profileUser}
+                />
+              </>
+            )}
           <p>{userData.bio}</p> 
         </>
       )}

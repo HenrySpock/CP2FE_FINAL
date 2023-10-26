@@ -38,6 +38,7 @@ function Navbar() {
             {isAdmin && (
               <NavLink to="/admin" activeClassName="active">Admin Panel</NavLink>
             )}
+            <NavLink to="/messages" activeClassName="active">Messages</NavLink> 
             <NavLink to="/logout" activeClassName="active" onClick={handleLogout}>Logout</NavLink>
           </>
         )}

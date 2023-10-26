@@ -229,3 +229,70 @@ display: flex
   border: 1px solid rgb(222, 222, 222); 
   z-index: 1;
 }
+
+/* LogEntry.js  */
+.largeEditor {
+  width: 50%;
+  height: 400px;
+}
+
+/* Comments:  */
+/* src/styles/CommentCard.css */
+.comment-card {
+  border: 1px solid #ccc;
+  padding: 1em;
+  margin: 1em 0;
+}
+
+.comment-header,
+.comment-body,
+.comment-footer {
+  margin-bottom: 0.5em;
+}
+
+/* Comments  */
+.comment-list {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+/* Messages  */
+.message-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #f9f9f9;
+  border-left: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  justify-content: space-between;
+}
+
+.message-thread {
+  flex: 1;
+  padding: 10px;
+  overflow-y: scroll;
+}
+
+.message-input {
+  border-top: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+}
+
+.message-input input {
+  flex: 1;
+  padding: 5px;
+}
+
+.message-input button {
+  margin-left: 10px;
+} 

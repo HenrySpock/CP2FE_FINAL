@@ -127,7 +127,7 @@ function Login() {
         // Call the login function from UserContext to update the context
         login({ token, user });
         alert('Login successful');
-        navigate('/about');  // Navigate to '/about' upon successful login
+        navigate('/hub');  // Navigate to '/about' upon successful login
       } else {
         alert('Login failed');
       }

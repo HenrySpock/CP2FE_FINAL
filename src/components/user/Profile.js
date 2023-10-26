@@ -42,35 +42,7 @@ function Profile() {
   if (!editedUser) {
     return null;   
   }
-
-  // const handleSave = async () => {
-  //   try {
-  //     await axios.patch(`http://localhost:5000/api/user/${user.user_id}`, editedUser);
-  //     setUser(editedUser);  // Update the user data in UserContext
-  //     navigate('/hub');
-  //   } catch (error) {
-  //     console.error('Error updating user details:', error);
-  //   }
-  // };
-
-  // const handleSave = async () => {
-  //   try {
-  //     const updateData = {
-  //       firstName: editedUser.firstName,
-  //       lastName: editedUser.lastName,
-  //       email: editedUser.email,
-  //       securityQuestion: editedUser.securityQuestion,
-  //       answer: editedUser.answer,
-  //       adminKey: editedUser.adminKey,
-  //     };
-  //     await axios.patch(`http://localhost:5000/api/user/${user.user_id}`, updateData);
-  //     setUser({ ...user, ...updateData });  // Update the user data in UserContext
-  //     navigate('/hub');
-  //   } catch (error) {
-  //     console.error('Error updating user details:', error);
-  //   }
-  // };
-
+ 
   const handleSave = async () => {
     try {
         const updateData = {
@@ -99,16 +71,6 @@ function Profile() {
       if (window.confirm('Do you really want to do this?')) {
 
           setShowDeleteConfirmationModal(true);
-
-          // try {
-          //     await axios.delete(`http://localhost:5000/api/user/${user.user_id}`);
-          //     // Log out the user and redirect to home
-          //     // Assume logout() is a function that logs out the user
-          //     logout();
-          //     navigate('/');
-          // } catch (error) {
-          //     console.error('Error deleting user:', error);
-          // }
       }
   };
 

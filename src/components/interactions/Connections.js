@@ -60,7 +60,7 @@ function ConnectionsPage() {
       </div>
       {showFriends && friends.map(friend => (
         <div key={friend.user_id} className="friend-card">
-          <Link to={`/publicprofile/${friend.user_id}`}>
+          <Link to={`/public_profile/${friend.username}`}>
             {friend.username}
           </Link>
           <img src={friend.avatar} alt={`${friend.username}'s avatar`} />
@@ -72,7 +72,7 @@ function ConnectionsPage() {
       </div>
       {showFollowers && followers.map(follower => (   
           <div key={follower.user_id} className="follower-card">
-            <Link to={`/publicprofile/${follower.user_id}`}>
+            <Link to={`/public_profile/${follower.username}`}>
               {follower.username}
             </Link>
             <img src={follower.avatar} alt={`${follower.username}'s avatar`} />
@@ -84,7 +84,7 @@ function ConnectionsPage() {
       </div>
       {showFollowings && followings.map(following => (
         <div key={following.user_id} className="following-card">       
-          <Link to={`/publicprofile/${following.user_id}`}>
+          <Link to={`/public_profile/${following.username}`}>
             {following.username}
           </Link>
           <img src={following.avatar} alt={`${following.username}'s avatar`} />         

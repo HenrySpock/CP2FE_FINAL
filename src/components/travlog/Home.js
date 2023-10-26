@@ -13,41 +13,42 @@ import { useNavigate } from 'react-router-dom';
 import useOffsetLogic from './MarkerOffset';
 
 // Create a TravelogEntryCard component to display individual travelog entries
-function TravelogEntryCard({ travelog }) {
-  const navigate = useNavigate();  // Import useNavigate from 'react-router-dom'
+// function TravelogEntryCard({ travelog }) {
+//   const navigate = useNavigate();  // Import useNavigate from 'react-router-dom'
 
-  const handleTravelogClick = () => { 
-    navigate(`/trav_det/${travelog.travelogId}`);
-  };
+//   const handleTravelogClick = () => { 
+//     navigate(`/trav_det/${travelog.travelogId}`);
+//   };
   
-  return (
-      <div className="travelog-entry-card" onClick={handleTravelogClick}>
-          <div>{travelog.title}</div>
-          <div>{travelog.User.username}</div>
-          <div>{new Date(travelog.date_visited).toISOString().split('T')[0]}</div>
-      </div>
-  );
-}
+//   return (
+//       <div className="travelog-entry-card" onClick={handleTravelogClick}>
+//           <div>{travelog.title}</div>
+//           <div>{travelog.User.username}</div>
+//           <div>{new Date(travelog.date_visited).toISOString().split('T')[0]}</div>
+//       </div>
+//   );
+// }
 
-function CountryCard({ country, travelogs, isExpanded, onExpand }) {
-  return (
-      <div className={`country-card ${isExpanded ? 'expanded' : ''}`}>
-          <div className="country-title" onClick={() => onExpand(country)}>{country}</div> {/* Move onClick here */}
-          {isExpanded && travelogs.map(travelog => (
-              <TravelogEntryCard key={travelog.travelogId} travelog={travelog} />
-          ))}
-      </div>
-  );
-}
+// function CountryCard({ country, travelogs, isExpanded, onExpand }) {
+//   return (
+//       <div className={`country-card ${isExpanded ? 'expanded' : ''}`}>
+//           <div className="country-title" onClick={() => onExpand(country)}>{country}</div> {/* Move onClick here */}
+//           {isExpanded && travelogs.map(travelog => (
+//               <TravelogEntryCard key={travelog.travelogId} travelog={travelog} />
+//           ))}
+//       </div>
+//   );
+// }
 
 function Home() {
-  const [isCountryView, setIsCountryView] = useState(true);
-  const handleToggle = () => {
-      setIsCountryView(!isCountryView);
-  };
+//   const [isCountryView, setIsCountryView] = useState(true);
+//   const handleToggle = () => {
+//       setIsCountryView(!isCountryView);
+//   };
   
   // const mapRef = useRef();
   const { user } = useContext(UserContext);  // Access user data from UserContext
+  const [sortBy, setSortBy] = useState('createdAt');
   const [travelogEntries, setTravelogEntries] = useState([]);
   const mapOptions = {
     center: [ 49.6322, 12.4628], 
@@ -62,6 +63,20 @@ function Home() {
   ];
 
   const [recentTravelogs, setRecentTravelogs] = useState([]);
+
+  const sortedTravelogEntries = [...travelogEntries].sort((a, b) => {
+    switch (sortBy) {
+      case 'site':
+        return a.site.localeCompare(b.site);
+      case 'username':
+        return a.User.username.localeCompare(b.User.username);
+      case 'country':
+        return a.country.localeCompare(b.country);
+      case 'createdAt':
+      default:
+        return new Date(b.createdAt) - new Date(a.createdAt);
+    }
+  });
 
   useEffect(() => {
       async function fetchTravelogEntries() {
@@ -97,27 +112,30 @@ function Home() {
                   className="travelog-image" 
               />
           </div>
-          <h3 className="travelog-title">{travelog.title}</h3>
+          <h3 className="travelog-site">{travelog.site}</h3>
+          <h3 className="travelog-country">in {travelog.country}</h3>
+          <h3 className="travelog-username">by {travelog.User.username}</h3>
+          <h3 className="travelog-created">{travelog.created_at}</h3>
       </div>
     );
 
   }
 
   // Organize travelog entries by country
-  const travelogsByCountry = {};
-  travelogEntries.forEach(travelog => {
-      if (!travelogsByCountry[travelog.country]) {
-          travelogsByCountry[travelog.country] = [];
-      }
-      travelogsByCountry[travelog.country].push(travelog);
-  });
+//   const travelogsByCountry = {};
+//   travelogEntries.forEach(travelog => {
+//       if (!travelogsByCountry[travelog.country]) {
+//           travelogsByCountry[travelog.country] = [];
+//       }
+//       travelogsByCountry[travelog.country].push(travelog);
+//   });
 
   // Manage the expanded/contracted state of the CountryCards
-  const [expandedCountry, setExpandedCountry] = useState(null);
+//   const [expandedCountry, setExpandedCountry] = useState(null);
 
-  const handleExpand = (country) => {
-      setExpandedCountry(expandedCountry === country ? null : country);
-  };
+//   const handleExpand = (country) => {
+//       setExpandedCountry(expandedCountry === country ? null : country);
+//   };
 
   const offsetTravelogEntries = useOffsetLogic(travelogEntries);
   
@@ -142,11 +160,11 @@ function Home() {
           <CustomMarkers entries={offsetTravelogEntries} />
       </MapContainer>
       </div>
-      <button onClick={handleToggle}>
+      {/* <button onClick={handleToggle}>
           {isCountryView ? 'Switch to List View' : 'Switch to Country View'}
-      </button>
+      </button> */}
       <div className="view-container">
-    {isCountryView ? (
+    {/* {isCountryView ? (
             <div className="country-cards">
                 {Object.keys(travelogsByCountry).sort().map(country => (
                     <CountryCard
@@ -158,14 +176,30 @@ function Home() {
                     />
                 ))}
             </div>
-        ) : (
+        ) : 
+        ( */}
+            <div className="sort-by-selection">
+                <label htmlFor="sort-by">Sort by: </label>
+                <select
+                    id="sort-by"
+                    value={sortBy}
+                    onChange={(event) => setSortBy(event.target.value)}
+                >
+                    <option value="site">Site</option>
+                    <option value="country">Country</option>
+                    <option value="username">Username</option>
+                    <option value="createdAt">Newest First</option>
+                                       
+                </select>
+            </div>
             <div className="all-travelogs-list">
                 
-                {travelogEntries.map(travelog => (
+                {/* {travelogEntries.map(travelog => ( */}
+                {sortedTravelogEntries.map(travelog => (
                     <TravelogCard key={travelog.travelogId} travelog={travelog} />
                 ))}
             </div>
-        )}
+        {/* )} */}
     </div>
     </div>
     
@@ -174,4 +208,4 @@ function Home() {
 }
 
 export default Home;
- 
+   

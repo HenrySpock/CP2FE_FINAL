@@ -21,15 +21,8 @@ SET row_security = off;
 --
 
 COPY public.users (user_id, first_name, last_name, username, email, password, security_question, answer, is_admin, created_at, updated_at, avatar, bio) FROM stdin;
-5	bleh	bleh	bleh	bleh@bleh.com	$2a$10$igGcPiN1GttukCu99MR57..XqYLVvqtpDLqh6Nu0qKVWChQGx/h.W	What is the name of your first pet?	bleh	f	2023-10-19 00:14:32.432-05	2023-10-19 00:14:32.432-05	https://live.staticflickr.com/3557/3449041959_1bd9b05ac8_c.jpg	\N
-7	jay	jay	jay	jay@jay.com	$2a$10$.koC/cHySl9WAFYCR/qQj..qZesktasZLyjNI/kDw.xwDkQ1tQP9.	What is the name of your first pet?	jay	t	2023-10-19 00:17:31.091-05	2023-10-19 00:17:31.091-05	https://live.staticflickr.com/3557/3449041959_1bd9b05ac8_c.jpg	\N
-10	jay2	jay2	jay2	jay@jay.com	$2a$10$Poyx5357.0l/opsZ3K1R0u1VtFahcCfYd9FbcaAuVMWhMB3TOegTe	What is the name of your first pet?	jay	f	2023-10-19 00:22:16.39-05	2023-10-19 00:22:16.391-05	https://live.staticflickr.com/3557/3449041959_1bd9b05ac8_c.jpg	\N
-12	jay	jay	jay3	jay@jay.com	$2a$10$PiJp/qCbqFLUkmgIU1zfw.7SrvOf4e/AEIcz1cVK7ckRyPv9uo2PS	What is the name of your first pet?	jay	f	2023-10-19 00:22:46.35-05	2023-10-19 00:22:46.35-05	https://live.staticflickr.com/3557/3449041959_1bd9b05ac8_c.jpg	\N
-13	kerry	kerry	kerry	kerry@kerry.com	$2a$10$xQwvGhjFObKWAuJqe8HpTOlaL0I9Ks6pcvHoVIQjOsinrcQhRtO3C	What is the name of your first pet?	kerry	t	2023-10-19 00:27:02.095-05	2023-10-19 00:27:02.096-05	https://live.staticflickr.com/3557/3449041959_1bd9b05ac8_c.jpg	\N
-16	ava	ava	ava	ava@ava.com	$2a$10$6udN48adiw/JFVyvLxdmnuFiMt5c8fEIlHpyERBJ3erc8/DMfJWFm	What is the name of your first pet?	ava	f	2023-10-19 05:03:10.16-05	2023-10-19 05:03:10.161-05	https://live.staticflickr.com/3557/3449041959_1bd9b05ac8_c.jpg	
-18	avatar	avatar	avatar	avatar@avatar.com	$2a$10$bhxVRHn/EXJ6CtToZHmd/OAsrdM5QdrNs3nSjryuXWSedObxDPr9.	What is the name of your first pet?	avatar	f	2023-10-19 05:14:48.425-05	2023-10-19 06:29:56.476-05	https://www.medievalists.net/wp-content/uploads/2014/07/manuscript-images-medieval-castles.jpg	lOsl8wy8oFIwo29iUOtXZLdPEWPK1BtiIhGObsWRO8c7YFuYZKAP6hkDbLEy8S7AYxOzsTXcP08xjY79hDA66VX9v2k36ZpLvx7RAVWeCkkfG350Se1D1macegVE0Gq31UrwN4UktmkbF7OzXRajotyBV042LhnrHLVULzttkY2ew3ou79BY20eh1aYx76zWuBlVM3tjeXQIYLgrHnDy47dEA9LcBz6AsdOvmywuCEn8kQr0xxthmqQANo5X55BOk7Brrw6nCHz1AnzsSUy7IEIWZPK9dQ3o4ghLHzQDZzKWQPxDVqEYcS2nQsurOUOa327U5ywbIc8PIigjvGzCdFWrwdGXH55FHIB9bFB4wp6UmQuugeYZ3ewJIdrmXPVkMqF5KzCbIwU98PEQ8ydXNbsEZatdGPp5wQpnvrMRWSeR29rV2xH5sKg39CH05UT1VM5SMriYarjOPKUWmfLku7VJw1ySMmU9Qrk4W6bnRnZ2lJOuqwhQkhFVpMGDJkmLgjtM9UeedL2tGvuksGmDZaxXsBhuCxl204G5LVIt4Yo8k980oRUac9J3OiRsg55kAWiwstopQSG7g0lR8Vt9qsqQUeKnXsv2TLQ53hv8EBPnwXiP7UmVxxZnHpEGHwXhW30Z9KqKh6KzGPC0pFyokd9sHIM33O4zeG47ceKY89iMrvaCUpGbS5fYMFxGk9aGLUOOJbhpWCLRZqcdjnBVKhaSmNOs49GrWQTNcmee6NXOOAZpsN7TWiKRPuwhIu3mabKX3xxvFPEYAaOwqX0ZsrUTB62VDtYGjjhfOb1cGx0NytZZjiQkfHewpYzQWp8VpgAQ2xkivT76yJc0VNwscUssMnNSgSFR8ljoLBqoTdIaiC2eN2gt00XYdchQHl0bVXwgmAfVCO3lCmwldi7txAbCxxU4zkt6SsxQV1VpTkAHRNWbkRF2UIdNOlhsFr8R1FZT2EAXP1ukEVIoulToMrTCI4VL7I9ErjEa9Npk
-20	eva	eva	eva	eva@eva.com	$2a$10$HHz0SN1k3Aiwu.kzI9vuFOOABQux9RhOqhCoN7Q0qLs56WV0WMhn2	What is the name of your first pet?	eva	f	2023-10-23 23:46:18.276-05	2023-10-23 23:46:18.276-05	https://live.staticflickr.com/7555/16004308162_4538eac376_b.jpg	hey
-15	kerry	kerry	kerry2	kerry@kerry.com	$2a$10$peQSHbCf8gmhAcvytw2k6.1ReiLUtv0c0f9FJyb/TuE9Yma0.YV6O	What is the name of your first pet?	kerry	f	2023-10-19 00:27:24.888-05	2023-10-24 00:03:02.019-05	https://live.staticflickr.com/3557/3449041959_1bd9b05ac8_c.jpg	\N
+1	jay	jay	jay	jay@jay.com	$2a$10$JpbAnt6Tb1V9eMzKcZlKRuBcnxAl6PtAo6Pl8aHCoXP5ooPKgwAEm	What is the name of your first pet?	precious	t	2023-10-25 10:28:06.031-05	2023-10-25 10:28:06.032-05	https://live.staticflickr.com/65535/49410415121_264a218d6f_z.jpg	Just trying to make this work.
+2	bleh	bleh	bleh	bleh@bleh.com	$2a$10$s3oMoNV7UdzYgmrZZzlSHuMtEK7QFPoJs3mBCLPcBTchTq871KR9K	What is the name of your first pet?	Sumo	f	2023-10-25 10:29:43.564-05	2023-10-25 10:29:43.564-05	https://live.staticflickr.com/3557/3449041959_1bd9b05ac8_c.jpg	Not an admin.
 \.
 
 
@@ -46,6 +39,8 @@ COPY public.blocks (block_id, blocker_id, blocked_id, created_at, updated_at) FR
 --
 
 COPY public.travelogs (travelog_id, user_id, title, site, country, state, city, address, phone_number, latitude, longitude, text_body, created_at, date_visited, is_private, reported, updated_at) FROM stdin;
+1	1	Gone to Malahide	Malahide Castle	Ireland	D	Malahide	Malahide, Co. Dublin Republic of Ireland	+353 1 816 9538	53.445382	-6.164513	A very nice trip.	2023-10-25 10:28:47.655-05	2014-12-11 18:00:00-06	f	f	2023-10-25 10:28:47.656-05
+2	2	Honeymoon	Château de Chambord	France	41	Chambord	41250 Chambord France	+33 2 54 50 40 00	47.616145099948	1.51704118720249	great tip	2023-10-25 10:30:20.75-05	2015-12-14 18:00:00-06	f	f	2023-10-25 10:30:20.75-05
 \.
 
 
@@ -53,7 +48,8 @@ COPY public.travelogs (travelog_id, user_id, title, site, country, state, city, 
 -- Data for Name: comments; Type: TABLE DATA; Schema: public; Owner: kodai
 --
 
-COPY public.comments (comment_id, travelog_id, user_id, content, created_at, updated_at) FROM stdin;
+COPY public.comments (comment_id, travelog_id, user_id, parent_id, content, created_at, updated_at) FROM stdin;
+38	1	2	\N	Hiya	2023-10-26 00:40:44.284-05	2023-10-26 00:40:44.284-05
 \.
 
 
@@ -70,8 +66,6 @@ COPY public.feedback_reports (report_id, user_id, travelog_id, content, created_
 --
 
 COPY public.follows (follow_id, follower_id, followee_id, created_at, updated_at) FROM stdin;
-3	7	5	2023-10-23 13:54:11.337-05	2023-10-23 13:54:11.337-05
-4	5	7	2023-10-23 13:54:15.69-05	2023-10-23 13:54:15.69-05
 \.
 
 
@@ -87,12 +81,8 @@ COPY public.forbidden_words (word_id, word, created_at, updated_at) FROM stdin;
 -- Data for Name: friendships; Type: TABLE DATA; Schema: public; Owner: kodai
 --
 
-COPY public.friendships (friendship_id, user1, user2, accepted, denied, created_at, updated_at) FROM stdin;
-77	5	18	t	f	2023-10-22 22:17:59.263-05	2023-10-22 22:21:48.974-05
-103	16	7	t	f	2023-10-23 05:24:53.15-05	2023-10-23 05:25:01.425-05
-106	7	13	t	f	2023-10-23 23:26:05.993-05	2023-10-23 23:26:57.913-05
-115	5	16	t	f	2023-10-24 00:00:56.687-05	2023-10-24 00:01:04.539-05
-116	15	18	t	f	2023-10-24 00:03:27.4-05	2023-10-24 00:20:44.806-05
+COPY public.friendships (friendship_id, user1, user2, accepted, denied, dismissed, created_at, updated_at) FROM stdin;
+1	2	1	t	f	f	2023-10-26 00:50:15.467-05	2023-10-26 00:50:22.393-05
 \.
 
 
@@ -101,6 +91,8 @@ COPY public.friendships (friendship_id, user1, user2, accepted, denied, created_
 --
 
 COPY public.images (image_id, travelog_id, image_url, created_at, updated_at) FROM stdin;
+1	1	https://s3-media2.fl.yelpcdn.com/bphoto/QcITWVT0tNBxBhptt7pBZg/o.jpg	2023-10-25 10:28:47.675-05	2023-10-25 10:28:47.675-05
+2	2	https://s3-media3.fl.yelpcdn.com/bphoto/XoHey5_DbLEaplymP89bNQ/o.jpg	2023-10-25 10:30:20.768-05	2023-10-25 10:30:20.768-05
 \.
 
 
@@ -116,7 +108,14 @@ COPY public.interactions (interaction_id, user_id, travelog_id, status, created_
 -- Data for Name: messages; Type: TABLE DATA; Schema: public; Owner: kodai
 --
 
-COPY public.messages (message_id, sender_id, recipient_id, content, created_at, updated_at) FROM stdin;
+COPY public.messages (message_id, content, created_at, updated_at, caller_del, receiver_del, caller_id, receiver_id) FROM stdin;
+13	wert	2023-10-26 05:32:40.702-05	2023-10-26 05:32:40.703-05	f	f	\N	\N
+14	awefwefwe	2023-10-26 05:34:09.583-05	2023-10-26 05:34:09.585-05	f	f	\N	\N
+15	qwefqwef	2023-10-26 05:37:28.475-05	2023-10-26 05:37:28.477-05	f	f	\N	\N
+16	awef	2023-10-26 05:38:44.986-05	2023-10-26 05:38:44.987-05	f	f	\N	\N
+17	awef	2023-10-26 05:42:25.418-05	2023-10-26 05:42:25.418-05	f	f	\N	\N
+18	qwettt	2023-10-26 05:45:29.807-05	2023-10-26 05:45:29.808-05	f	f	\N	\N
+19	awef	2023-10-26 05:50:02.945-05	2023-10-26 05:50:02.947-05	f	f	\N	\N
 \.
 
 
@@ -124,22 +123,10 @@ COPY public.messages (message_id, sender_id, recipient_id, content, created_at, 
 -- Data for Name: notifications; Type: TABLE DATA; Schema: public; Owner: kodai
 --
 
-COPY public.notifications (notification_id, sender_id, recipient_id, type, content, expiry_date, dismissed, created_at, updated_at) FROM stdin;
-152	16	7	friend-request	{"text":"has sent you a friend request","username":"ava","url":"/public_profile/ava"}	2023-11-23 05:24:53.195-06	t	2023-10-23 05:24:53.195-05	2023-10-23 05:25:01.428-05
-153	7	16	friend-request-accepted	{"username":"jay","text":"has accepted your friend request.","url":"/public_profile/jay"}	2023-11-23 05:25:01.431-06	f	2023-10-23 05:25:01.431-05	2023-10-23 05:25:01.431-05
-154	7	5	new-follow	{"username":"jay","text":"has followed you.","url":"/public_profile/jay"}	2023-11-23 13:54:11.349-06	f	2023-10-23 13:54:11.349-05	2023-10-23 13:54:11.349-05
-155	5	7	new-follow	{"username":"bleh","text":"has followed you.","url":"/public_profile/bleh"}	2023-11-23 13:54:15.696-06	f	2023-10-23 13:54:15.696-05	2023-10-23 13:54:15.696-05
-157	7	7	friend-request	{"text":"has sent you a friend request","username":"jay","url":"/public_profile/jay"}	2023-11-23 23:23:58.208-06	t	2023-10-23 23:23:58.208-05	2023-10-23 23:24:09.982-05
-158	7	7	friend-request-accepted	{"username":"jay","text":"has accepted your friend request.","url":"/public_profile/jay"}	2023-11-23 23:24:09.983-06	f	2023-10-23 23:24:09.983-05	2023-10-23 23:24:09.983-05
-159	7	13	friend-request	{"text":"has sent you a friend request","username":"jay","url":"/public_profile/jay"}	2023-11-23 23:26:05.998-06	t	2023-10-23 23:26:05.998-05	2023-10-23 23:26:57.921-05
-160	13	7	friend-request-accepted	{"username":"kerry","text":"has accepted your friend request.","url":"/public_profile/kerry"}	2023-11-23 23:26:57.922-06	f	2023-10-23 23:26:57.923-05	2023-10-23 23:26:57.924-05
-168	20	7	friend-request	{"text":"has sent you a friend request","username":"eva","url":"/public_profile/eva"}	2023-11-23 23:46:31.077-06	t	2023-10-23 23:46:31.077-05	2023-10-23 23:46:46.628-05
-169	7	18	friend-request	{"text":"has sent you a friend request","username":"jay","url":"/public_profile/jay"}	2023-11-23 23:47:57.431-06	t	2023-10-23 23:47:57.431-05	2023-10-23 23:48:11.919-05
-170	7	5	friend-request	{"text":"has sent you a friend request","username":"jay","url":"/public_profile/jay"}	2023-11-23 23:50:00.585-06	t	2023-10-23 23:50:00.585-05	2023-10-23 23:50:16.333-05
-171	5	16	friend-request	{"text":"has sent you a friend request","username":"bleh","url":"/public_profile/bleh"}	2023-11-24 00:00:56.697-06	t	2023-10-24 00:00:56.698-05	2023-10-24 00:01:04.542-05
-172	16	5	friend-request-accepted	{"username":"ava","text":"has accepted your friend request.","url":"/public_profile/ava"}	2023-11-24 00:01:04.544-06	f	2023-10-24 00:01:04.544-05	2023-10-24 00:01:04.544-05
-173	15	18	friend-request	{"text":"has sent you a friend request","username":"kerry2","url":"/public_profile/kerry2"}	2023-11-24 00:03:27.406-06	t	2023-10-24 00:03:27.406-05	2023-10-24 00:03:39.04-05
-174	18	15	friend-request-accepted	{"username":"avatar","text":"has accepted your friend request.","url":"/public_profile/avatar"}	2023-11-24 00:20:44.815-06	f	2023-10-24 00:20:44.815-05	2023-10-24 00:20:44.816-05
+COPY public.notifications (notification_id, sender_id, recipient_id, comment_id, type, content, expiry_date, dismissed, created_at, updated_at) FROM stdin;
+38	2	1	\N	comment	{"username":"bleh","text":"commented on your post.","url":"/travelog/1"}	2023-11-26 00:40:44.296-06	f	2023-10-26 00:40:44.296-05	2023-10-26 00:40:44.296-05
+39	2	1	\N	friend-request	{"text":"has sent you a friend request","username":"bleh","url":"/public_profile/bleh"}	2023-11-26 00:50:15.482-06	t	2023-10-26 00:50:15.482-05	2023-10-26 00:50:22.397-05
+40	1	2	\N	friend-request-accepted	{"username":"jay","text":"has accepted your friend request.","url":"/public_profile/jay"}	2023-11-26 00:50:22.4-06	f	2023-10-26 00:50:22.4-05	2023-10-26 00:50:22.4-05
 \.
 
 
@@ -155,14 +142,14 @@ COPY public.ratings (rating_id, user_id, travelog_id, rating_color, created_at, 
 -- Name: blocks_block_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.blocks_block_id_seq', 1, true);
+SELECT pg_catalog.setval('public.blocks_block_id_seq', 1, false);
 
 
 --
 -- Name: comments_comment_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.comments_comment_id_seq', 1, false);
+SELECT pg_catalog.setval('public.comments_comment_id_seq', 38, true);
 
 
 --
@@ -176,7 +163,7 @@ SELECT pg_catalog.setval('public.feedback_reports_report_id_seq', 1, false);
 -- Name: follows_follow_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.follows_follow_id_seq', 4, true);
+SELECT pg_catalog.setval('public.follows_follow_id_seq', 1, false);
 
 
 --
@@ -190,14 +177,14 @@ SELECT pg_catalog.setval('public.forbidden_words_word_id_seq', 1, false);
 -- Name: friendships_friendship_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.friendships_friendship_id_seq', 116, true);
+SELECT pg_catalog.setval('public.friendships_friendship_id_seq', 1, true);
 
 
 --
 -- Name: images_image_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.images_image_id_seq', 6, true);
+SELECT pg_catalog.setval('public.images_image_id_seq', 2, true);
 
 
 --
@@ -211,14 +198,14 @@ SELECT pg_catalog.setval('public.interactions_interaction_id_seq', 1, false);
 -- Name: messages_message_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.messages_message_id_seq', 1, false);
+SELECT pg_catalog.setval('public.messages_message_id_seq', 19, true);
 
 
 --
 -- Name: notifications_notification_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.notifications_notification_id_seq', 174, true);
+SELECT pg_catalog.setval('public.notifications_notification_id_seq', 40, true);
 
 
 --
@@ -232,14 +219,14 @@ SELECT pg_catalog.setval('public.ratings_rating_id_seq', 1, false);
 -- Name: travelogs_travelog_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.travelogs_travelog_id_seq', 6, true);
+SELECT pg_catalog.setval('public.travelogs_travelog_id_seq', 2, true);
 
 
 --
 -- Name: users_user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kodai
 --
 
-SELECT pg_catalog.setval('public.users_user_id_seq', 20, true);
+SELECT pg_catalog.setval('public.users_user_id_seq', 2, true);
 
 
 --

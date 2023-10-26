@@ -2,21 +2,23 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';  
 import axios from 'axios';
 import { UserContext } from '../user/UserContext';
-import { useNavigate } from 'react-router-dom';
-
-import L from 'leaflet';
+import { Link, useNavigate } from 'react-router-dom';
+ 
 import 'leaflet/dist/leaflet.css';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import CustomSingleMarker from './CustomSingleMarker';
-
-
-// function TravDet({ travelog }) {
   
+// Comment Code
+import CommentModal from './CommentModal'; 
+import CommentsList from './CommentsList';
+
+// COMMENTONCOMMENT 
+
 function TravDet() {
   const { isAdmin, user } = useContext(UserContext);
   const [travelog, setTravelog] = useState(null); 
-  const { id: travelogId } = useParams();  // Get the travelog_id from the URL using useParams 
-  const { user: currentUser } = useContext(UserContext);  // Corrected from { currentUser } to { user: currentUser }
+  const { id: travelogId } = useParams();  
+  const { user: currentUser } = useContext(UserContext);   
   console.log('Current User for travdet: ', currentUser);  
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedTravelog, setEditedTravelog] = useState(null);
@@ -24,7 +26,25 @@ function TravDet() {
   const [images, setImages] = useState([]);
   const [isEditImagesMode, setIsEditImagesMode] = useState(false);
   const [displayImages, setDisplayImages] = useState(images);
-  const [isDeleteConfirmVisible, setIsDeleteConfirmVisible] = useState(false);
+  const [isDeleteConfirmVisible, setIsDeleteConfirmVisible] = useState(false); 
+  
+  // Comment Code
+  const [commentText, setCommentText] = useState('');
+  const [modalShow, setModalShow] = useState(false);
+  // const handleClose = () => {
+  //   setModalShow(false);
+  //   setCommentText('');
+  // };
+  const handleClose = (callback) => {
+    setModalShow(false);
+    callback && callback();
+  };
+  const [comments, setComments] = useState([]);
+
+  function onCommentSubmit(newComment) {
+    console.log('onCommentSubmitfiring with: ', newComment)
+    setComments((prevComments) => [newComment, ...prevComments]);
+  }
 
   const navigate = useNavigate();
 
@@ -32,14 +52,8 @@ function TravDet() {
     if (travelog && travelog.reported && !isAdmin) {
       navigate('/');
     }
-  }, [travelog, isAdmin, navigate]);
+  }, [travelog, isAdmin, navigate]); 
 
-  // const mapOptions = {
-  //   center: [ 49.6322, 12.4628], 
-  //   zoom: 4,  
-  //   minZoom: 2,
-  //   maxZoom: 18,
-  // };
   const mapOptions = {
     center: travelog ? [travelog.latitude, travelog.longitude] : [49.6322, 12.4628],
     zoom: 13,
@@ -54,7 +68,7 @@ function TravDet() {
 
   const updateImageUrl = (index, url) => {
     const updatedImages = [...images];
-    updatedImages[index].image_url = url;  // Update image_url instead of url
+    updatedImages[index].image_url = url;  
     setImages(updatedImages);
   };
   
@@ -131,55 +145,7 @@ function TravDet() {
       console.error('Error deleting travelog:', error);
     }
   };
-
-  // const handleToggleReport = async () => {
-  //   const confirmReport = window.confirm('Are you sure you want to do this?');
-  //   if (confirmReport) {
-  //     try {
-  //       const response = await fetch(`http://localhost:5000/api/travelog/${travelogId}/report`, {
-  //         method: 'PATCH',
-  //         headers: {
-  //           'Content-Type': 'application/json',
-  //         },
-  //         body: JSON.stringify({ reported: true }),
-  //       });
-        
-  //       if (response.ok) {
-  //         // Handle success (e.g., show a success message or update the UI)
-  //       } else {
-  //         // Handle error (e.g., show an error message)
-  //         console.error('Error reporting travelog:', await response.text());
-  //       }
-  //     } catch (error) {
-  //       console.error('Error reporting travelog:', error);
-  //     }
-  //   }
-  // };
-
-  // const handleToggleReport = async () => {
-  //   const confirmReport = window.confirm('Are you sure you want to do this?');
-  //   try {
-  //     const response = await fetch(`http://localhost:5000/api/travelog/${travelogId}/report`, {
-  //       method: 'PATCH',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       body: JSON.stringify({ reported: !travelog.reported }),  // Toggle reported status
-  //     });
-  
-  //     if (!response.ok) {
-  //       throw new Error(`Network response was not ok ${response.statusText}`);
-  //     }
-  
-  //     const responseData = await response.json();
-  //     console.log('Report status toggled successfully:', responseData);
-  //     // Optionally, update the local state to reflect the change
-  //     setTravelog(prevTravelog => ({ ...prevTravelog, reported: !prevTravelog.reported }));
-  //   } catch (error) {
-  //     console.error('Error toggling report status:', error);
-  //   }
-  // };
-
+ 
   const handleToggleReport = async () => {
     const confirmReport = window.confirm('Are you sure you want to do this?');
     try {
@@ -209,7 +175,6 @@ function TravDet() {
       console.error('Error toggling report status:', error);
     }
   };
-  
 
   useEffect(() => {
     // Filter out any images marked for deletion
@@ -221,7 +186,8 @@ function TravDet() {
     try {
       const response = await axios.get(`http://localhost:5000/api/travelog/${travelogId}`);
       setTravelog(response.data);
-      setImages(response.data.Images);  // Update images state with fetched data
+      setImages(response.data.Images); 
+      console.log('Travelog Id Fetch on TravDet: ', response.data)
     } catch (error) {
       console.error('Error fetching travelog:', error);
     }
@@ -257,7 +223,7 @@ function TravDet() {
       setImages(travelog.Images);
       setIsEditImagesMode(false);
   };
-
+ 
   return (
     <div> 
       <div className="map-container">
@@ -351,7 +317,13 @@ function TravDet() {
                 ) : (
                     <div>
                         <h1>{travelog.title}</h1>
-                        <p>Site: {travelog.site}</p>
+                        <p>Site: {travelog.site}</p> 
+                        <div>
+                          <span>visited by </span>
+                          <Link to={`/public_profile/${travelog.User.username}`}>
+                            {travelog.User.username}
+                          </Link>
+                        </div>
                         <p>Country: {travelog.country}</p>
                         <p>State: {travelog.state}</p>
                         <p>City: {travelog.city}</p>
@@ -360,11 +332,7 @@ function TravDet() {
                         <p>Date Visited: {new Date(travelog.dateVisited).toLocaleDateString('en-CA')}</p>
                         <p>Is Private: {travelog.isPrivate ? 'Yes' : 'No'}</p>
                         <p>Latitude: {travelog.latitude}</p>
-                        <p>Longitude: {travelog.longitude}</p>
-                        <div>Travelog Entry: {travelog.textBody}</div>
-                        {currentUser && currentUser.username === travelog.User.username && (
-                            <button onClick={() => travelog && setIsEditMode(!isEditMode)}>Edit Travelog</button>
-                        )}
+                        <p>Longitude: {travelog.longitude}</p> 
                         <div>
                             {isEditImagesMode ? (
                                 <div>
@@ -410,7 +378,14 @@ function TravDet() {
                                 )}
                             </>
                         )}
+                        <div>Travelog Entry: {travelog.textBody}</div>  
 
+
+                        
+
+                        {currentUser && currentUser.username === travelog.User.username && (
+                            <button onClick={() => travelog && setIsEditMode(!isEditMode)}>Edit Travelog</button>
+                        )}
                         {currentUser && currentUser.username === travelog.User.username && (
                           <>
                             <button onClick={() => setIsDeleteConfirmVisible(true)}>Delete Travelog</button>
@@ -433,7 +408,19 @@ function TravDet() {
                         {isAdmin && (
                           <button onClick={handleAdminDeletion}>Administrative Deletion</button>
                         )}
-
+                        <br/>
+                        {/* Comment Code  */}
+                        <CommentModal 
+                        show={modalShow} 
+                        handleClose={handleClose} 
+                        travelog={travelog} 
+                        onCommentSubmit={onCommentSubmit}
+                        comments={comments} 
+                        setComments={setComments}
+                        /> 
+                        <button onClick={() => setModalShow(true)}>Comment</button>
+                        {/* {travelog && <CommentsList travelog={travelog} />} */}
+                        {travelog && <CommentsList travelog={travelog} comments={comments} setComments={setComments}/>}
                     </div>
                     
                 )}

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState, useEffect, useRef} from 'react';
 import { UserContext } from '../user/UserContext';
 import axios from 'axios';
 
@@ -22,7 +22,7 @@ const initialFormData = {
   address: '',
   phoneNumber: '',
   isPrivate: false,
-};
+}; 
 
 function Modal({ show, onClose, onConfirm }) {
   return (
@@ -51,7 +51,7 @@ function LogEntry() {
   const [isPrivate, setIsPrivate] = useState(false);
   const [selectedBusiness, setSelectedBusiness] = useState(null);
   // const [selectedAdress, setSelectedAdress] = useState(null);
-  // const [selectedPhoneNumber, setSelectedPhoneNumber] = useState(null);
+  // const [selectedPhoneNumber, setSelectedPhoneNumber] = useState(null); 
   const handlePrivacyChange = (event) => {
     const isPrivate = event.target.checked;
     console.log(isPrivate);
@@ -165,25 +165,6 @@ function LogEntry() {
     setFormData(initialFormData);
     setYelpData([]);
   };
-
-  // const handleSubmit = async (event) => {
-  //   console.log("Form submitted");
-  //   event.preventDefault();
-  //   console.log('User ID in handleSubmit: ', user.user_id)
-  //   const dataToSend = {
-  //     ...formData,
-  //     user_id: user.user_id  // <-- access user_id from user object
-  //   };
-
-  //   try {
-  //     // Submit the travelog data and the image URLs together
-  //     const response = await axios.post('http://localhost:5000/api/travelog', dataToSend);
-  //     console.log('All data saved successfully', response.data);
-  //     resetForm();
-  //   } catch (error) {
-  //     console.error('Error submitting the data:', error);
-  //   }
-  // };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -325,16 +306,6 @@ function LogEntry() {
           placeholder="Limit is 10,000 characters."
           ></textarea>
         </label>
-        <div>
-          Image URLs:
-          {formData.imageUrls.map((url, index) => (
-            <div key={index}>
-              <input type="text" value={url} onChange={e => updateImageUrl(index, e.target.value)} />
-              {index > 0 && <button type="button" onClick={() => removeImageUrl(index)}>Delete</button>}
-            </div>
-          ))}
-          <button type="button" onClick={addImageUrlField}>Add another image?</button>
-        </div>
         <label>
           Address:
           <input type="text" value={formData.address} onChange={e => setFormData({ ...formData, address: e.target.value })} />
@@ -347,6 +318,17 @@ function LogEntry() {
           Private:
           <input type="checkbox" name="isPrivate" checked={formData.isPrivate} onChange={handlePrivacyChange} />
         </label>
+        <div>
+          Image URLs:
+          {formData.imageUrls.map((url, index) => (
+            <div key={index}>
+              <input type="text" value={url} onChange={e => updateImageUrl(index, e.target.value)} />
+              {index > 0 && <button type="button" onClick={() => removeImageUrl(index)}>Delete</button>}
+            </div>
+          ))}
+          <button type="button" onClick={addImageUrlField}>Add another image?</button>
+        </div>
+        <br/>
         <button type="submit">Submit Entry</button>
       </form>
     </div>
@@ -355,15 +337,4 @@ function LogEntry() {
 
 export default LogEntry;
 
-
-
-// <label>
-// Latitude:
-// <input type="text" value={formData.latitude} onChange={e => setFormData({ ...formData, latitude: e.target.value })} />
-// </label>
-// <label>
-// Longitude:
-// <input type="text" value={formData.longitude} onChange={e => setFormData({ ...formData, longitude: e.target.value })} />
-// </label>
-
-{/* <img src={business.image_url} alt={business.name} /> */}
+ 
