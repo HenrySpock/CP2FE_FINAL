@@ -1,74 +1,89 @@
-// src/components/CommentsList.js
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import CommentItem from './CommentItem';
+import './Comment.css'
 
-// COMMENTONCOMMENT 
-// import { io } from 'socket.io-client';
+// COMMENTONCOMMENT  
 
-function CommentsList({ travelog }) {
+function CommentsList({ travelog, trip, profileUser, userData, contextUser, }) {
   const [comments, setComments] = useState([]);
   // console.log('comments on CommentsList: ', comments);
   const [loading, setLoading] = useState(true);
 
-  // const travelogId = travelog.travelogId;
-  // useEffect(() => {
-  //   const socket = io('http://localhost:5000');  // replace with your server URL
-  
-  //   // Optionally, join a room for the current travelog if your server is set up this way
-  //   socket.emit('join', { room: travelogId });
-  
-  //   // Listen for new comment notifications
-  //   socket.on('new-notification', (notification) => {
-  //     console.log('New notification received:', notification);
-  //     // Assuming the notification contains the new comment data...
-  //     setComments(prevComments => [notification.comment, ...prevComments]);
-  //   });
-  
-  //   return () => {
-  //     socket.disconnect();  // Clean up the socket connection on component unmount
-  //   };
-  // }, [travelogId]);
-  
   useEffect(() => {
     const fetchComments = async () => {
+      let url = 'http://localhost:5000/api/comments';
+      let entityId, entityType;
+  
+      if (travelog && travelog.travelogId) {
+        entityId = travelog.travelogId;
+        entityType = 'travelogId';
+        url += `?travelogId=${entityId}`;
+      } else if (trip && trip.trip_id) {
+        entityId = trip.trip_id;
+        entityType = 'tripId';
+        url += `?tripId=${entityId}`;
+      } else {
+        console.error('No travelogId or tripId provided');
+        return;
+      }
+  
       try {
-        // Adjusted the URL to match the server endpoint
-        const response = await axios.get(`http://localhost:5000/api/travelog/${travelog.travelogId}/comments`);
-        setComments(response.data);
+        const response = await axios.get(url);
+        let comments = response.data;
+  
+        // Check block status for each comment author
+        const fetchBlockStatusPromises = comments.map(async (comment) => {
+          const blockResponse = await axios.get(`http://localhost:5000/api/users/${comment.username}/block-status/${contextUser.username}`);
+          return blockResponse.data.isBlocked ? null : comment;
+        });
+  
+        const commentsWithBlockStatus = await Promise.all(fetchBlockStatusPromises);
+  
+        // Filter out null values (blocked comments)
+        const filteredComments = commentsWithBlockStatus.filter(comment => comment !== null);
+  
+        setComments(filteredComments);
         setLoading(false);
       } catch (error) {
-        console.error('Error fetching comments:', error);
+        console.error(`Error fetching comments for ${entityType}:`, error);
         setLoading(false);
       }
     };
-
+  
     fetchComments();
-  }, [travelog.travelogId]);
+  }, [travelog?.travelogId, trip?.tripId, travelog, trip, contextUser.username]);
+
+
+
 
   if (loading) {
     return <p>Loading comments...</p>;
   }
-
-  return (
-    <div>
-      <h3>Comments:</h3>
-      {comments.length > 0 ? (
-        <ul className="comment-list">
-          {comments.map(comment => (
-            <li key={comment.comment_id}>
-              <CommentItem comment={comment} travelogAuthor={travelog.User.username} />
-            </li>
-          ))}
  
-
-        </ul>
-      ) : (
-        <p>No comments yet.</p>
-      )}
-    </div>
-  );
+return (
+  <div>
+    
+    {comments.length > 0 ? (
+      <ul className="comment-list"> 
+        {comments.map(comment => (
+          <li key={comment.comment_id}>
+            {/* Pass either travelogAuthor or tripAuthor depending on the context */}
+            <CommentItem 
+              comment={comment} 
+              author={travelog ? travelog.User.username : trip ? trip.username : ''} 
+              profileUser={profileUser}                        
+              userData={userData}                        
+              contextUser={contextUser}
+            />
+          </li>
+        ))}
+      </ul>
+    ) : (
+      <p className='uncommented' >No comments yet.</p>
+    )}
+  </div>
+);
 }
 
 export default CommentsList;
- 

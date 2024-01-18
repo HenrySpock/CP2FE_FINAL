@@ -15,43 +15,37 @@ export const WebSocketProvider = ({ children }) => {
 
     useEffect(() => {
         if (user && user.user_id) {
-            const newSocket = io('http://localhost:5000', { query: { userId: user.user_id } });
+            const newSocket = io('http://localhost:5000/', { query: { userId: user.user_id } });
             
             newSocket.on('connect_error', (error) => {
                 console.error('Connection Error:', error);
             });
 
             newSocket.on('connect', () => {
-                console.log('Socket connected:', newSocket.connected);
+                // console.log('Socket connected:', newSocket.connected);
             });
     
             newSocket.on('disconnect', () => {
-                console.log('Socket disconnected');
+                // console.log('Socket disconnected');
             });
     
-            setSocket(newSocket);
-    
-            // newSocket.on('new-notification', (notification, ack) => {
-            //     console.log('Received notification:', notification);
-            //     setNotifications(prevNotifications => [...prevNotifications, notification]);
-            //     ack(); 
-            // });
+            setSocket(newSocket); 
 
             newSocket.on('new-notification', (notification) => {
                 try {
-                    console.log('Received notification:', notification);
+                    // console.log('Received notification:', notification);
                     setNotifications(prevNotifications => [...prevNotifications, notification]);
-                    // ack({ success: true });
+                    
                 } catch (error) {
                     console.error('Error processing notification:', error);
-                    // ack({ error: error.message });
+                    
                 }
             });
             
             // Attach the listener to newSocket instead of socket
             newSocket.on('notification-deleted', (data) => {
                 const { notificationId } = data;
-                console.log('notification-deleted event received with data:', data);
+                // console.log('notification-deleted event received with data:', data);
             
                 setNotifications(prevNotifications => {
                     // console.log('prevNotifications:', prevNotifications);

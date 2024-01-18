@@ -16,7 +16,8 @@ function calculateIconSize(zoom) {
   return [iconSize, iconSize];
 }
 
-function CustomMarkers({ entries }) {
+function CustomMarkers({ travelogEntries, tripEntries }) {
+  // console.log('travelogEntries: ', travelogEntries)
   const map = useMap(); 
   const [iconSize, setIconSize] = useState(calculateIconSize(map.getZoom()));
 
@@ -32,41 +33,65 @@ function CustomMarkers({ entries }) {
     };
   }, [map]);
 
-  console.log('entries: ', entries);
+  // console.log('travelogEntries: ', travelogEntries);
 
   return (
     <>
-      {entries.map(entry => {
-        const imageUrl = entry.Images[0]?.image_url;
-        const customIcon = new L.Icon({
-          iconUrl: imageUrl,
-          iconSize: iconSize,          
-        });
+      {travelogEntries && travelogEntries.length > 0 && travelogEntries.map(entry => {
+ 
 
-        return (
-          <Marker position={[entry.latitude, entry.longitude]} icon={customIcon} key={entry.travelog_id}>
-            {/* <Popup>
-              {entry.title} <br />
-              In {entry.country} <br />
-              Visited by {entry.User.username} <br />
-              On {new Date(entry.date_visited).toISOString().split('T')[0]} <br />
-              <img src={imageUrl} alt="Travelog" width="100" />
-            </Popup> */}
-            <Popup>
-              <Link to={`/trav_det/${entry.travelogId}`} className="custom-popup">
-                <Link to={`/public_profile/${entry.User.username}`}>
-                  <span>{entry.User.username}</span>
-                </Link> <br /> 
-                <span>{entry.title}</span> <br />
-                <span>In {entry.country}</span> <br /> 
-                {/* Visited by {entry.User.username} <br /> */}
+          const imageUrl = entry.Images[0]?.image_url;
+          const customIcon = new L.Icon({
+            iconUrl: imageUrl,
+            iconSize: iconSize,          
+          });
 
-                <img src={imageUrl} alt="Travelog" width="100" />
-              </Link>
-            </Popup>
-          </Marker>
-        );
+          return (
+            <Marker position={[entry.latitude, entry.longitude]} icon={customIcon} key={entry.travelog_id}> 
+              <Popup>
+                <Link to={`/trav_det/${entry.travelogId}`} className="custom-popup">
+                  <Link to={`/public_profile/${entry.User.username}`}>
+                    <span> {entry.User.username}</span>
+                  </Link> <br /> 
+                  <span>Travelog: {entry.title}</span> <br />
+                  <span>In {entry.country}</span> <br />  
+
+                  <img src={imageUrl} alt="Travelog" width="75" className="trav-pop-img" />
+                </Link>
+              </Popup>
+            </Marker>
+          );
+
+        // })}
+
       })}
+
+      {tripEntries && tripEntries.length > 0 && tripEntries.map(trip => { 
+ 
+          
+          const imageUrl = trip.image_url;
+          const customIcon = new L.Icon({
+            iconUrl: imageUrl,
+            iconSize: iconSize,
+          });
+
+          return (
+            <Marker position={[trip.latitude, trip.longitude]} icon={customIcon} key={trip.trip_id}>
+              <Popup>
+                <Link to={`/trip_det/${trip.trip_id}`} className="custom-popup">
+                  <Link to={`/public_profile/${trip.username}`}>
+                    <span> {trip.username}</span>
+                  </Link> <br />  
+                  <span>Trip: {trip.title}</span> <br /> 
+                  <img src={imageUrl} alt="Trip" width="75" className="trip-pop-img" />
+                </Link>
+              </Popup>
+            </Marker>
+          );
+ 
+
+      })}
+
     </>
   );
 }

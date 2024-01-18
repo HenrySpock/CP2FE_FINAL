@@ -1,0 +1,221 @@
+.tiptap img {
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);  
+  width: 90%;
+  margin-left: 5%;
+}
+
+.tip-tap-editor {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+}
+
+.tip-tap-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.tip-tap-buttons > button {
+  display: inline;
+}
+
+.tip-tap-editor, .tiptap-editor-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.tip-tap-editor > div > button, .tip-tap-editor > div > div {
+  margin: 5px;  
+}
+
+.tiptap-editor-container {
+  margin-top: 20px;
+}
+ 
+.trav-tip-tap-save {
+  margin-left: 31.6%; 
+}
+
+.trip-tip-tap-save {
+  margin-left: 31.7%; 
+}
+
+.trav-tip-tap {
+  background-color: rgb(180, 180, 180);
+  width: 90%;
+  margin: 2% auto;
+  border: 1px solid rgb(170, 170, 170);
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(180, 180, 180) 100%); 
+  border-radius: 20px;
+}
+
+.trip-tip-tap {
+  background-color: rgb(180, 180, 180);
+  width: 90%;
+  margin: 2% auto;
+  border: 1px solid rgb(170, 170, 780);
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(180, 180, 180) 100%); 
+  border-radius: 20px;
+}
+
+.tiptap-format-btn {
+  padding: .3% 0 .3% 0;
+  margin-top: 5px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 130px;
+  font-size: 14px;
+}  
+
+.tiptap-format-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.bottom-btn {
+  margin: 2%;
+}
+
+.readOnlyTripTipTap > div > img {
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);  
+  margin-left: 5%;
+  width: 90%;
+}
+
+.readOnlyTravTipTap > div > img {
+  border-radius: 8px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);  
+  margin-left: 5%;
+  width: 90%;
+}
+
+.read-only-tiptap { 
+  word-wrap: break-word;
+  width: 90%;
+  margin: 3% auto 3% auto;
+}
+
+.font-size {
+  width: 25%;
+  display: flex;
+  justify-content: space-around;
+  /* gap: 5px; */
+}
+
+.font-size > input {
+  height: 2em;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 5px;
+  width: 20%;
+}
+
+.crement, .set-unset {
+  padding: .3% 0 .3% 0; 
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 4px;
+  cursor: pointer; 
+  font-size: 14px;
+}
+
+.crement:hover, .set-unset:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.crement {
+  width: 7%;
+}
+
+.set-unset {
+  width: 20%;
+}
+
+.trip-tip-tap, .trav-tip-tap {
+  border: 1px solid rgb(180, 180, 180);
+}
+
+/* For Chrome, Safari, Edge, Opera */
+.font-size > input::-webkit-outer-spin-button,
+.font-size > input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+  
+}
+
+/* For Firefox */
+.font-size > input[type=number] {
+  -moz-appearance: textfield;
+  
+}
+
+.add-link, .insert-image {
+  display: flex;
+  justify-content: space-around;
+}
+
+.add-link > button, .insert-image > button, .close-emoji {
+  padding: .3% 0 .3% 0; 
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 4px;
+  cursor: pointer; 
+  font-size: 14px;
+  height: 2em;
+  width: 15%;
+}
+
+.add-link > button:hover, .insert-image > button:hover, .close-emoji:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.add-link > input, .insert-image > input {
+  height: 2em;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 5px;
+  width: 50%;
+}
+
+.emoji {
+  background-color: rgb(240, 240, 240);
+  border: 1px solid gray;
+  border-radius: 4px;
+}
+
+.emojiModalStyle {
+  background-color: rgb(220, 220, 220);
+  padding: 20px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* .emojiGridStyle */
+.emojiGridStyle {
+  display: grid;
+  grid-template-columns: repeat(19, 1fr); /* 19 emojis per row */
+  grid-gap: 5px;
+  margin-bottom: 10px;
+}
+
+.emojiOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}

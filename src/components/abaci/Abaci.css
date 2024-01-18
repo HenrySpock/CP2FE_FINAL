@@ -1,0 +1,72 @@
+.abaci-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+.leaderboard-row {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.leaderboard-card {
+  background-color: rgb(240, 240, 240);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px 0px 0px 20px;
+  margin: 10px;
+  width: calc(33% - 20px);  
+}
+
+.leaderboard-card h3 {
+  margin-top: 0;
+}
+
+.leaderboard-card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.leaderboard-card ul li {
+  margin: 10px 0;
+}
+
+.leaderboard-card ul li a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.details-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: rgb(180, 180, 180);
+  border: 1px solid rgb(120, 120, 120);
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  margin-right: 4%;
+}
+
+.details-container:hover {
+  background-color: rgb(140, 140, 140);
+  border: 1px solid rgb(100, 100, 100); 
+}
+
+.details-avatar {
+  width: 10%;
+}
+
+
+.detail {
+  display: flex; 
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  margin-left: 5%;
+  width: 35%;
+
+}

@@ -1,98 +1,101 @@
-import axios from 'axios';  // Ensure you have imported axios
 import React, { useState, useContext } from 'react';
 import { Modal, Button } from 'react-bootstrap';
 import { UserContext } from '../user/UserContext';
 // COMMENTONCOMMENT 
-import postComment from './postComment';
+import PostComment from './PostComment';
 
-function CommentModal({ onCommentSubmit, show, handleClose, travelog, comment_id, comments, setComments,  }) {
-  console.log('travelog on commentmodal: ', travelog)
+import checkForbiddenWords from './CheckForbiddenWords';
+
+import './Comment.css'
+
+
+function CommentModal({ onCommentSubmit, show, handleClose, travelog, comment_id, comments, setComments, trip  }) {
+  // console.log('travelog on commentmodal: ', travelog)
+  // console.log('trip on commentmodal: ', trip)
   const [commentText, setCommentText] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const { user } = useContext(UserContext); 
   if (!user) {
     return null; 
-  }
-  
-  console.log('travelog_id: ', travelog.travelogId, 'comment_id: ', comment_id, 'user_id: ', user.user_id)
+  } 
    
   const handleCancel = () => {
     setCommentText('');
     handleClose();
-  };
-
-
-  // COMMENTONCOMMENT
-  const handleCommentSubmit = async () => {
-    console.log('Parent ID: ', comment_id, 'Travelog ID: ', travelog.travelogId);
-    const newComment = await postComment({ 
-      user: user,
-      user_id: user.user_id,  
-      parentId: comment_id,
-      travelog_id: travelog.travelogId,
-      content: commentText,
-    });
-  };
+  }; 
 
 const handleFormSubmit = (e) => {
   e.preventDefault();
   handleCommentSubmit();
 };
 
+const handleCommentSubmit = async () => {
+  let entityId, entityType;
+
+  if (travelog && travelog.travelogId) {
+      entityId = travelog.travelogId;
+      entityType = 'travelog_id';
+  } else if (trip && trip.trip_id) {
+      entityId = trip.trip_id;
+      entityType = 'trip_id';
+  } else {
+      console.error('No travelogId or tripId provided');
+      setErrorMessage('Error: No travelog or trip information provided.');
+      return;
+  }
+
+  // console.log(`Parent ID: ${comment_id}, ${entityType}: `, entityId); 
+
+  try {
+      const forbiddenWordsFound = await checkForbiddenWords(commentText);
+      if (forbiddenWordsFound.length > 0) {
+          setErrorMessage('Let\'s change our message. Forbidden words found: ' + forbiddenWordsFound.join(', '));
+          return;
+      }
+
+      await PostComment({ 
+          user: user,
+          user_id: user.user_id,  
+          parentId: comment_id,
+          [entityType]: entityId,
+          content: commentText,
+      });
+      //this was originally set to a variable for console.logging
+ 
+  } catch (error) {
+      console.error('Error submitting comment:', error);
+      setErrorMessage(`Error submitting comment: ${error.message}`);
+  }
+};
+
+
   return (
-    <Modal show={show} onHide={handleClose}>
+    
+    <Modal className='modal-shrink' show={show} onHide={handleClose}>
+      
       <Modal.Header>
-        <Modal.Title>Comment</Modal.Title>
+        <Modal.Title>Enter your comment</Modal.Title>
       </Modal.Header>
+      
       <Modal.Body>
-        <form onSubmit={handleFormSubmit}>
-          <textarea value={commentText} onChange={(e) => setCommentText(e.target.value)} />
-          <button type="submit">Submit Comment</button>
+        {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}  
+        <form className='comment-texarea-button' onSubmit={handleFormSubmit}>
+          <textarea className='comment-textarea' value={commentText} onChange={(e) => setCommentText(e.target.value)} /> 
+          <button className='comment-modal-submit-btn submit-comment-margin' type="submit">Submit</button>
         </form>
       </Modal.Body>
-      <Modal.Footer>
-        {/* <button onClick={handleCommentSubmit}>Submit Comment</button>  */}
-        {/* <Button variant="secondary" onClick={handleClose}>Cancel</Button> */}
-        <Button variant="secondary" onClick={handleCancel}>Cancel</Button>
+      
+      <Modal.Footer> 
+        <Button className='cancel-comment-btn' variant="secondary" onClick={handleCancel}>Cancel</Button>
       </Modal.Footer>
+      
     </Modal>
+    
   );
 }
 
 export default CommentModal;
 
 
-
-
-  // const handleCommentSubmit = async () => {
-  //   try {
-  //     const postData = {
-  //       user_id: user.user_id,
-  //       content: commentText,
-  //     };
-
-  //     // Determine the key (travelog_id or parent_id) based on parentType
-  //     if (travelog.travelogId) {
-  //       postData.travelog_id = travelog.travelogId
-  //     } else if (comment_id) {
-  //       postData.parent_id = comment_id
-  //     } else {
-  //       throw new Error('Invalid parent type');
-  //     }
-      
-  //     const response = await axios.post('http://localhost:5000/api/comment', postData);
-
-  //     if (response.data.success) {
-  //       console.log('Comment submitted successfully:', response.data.comment);
-  //       // onCommentSubmit(response.data.comment);   
-  //       console.log('response.data.comment from commentmodal: ', response.data.comment)
-  //       onCommentSubmit(response.data.comment); 
-  //       handleClose();  // Close the modal upon successful submission
-  //       window.location.reload();
-  //     } else {
-  //       console.error('Failed to submit comment:', response.data.error);
-  //     }
-  //   } catch (error) {
-  //     console.error('Error submitting comment:', error);
-  //   }
-  // };
+ 

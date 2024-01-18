@@ -1,0 +1,25 @@
+.cancel {
+  padding: 5px;
+  margin: 5% 25% 1%;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(113, 113, 113);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+  font-size: 1em;
+}
+
+.cancel:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.create-trip-submit-btn:hover {
+  background-color: #939393;
+}
+
+.hublatlong-container > .leaflet-container{
+  width: 97%;
+  height: 100px; 
+  margin-right: 730px;
+}

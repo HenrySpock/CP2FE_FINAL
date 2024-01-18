@@ -1,0 +1,46 @@
+.permissions-slate {
+  margin: 1%;
+  padding:  0.01% 2% 2% 2%;
+  border-radius: 30px; 
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(180, 180, 180)); 
+  width: 94%; 
+}
+
+.permissions-selectable {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(160, 160, 160);
+  border-radius: 10px;
+  justify-content: flex-start;
+  align-items: stretch;
+  gap: 15px; 
+  padding: 1%;
+}
+
+.permissions-card { 
+  width: 11.3%;
+  height: 140px;
+  border: 1px solid #929292;  
+  border-radius: 10px;  
+  overflow: hidden; 
+  text-align: center; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  
+  transition: transform 0.2s;   
+  margin: 0;
+  background-color: rgb(220, 220, 220);
+}
+
+
+
+.permissions-card:hover {
+  transform: scale(1.05); 
+  background-color: white;
+}
+ 
+.permissions-card > img {
+  width: 100%; 
+  height: 100px;
+  object-fit: contain;  
+  border-bottom: 2px solid #717171; 
+}  

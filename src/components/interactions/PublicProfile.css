@@ -1,0 +1,286 @@
+.home-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+}
+
+.home-subheading {
+  margin-top: 1.5%;
+}
+
+.home-map-row {
+  display: flex;
+  align-items: stretch; 
+} 
+
+.home-map-col { 
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;   
+  height: 420px;
+  width: 37%;
+  text-align: center;
+  align-items: center;
+  justify-content: flex-start;
+ 
+  border-bottom: 1px solid #848484;  
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  border-radius: 2%;  
+  background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(200, 200, 200) 100%); 
+  overflow: hidden;
+  
+}
+
+.hmcl {
+  margin: 0 0 0 3%;
+}
+
+.hmcr {
+  margin: 0 3% 0 0;
+}
+
+.map-col-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  
+  text-align: center;
+  height: 100%;
+} 
+ 
+
+.sort {
+  margin-top: 1.7%;
+  margin-bottom: 0;
+}  
+
+.activity-indicator { 
+  
+  display: inline-block;
+  width: 15px; 
+  height: 15px; 
+  border-radius: 50%; 
+  border: 2px solid rgba(255, 255, 255, 0.6); 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3), 
+              0 4px 8px rgba(0, 0, 0, 0.2),  
+              inset 0 1px 1px rgba(255, 255, 255, 0.3); 
+  cursor: pointer; 
+  transition: transform 0.1s ease, box-shadow 0.1s ease; 
+}
+
+.activity-indicator:active {
+  transform: translateY(2px); 
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);  
+}
+
+.activity-indicator.red { 
+  background-color: red;
+  background-image: linear-gradient(to top right, #ff5555, #ff0000);  
+}
+
+.activity-indicator.yellow { 
+  background-color: yellow;
+  background-image: linear-gradient(to top right, #ffff55, #ffff00);  
+}
+
+.activity-indicator.green { 
+  background-color: green;
+  background-image: linear-gradient(to top right, #55ff55, #00ff00);  
+}
+
+.profile-map, .profile-map > .leaflet-container {  
+  height: 450px;
+  width: 90%;
+  margin-left: 2.5%; 
+}
+ 
+.interaction-modal {
+  width: 100%;
+}
+
+.interaction-mini-btn {
+  padding: 4px 6px 16px 6px;
+  margin: 1%; 
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 7px;
+  cursor: pointer; 
+  font-size: 12px;
+  width: 20%;
+  height: 10px;
+  transition: transform 0.2s;   
+}
+
+
+.likes {
+  margin-top: 1%;
+}
+
+
+.interaction-mini-btn:hover {
+  transform: scale(1.05); 
+  background-color: rgb(103, 2, 112);
+  color: rgb(255, 255, 255);
+}
+
+.interaction-mini-btn > p {
+  transform: translateY(-20px);
+}
+
+.profile-bio {
+  margin: 0;
+
+}
+ 
+.bio-text {
+  height: 60%;
+  padding: 3%;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap; 
+  word-wrap: break-word;
+  word-break: break-all;
+  white-space: normal;
+  overflow: hidden;
+}
+
+.profile-slate {
+  margin: 2%;
+  padding:  0.01% 2% 2% 2%;
+  border-radius: 30px; 
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(180, 180, 180)); 
+  width: 92%;
+  height: 100%; 
+}
+
+
+.show-bio-btn {
+  padding: auto;
+  margin: 1.7% 0 1%;
+  background-color: rgb(200, 200, 200); 
+  color: white;
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 7px;
+  cursor: pointer; 
+  font-size: 16px;
+  width: 50%;
+  height: 30px;
+}
+
+.show-bio-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.close-bio-btn { 
+  background-color: rgb(200, 200, 200); 
+  color: white;
+  border: 1px solid rgb(163, 163, 163);
+  border-radius: 7px;
+  cursor: pointer; 
+  font-size: 16px;
+  width: 30%;
+  height: 30px;
+}
+
+.close-bio-btn > p {
+  transform: translateY(-20px);
+}
+
+.close-bio-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.public-profile-avatar {
+  display: flex;
+  height: 200px;
+  width: 200px;
+  border: 1px solid rgb(51, 51, 51);
+  border-radius: 8px;
+  box-shadow: 5px 5px 10px rgba(0,0,0,0.5);
+  justify-content: center;
+  margin-bottom: 2%;
+}
+
+.public-profile-avatar > img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+
+/* User Hub Travelogs:  */
+.prof-mini-card {
+  margin-bottom: 1%;
+  display: flex;
+  width: 99.3%;
+  height: 10vh;   
+  background-color: rgb(227, 227, 227);
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgb(182, 182, 182);
+  transition: transform 0.2s;  
+}
+
+.prof-mini-card:hover { 
+  transform: scale(1.02); 
+  background-color: white;
+}
+
+.prof-mini-img-div { 
+  width: 10%;
+  height: 100%;
+  overflow: hidden; 
+  display: flex;
+  justify-content: space-around;
+}
+
+.prof-mini-img {
+  display: block;
+  max-width: 100%;  
+  max-height: 100%; 
+  object-fit: cover; 
+  width: auto;
+  height: auto;
+} 
+  
+.prof-mini-card-text {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  width: 100%;   
+  justify-content: space-around;
+}
+
+.prof-mini-card-text > h3 {
+  width: 20%;
+}
+
+.green-button {
+  background-color: rgb(96, 189, 96);  
+}
+
+.blue-button {
+  background-color: rgb(91, 91, 180);
+}
+
+.red-button {
+  background-color: rgb(192, 97, 97);
+}
+
+.orange-button {
+  background-color: rgb(193, 159, 95);
+}
+
+/* Like Buttons  */
+.profile-like-buttons {
+  gap: 15%;
+  display: flex;
+  justify-content: center;    
+}
+
+.likers-div {
+  display: flex;
+  flex-direction: row;
+}

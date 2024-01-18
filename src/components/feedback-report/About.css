@@ -1,0 +1,83 @@
+.about-page {
+  width: 90%; 
+  background: linear-gradient(to bottom, rgb(240, 240, 240) 0%, rgb(180, 180, 180) 100%); 
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 10px;
+  margin: 20px auto;
+  padding: 20px;
+}
+
+.heading-main {
+  margin: 1% auto 2% auto;
+  text-align: center;
+}
+
+.heading {
+  margin: 1% auto 1% auto;
+  text-align: center;
+}
+
+.explicit-doc-btn {
+  padding: 12px 15px; 
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid gray;
+  border-radius: 8px;
+  cursor: pointer; 
+  font-size: 1em;
+  width: 20%; 
+}
+
+.explicit-doc-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.documentation-slate { 
+  padding:  2% 3% 3% 3%;
+  margin: 3% auto auto 4%;
+  border-radius: 30px; 
+  background: linear-gradient(to bottom, rgb(240, 240, 240) 0%, rgb(180, 180, 180) 100%); 
+  width: 85%; 
+}
+
+.feedback-slate {  
+  display: flex;
+  flex-direction: column;
+  margin: 5% auto 0 auto;
+  padding:  2%;
+  border-radius: 30px; 
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(180, 180, 180)); 
+  width: 40%;
+  height: 100%;   
+}
+
+.feedback-buttons > button {
+  width: 30%;
+  height: 30px;
+  padding: 5px auto 5px;
+  margin: auto;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 5px;
+}
+
+.feedback-buttons > button:hover {
+  background-color: rgb(180, 180, 180);
+}
+
+.feedback-slate > input {
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 3px;
+  margin-bottom: 15px;
+}
+
+.feedback-slate > textArea {
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 5px;
+  height: 5em;
+  margin-bottom: 15px;
+}
+
+.feedback-buttons {
+  display: flex;
+  flex-direction: row;
+}

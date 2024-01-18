@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { UserContext } from '../user/UserContext';  // Adjust the import path if necessary
+import { UserContext } from '../user/UserContext';  
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+
+import './Disconnections.css'
 
 function Disconnections() {
   const { user } = useContext(UserContext);
@@ -14,9 +16,8 @@ function Disconnections() {
 
   async function unblockUser(blockId) {
     try {
-      console.log('blockId: ', blockId);
-      await axios.delete(`http://localhost:5000/api/block/${blockId}`);
-      // Optionally, re-fetch the blocked users list to update the UI
+      // console.log('blockId: ', blockId);
+      await axios.delete(`http://localhost:5000/api/block/${blockId}`); 
       const response = await axios.get(`http://localhost:5000/api/user/${userId}/blocked-users`);
       setBlockedUsers(response.data);
     } catch (error) {
@@ -90,24 +91,23 @@ function Disconnections() {
   };
   
   useEffect(() => {
-    console.log('blockedUsers: ', blockedUsers);
-    // ... rest of your code
+    // console.log('blockedUsers: ', blockedUsers); 
   }, [blockedUsers]);
   
   return (
-    <div>
+    <div className='disconnections-slate'>
       <div>
-        <button onClick={() => setShowDenied(!showDenied)}>Show/Hide Denied Requests</button>
+        <button className='disconections-btn' onClick={() => setShowDenied(!showDenied)}>Show/Hide Denied Requests</button>
         {showDenied && (
-          <div>
+          <div className='disconnections-card-divs'>
             {deniedRequests.map(request => (
-              <div key={request.friendshipId}>
+              <div  className='disconnection-card' key={request.friendshipId}>
                 <Link to={`/publicprofile/${request.Requester.user_id}`}>
                   {request.Requester.username}
                 </Link>
                 <img src={request.Requester.avatar} alt={`${request.Requester.username}'s avatar`} />
-                <button onClick={() => handleAccept(request.Requester.user_id, userId)}>Accept</button> 
-                <button onClick={() => handleDismiss(request.friendshipId)}>Dismiss</button>
+                <button className='disconections-mini-btn' onClick={() => handleAccept(request.Requester.user_id, userId)}><p>Accept</p></button> 
+                <button className='disconections-mini-btn' onClick={() => handleDismiss(request.friendshipId)}><p>Dismiss</p></button>
               </div>
             ))}
           </div>
@@ -115,17 +115,14 @@ function Disconnections() {
       </div>
 
       <div>
-        <button onClick={() => setShowBlocked(!showBlocked)}>Show/Hide Blocked Users</button>
+        <button className='disconections-btn' onClick={() => setShowBlocked(!showBlocked)}>Show/Hide Blocked Users</button>
         {showBlocked && (
-          <div>
+          <div className='disconnections-card-divs'>
             {blockedUsers.map(user => (
-              <div key={user.blockId}>
-                <Link to={`/publicprofile/${user.user_id}`}>
-                  {user.username}
-                </Link>
-                <img src={user.avatar} alt={`${user.username}'s avatar`} />
-                {/* <button onClick={() => unblockUser(user.blockId)}>Unblock</button> */}
-                <button onClick={() => unblockUser(user.blocksReceived[0].blockId)}>Unblock</button>
+              <div  className='disconnection-card' key={user.blockId}> 
+                  {user.username} 
+                <img src={user.avatar} alt={`${user.username}'s avatar`} /> 
+                <button className='disconections-mini-btn' onClick={() => unblockUser(user.blocksReceived[0].blockId)}><p>Unblock</p></button>
               </div>
             ))}
           </div>

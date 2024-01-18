@@ -1,0 +1,470 @@
+.readOnlyTipTap {
+  width: 58%;
+  margin: auto;
+}
+
+
+/* From trav-det  */
+.trav-det-upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.trav-image-gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); 
+  gap: 10px;  
+  margin-top: 20px;  
+}
+
+.trav-image-container {
+  display: flex;
+  justify-content: center; 
+  align-items: center;
+  overflow: hidden; 
+  border-bottom: 1px solid #b0b0b0; 
+  border-radius: 4px; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  position: relative;
+}
+
+.trav-gallery-image {
+  width: 100%;
+  height: 300px;
+  object-fit: contain; 
+} 
+
+.image-move-left, .image-move-right {
+  cursor: pointer;
+  margin: 0 10px;
+  font-size: 20px;
+  color: #333; 
+  z-index: 10000;
+}
+
+.trav-det-cover-container { 
+  width: 45%;
+  height: 500px;
+  margin: 0 1% 0 3%;
+  text-align: center; 
+  display: flex;
+  justify-content: center;  
+  align-items: center;
+  overflow: hidden;  
+  border-bottom: 1px solid #848484; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);  
+  border-radius: 2%;  
+  background: linear-gradient(to bottom, white 0%, rgb(200, 200, 200) 100%);
+} 
+
+.large-gallery-image { 
+  width: 100%;
+  height: 100%;
+  object-fit: contain; 
+}
+
+.gallery-image {
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 10px;
+  padding: 10px;
+  overflow: hidden; 
+}
+
+.image-url-input, .image-title-input {
+  border: 1px solid rgb(180, 180, 180); 
+  border-radius: 5px;
+  height: 20px;
+  width: 90%;
+  margin-bottom: 5px;
+}
+
+.image-description-textarea {
+  border: 1px solid rgb(180, 180, 180); 
+  border-radius: 5px;
+  height: 60px;
+  width: 90%;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  margin-bottom: 7px;
+}
+
+
+.delete-image-button { 
+  flex-grow: 1;
+  margin-bottom: 5px; 
+  border-color: rgb(104, 104, 104);
+  border: 1px solid gray;
+  border-radius: 3px;
+  width: 50%;
+  background-color: rgb(180, 180, 180);
+  font-size: 16px;
+  color: white;
+}
+
+.delete-image-button:hover {
+  background-color: rgb(140, 140, 140);
+}
+
+.image-edit-container {
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 5px;
+  text-align: center;
+  padding: 1%;
+}
+
+.gallery-image:hover {
+  background-color: rgb(240, 240, 240);
+}
+
+.gallery-image-badge {  
+  transform: translateY(35px); 
+  margin-left: 102%; 
+} 
+
+.gallery-image > img {
+  margin-bottom: 2px;
+} 
+
+.trav-details-buttons {
+  margin-bottom: 0px;
+  display: flex; 
+  width: 100%; 
+  justify-content: space-around; 
+  
+}
+
+.travelog-details {
+  position: relative;
+   
+  margin: 0 3% 0 10%;
+  padding:  0 1% 0 1%; 
+  border-radius: 2%;  
+  background: linear-gradient(to bottom, white 0%, rgb(200, 200, 200) 100%); 
+  width: 45%;
+  height: 500px; 
+  
+}
+
+.travelog-details-trunc {
+  height: 440px;
+  overflow: hidden;
+}
+ 
+.travelog-details p {
+  margin-top: 5px;  
+  margin-bottom: 5px; 
+}
+
+.travelog-details h2 {
+  margin-top: 5px; 
+  margin-bottom: 5px;  
+  display: flex;
+}
+
+.travelog-details div {
+  margin-top: 5px;  
+  margin-bottom: 5px;  
+}
+ 
+.travelog-details a, .travelog-details button {
+  margin-top: 5px;  
+  margin-bottom: 5px;   
+}
+
+.travelog-div {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 100%;
+}
+
+.travelog-heading {
+  display: flex;
+  margin: 10px 20px 0px 20px;
+  justify-content: center;
+}
+
+.travelog-edit-button {  
+  justify-content: center;
+  display: block;  
+  margin: 10px auto;
+} 
+
+.trav-image-likes {
+  position: absolute;
+  top: 10px;  
+  right: 10px;   
+}
+
+.fire {
+  position: relative;
+  left: -130px; 
+  bottom: 28px; 
+}
+
+.ember {
+  position: relative;
+  left: 47px; 
+}
+ 
+.report-delete {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.fullscreen-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.gallery-edit-buttons-container { 
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between; 
+}
+
+.gallery-edit-button { 
+  flex-grow: 1;
+  margin: 5px;
+  border-color: rgb(104, 104, 104);
+  border: 1px solid gray;
+  border-radius: 10px;
+  width: 100%;
+  background-color: rgb(180, 180, 180);
+  font-size: 20px;
+  color: white;
+}
+
+.gallery-edit-button:hover {
+  background-color: rgb(140, 140, 140);
+}
+
+.trav-det-btn {
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 10px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  width: 160px; 
+} 
+
+.trav-det-btn:hover {
+  background-color: rgb(139, 139, 139);  
+}
+
+.trav-edit-btn {
+  margin-bottom: 0px;
+  width: 150px;
+  
+}
+
+.trav-btn-row { 
+  margin-left: -3%;
+  display: flex;
+  justify-content: center;
+  gap: 3%; 
+}
+
+.user {
+  margin-left: 6%;
+}
+
+.travelog-title {
+  margin: 1% auto 1%;
+
+}
+
+.trav-det-map, .trav-det-map > .leaflet-container {
+  height: 500px;
+  width: 110%;
+  margin-left: 2.5%;
+} 
+
+.trav-like-buttons {
+  gap: 1%;
+  margin-bottom: 1%;
+  display: flex;
+  justify-content: center;  
+}
+
+.readOnlyTravTipTap { 
+  width: 58%;
+  margin: 1.5em auto;
+  background-color: white;
+  padding: 1% 0 1% 0;
+  border-radius: 15px; 
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+} 
+
+.trav-det-slate {
+  margin: 2%;
+  padding:  2%;
+  border-radius: 30px; 
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(180, 180, 180)); 
+  width: 92%;
+  height: 100%; 
+}
+
+.undermap-slate {
+  margin: 2% auto;
+  display: flex; 
+  background: linear-gradient(to bottom, white 0%, rgb(240, 240, 240) 100%);
+  width: 95%;
+  border: 1px solid rgb(220, 220, 220);
+  border-radius: 10px;
+}
+ 
+
+.filming-location, .video-game-location, .long-lat-display {
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  margin: 0 auto;
+}
+
+.location-header {
+  margin: 10px auto 10px auto;
+}
+
+.edit-slate {
+  margin: 2% auto;
+  padding: 2%;
+  width: 40%;
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(200, 200, 200) 100%);
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.edit-slate > h2 {
+  text-align: center;
+  margin: auto;
+}
+ 
+.form-group {
+  display: flex;
+  justify-content: space-between;
+  margin: 1% 0 1% 0;
+}
+
+.form-group > input, .form-group > textarea {
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 3px;
+  width: 55%;
+}
+
+.edit-filming {
+  height: 100px; 
+}
+
+.edit-video-game {
+  height: 100px; 
+}
+
+.edit-mode-btn {
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 10px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 1em;
+  width: 30%; 
+} 
+
+.edit-mode-btn:hover {
+  background-color: rgb(139, 139, 139);  
+}
+
+.edit-mode-buttons {
+  margin: 5% 0 0 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.edit-notice {
+  text-align: center;
+  margin: 2.5% 0 4% 0;
+}
+
+.move-picker {
+  width: 102.5%;
+}
+
+.trav-det-coordinate {
+  transform: translate(-15px, 19px);
+}
+
+.title-area {
+  height: 20px;
+  overflow: hidden;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.description-area {
+  height: 40px;
+  overflow: hidden;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+ 
+.fullscreen-modal {
+  gap: 10%;
+}
+
+.image-text {
+  background-color: rgba(255, 255, 255, 0.7);
+  width: 20%;
+  padding: 2% 0 2% 4%;
+  border-radius: 10px;
+}
+
+.travelog-entry-tooltip {
+  position: absolute;
+  margin-left: 56.5%;
+  transform: translateY(-25px);
+}
+
+.trav-report-button {
+  margin-left: 15%;
+}
+
+.delete-trav-btn { 
+  flex-grow: 1;
+  margin-bottom: 5px; 
+  border-color: rgb(104, 104, 104);
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 40%;
+  background-color: rgb(180, 180, 180);
+  font-size: 16px;
+  color: white;
+  margin: 0 1% 0 1%;
+  height: 2em;
+}
+
+.delete-trav-btn:hover {
+  background-color: rgb(140, 140, 140);
+}

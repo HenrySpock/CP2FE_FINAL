@@ -4,6 +4,8 @@ import { UserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
+import './Password.css'
+
 function Password() {
   const { user } = useContext(UserContext);
   const navigate = useNavigate();
@@ -18,7 +20,7 @@ function Password() {
       return;
     }
     try {
-      await axios.patch(`http://localhost:5000/api/user/${user.user_id}/password`, {
+      await axios.patch(`http://localhost:5000/user/api/user/${user.user_id}/password`, {
         oldPassword,
         newPassword
       });
@@ -30,28 +32,28 @@ function Password() {
   };
 
   return (
-    <div>
-      <input 
+    <div className='password-slate'>
+      <input className='password-reset-input'
         type="password" 
         placeholder="Old Password" 
         value={oldPassword}
         onChange={(e) => setOldPassword(e.target.value)} 
       />
-      <input 
+      <input className='password-reset-input'
         type="password" 
         placeholder="New Password" 
         value={newPassword}
         onChange={(e) => setNewPassword(e.target.value)} 
       />
-      <input 
+      <input className='password-reset-input'
         type="password" 
         placeholder="Retype New Password" 
         value={retypedPassword}
         onChange={(e) => setRetypedPassword(e.target.value)} 
       />
       {error && <div>{error}</div>}
-      <button onClick={() => navigate('/profile')}>Return to Profile Page</button>
-      <button onClick={handleSavePassword}>Save Password</button>
+      <button className='password-btn' onClick={() => navigate('/profile')}>Return to Profile Page</button>
+      <button className='password-btn' onClick={handleSavePassword}>Save Password</button>
     </div>
   );
 }

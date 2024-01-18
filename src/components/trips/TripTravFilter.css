@@ -1,0 +1,70 @@
+.filter-heading {
+  text-align: center;
+}
+
+.hub-trip-trav-card-text {
+  justify-content: space-around;
+}
+
+.userhub-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  width: 50%; 
+}
+
+.userhub-selection label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.userhub-selection select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #929292;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.userhub-selection select:focus {
+  outline: none;
+  border-color: #23a6d5;
+}
+
+.sorting-divs {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter-checkboxes {
+  margin-right: 5%;
+}
+
+
+
+/* Styling for the checkbox labels */
+.filter-checkboxes label { 
+  align-items: center;
+  margin: 5px; 
+  font-size: 16px;
+  color: #333; 
+  cursor: pointer;
+}
+
+/* Custom Checkbox Style */
+.filter-checkboxes input[type="checkbox"] { 
+  cursor: pointer;
+  accent-color: rgb(164, 198, 235);  
+}
+
+/* Style for the container of checkboxes */
+.filter-checkboxes {
+  padding: 2px 3px 0 3px;
+  border-radius: 5px;
+  background-color:rgb(240, 240, 240); 
+  box-shadow: 0px 2px 4px rgb(196, 196, 196);
+}
+
+#sort-by {
+  background-color:rgb(240, 240, 240); 
+}

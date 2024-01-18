@@ -1,0 +1,405 @@
+ 
+
+.home-center h2 {
+  font-family: 'Roboto', sans-serif;
+  color: #333;
+  font-weight: 500;
+}
+
+.home-trav-card, .home-trip-card {
+  font-family: 'Open Sans', sans-serif;
+  color: #444;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.home-trav-card:hover, .home-trip-card:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.home-center h2 {
+margin: 10px auto;
+}
+
+.home-center {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  margin: 0px auto; 
+}
+
+.other-map-col { 
+   
+  margin: 0 3% 0 10%;
+  padding:  0 1% 0 1%; 
+  border-radius: 2%; 
+  background: linear-gradient(to bottom, white 0%, rgb(200, 200, 200) 100%); 
+  width: 45%;
+  height: 440px;
+
+}
+
+.other-map-col {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; 
+  flex-grow: 1; 
+  transform: translateY(-15px); 
+} 
+
+.hmcl {
+  margin: 0 0 0 1%;
+} 
+
+.hmc4 {
+  margin: 0 1% 0 0;
+} 
+
+ 
+
+ .home-col-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;  
+  text-align: center;
+  height: 100%;
+}
+
+.home-col-div h2 {
+  margin-top: 0;
+  margin-bottom: 4px;
+} 
+
+ 
+
+.main-button-container {
+  width: 45%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: .5%;
+}
+
+.main-button-container > button {
+  width: 35%;
+}
+
+.recent-card {
+  flex: 1;
+  width: 60%;
+  max-height: 150px;
+  border: 1px solid #929292;  
+  border-radius: 10px;  
+  overflow: hidden; 
+  text-align: center; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  
+  transition: transform 0.2s;  
+  position: relative;
+  margin: auto;
+  top: 0;
+}
+
+.recent-card:hover {
+  background-color: rgb(245, 245, 245);
+  transform: scale(1.02); 
+}
+ 
+.recent-card > img {
+  width: 45%; 
+  
+  height: 80%;
+  object-fit: contain;  
+  border-bottom: 2px solid #717171; 
+}  
+
+.recent-username-link { 
+  text-decoration: none;
+}
+
+.recent-username-text {    
+  transform: translateY(-16px);
+  margin-bottom: 0;
+}
+
+
+.home-trav-card, .home-trip-card {
+  flex: 0 1 calc(100% / 8 - 1em); 
+  margin: 0 0.3em 1em 0.3em;   
+  max-width: calc(11% - 1em);
+  text-align: center;
+  overflow: hidden;  
+  border: 1px solid #929292;  
+  border-radius: 10px; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);   
+  transition: transform 0.1s;  
+}
+
+.home-trav-card .travelog-detail {
+  margin-top: 5px; 
+  margin-bottom: 5px;   
+}
+
+.home-trip-card .trip-detail {
+  margin-top: 5px; 
+  margin-bottom: 5px;  
+}
+
+.home-trip-card:hover, .home-trav-card:hover {
+  transform: scale(1.05); 
+} 
+
+.home-btn {
+  padding: 5px 10px 5px 10px;
+  margin-bottom: 10px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(140, 140, 140);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 1em;
+}
+
+.home-btn:hover {
+  background-color: rgb(139, 139, 139);  
+} 
+
+.map-div, .map-div > .leaflet-container { 
+  height: 425px;
+  width: 90%; 
+  margin-left: 2.5%;
+} 
+
+.other-views, .other-views > .leaflet-container { 
+  height: 400px;
+  width: 50%; 
+  margin-right: 2.5%;
+} 
+
+
+
+.view-controls {
+  display: flex;
+}
+ 
+.sort-by-selection {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+  width: 50%;
+  margin: 10px auto;
+}
+
+.sort-by-selection label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.sort-by-selection select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #929292;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.sort-by-selection select:focus {
+  outline: none;
+  border-color: #23a6d5;
+}
+
+/* Pagination  */
+.pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+  width: 50%;
+}
+
+.other-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 22px 0; 
+}
+
+.pagination-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 4px;
+  border: 1px solid #929292;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.pagination-controls button:hover {
+  background-color: #23a6d5;
+  color: white;
+  border-color: #23a6d5;
+}
+
+.pagination-controls button:disabled {
+  background-color: #ececec;
+  color: #a1a1a1;
+  cursor: not-allowed;
+}
+
+.pagination-controls span {
+  margin: 0 10px;
+}
+
+.select-column {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  width: 100%;
+}
+
+.select-row { 
+  width: 100%;
+  margin-bottom: 5px;  
+}
+
+.category-select {
+  width: 100%;
+}
+
+.spacer {
+  width: 27.5%;
+}
+
+.other-travelogs-list {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: center; 
+  align-items: flex-start;  
+  gap: 1em;   
+  
+} 
+ 
+.other-sort-div {
+  margin: 0 3% 0 3%;
+  padding:  0 1% 0 1%; 
+  border-radius: 2%; 
+  background: linear-gradient(to bottom, white 0%, rgb(200, 200, 200) 100%); 
+  width: 20%;
+  height: 400px;
+}
+
+.other-map-sorting {
+  display: flex;
+  flex-direction: column; 
+} 
+
+.other-sort-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.other-title {
+  text-align: center;
+}
+
+.other-pagination-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0; 
+}
+
+.other-pagination-controls button {
+  padding: 5px 10px;
+  margin: 0 5px;
+  border-radius: 4px;
+  border: 1px solid #929292;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.other-pagination-controls button:hover {
+  background-color: #23a6d5;
+  color: white;
+  border-color: #23a6d5;
+}
+
+.other-pagination-controls button:disabled {
+  background-color: #ececec;
+  color: #a1a1a1;
+  cursor: not-allowed;
+}
+
+.other-pagination-controls span {
+  margin: 0 10px;
+}
+
+.other-inline {
+  display: flex;
+  width: 200%;
+}
+
+.other-inline > p {
+  margin-left: 3%;
+}
+
+.view-container {
+
+  margin: 2%;
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(190, 190, 190) 100%); 
+  border-bottom: 1px solid rgb(200, 200, 200);
+  border-radius: 30px;
+  padding: 2%;
+}
+ 
+.home-travelogs-list, .home-trips-list {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-start;   
+  margin-left: 2.7%; 
+} 
+ 
+.other-travelogs-list {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: flex-start;    
+  margin-left: 2.7%; 
+} 
+
+.other-trav-card {
+  font-family: 'Open Sans', sans-serif;
+  background-color: #d6d6d6;
+  padding: 10px;
+  border: 1px solid rgb(240, 240, 240);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  min-width: 9.8%;
+  max-width: 9.8%;
+  height: 270px;
+  overflow: hidden;
+}
+
+.other-trav-card > .travelog-detail {
+  margin: 0;
+}
+
+
+.other-trav-card:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.other-view-container {
+  margin: 0 3% 0 3%;
+  padding:  0 1% 2% 1%; 
+  border-radius: 30px; 
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(180, 180, 180) 100%);  
+}

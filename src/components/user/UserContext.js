@@ -4,9 +4,21 @@ export const UserContext = createContext({
   user: null,
   setUser: () => {},
   isAdmin: false,
-  isAuthenticated: false, // Include isAuthenticated state
-  login: () => {}, // Include login function
-  logout: () => {}, // Include logout function
+  isAuthenticated: false, 
+  login: () => {}, 
+  logout: () => {}, 
+
+
+
+  //TALLYING 01
+  unreadUserNotifications: 0, 
+  setUnreadUserNotifications: () => {},
+  unreadUserMessages: 0,
+  setUnreadUserMessages: () => {},
+  unreadAdminUserMessages: 0,
+  setUnreadAdminUserMessages: () => {}, 
+  unreadAdminReports: 0,
+  setUnreadAdminReports: () => {}, 
 });
 
 export const UserProvider = ({ children }) => {
@@ -14,13 +26,81 @@ export const UserProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+ 
+  //TALLYING 02
+  const [unreadUserNotifications, setUnreadUserNotifications] = useState(0);
+  const [unreadUserMessages, setUnreadUserMessages] = useState(0);
+  const [unreadAdminUserMessages, setUnreadAdminUserMessages] = useState(0);
+  const [unreadAdminReports, setUnreadAdminReports] = useState(0);
+  
+  let fetchUser;
+  let logout;
 
-  async function fetchUser() {
+  const login = async (userData) => {
+    setUser(userData.user);   
+    setIsAuthenticated(true);
+    setIsAdmin(userData.user.isAdmin);  // Update isAdmin based on user data
+    localStorage.setItem('token', userData.token); // Store the token in localStorage
+
+    // console.log("Logging in, user data:", userData);
+    if (userData.user && userData.user.user_id) {
+      try {
+        // Attempt to create an indicator if it doesn't exist 
+        await fetch('http://localhost:5000/user/api/indicator', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: userData.user.user_id })
+        });
+  
+        // Then update the login status
+        await fetch('http://localhost:5000/user/api/indicator/login', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ user_id: userData.user.user_id })
+        });
+      } catch (error) {
+        console.error('Error updating login status:', error);
+      }
+    }
+  };
+
+  logout = async () => {
+    // console.log('LOGGING OUT - USER_ID: ', user.user_id)
+    setUser(null);
+    setIsAuthenticated(false);
+    setIsAdmin(false);  // Reset isAdmin to false on logout
+    localStorage.removeItem('token'); // Remove the token from localStorage
+
+    // console.log("Logging out, user data:", user);
+    if (user && user.user_id) {
+      try {
+        await fetch('http://localhost:5000/user/api/indicator/logout', {
+          method: 'PATCH',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ user_id: user.user_id })
+        });
+      } catch (error) {
+        console.error('Error updating logout status:', error);
+      }
+    }
+  }; 
+
+  useEffect(() => { 
+    const fetchData = async () => {
+      await fetchUser();
+      setIsLoading(false);
+    };
+    fetchData();
+  }, [fetchUser]);
+
+  fetchUser = async () => {
     try {
       const token = localStorage.getItem('token');
-      console.log('Token:', token);
+      // console.log('Token:', token);
       if (token) {
-        const response = await fetch('http://localhost:5000/user', {
+        const response = await fetch('http://localhost:5000/user/user', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -28,10 +108,22 @@ export const UserProvider = ({ children }) => {
         });
         if (response.ok) {
           const userData = await response.json();
-          console.log('User data:', userData);  // Log the user data
+          // console.log('User data:', userData);  
           setUser(userData);
-          setIsAuthenticated(true); // Set isAuthenticated to true when user is authenticated
-          setIsAdmin(userData.isAdmin);  // Update isAdmin based on user data
+          setIsAuthenticated(true);  
+          setIsAdmin(userData.isAdmin);  
+
+          // Check for suspension
+          const suspensionResponse = await fetch(`http://localhost:5000/feedback/api/check-suspension?userEmail=${encodeURIComponent(userData.email)}`);
+          // console.log('suspensionResponse: ', suspensionResponse)
+          if (suspensionResponse.ok) {
+            const suspensionData = await suspensionResponse.json();
+            // console.log('suspensionData: ', suspensionData)
+            if (suspensionData.isSuspended) {
+              logout(); // Logout the user if they are suspended
+            }
+          }
+
         } else {
           console.error('Failed to fetch user:', await response.text());  // Log error message if request fails
         }
@@ -39,127 +131,19 @@ export const UserProvider = ({ children }) => {
     } catch (error) {
       console.error('Error fetching user:', error);
     }
-  }
-
-  const login = (userData) => {
-    setUser(userData.user);  // Assuming userData has a user property with user data
-    setIsAuthenticated(true);
-    setIsAdmin(userData.user.isAdmin);  // Update isAdmin based on user data
-    localStorage.setItem('token', userData.token); // Store the token in localStorage
-  };
-
-  const logout = () => {
-    setUser(null);
-    setIsAuthenticated(false);
-    setIsAdmin(false);  // Reset isAdmin to false on logout
-    localStorage.removeItem('token'); // Remove the token from localStorage
-  };
-
-  useEffect(() => {
-    fetchUser().finally(() => setIsLoading(false));  // Set loading to false when fetchUser is done
-  }, []);
+  }; 
 
   return (
-    <UserContext.Provider value={{ user, setUser, isAdmin, isAuthenticated, login, logout }}>
+    <UserContext.Provider value={{ user, setUser, isAdmin, isAuthenticated, login, logout, isLoading,
+
+      //TALLYING 03
+      unreadUserNotifications, setUnreadUserNotifications,
+      unreadUserMessages, setUnreadUserMessages,
+      unreadAdminUserMessages, setUnreadAdminUserMessages,
+      unreadAdminReports, setUnreadAdminReports,
+
+    }}>
       {children}
     </UserContext.Provider>
   );
-};
-
-
-
-
-// export const UserProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
-//   const [isAuthenticated, setIsAuthenticated] = useState(false);
-//   const isAdmin = user ? user.isAdmin : false;
-
-// export const UserProvider = ({ children }) => {
-//   const [user, setUser] = useState(null);
-//   const [isAuthenticated, setIsAuthenticated] = useState(false);
-//   const [isAdmin, setIsAdmin] = useState(false);
-//   const [isLoading, setIsLoading] = useState(true);
-
-//   // async function fetchUser() {
-//   //   try {
-//   //     const token = localStorage.getItem('token');
-//   //     console.log('Token:', token);
-//   //     if (token) {
-//   //       const response = await fetch('http://localhost:5000/user', {
-//   //         method: 'GET',
-//   //         headers: {
-//   //           'Authorization': `Bearer ${token}`
-//   //         }
-//   //       });
-//   //       console.log('UserContext Response:', response);  // Log the response
-//   //       if (response.ok) {
-//   //         const userData = await response.json();
-//   //         setUser(userData);
-//   //         setIsAuthenticated(true); // Set isAuthenticated to true when user is authenticated
-//   //       }
-//   //     }
-//   //   } catch (error) {
-//   //     console.error('Error fetching user:', error);
-//   //   }
-//   // }
-
-//   async function fetchUser() {
-//     try {
-//       const token = localStorage.getItem('token');
-//       console.log('Token:', token);
-//       if (token) {
-//         const response = await fetch('http://localhost:5000/user', {
-//           method: 'GET',
-//           headers: {
-//             'Authorization': `Bearer ${token}`
-//           }
-//         });
-//         if (response.ok) {
-//           const userData = await response.json();
-//           console.log('User data:', userData);  // Log the user data
-//           setUser(userData);
-//           setIsAuthenticated(true); // Set isAuthenticated to true when user is authenticated
-//         } else {
-//           console.error('Failed to fetch user:', await response.text());  // Log error message if request fails
-//         }
-//       }
-//     } catch (error) {
-//       console.error('Error fetching user:', error);
-//     }
-//   }
-
-//   // Add a login function
-//   // const login = (userData) => {
-//   //   setUser(userData);
-//   //   setIsAuthenticated(true);
-//   //   localStorage.setItem('token', userData.token); // Store the token in localStorage
-//   // };
-
-//   const login = (userData) => {
-//     setUser(userData.user);  // Assuming userData has a user property with user data
-//     setIsAuthenticated(true);
-//     setIsAdmin(userData.user.isAdmin);  // Update isAdmin based on user data
-//     localStorage.setItem('token', userData.token); // Store the token in localStorage
-//   };
-
-//   // Add a logout function
-//   const logout = () => {
-//     setUser(null);
-//     setIsAuthenticated(false);
-//     localStorage.removeItem('token'); // Remove the token from localStorage
-//   };
-
-//   // useEffect(() => {
-//   //   fetchUser();
-//   // }, []);
-
-//   useEffect(() => {
-//     fetchUser().finally(() => setIsLoading(false));  // Set loading to false when fetchUser is done
-//   }, []);
-
-//   return (
-//     <UserContext.Provider value={{ user, setUser, isAdmin, isAuthenticated, login, logout }}>
-//       {children}
-//     </UserContext.Provider>
-//   );
-// };
+}; 

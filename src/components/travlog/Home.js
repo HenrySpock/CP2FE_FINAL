@@ -1,57 +1,64 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect, useState, useContext, useCallback } from 'react';
 
 import '../../App.css';
-import { UserContext } from '../user/UserContext';  // Adjust the path to your UserContext file accordingly
-
-import L from 'leaflet';
+import { UserContext } from '../user/UserContext';  
+ 
 import 'leaflet/dist/leaflet.css';  
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import { MapContainer, TileLayer } from 'react-leaflet';
 
 import CustomMarkers from './CustomMarkers';
 import { useNavigate } from 'react-router-dom';
+ 
 
-import useOffsetLogic from './MarkerOffset';
+import './Home.css'
 
-// Create a TravelogEntryCard component to display individual travelog entries
-// function TravelogEntryCard({ travelog }) {
-//   const navigate = useNavigate();  // Import useNavigate from 'react-router-dom'
+import MapSorting from '../user/MapSorting'
 
-//   const handleTravelogClick = () => { 
-//     navigate(`/trav_det/${travelog.travelogId}`);
-//   };
-  
-//   return (
-//       <div className="travelog-entry-card" onClick={handleTravelogClick}>
-//           <div>{travelog.title}</div>
-//           <div>{travelog.User.username}</div>
-//           <div>{new Date(travelog.date_visited).toISOString().split('T')[0]}</div>
-//       </div>
-//   );
-// }
+function Home() { 
 
-// function CountryCard({ country, travelogs, isExpanded, onExpand }) {
-//   return (
-//       <div className={`country-card ${isExpanded ? 'expanded' : ''}`}>
-//           <div className="country-title" onClick={() => onExpand(country)}>{country}</div> {/* Move onClick here */}
-//           {isExpanded && travelogs.map(travelog => (
-//               <TravelogEntryCard key={travelog.travelogId} travelog={travelog} />
-//           ))}
-//       </div>
-//   );
-// }
-
-function Home() {
-//   const [isCountryView, setIsCountryView] = useState(true);
-//   const handleToggle = () => {
-//       setIsCountryView(!isCountryView);
-//   };
-  
-  // const mapRef = useRef();
   const { user } = useContext(UserContext);  // Access user data from UserContext
+
   const [sortBy, setSortBy] = useState('createdAt');
   const [travelogEntries, setTravelogEntries] = useState([]);
+  const [recentTravelogs, setRecentTravelogs] = useState([]);
+
+  const [tripEntries, setTripEntries] = useState([]); 
+
+  const [filteredTravelogs, setFilteredTravelogs] = useState([]);
+  const [filteredTrips, setFilteredTrips] = useState([]);
+  const [newestUser, setNewestUser] = useState(null);
+  const [newestTrip, setNewestTrip] = useState(null);
+  const [newestTravelog, setNewestTravelog] = useState(null);
+  const navigate = useNavigate();
+
+  const [sortByTrip, setSortByTrip] = useState('created_at');
+
+  // PAGINATE
+  const itemsPerPage = 64;
+  const [currentTravelogPage, setCurrentTravelogPage] = useState(1);
+  const [currentTripPage, setCurrentTripPage] = useState(1);
+  // PAGINATE
+  const totalTravelogPages = Math.ceil(travelogEntries.length / itemsPerPage);
+  const totalTripPages = Math.ceil(tripEntries.length / itemsPerPage);
+
+  // PAGINATE 
+  const handleTravelogPageChange = (newPage) => {
+    setCurrentTravelogPage(newPage);
+  };
+
+  // PAGINATE
+  const handleTripPageChange = (newPage) => {
+    setCurrentTripPage(newPage);
+  };
+ 
+
+  const handleVisibilityChange = useCallback((newFilteredTravelogs, newFilteredTrips) => {
+    setFilteredTravelogs(newFilteredTravelogs);
+    setFilteredTrips(newFilteredTrips);
+  }, []);
+
   const mapOptions = {
-    center: [ 49.6322, 12.4628], 
+    center: [ 49.6322, 12.4628 ], 
     zoom: 4,  
     minZoom: 2,
     maxZoom: 18,
@@ -62,8 +69,6 @@ function Home() {
     [90, 180]    
   ];
 
-  const [recentTravelogs, setRecentTravelogs] = useState([]);
-
   const sortedTravelogEntries = [...travelogEntries].sort((a, b) => {
     switch (sortBy) {
       case 'site':
@@ -72,33 +77,88 @@ function Home() {
         return a.User.username.localeCompare(b.User.username);
       case 'country':
         return a.country.localeCompare(b.country);
-      case 'createdAt':
+      case 'created_at':
       default:
-        return new Date(b.createdAt) - new Date(a.createdAt);
+        return new Date(b.created_at) - new Date(a.created_at);
     }
   });
 
+  const sortedTripEntries = [...tripEntries].sort((a, b) => {
+    // console.log('tripEntries: ', tripEntries)
+    switch (sortByTrip) { 
+      case 'username':
+        return a.username.localeCompare(b.username); 
+      case 'created_at':
+      default:
+        return new Date(b.created_at) - new Date(a.created_at);
+    }
+  });
+  
   useEffect(() => {
-      async function fetchTravelogEntries() {
-          // your existing fetch logic
-          const response = await fetch('http://localhost:5000/api/travelog-entries');
-          if (response.ok) {
-              const data = await response.json();
-              // Assuming entries are sorted by date, take the first 3 entries for the recent list
-              const recentEntries = data.slice(0, 5);
-              setRecentTravelogs(recentEntries);
-              // Use all entries for the map
-              setTravelogEntries(data);
-          }
+    async function fetchTravelogEntries() {
+      let url = 'http://localhost:5000/travelog/api/travelog-entries';
+      // Append user ID as a query parameter if the user is logged in
+      if (user) {
+        url += `?userId=${user.user_id}`;
       }
-      fetchTravelogEntries();
-  }, []);
+  
+      try {
+        const response = await fetch(url);
+        if (response.ok) {
+          const data = await response.json();
+          // console.log('this is the travelog data response: ', data)
+          setTravelogEntries(data);
+          if (!user) {
+            const recentEntries = data.slice(0, 5);
+            setRecentTravelogs(recentEntries);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching travelog entries:', error);
+      }
+    }
+  
+    fetchTravelogEntries();
+  }, [user]); 
 
-  function TravelogCard({ travelog }) {
-    const navigate = useNavigate();
+  useEffect(() => {
+    const sortTrips = (trips) => {
+      return [...trips].sort((a, b) => {
+        switch (sortByTrip) {
+          case 'username': 
+            return (a.User?.username || '').localeCompare(b.User?.username || '');
+          case 'created_at':
+          default:
+            return new Date(b.created_at) - new Date(a.created_at);
+        }
+      });
+    };
+
+    async function fetchTrips() {
+      if (user) {
+        try {
+          const response = await fetch(`http://localhost:5000/trip/api/trips?userId=${user.user_id}`);
+          if (response.ok) {
+            const tripsData = await response.json();
+            // Sort trips immediately after fetching
+            const sortedData = sortTrips(tripsData);
+            setTripEntries(sortedData); // Sets all sorted trips 
+          }
+        } catch (error) {
+          console.error('Failed to fetch trips:', error);
+        }
+      }
+    }
+  
+    fetchTrips();
+  }, [user, sortByTrip]); 
+
+
+
+  function TravelogCard({ travelog }) { 
 
   return (
-    <div className="travelog-card" onClick={() => {
+    <div className="home-trav-card" onClick={() => {
           if(user) {
               navigate(`/trav_det/${travelog.travelogId}`);
           } else {
@@ -112,74 +172,260 @@ function Home() {
                   className="travelog-image" 
               />
           </div>
-          <h3 className="travelog-site">{travelog.site}</h3>
-          <h3 className="travelog-country">in {travelog.country}</h3>
-          <h3 className="travelog-username">by {travelog.User.username}</h3>
-          <h3 className="travelog-created">{travelog.created_at}</h3>
+          <p className="travelog-detail">{travelog.site}</p>
+          <p className="travelog-detail">in {travelog.country}</p>
+          <p className="travelog-detail">by {travelog.User.username}</p> 
+          <p className="travelog-detail">on {new Date(travelog.date_visited).toLocaleDateString()}</p>
+          <p className="travelog-detail">written {new Date(travelog.created_at).toLocaleDateString()}</p>
       </div>
     );
 
+  } 
+ 
+  
+  function TripCard({ trip }) { 
+  
+    return (
+      <div className="home-trip-card" onClick={() => {
+            if(user) {
+                navigate(`/trip_det/${trip.trip_id}`);
+            } else {
+                navigate('/auth');
+            }
+        }}>
+            <div className="trip-image-container">
+                <img 
+                    src={trip.image_url} 
+                    alt={trip.title} 
+                    className="trip-image" 
+                />
+            </div>
+            <p className="trip-detail">"{trip.title}"</p>
+            <p className="trip-detail">by {trip.username}</p>
+            <p className="trip-detail">{trip.location}</p> 
+            <p className="trip-detail">Departure: {new Date(trip.date_of_departure).toLocaleDateString()}</p>
+            <p className="trip-detail">Return: {new Date(trip.date_of_return).toLocaleDateString()}</p>
+        </div>
+    );
   }
 
-  // Organize travelog entries by country
-//   const travelogsByCountry = {};
-//   travelogEntries.forEach(travelog => {
-//       if (!travelogsByCountry[travelog.country]) {
-//           travelogsByCountry[travelog.country] = [];
-//       }
-//       travelogsByCountry[travelog.country].push(travelog);
-//   });
-
-  // Manage the expanded/contracted state of the CountryCards
-//   const [expandedCountry, setExpandedCountry] = useState(null);
-
-//   const handleExpand = (country) => {
-//       setExpandedCountry(expandedCountry === country ? null : country);
-//   };
-
-  const offsetTravelogEntries = useOffsetLogic(travelogEntries);
   
+
+  const handleSurpriseMe = () => {
+    if (travelogEntries.length > 0) {
+      const randomIndex = Math.floor(Math.random() * travelogEntries.length);
+      const randomTravelog = travelogEntries[randomIndex];
+      navigate(`/trav_det/${randomTravelog.travelogId}`);
+    } else { 
+      // console.log('No travelog entries available');
+    }
+  };
+
+  const handleOtherViews = () => { 
+      navigate(`/homeother`); 
+  };
+
+  // Fetch newest user 
+  const fetchNewestUser = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/recent/api/users/newest');
+      if (!response.ok) throw new Error('Network response was not ok');
+      const user = await response.json();
+      setNewestUser(user); // Update state with the fetched user
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+
+  // Fetch newest trip 
+  const fetchNewestTrip = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/recent/api/trips/newest');
+      if (!response.ok) throw new Error('Network response was not ok');
+      const trip = await response.json();
+      setNewestTrip(trip); // Update state with the fetched trip
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
+  // Navigate to public profile or auth: 
+  function handleRecentUserCardClick() {
+    if (user) {  
+      navigate(`/public_profile/${newestUser.username}`);
+    } else {
+      navigate('/auth');
+    }
+  }
+
+  // Fetch newest travelog 
+  const fetchNewestTravelog = async () => {
+    try {
+      const response = await fetch('http://localhost:5000/recent/api/travelogs/newest');
+      if (!response.ok) throw new Error('Network response was not ok');
+      const travelog = await response.json();
+      setNewestTravelog(travelog); // Update state with the fetched travelog
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }; 
+
+  
+
+  useEffect(() => {
+    fetchNewestUser();
+    fetchNewestTrip();
+    fetchNewestTravelog(); 
+  }, []);
+
+  // useEffect(() => {
+    // console.log('Newest User:', newestUser);
+    // console.log('Newest Trip:', newestTrip);
+    // console.log('Newest Travelog:', newestTravelog);
+  // }, [newestUser, newestTrip, newestTravelog]);
+
   return (
     <div className='Home'>
-      <h2>
-        {user ? `Welcome to Castle Tracker, ${user.firstName}!` : 'Welcome to Castle Tracker!'}
-      </h2>
-      <div className="recent-travelogs">
-          {recentTravelogs.map(travelog => (
-              <TravelogCard key={travelog.travelogId} travelog={travelog} />
-          ))}
+      <div className='home-center'>
+        <div>
+        <h2>
+          {user ? `Let's go Castling, ${user.firstName}!` : `Let's go Castling!`}
+        </h2>
+        </div>
+
+        <div className='main-button-container'>
+          {user && (
+            <button onClick={handleSurpriseMe} className='home-btn'>Surprise Me!</button>
+          )} 
+          {user && (
+            <button onClick={handleOtherViews} className='home-btn'>Other Travelog Views</button>
+          )} 
+        </div>
       </div>
-      <div className="map-container">
-      <MapContainer {...mapOptions} worldCopyJump={true} maxBounds={worldBounds}>
-      
-          <TileLayer
-              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          {/* <CustomMarkers entries={travelogEntries} /> */}
-          <CustomMarkers entries={offsetTravelogEntries} />
-      </MapContainer>
-      </div>
-      {/* <button onClick={handleToggle}>
-          {isCountryView ? 'Switch to List View' : 'Switch to Country View'}
-      </button> */}
-      <div className="view-container">
-    {/* {isCountryView ? (
-            <div className="country-cards">
-                {Object.keys(travelogsByCountry).sort().map(country => (
-                    <CountryCard
-                        key={country}
-                        country={country}
-                        travelogs={travelogsByCountry[country]}
-                        isExpanded={expandedCountry === country}
-                        onExpand={handleExpand}
-                    />
-                ))}
+
+      <div className="home-map-row">
+        <div className="home-map-col hmcl"> 
+
+          <div className='home-col-div'>
+            <h2>Newest Traveler</h2>
+            {newestUser &&
+              <div className="recent-card" onClick={handleRecentUserCardClick}>
+                <img src={newestUser.avatar} alt={`${newestUser.username}'s avatar`} />
+                <p className='recent-username-text'>{newestUser.username}</p>
+              </div>
+            }
+          </div>
+          
+
+          <div className='home-col-div'><h2>Sort Map</h2>
+            <div>
+              <MapSorting 
+                travelogs={travelogEntries} // Pass the original, unfiltered travelogs
+                trips={tripEntries}         // Pass the original, unfiltered trips
+                onVisibilityChange={handleVisibilityChange} // Function to handle visibility change
+              />
             </div>
-        ) : 
-        ( */}
+          </div>
+
+        </div>
+          <div className="map-div">
+            <MapContainer {...mapOptions} worldCopyJump={true} maxBounds={worldBounds}>
+            
+                <TileLayer
+                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                /> 
+                <CustomMarkers travelogEntries={filteredTravelogs} tripEntries={filteredTrips} />
+            </MapContainer>
+          </div> 
+ 
+        <div className="home-map-col hmcr">
+          
+          <div className='home-col-div'><h2>Newest Trip</h2>
+            <div onClick={() => navigate(`/trip_det/${newestTrip.trip_id}`)}>
+              {newestTrip &&
+                <div className="recent-card">
+                    <img src={newestTrip.image_url} alt={`${newestTrip.title}`} /> 
+                  <div>
+                    <p className='recent-username-text'>{newestTrip.title}</p> 
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div className='home-col-div'><h2>Newest Travelog</h2>
+            <div onClick={() => navigate(`/trav_det/${newestTravelog.travelogId}`)}>
+            {newestTravelog &&
+                <div className="recent-card">
+                  <img src={newestTravelog.Images[0].image_url} alt={`${newestTravelog.Images[0].title}`} /> 
+                  <div>
+                    <p className='recent-username-text'>{newestTravelog.title}</p> 
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+
+
+
+      {!user && (
+        <div className="recent-container">
+          <h2 className="recent-trav-title">Recent Travelogs</h2>
+          <div className="recent-travelogs">
+            {recentTravelogs.map(travelog => (
+              <TravelogCard key={travelog.travelogId} travelog={travelog} />
+            ))}
+          </div>
+        </div>
+      )}
+       
+      {user && (
+        <div className="view-container"> 
+
+          <h2 className='home-center home-subheading'>All Trips</h2> 
+
+          <div className='view-controls'>
             <div className="sort-by-selection">
-                <label htmlFor="sort-by">Sort by: </label>
+              <label htmlFor="sort-by-trip">Sort trips by: </label>
+              <select
+                id="sort-by-trip"
+                value={sortByTrip}
+                onChange={(event) => setSortByTrip(event.target.value)}
+              >
+                <option value="username">Username</option>
+                <option value="created_at">Newest First</option>
+              </select>
+            </div>
+
+            <div className="pagination-controls">
+              <button onClick={() => handleTripPageChange(currentTripPage - 1)} disabled={currentTripPage === 1}>
+                Previous
+              </button>
+              <span>Page {currentTripPage} of {totalTripPages}</span>
+              <button onClick={() => handleTripPageChange(currentTripPage + 1)} disabled={currentTripPage === totalTripPages}>
+                Next
+              </button>
+            </div>
+          </div>
+ 
+          <div className="home-trips-list">
+            {sortedTripEntries.slice((currentTripPage - 1) * itemsPerPage, currentTripPage * itemsPerPage).map(trip => (
+              <TripCard key={trip.tripId} trip={trip} />
+            ))}
+          </div> 
+
+          <h2 className='home-center home-subheading'>All Travelogs</h2>
+
+          <div className='view-controls'>
+            <div className="sort-by-selection">
+                <label htmlFor="sort-by">Sort Travelogs by: </label>
                 <select
                     id="sort-by"
                     value={sortBy}
@@ -188,19 +434,33 @@ function Home() {
                     <option value="site">Site</option>
                     <option value="country">Country</option>
                     <option value="username">Username</option>
-                    <option value="createdAt">Newest First</option>
-                                       
+                    <option value="created_at">Newest First</option>                                       
                 </select>
             </div>
-            <div className="all-travelogs-list">
-                
-                {/* {travelogEntries.map(travelog => ( */}
-                {sortedTravelogEntries.map(travelog => (
-                    <TravelogCard key={travelog.travelogId} travelog={travelog} />
-                ))}
+
+            <div className="pagination-controls">
+              <button onClick={() => handleTravelogPageChange(currentTravelogPage - 1)} disabled={currentTravelogPage === 1}>
+                Previous
+              </button>
+              <span>Page {currentTravelogPage} of {totalTravelogPages}</span>
+              <button onClick={() => handleTravelogPageChange(currentTravelogPage + 1)} disabled={currentTravelogPage === totalTravelogPages}>
+                Next
+              </button>
             </div>
-        {/* )} */}
-    </div>
+          </div>
+
+          <div className="home-travelogs-list">
+            {sortedTravelogEntries.slice((currentTravelogPage - 1) * itemsPerPage, currentTravelogPage * itemsPerPage).map(travelog => (
+              <TravelogCard key={travelog.travelogId} travelog={travelog} />
+            ))}
+          </div>  
+
+
+
+
+        </div>
+      )}
+
     </div>
     
   );
@@ -208,4 +468,4 @@ function Home() {
 }
 
 export default Home;
-   
+    

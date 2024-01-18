@@ -1,9 +1,8 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 
 function PingTest() {
-  useEffect(() => {
-    // Define the URL of your backend's ping endpoint
-    const backendPingUrl = 'http://localhost:5000/ping'; // Replace with your actual backend URL and endpoint
+  useEffect(() => { 
+    const backendPingUrl = 'http://localhost:5000/ping';  
 
     // Make a GET request to the backend's ping endpoint
     fetch(backendPingUrl)
@@ -15,14 +14,14 @@ function PingTest() {
         }
       })
       .then((data) => {
-        console.log(data); // Should log "pong" if the backend is running properly
+        console.log(data);  
       })
       .catch((error) => {
         console.error(error);
       });
   }, []);
 
-  return null; // This component doesn't render any UI elements
+  return null;  
 }
 
 export default PingTest;

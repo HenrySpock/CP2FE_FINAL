@@ -1,6 +1,7 @@
 // Feedback.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import "./About.css"
 
 function Feedback() { 
   const [name, setName] = useState('');
@@ -18,7 +19,7 @@ function Feedback() {
     };
   
     try {
-      const response = await fetch('http://localhost:5000/submit-feedback', {
+      const response = await fetch('http://localhost:5000/feedback/submit-feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -30,8 +31,8 @@ function Feedback() {
         throw new Error('Network response was not ok: ' + response.statusText);
       }
   
-      const data = await response.text();  // Adjust this line based on the response format you expect
-      console.log('Feedback submitted successfully:', data);
+      // const data = await response.text();  
+      // console.log('Feedback submitted successfully:', data);
  
       navigate('/about');
     } catch (error) {
@@ -39,12 +40,19 @@ function Feedback() {
     }
   };
 
+  const handleCancel = () => {
+    navigate('/about');
+  };
+
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='feedback-slate'>
       <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Name" required />
       <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" required />
       <textarea value={comment} onChange={(e) => setComment(e.target.value)} placeholder="Comment" required></textarea>
-      <button type="submit">Submit</button>
+      <div className='feedback-buttons'>
+        <button type="submit">Submit</button>
+        <button type="button" onClick={handleCancel}>Cancel</button>
+      </div>
     </form>
   );
 }

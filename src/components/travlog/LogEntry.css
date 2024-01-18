@@ -1,0 +1,165 @@
+.log-entry-container {
+  width: 95%;
+  margin: auto;
+  margin-top: 15px;
+  padding: 5px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.log-entry-heading {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #333;
+  font-size: 2em;
+}
+
+.log-entry-form {
+  display: grid; 
+  margin-bottom: 20px;
+}
+
+.log-entry-label {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  margin-right: 10px;
+}
+
+.log-entry-label input,
+.log-entry-label select {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  width: 90%;
+  margin: 8px 8px 0px 8px;
+}
+
+.log-entry-submit-btn {
+  padding: 10px 10px;
+  margin-bottom: 5px;
+  background-color: #d1d1d1;
+  color: rgb(43, 43, 43);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 90%;
+  margin: 8px 8px 0px 8px;
+}
+
+.log-entry-submit-btn:hover {
+  background-color: #939393;
+}
+
+.log-entry-error-message {
+  color: red;
+  text-align: center;
+}
+
+.log-entry-image-card img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+ 
+.log-entry-button-bar {
+  border: 1px solid rgb(204, 204, 204);
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.log-entry-button {
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.log-entry-button.edit {
+  background-color: #ffc107;
+  color: black;
+}
+
+.log-entry-button.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* Modal styles */
+.log-entry-modal {
+  background-color: white;
+  border-radius: 5px;
+  padding: 20px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+ 
+.triple-label {
+  display: flex;
+}
+
+.submit-entry-label {
+  display: flex;  
+  justify-content: center;
+  margin: auto;
+}
+
+.submit-entry {
+  margin-top: 25px;
+  margin-bottom: 20px;
+  width: 40%;
+}
+
+.image-response-row {
+  padding-top: 20px;
+  background-color: #d0d0d0;
+  overflow: hidden;
+  word-wrap: break-word;
+  border-radius: 5px;
+  width: 100%;
+}
+ 
+
+label {
+  width: 30%;
+}
+
+.checkbox {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 12%;
+  padding-left: 2px;
+  background-color: white;
+  border: 1px solid rgb(203, 203, 203);
+  border-radius: 3px;  
+  height: 35px;
+  margin-top: 8px;
+  margin-right: 15px;
+}
+
+.checkbox input[type="checkbox"] {
+  margin-right: 10px;
+}
+ 
+.have-visited {
+  margin-left: .6%;
+}
+
+.traventry-tooltip {
+  position: relative;
+  transform: translate(-3px, 45px)
+}
+
+.yelp-tooltip { 
+  transform: translate(-4px, -27px)
+}

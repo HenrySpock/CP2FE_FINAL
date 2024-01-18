@@ -1,0 +1,257 @@
+ 
+
+.userhub-row { 
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
+} 
+
+.userhub-map {  
+  transform: translateX(-25%);
+  height: 450px;
+  width: 190%; 
+}
+
+.uhc-left {
+  margin-left: 0px;
+}
+
+.userhub-map-col {
+  width: 25%;
+  float: right;
+} 
+
+ 
+
+.filters {
+
+  margin: 2%;
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(190, 190, 190) 100%); 
+  border-bottom: 1px solid rgb(200, 200, 200);
+  border-radius: 30px;
+  padding: 2%;
+}
+
+.hub-map-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;   
+  height: 420px;
+  width: 23%;
+  text-align: center;
+  align-items: center;
+  justify-content: flex-start;
+ 
+  border-bottom: 1px solid #848484; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  border-radius: 2%; 
+  background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(200, 200, 200) 100%); 
+  
+  overflow: hidden;  
+}
+
+.notification-div {
+  width: 95%; 
+  padding: 0;
+}
+
+.notification-slate {
+  display: flex; 
+  margin-bottom: 2%; 
+  width: 100%;
+  text-align: center;
+  align-items: center;
+  justify-content: flex-start; 
+  border-bottom: 1px solid #848484; 
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); 
+  border-radius: 8px;  
+  background: linear-gradient(to bottom, rgb(255, 255, 255) 0%, rgb(200, 200, 200) 100%);   
+  height: auto;
+}
+
+.notification_slate > p {
+  margin-bottom: 10px;
+}
+
+.hubmcl {
+  margin: 0 0 0 1.5%;
+} 
+
+.hub-map-col > h2 {
+  margin: 0;
+}
+
+.hub-map-col > p {
+  margin: 0;
+}
+
+.hubmcr {
+  transform: translateX(-6.5%);
+}
+
+.hub-btn {
+  padding: 3px;
+  margin-top: 5px;
+  margin-left: 2px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(113, 113, 113);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+  font-size: .8em;
+}
+
+.hub-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.notification-delete-btn {
+  
+  padding: 3px; 
+  margin-right: 2%; 
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(113, 113, 113);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 20%; 
+}
+
+.notification-delete-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.userhubmap-btn {
+  padding: 5px;
+  margin-top: 5px;
+  margin-left: 2px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(113, 113, 113);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 20%;
+  font-size: 1em;
+  transform: translateX(-140px);
+}
+
+.userhubmap-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.see-all-btn { 
+  margin-top: 7%; 
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(113, 113, 113);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 20%;
+  height: 25px; 
+}
+
+.see-all-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.notification-heading {
+  display: flex;
+  justify-content: space-between;
+}
+
+.accept-deny {
+  padding: 2px;
+  margin: 0 1% 0 1%;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(113, 113, 113);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 30%; 
+}
+
+.accept-deny:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+
+
+/* User Hub Travelogs:  */
+.hub-trip-trav-card {
+  display: flex;
+  width: 100%;
+  height: 10vh;   
+  background-color: rgb(227, 227, 227);
+  padding: 5px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(201, 201, 201);
+  margin: .5% 0 .5% 0; 
+  transition: transform 0.1s; 
+}
+
+.hub-trip-trav-card:hover {
+  background-color: rgb(250, 250, 250);
+  transform: scale(1.02); 
+}
+
+.hub-trip-trav-card-text {
+  display: flex;
+  flex-direction: row; 
+  align-items: center;
+  width: 100%;   
+}
+
+.hub-trip-trav-card-text > h3 {
+  width: 20%;
+}
+
+.userhubmap-btn-cont {
+  margin-left: 19%;
+  display: flex;
+  width: 200%;
+  gap: 2%;  
+}
+
+.zoomlevel-controls {
+  display: flex;
+  width: 250px;
+}
+
+.zoomlevel-controls > input {
+  margin-top: 5px;
+  margin-right: 3px;
+  margin-left: 5px;
+  height: 26px;
+  border-radius: 3px;
+  border: 1px solid rgb(171, 171, 171);
+}
+
+.zoomlevel-controls > p {
+  transform: translateY(-6px);
+}
+
+.zoomlevel-btn {
+  padding: 5px;
+  margin-top: 5px;
+  margin-left: 2px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(113, 113, 113);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 50%;
+  font-size: 1em;
+  height: 30px;
+}
+
+.userhub-recenter-tooltip {
+  transform: translate(-190px, 7px); 
+}
+
+.recenter-tooltip {
+  position: absolute;
+  margin-left: 16.9%;
+}

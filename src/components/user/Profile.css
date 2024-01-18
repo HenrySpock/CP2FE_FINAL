@@ -1,0 +1,98 @@
+.profile-slate { 
+  padding:  1%;
+  margin: 1%;
+  border-radius: 30px; 
+  background: linear-gradient(to bottom, rgb(240, 240, 240) 0%, rgb(180, 180, 180) 100%); 
+  width: 95.9%;
+  height: 450px;
+}
+
+.profile-slate > h3 {
+  text-align: center;
+}
+
+.profile-form input, 
+.profile-form select,
+.login input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em; 
+  margin: 5px;
+} 
+
+.profile-form input {
+  width: 100%;
+}
+
+.profile-form select {
+  width: 103.3%;
+}
+
+.profile-form {
+  display: flex; 
+}
+
+.prof-dual {
+  display: flex; 
+  gap: 2%;
+} 
+
+.profile-bio > textarea {
+  position: relative;
+  margin-top: 6px;
+  border-radius: 5px; 
+  height: 192px; 
+  width: 103%;
+  transform: translateY(-6px);
+}
+
+.prof-email {
+  width: 50%;
+}
+
+.profile-buttons { 
+  display: flex;
+  width: 58%;
+  gap: 1%;
+  margin-left: 21.4%; 
+}
+
+.profile-btn {
+  padding: 7px 0 7px 0;
+  margin-top: 4px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(120, 120, 120);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 92%;
+  font-size: 14px;
+}
+
+.profile-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+ 
+
+
+.prof-vert {
+  display: flex;
+  flex-direction: column;  
+  width: 45%;
+  margin: .5% 2% 2% 2%;
+}
+
+.prof-vert > div > p{
+  margin: 0 0 2% 1%;
+  
+}
+
+.profile-mix {
+  display: flex;
+}
+
+.prof-ver > span {
+  display: flex;
+}

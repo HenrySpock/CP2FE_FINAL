@@ -1,12 +1,10 @@
-.map-container .leaflet-container {
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&family=Open+Sans&display=swap');
+ 
+.leaflet-container { 
   height: 450px;
-  width: 35%;
-}
-
-.map-container {
   width: 100%;
-  height: 100%;
- }
+  flex: 1; 
+}  
 
 .modal {
   position: fixed;
@@ -38,110 +36,88 @@
 .image-response-row {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  
+  
 }
 
-.image-response-row img {
-  height: 150px; 
-  object-fit: cover;
+.image-response-row > img {
+  
+  object-fit: contain;
   flex: 1;
-  margin: 0 40px;
+   
 }
 
 .image-response-div {
-  margin: 0px 20px 0px 20px; 
+  width: 20%;
+  margin: 0 1% 0 1%;
+}
+
+.image-response-div > img { 
+  width: 100%;
 }
 
 .image-response-p { 
+  width: 100%;
   display: flex; 
   justify-content: center;
+  font-size: 18px;
 }
- 
-/* Travelog cards on Home.js for most recent */
-.recent-travelogs {
+  
+.recent-travelogs, .recent-trips {
   display: flex;
-  justify-content: space-between;
-  /* height: 20vh;   */
-  /* 25% of the viewport height */
-  margin-bottom: 4em;  /* Optional: Adds some spacing below the row of cards */
-}
-
-/* .travelog-card {
-  flex: 1;
-  margin: 0 1em;  
-  text-align: center;
-  max-width: 20%;  
-}
-
-.travelog-image {
-  width: 100%;  
-  height: auto;   
-} */
+  justify-content: space-between; 
+  margin-bottom: 4em;  
+} 
 
 .travelog-title {
   text-align: center; 
 } 
 
 /* Travelog cards on Home.js for full list  */
-.all-travelogs-list {
+.all-travelogs-list, .all-trips-list {
   display: flex;
   flex-wrap: wrap; 
-  justify-content: space-around;   
-  /* justify-content: flex-start;   */
+  justify-content: flex-start;    
 } 
 
-.travelog-card {
+.travelog-card, .trip-card {
   flex: 0 1 calc(100% / 8 - 1em); 
-  margin: 0 0.3em 1em 0.3em;  
-  /* flex: 1;
-  margin: 0 1em; */
+  margin: 0 0.3em 1em 0.3em;   
   max-width: calc(25% - 1em);
   text-align: center;
   overflow: hidden;  
-  border: 1px solid #ddd;  /* Optional: for better visibility of card boundaries */
-}
-
-/* .travelog-card {
-   
-  text-align: center;
   border: 1px solid #ddd;  
-} */
+} 
 
-.hub-mini-card {
-display: flex
-}
-
-.travelog-image-container {
+.travelog-image-container, .trip-image-container {
   width: 100%;
   height: 100px;   
-  background-color: #f0f0f0;  /* Optional: for better visibility of image container boundaries */
+  background-color: #f0f0f0;  
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 8px;
 }
 
-.travelog-image {
+.travelog-image, .trip-image {
   max-width: 100%;
   max-height: 100%;
-  object-fit: contain;  /* this will cover the area of the div without stretching the image */
+  object-fit: contain;  
 }
 
 /* User Hub Travelogs:  */
 .hub-mini-card {
   display: flex;
   width: 90%;
-  height: 10vh;  
-  margin-bottom: .4rem; 
+  height: 10vh;   
   background-color: rgb(227, 227, 227);
   padding: 5px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border: 2px solid rgb(182, 182, 182);
-  /* border-color: rgb(131, 131, 131); */
+  border: 2px solid rgb(182, 182, 182); 
 }
 
-.hub-mini-img-div {
-  /* flex: 1; */
+.hub-mini-img-div { 
   width: 10%;
   height: 100%;
   overflow: hidden; 
@@ -157,27 +133,27 @@ display: flex
   width: auto;
   height: auto;
 }
- 
-  /* justify-content: space-around;   */
+  
   
 .hub-mini-card-text {
   display: flex;
-  flex-direction: row;
-  /* justify-content: space-around; */
+  flex-direction: row; 
   align-items: center;
-  width: 100%;  /* This will ensure the text spans the full width of its container */
+  width: 100%;  
 }
 
-.hub-mini-card-text > h3, p {
+.hub-mini-card-text > h3 {
   width: 20%;
 }
 
-.hub-avatar {
-  /* height: 10%;
-  width: 10%;
-  border: 1px solid rgb(51, 51, 51);
-  border-radius: 5px;
-  box-shadow: 5px 5px 10px rgba(0,0,0,0.5); */
+
+
+.admin-card {
+  margin-bottom: 10px;
+  margin-left: 10px;
+} 
+
+.hub-avatar { 
   display: flex;
   height: 200px;
   width: 200px;
@@ -216,13 +192,9 @@ display: flex
 
 .hub-bio > p {
   width: 100%;
-}
+} 
 
-.leaflet-popup-content {
-  /* width: 2000px; */
-}
-
-.custom-popup > a { 
+.custom-popup > a {  
   background-color: rgb(241, 241, 241); 
   border-radius: 5px;
   padding: 3px;
@@ -230,14 +202,23 @@ display: flex
   z-index: 1;
 }
 
+.trav-pop-img { 
+  border: 2px solid rgb(135, 138, 243);
+  border-radius: 5px;
+}
+
+.trip-pop-img { 
+  border: 2px solid rgb(85, 226, 111);
+  border-radius: 5px;
+}
+ 
 /* LogEntry.js  */
 .largeEditor {
   width: 50%;
   height: 400px;
 }
 
-/* Comments:  */
-/* src/styles/CommentCard.css */
+/* Comments:  */ 
 .comment-card {
   border: 1px solid #ccc;
   padding: 1em;
@@ -249,24 +230,73 @@ display: flex
 .comment-footer {
   margin-bottom: 0.5em;
 }
-
-/* Comments  */
+ 
 .comment-list {
   list-style-type: none;
   padding-left: 0;
 }
 
-/* Messages  */
-.message-modal {
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100%;
-  background-color: #f9f9f9;
+.message {
+  padding: 10px;
+  margin-bottom: 5px; 
+  border-radius: 10px; 
+  word-wrap: break-word; 
+}
+
+.message-page {
+  position: relative;
+}
+
+/* Messaging  */
+.message-list {
+  position: fixed; 
+  top: -30px;
+  right: 0; 
+  width: 400px; 
+  background-color: #e4e4e4;
   border-left: 1px solid #ccc;
-  display: flex;
-  flex-direction: column;
+  display: flex; 
+  bottom: -100px;
+}
+
+/* Conversation div inside the message list */
+.conversation-box {
+  background-color: #b5b5b5;  
+  padding: 10px;
+  overflow-y: auto; 
+  border-radius: 4px;
+  margin: 102px 10px 10px 10px;
+  bottom: -3px; 
+  min-width: 360px;
+  max-width: 360px; 
+}
+
+.message-thread {
+  flex: 1;
+  padding: 10px;
+  overflow-y: scroll;
+  min-height: 50px;
+  max-height: 505px; 
+} 
+
+/* Current user messages */
+.message.sent {
+  background-color: #007bff;  
+  color: white;  
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px 0;
+  overflow-y: auto; 
+}
+
+/* Other user messages */
+.message.received {
+  background-color: #28a745;  
+  color: white; 
+  padding: 10px;
+  border-radius: 10px;
+  margin: 5px 0;
+  overflow-y: auto; 
 }
 
 .header {
@@ -276,23 +306,280 @@ display: flex
   justify-content: space-between;
 }
 
-.message-thread {
-  flex: 1;
-  padding: 10px;
-  overflow-y: scroll;
-}
-
 .message-input {
   border-top: 1px solid #ccc;
-  padding: 10px;
+  padding: 10px 0px 5px 0px;
   display: flex;
+  width: 100%;
 }
 
-.message-input input {
+.message-input > textarea {
+  width: 100%;
+}
+
+/* User Auth  */
+.forgot {
+  color: blue;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.error-message {
+  color: red;
+  font-size: 1em;
+  margin-left: 1%;
+}
+
+.success-message {
+  color: blue;
+  font-size: 1em;
+  margin-left: 1%;
+}
+
+.maintenance-notification {
+  color: rgb(55, 55, 55);
+  text-align: center;
+  font-size: 1.2em;
+  background-color: rgb(255, 227, 172);
+  margin: 1% auto 0 auto;
+  width: 50%;
+  border-radius: 5px;
+  padding: .1% 0 .3% 0;
+}
+
+ 
+
+.fullsize-image {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  width: 100vw; 
+  height: 100vh; 
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;  
+}
+
+/* Polyline  */
+.custom-polyline {
+  stroke: rgba(0, 170, 255, 0.515); 
+  stroke-dasharray: 5, 8;  
+}
+
+/* TipTap  */
+.tiptap-editor-container {
+  background-color: rgb(218, 218, 218);
+  width: 900px;
+  overflow: hidden;
+  border-radius: 5px; 
+}
+
+.tiptap-editor-container .ProseMirror {  
+  width: 900px; 
+  overflow-wrap: break-word;
+  border: none;
+  background-color: #efefef;
+  outline: none;
+}
+
+.ProseMirror p {
+  margin-top: 5px; 
+  margin-bottom: 5px;  
+  padding-left: 25px;
+  padding-right: 25px;
+}
+  
+.tiptap > .ProseMirror {
+  width: 70%;
+}
+
+/* Like Buttons  */
+.like-buttons {
+  gap: 15%;
+  display: flex;
+  justify-content: center; 
+}
+
+/* Tooltips  */
+.tooltip { 
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltip-text {
+  visibility: hidden;
+  width: 200px;
+  background-color: rgba(83, 146, 255, 0.729);
+  color: rgb(255, 255, 255);
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 2000;
+  bottom: 125%;
+  left: 50%;
+  margin-left: -60px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip:hover .tooltip-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-icon {
+  margin-left: 5px;  
+  cursor: help;
+  background-color: rgb(245, 245, 245);
+  width: 22px; 
+  text-align: center;
+  position: absolute; 
+  padding-bottom: 4px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 0 10px 10px 0;
+  transform: translate(-10px, -19.5px);
+}
+
+.tooltip-icon-reverse {
+  margin-left: 5px;  
+  cursor: help;
+  background-color: rgb(245, 245, 245);
+  width: 22px; 
+  text-align: center;
+  position: absolute; 
+  padding-bottom: 4px;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 10px 0 0 10px; 
+}
+
+/* Profile likes  */ 
+.likers-list {
+  display: none;
+}
+
+/* CSS to style the likers' lists */
+.likers-list.active {
+  display: block; 
+}
+
+/* badges  */
+.badge {
+  padding: 0.25em 0.4em;
+  font-size: 75%;
+  font-weight: 700;
+  line-height: 1;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border-radius: 0.25rem;
+  margin-left: 5px; 
+}
+
+.badge-blue {
+  background-color: rgb(83, 146, 255); 
+  color: white;
+}
+
+.badge-orange {
+  background-color: rgb(255, 165, 0); 
+  color: white;
+}
+
+
+
+.badge-text {
+  text-decoration: none; 
+  display: inline-block;  
+}
+
+/* Messages.js  */ 
+.friends-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: stretch; 
+  padding: 20px;
+  left: 0;
+  width: 72%;
+}
+
+ .friend-card {
   flex: 1;
-  padding: 5px;
+  max-width: calc(20% - 20px);  
+  max-height: 250px;
+  border: 1px solid #929292;  
+  border-radius: 10px;  
+  overflow: hidden; 
+  text-align: center; 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);  
+  transition: transform 0.2s;  
+  position: relative;
 }
 
-.message-input button {
-  margin-left: 10px;
-} 
+.friend-card:hover {
+  transform: scale(1.05); 
+}
+
+ 
+.friend-card > img {
+  width: 100%; 
+  height: auto;  
+  object-fit: contain;  
+  border-bottom: 2px solid #717171; 
+}  
+
+.badge-container {
+  position: absolute;
+  top: 2px;
+  right: 4px;  
+}
+
+.admin-space {
+  width: 75%;
+  margin-left: 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center; 
+}
+
+#admin-card {
+  max-width: calc(30% - 20px);  
+  max-height: 250px;
+}
+
+#admin-card:hover {
+  transform: scale(1.10); 
+}
+
+.friends-title {
+  width: 75%;
+  left: 0px;
+  display: flex;
+  justify-content: center;
+}
+
+/* For Message Conversation Modal on Admin Panel  */
+.admin-conversation {
+  display: flex;
+  right: -5px;
+  top: -29px;
+  position: absolute;
+}
+
+
+.fa-camera, .fa-pen, .fa-star, .fa-book, .fa-heart, .fa-plane, .fa-arrows-rotate, .fa-fire, .fa-hands-clapping {
+  display: flex;
+  margin: 2.5px 0 3.5px 0;
+}
+
+.recent-container {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  margin: auto;
+  text-align: center;
+}

@@ -1,0 +1,249 @@
+.auth-container {
+  display: flex; 
+} 
+
+.register-container {
+  width: 45%;
+  margin: 15px 15px 15px;
+  padding: 10px 20px 20px 20px;
+}
+
+.login-container {
+  width: 50%
+}
+
+.login-form-container {
+  margin: 15px 15px 15px;
+  padding: 10px 20px 65px 20px;
+}
+
+.register-container, .login-form-container {   
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.register-form input, 
+.register-form select,
+.login input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em; 
+  margin: 5px;
+}
+
+select {
+  color: #737373;
+}
+
+.register-form input,  
+.login input {
+  width: 95.2%;
+}
+
+ .avatar-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em; 
+  margin: 5px;
+  width: 1000px;
+ }
+
+.reg-select {
+  position: relative; 
+  width: 98.4%;
+}
+
+.register-btn, .login-btn, .forgot-btn {
+  padding: 12px 15px;
+  margin-top: 5px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 92%;
+  font-size: 1em;
+}
+
+.verification {
+  width: 50%;
+  margin: 20px auto;
+  display: flex;
+  text-align: center;
+} 
+
+.register-text {
+  margin-top: 5px;
+  margin-left: 5px;
+  border-radius: 4px;
+  width: 97.5%;
+  border: 1px solid #ccc;
+}
+
+.login-btn {
+  position: relative;
+  left: 5px;
+  width: 98.7%;
+}
+
+.register-btn:hover, .login-btn:hover, .forgot-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.register-btn {
+  left: 5px;
+  width: 98.2%;
+  position: relative;
+  margin-top: 7px;
+}
+
+.forgot-btn {
+  position: relative;
+  color: white;
+  width: 40%;
+  top: -73px;
+  margin-left: 30%;
+}
+
+.reg-dual {
+  display: flex; 
+}
+
+.reg-message {
+  margin-left: 6px;
+}
+
+.maintenance-mode {
+  background: linear-gradient(to bottom, rgb(245, 245, 245) 0%, rgb(180, 180, 180) 100%); 
+  width: 60%;
+  height: 650px;
+  margin: 1% auto;
+  border-radius: 30px;
+}
+
+.maintenance-mode-info > input {
+  height: 30px;
+  margin-top: 1%;
+  border: 1px solid rgb(122, 122, 122);
+  border-radius: 6px;
+}
+ 
+.maintenance-mode-info {
+  margin-top: 1%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.maintenance-img {
+  object-fit: contain;
+  text-align: center;
+  margin-top: 2%;
+}
+
+.maintenance-img > img {
+  border: 1px solid rgb(143, 143, 143);
+  border-radius: 15px;
+  width: 60%;
+}
+
+.security-email-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em; 
+  margin: 5px;
+  width: 86.5%
+}
+
+.security-answer-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em; 
+  margin: 5px;
+  width: 48.4%
+}
+
+.security-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em; 
+  margin: 5px;
+  width: 91.8%;
+  margin-left: 1.5%;
+}
+
+.security-submit-btn {
+  padding: 12px 15px;
+  margin-top: 5px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 30%;
+  font-size: 1em;
+  margin-left: 7%;
+  margin-right: 1%;
+}  
+
+.security-submit-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.security-cancel-btn {
+  padding: 12px 15px;
+  margin-top: 5px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 92%;
+  font-size: 1em;
+}  
+
+.security-cancel-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.password-reset-input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em; 
+  margin: 5px;
+  width: 92%;
+}
+
+.password-reset-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 97%;
+  margin-left: 1.5%;;
+}
+
+.password-reset-btn {
+  padding: 12px 15px;
+  margin-top: 5px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 44%;
+  font-size: 1em;
+}  
+
+.password-reset-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}
+
+.password-reset-modal {
+  border: 1px solid rgb(180, 180, 180);
+  border-radius: 10px;
+}

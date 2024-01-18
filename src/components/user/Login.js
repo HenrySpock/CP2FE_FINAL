@@ -1,147 +1,72 @@
-// // Login Component 
-// import React from 'react';
-// // import React, { useContext } from 'react';
-
-// function Login() { 
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
-//     const formElement = event.target; 
-//     const formData = new FormData(event.target);
-//     const data = Object.fromEntries(formData);
-
-//     try {
-//       const response = await fetch('http://localhost:5000/login', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(data)
-//       });
-
-//       if (response.ok) {
-//         formElement.reset();
-//         const { token, user } = await response.json();
-//         console.log('user: ', user)
-//         // Store user data and token in localStorage
-//           // localStorage.setItem('token', token);
-//           // localStorage.setItem('user', JSON.stringify(user)); // Store user data as JSON string
-
-//         alert('Login successful');
-//       } else {
-//         alert('Login failed');
-//       }
-//     } catch (error) {
-//       console.error('Error:', error);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input type="text" name="username" placeholder="Username" required />
-//       <input type="password" name="password" placeholder="Password" required />
-//       <button type="submit">Login</button> 
-//     </form>
-//   );
-// }
-
-// export default Login;
-
- 
-
-
-
-
-// import React from 'react';
-// import { useNavigate } from 'react-router-dom';
-
-// function Login() {
-//   const navigate = useNavigate();
-
-//   const handleSubmit = async (event) => {
-//     event.preventDefault();
-//     const formElement = event.target; 
-//     const formData = new FormData(event.target);
-//     const data = Object.fromEntries(formData);
-
-//     try {
-//       const response = await fetch('http://localhost:5000/login', {
-//         method: 'POST',
-//         headers: { 'Content-Type': 'application/json' },
-//         body: JSON.stringify(data)
-//       });
-
-//       if (response.ok) {
-//         formElement.reset();
-//         const { token, user } = await response.json();
-//         console.log('user: ', user);
-//         // Store user data and token in localStorage
-//         localStorage.setItem('token', token);
-//         // localStorage.setItem('user', JSON.stringify(user)); // Store user data as JSON string
-
-//         alert('Login successful');
-//         navigate('/about');  // Navigate to '/about' upon successful login
-//       } else {
-//         alert('Login failed');
-//       }
-//     } catch (error) {
-//       console.error('Error:', error);
-//     }
-//   };
-
-//   return (
-//     <form onSubmit={handleSubmit}>
-//       <input type="text" name="username" placeholder="Username" required />
-//       <input type="password" name="password" placeholder="Password" required />
-//       <button type="submit">Login</button> 
-//     </form>
-//   );
-// }
-
-// export default Login;
-
-import React, { useContext } from 'react'; 
+import React, { useContext, useState } from 'react'; 
 import { useNavigate } from 'react-router-dom';
 import { UserContext } from './UserContext';   
+import './AuthPage.css'
 
 function Login() {
-  const { login } = useContext(UserContext);  // Get the login function from UserContext
+  // console.log("DEBUG Rendering Login component");
+  const { login } = useContext(UserContext);  
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState(''); 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const formElement = event.target; 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
-
+  
     try {
-      const response = await fetch('http://localhost:5000/login', {
+      // Get user's email based on the username
+      const emailResponse = await fetch(`http://localhost:5000/feedback/api/get-user-email?username=${encodeURIComponent(data.username)}`);
+      if (!emailResponse.ok) {
+        setErrorMessage('Username / Email not found or invalid.');
+        return;
+      }
+      const { email } = await emailResponse.json(); 
+      // Check for suspension
+      const suspensionResponse = await fetch(`http://localhost:5000/feedback/api/check-suspension?userEmail=${encodeURIComponent(email)}`);
+      if (suspensionResponse.ok) {
+        const suspensionData = await suspensionResponse.json();
+        // console.log('suspensionData: ', suspensionData)
+        if (suspensionData.isSuspended) {
+          setErrorMessage(`Login failed. You are suspended for ${suspensionData.remainingTime} more hours.`);
+          return;
+        }
+      }
+  
+      // Proceed with login if not suspended
+      const response = await fetch('http://localhost:5000/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-
+  
       if (response.ok) {
-        formElement.reset();
+        // Process successful login
         const { token, user } = await response.json();
-        console.log('user: ', user);
-        // Store user data and token in localStorage
         localStorage.setItem('token', token);
-        // Call the login function from UserContext to update the context
-        login({ token, user });
-        alert('Login successful');
-        navigate('/hub');  // Navigate to '/about' upon successful login
+        login({ token, user }); 
+        navigate('/');
       } else {
-        alert('Login failed');
+        setErrorMessage('Login failed');
       }
     } catch (error) {
       console.error('Error:', error);
+      setErrorMessage('An error occurred. Please try again.');
     }
   };
+  
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="username" placeholder="Username" required />
-      <input type="password" name="password" placeholder="Password" required />
-      <button type="submit">Login</button> 
-    </form>
+    <div className='login-form-container'>
+      {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}  
+      <form className='login' onSubmit={handleSubmit}>
+        <div className='reg-dual'>
+          <input className='' type="text" name="username" placeholder="Username" required />
+          <input className='' type="password" name="password" placeholder="Password" required />
+        </div>
+        <button className='login-btn' type="submit">Login</button> 
+      </form>
+    </div>
   );
 }
 
