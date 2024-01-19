@@ -51,7 +51,7 @@ function CommentLikes({ currentUser, profileUser, userData, contextUser, comment
     // Fetch likers for a specific comment
     const fetchCommentLikers = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/likers/comment?comment_id=${comment_id}`);
+        const response = await fetch(`${API_BASE_URL}/api/likers/comment?comment_id=${comment_id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch comment likers');
         }
@@ -75,7 +75,7 @@ function CommentLikes({ currentUser, profileUser, userData, contextUser, comment
       if (userData && contextUser && comment_id) {
         // console.log('fetch like status comment_id: ', comment_id);
         try {
-          const response = await fetch(`http://localhost:5000/api/likes/comment/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&comment_id=${comment_id}`);
+          const response = await fetch(`${API_BASE_URL}/api/likes/comment/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&comment_id=${comment_id}`);
           if (!response.ok) {
             throw new Error('Failed to check like status');
           }
@@ -107,7 +107,7 @@ function CommentLikes({ currentUser, profileUser, userData, contextUser, comment
     // console.log('api/likes/comment POST comment: ', comment.comment_id)
     const comment_id = comment.comment_id
     try {
-      const response = await fetch('http://localhost:5000/api/likes/comment', {
+      const response = await fetch('${API_BASE_URL}/api/likes/comment', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

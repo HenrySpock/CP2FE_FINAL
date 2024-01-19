@@ -59,7 +59,7 @@ function PublicProfileLikes({ currentUser, profileUser, userData, contextUser })
 
   useEffect(() => {
     // Fetch likers for photography for the specific profile user
-    fetch(`http://localhost:5000/api/likers/photography?user_id=${userData.user_id}`)
+    fetch(`${API_BASE_URL}/api/likers/photography?user_id=${userData.user_id}`)
       .then((response) => response.json())
       .then((data) => {
         setPhotographyLikers(data);
@@ -69,7 +69,7 @@ function PublicProfileLikes({ currentUser, profileUser, userData, contextUser })
       });
   
     // Fetch likers for writing for the specific profile user
-    fetch(`http://localhost:5000/api/likers/writing?user_id=${userData.user_id}`)
+    fetch(`${API_BASE_URL}/api/likers/writing?user_id=${userData.user_id}`)
       .then((response) => response.json())
       .then((data) => {
         setWritingLikers(data);
@@ -85,7 +85,7 @@ function PublicProfileLikes({ currentUser, profileUser, userData, contextUser })
     const fetchLikeStatus = async () => {
       if (userData && contextUser) {
         try {
-          const response = await fetch(`http://localhost:5000/api/likes/profile/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}`);
+          const response = await fetch(`${API_BASE_URL}/api/likes/profile/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}`);
           if (!response.ok) {
             throw new Error('Failed to check like status');
           }
@@ -124,7 +124,7 @@ function PublicProfileLikes({ currentUser, profileUser, userData, contextUser })
   // POST fetch for likes 
   const toggleLike = async (user_id, liker_id, liketype) => {
     try {
-      const response = await fetch('http://localhost:5000/api/likes/profile', {
+      const response = await fetch('${API_BASE_URL}/api/likes/profile', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

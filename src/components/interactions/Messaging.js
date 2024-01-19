@@ -15,7 +15,7 @@ function Messages() {
   
   const markMessagesAsRead = (conversationId) => {
     // console.log('conversationId: ', conversationId)
-    fetch(`http://localhost:5000/tally/mark-messages-as-read`, {
+    fetch(`${API_BASE_URL}/tally/mark-messages-as-read`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ function Messages() {
  
   useEffect(() => {
     const fetchAndUpdateAdminMessages = () => {
-      fetch(`http://localhost:5000/api/admin-messages/${user.user_id}`)
+      fetch(`${API_BASE_URL}/api/admin-messages/${user.user_id}`)
         .then(response => response.json())
         .then(({ adminUser, unreadCount, readCount, allReportsCleared }) => {
           // console.log('ALLREPORTSCLEARED: ', allReportsCleared)
@@ -57,7 +57,7 @@ function Messages() {
     if (user) {
       const intervalId = setInterval(() => { 
          
-            fetch(`http://localhost:5000/api/friends/${user.user_id}`)
+            fetch(`${API_BASE_URL}/api/friends/${user.user_id}`)
               .then(response => response.json())
               .then(data => {
                 // console.log('Fetched friends data:', data);
@@ -70,7 +70,7 @@ function Messages() {
 
             fetchAndUpdateAdminMessages();
 
-       }, 1000);  
+       }, 60000);  
   
       return () => clearInterval(intervalId);  
     }

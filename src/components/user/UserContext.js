@@ -46,14 +46,14 @@ export const UserProvider = ({ children }) => {
     if (userData.user && userData.user.user_id) {
       try {
         // Attempt to create an indicator if it doesn't exist 
-        await fetch('http://localhost:5000/user/api/indicator', {
+        await fetch('${API_BASE_URL}/user/api/indicator', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ user_id: userData.user.user_id })
         });
   
         // Then update the login status
-        await fetch('http://localhost:5000/user/api/indicator/login', {
+        await fetch('${API_BASE_URL}/user/api/indicator/login', {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ user_id: userData.user.user_id })
@@ -74,7 +74,7 @@ export const UserProvider = ({ children }) => {
     // console.log("Logging out, user data:", user);
     if (user && user.user_id) {
       try {
-        await fetch('http://localhost:5000/user/api/indicator/logout', {
+        await fetch('${API_BASE_URL}/user/api/indicator/logout', {
           method: 'PATCH',
           headers: {
             'Content-Type': 'application/json',
@@ -100,7 +100,7 @@ export const UserProvider = ({ children }) => {
       const token = localStorage.getItem('token');
       // console.log('Token:', token);
       if (token) {
-        const response = await fetch('http://localhost:5000/user/user', {
+        const response = await fetch('${API_BASE_URL}/user/user', {
           method: 'GET',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -114,7 +114,7 @@ export const UserProvider = ({ children }) => {
           setIsAdmin(userData.isAdmin);  
 
           // Check for suspension
-          const suspensionResponse = await fetch(`http://localhost:5000/feedback/api/check-suspension?userEmail=${encodeURIComponent(userData.email)}`);
+          const suspensionResponse = await fetch(`${API_BASE_URL}/feedback/api/check-suspension?userEmail=${encodeURIComponent(userData.email)}`);
           // console.log('suspensionResponse: ', suspensionResponse)
           if (suspensionResponse.ok) {
             const suspensionData = await suspensionResponse.json();

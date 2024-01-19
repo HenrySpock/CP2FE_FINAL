@@ -29,7 +29,7 @@ function HomeOther() {
     if (!user || !user.user_id) return;
 
     try {
-        const response = await fetch(`http://localhost:5000/travelog/api/travelog-entries?userId=${user.user_id}`);
+        const response = await fetch(`${API_BASE_URL}/travelog/api/travelog-entries?userId=${user.user_id}`);
         const data = await response.json();
         const offsetTravelogs = applyMarkerOffset(data);
 

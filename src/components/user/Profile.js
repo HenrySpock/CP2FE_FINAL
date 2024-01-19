@@ -25,7 +25,7 @@ function Profile() {
         tooltips: !user.tooltips
       };
 
-      await axios.patch(`http://localhost:5000/user/api/user/${user.user_id}`, {
+      await axios.patch(`${API_BASE_URL}/user/api/user/${user.user_id}`, {
         tooltips: !user.tooltips
       });
 
@@ -38,7 +38,7 @@ function Profile() {
 
   const checkBannedEmail = async (email) => {
     try {
-      const response = await fetch(`http://localhost:5000/feedback/api/check-banned-email?email=${encodeURIComponent(email)}`);
+      const response = await fetch(`${API_BASE_URL}/feedback/api/check-banned-email?email=${encodeURIComponent(email)}`);
       const data = await response.json();
       return response.ok ? true : data.message;
     } catch (error) {
@@ -49,7 +49,7 @@ function Profile() {
   
   const checkSuspension = async (email) => {
     try {
-      const response = await fetch(`http://localhost:5000/feedback/api/check-suspension?userEmail=${encodeURIComponent(email)}`);
+      const response = await fetch(`${API_BASE_URL}/feedback/api/check-suspension?userEmail=${encodeURIComponent(email)}`);
       const data = await response.json();
       return data.isSuspended ? `Email suspended for ${data.remainingTime} more hours.` : true;
     } catch (error) {
@@ -62,7 +62,7 @@ function Profile() {
     if (!user) {
       const fetchUser = async () => {
         try {
-          const response = await axios.get(`http://localhost:5000/user/api/user/${user.user_id}`);
+          const response = await axios.get(`${API_BASE_URL}/user/api/user/${user.user_id}`);
           setUser(response.data);  // Update the user data in UserContext
         } catch (error) {
           console.error('Error fetching user details:', error);
@@ -125,9 +125,9 @@ function Profile() {
           updateData.answer = editedUser.answer;
         }
 
-        await axios.patch(`http://localhost:5000/user/api/user/${user.user_id}`, updateData);
+        await axios.patch(`${API_BASE_URL}/user/api/user/${user.user_id}`, updateData);
          
-        const response = await axios.get(`http://localhost:5000/user/api/user/${user.user_id}`);
+        const response = await axios.get(`${API_BASE_URL}/user/api/user/${user.user_id}`);
         setUser(response.data);  // Update the user data in UserContext, including the updated isAdmin value
         navigate('/hub');
         window.location.reload();

@@ -94,7 +94,7 @@ function TravLikes({
   useEffect(() => {
     // Fetch likers for a specific travelog
     const travelogId = travelog_id;  
-    fetch(`http://localhost:5000/api/likers/want-to-travel?travelog_id=${travelogId}`)
+    fetch(`${API_BASE_URL}/api/likers/want-to-travel?travelog_id=${travelogId}`)
       .then((response) => response.json())
       .then((data) => {
         setWantToTravelLikers(data);
@@ -107,7 +107,7 @@ function TravLikes({
 useEffect(() => {
   // Fetch likers for a specific travelog
   const travelogId = travelog_id; 
-  fetch(`http://localhost:5000/api/likers/traveled?travelog_id=${travelogId}`)
+  fetch(`${API_BASE_URL}/api/likers/traveled?travelog_id=${travelogId}`)
     .then((response) => response.json())
     .then((data) => {
       setTraveledLikers(data);
@@ -120,7 +120,7 @@ useEffect(() => {
   useEffect(() => {
     // Fetch likers for trip
     const travelogId = travelog_id;
-    fetch(`http://localhost:5000/api/likers/retraveled?travelog_id=${travelogId}`)
+    fetch(`${API_BASE_URL}/api/likers/retraveled?travelog_id=${travelogId}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log('Retraveled Likers:', data);  
@@ -134,7 +134,7 @@ useEffect(() => {
   useEffect(() => {
     // Fetch likers for trip
     const travelogId = travelog_id;
-    fetch(`http://localhost:5000/api/travelog/likers/writing?travelog_id=${travelogId}`)
+    fetch(`${API_BASE_URL}/api/travelog/likers/writing?travelog_id=${travelogId}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log('Retraveled Likers:', data);  
@@ -148,7 +148,7 @@ useEffect(() => {
   useEffect(() => {
     // Fetch likers for trip
     const travelogId = travelog_id;
-    fetch(`http://localhost:5000/api/likers/informative?travelog_id=${travelogId}`)
+    fetch(`${API_BASE_URL}/api/likers/informative?travelog_id=${travelogId}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log('Retraveled Likers:', data);  
@@ -164,7 +164,7 @@ useEffect(() => {
     const fetchLikeStatus = async () => {
       if (userData && contextUser && travelog_id) {
         try {
-          const response = await fetch(`http://localhost:5000/api/likes/travelog/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&travelog_id=${travelog_id}`);
+          const response = await fetch(`${API_BASE_URL}/api/likes/travelog/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&travelog_id=${travelog_id}`);
           if (!response.ok) {
             throw new Error('Failed to check like status');
           }
@@ -238,7 +238,7 @@ useEffect(() => {
   const toggleLike = async (user_id, liker_id, liketype, travelog_id) => { 
     // console.log('POST trav_like fetch travelog_id: ', travelog_id);
     try {
-      const response = await fetch('http://localhost:5000/api/likes/travelog', {
+      const response = await fetch('${API_BASE_URL}/api/likes/travelog', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

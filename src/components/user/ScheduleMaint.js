@@ -40,7 +40,7 @@ const ScheduleMaint = () => {
 
     // Post request to schedule maintenance
     try {
-      const response = await fetch('http://localhost:5000/api/schedule_maintenance', {
+      const response = await fetch('${API_BASE_URL}/api/schedule_maintenance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ startDate, endDate, maintenanceKey, adminId: user.user_id })
@@ -61,7 +61,7 @@ const ScheduleMaint = () => {
     // Fetch maintenance status when the component mounts
     const checkMaintenanceStatus = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/maintenance/status');
+        const response = await fetch('${API_BASE_URL}/api/maintenance/status');
         const data = await response.json();
   
         // Set empty values to empty strings if they are null or undefined
@@ -113,7 +113,7 @@ const ScheduleMaint = () => {
     }
   
     try {
-      const response = await fetch('http://localhost:5000/api/extend_maintenance', {
+      const response = await fetch('${API_BASE_URL}/api/extend_maintenance', {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ extendMaintenanceKey, newEndTime })

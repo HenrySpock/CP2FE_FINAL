@@ -21,3 +21,8 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+castletracker_backup.sql
+castletracker_data_dump.sql
+
+config.js

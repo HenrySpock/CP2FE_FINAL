@@ -71,7 +71,7 @@ function UserHub() {
   useEffect(() => {
     const checkPermissions = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/permissions/check/${user.user_id}`);
+            const response = await fetch(`${API_BASE_URL}/api/permissions/check/${user.user_id}`);
             if (response.ok) {
                 const { hasPermissions } = await response.json();
                 setIsGrantee(hasPermissions);
@@ -136,13 +136,13 @@ useEffect(() => {
       const fetchUserData = async () => {
         try {
           // Fetch travelogs
-          const travelogsResponse = await axios.get(`http://localhost:5000/travelog/api/user/${user.user_id}/travelogs`);
+          const travelogsResponse = await axios.get(`${API_BASE_URL}/travelog/api/user/${user.user_id}/travelogs`);
           // SORTING 
           setTravelogs(travelogsResponse.data);
           setFilteredTravelogs(travelogsResponse.data);
 
           // Fetch trips
-          const tripsResponse = await axios.get(`http://localhost:5000/trip/api/trips/${user.user_id}`);
+          const tripsResponse = await axios.get(`${API_BASE_URL}/trip/api/trips/${user.user_id}`);
           // console.log('tripsResponse: ', tripsResponse)
           // SORTING 
           setTrips(tripsResponse.data); 
@@ -168,7 +168,7 @@ useEffect(() => {
         // Make sure user is defined before trying to access user.user_id
         if (user) {
           // console.log('user.user_id: ', user.user_id)
-          const response = await fetch(`http://localhost:5000/api/notifications/${user.user_id}`);
+          const response = await fetch(`${API_BASE_URL}/api/notifications/${user.user_id}`);
           if (!response.ok) {
             throw new Error('Network response was not ok ' + response.statusText);
           }
@@ -186,7 +186,7 @@ useEffect(() => {
 
   const handleDeny = async (sender_id, recipient_id, notificationId) => {
     try {
-      const response = await fetch('http://localhost:5000/api/friends/request/deny', {
+      const response = await fetch('${API_BASE_URL}/api/friends/request/deny', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sender_id, recipient_id, notificationId })
@@ -207,7 +207,7 @@ useEffect(() => {
 
   const handleAccept = async (sender_id, recipient_id, notificationId) => {
     try {
-      const response = await fetch('http://localhost:5000/api/friends/request/accept', {
+      const response = await fetch('${API_BASE_URL}/api/friends/request/accept', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sender_id, recipient_id, notificationId })
@@ -231,7 +231,7 @@ useEffect(() => {
 
 const handleDeleteNotification = async (notificationId) => {
   try {
-    const response = await fetch(`http://localhost:5000/api/notifications/delete/${notificationId}`, {
+    const response = await fetch(`${API_BASE_URL}/api/notifications/delete/${notificationId}`, {
       method: 'DELETE'
     });
 
@@ -251,7 +251,7 @@ const handleDeleteNotification = async (notificationId) => {
     const markNotificationsAsRead = async () => {
       if (user && user.user_id) {
         try {
-          await fetch(`http://localhost:5000/tally/mark-notifications-read/${user.user_id}`, {
+          await fetch(`${API_BASE_URL}/tally/mark-notifications-read/${user.user_id}`, {
             method: 'PATCH'
           });
         } catch (error) {

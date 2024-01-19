@@ -70,7 +70,7 @@ function CommentItem({ comment, contextUser,}) {
           postData.trip_id = comment.comment.trip_id;
         }
     
-        const response = await axios.post('http://localhost:5000/api/comment', postData);
+        const response = await axios.post('${API_BASE_URL}/api/comment', postData);
     
         if (response.data.success) {
           // console.log('Comment submitted successfully:', response.data.comment);
@@ -96,7 +96,7 @@ function CommentItem({ comment, contextUser,}) {
         email: user.email,  
       };
 
-      const response = await fetch(`http://localhost:5000/feedback/api/comment/${comment.comment_id}/report`, { 
+      const response = await fetch(`${API_BASE_URL}/feedback/api/comment/${comment.comment_id}/report`, { 
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ function CommentItem({ comment, contextUser,}) {
     const fetchReplies = async () => { 
       try { 
         // Determine the URL based on whether the comment is related to a travelog or a trip
-        let url = 'http://localhost:5000/api/comments';
+        let url = '${API_BASE_URL}/api/comments';
         if (comment.comment.travelog_id) {
           url += `?travelogId=${comment.comment.travelog_id}`;
         } else if (comment.comment.trip_id) {
@@ -142,7 +142,7 @@ function CommentItem({ comment, contextUser,}) {
 
   const handleDelete = async () => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/comments/${comment.comment_id}?user_id=${user.user_id}`);
+      const response = await axios.delete(`${API_BASE_URL}/api/comments/${comment.comment_id}?user_id=${user.user_id}`);
       if (response.data.success) {
         window.location.reload();
       }

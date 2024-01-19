@@ -19,7 +19,7 @@ const TravTipTap = () => {
   useEffect(() => {
     const fetchTraventry = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/travelog/get_traventry/${travelogId}`);
+        const response = await fetch(`${API_BASE_URL}/travelog/get_traventry/${travelogId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch traventry');
         }
@@ -61,7 +61,7 @@ const TravTipTap = () => {
         return; // Stop the function here as forbidden words are found
       }
 
-      const response = await fetch(`http://localhost:5000/travelog/update_traventry/${travelogId}`, {
+      const response = await fetch(`${API_BASE_URL}/travelog/update_traventry/${travelogId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -82,7 +82,7 @@ const TravTipTap = () => {
 
   const handleDeleteEntryClick = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/travelog/delete_traventry/${travelogId}`, {
+      const response = await fetch(`${API_BASE_URL}/travelog/delete_traventry/${travelogId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',

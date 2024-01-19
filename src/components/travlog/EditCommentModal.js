@@ -9,7 +9,7 @@ function EditCommentModal({ show, handleClose, comment }) {
 
   const handleUpdate = async () => {
     try {
-      await axios.patch(`http://localhost:5000/api/comments/${comment.comment_id}`, {
+      await axios.patch(`${API_BASE_URL}/api/comments/${comment.comment_id}`, {
         content: updatedContent,
         user_id: user.user_id,
       });

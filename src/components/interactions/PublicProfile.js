@@ -56,7 +56,7 @@ function PublicProfile() {
 useEffect(() => {
   const incrementViewCount = async () => { 
     try {
-      const response = await fetch(`http://localhost:5000/viewcount/api/public_profile/increment-view-count/${profileUser}`, {
+      const response = await fetch(`${API_BASE_URL}/viewcount/api/public_profile/increment-view-count/${profileUser}`, {
         method: 'PATCH',
       });
 
@@ -89,7 +89,7 @@ useEffect(() => {
   useEffect(() => {
     const checkBlockStatus = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/users/${profileUser}/block-status/${currentUser}`);
+        const response = await fetch(`${API_BASE_URL}/api/users/${profileUser}/block-status/${currentUser}`);
         if (!response.ok) throw new Error('Network response was not ok ' + response.statusText);
         const data = await response.json();
         if (data.isBlocked) {
@@ -144,7 +144,7 @@ useEffect(() => {
 
     const fetchUserProfile = async (profileUser) => {
       try {
-        const response = await fetch(`http://localhost:5000/user/api/users-last-active/${profileUser}`);
+        const response = await fetch(`${API_BASE_URL}/user/api/users-last-active/${profileUser}`);
         if (response.ok) {
           const userData = await response.json();
           // console.log('profile user (userData): ', userData)
@@ -179,16 +179,16 @@ useEffect(() => {
       if (currentUser && profileUser) {
         try {
           // Fetch user IDs
-          const response1 = await fetch(`http://localhost:5000/user/api/users/${currentUser}`);
+          const response1 = await fetch(`${API_BASE_URL}/user/api/users/${currentUser}`);
           const data1 = await response1.json(); 
           const { user_id: user1Id } = data1;
   
-          const response2 = await fetch(`http://localhost:5000/user/api/users/${profileUser}`);
+          const response2 = await fetch(`${API_BASE_URL}/user/api/users/${profileUser}`);
           const data2 = await response2.json();
           const { user_id: user2Id } = data2;
   
           // Check friendship status
-          const url = `http://localhost:5000/api/friends/status/${user1Id}/${user2Id}`;
+          const url = `${API_BASE_URL}/api/friends/status/${user1Id}/${user2Id}`;
           // console.log('Fetching friendship status with URL:', url);
           const response = await fetch(url);
           const data = await response.json();
@@ -207,7 +207,7 @@ useEffect(() => {
     const fetchProfileData = async () => {
       try {
         // Fetch travelogs
-        const travelogsResponse = await fetch(`http://localhost:5000/travelog/api/user/${userData.user_id}/travelogs`);
+        const travelogsResponse = await fetch(`${API_BASE_URL}/travelog/api/user/${userData.user_id}/travelogs`);
         const travelogsData = await travelogsResponse.json();
         const publicTravelogs = travelogsData.filter(travelog => !travelog.isPrivate); 
 
@@ -215,7 +215,7 @@ useEffect(() => {
         setProfileTravelogs(publicTravelogs);
         
         // Fetch trips
-        const tripsResponse = await fetch(`http://localhost:5000/trip/api/trips/${userData.user_id}`);
+        const tripsResponse = await fetch(`${API_BASE_URL}/trip/api/trips/${userData.user_id}`);
         const tripsData = await tripsResponse.json();
         // console.log('publicprofile tripsData: ', tripsData, 'publicprofile travelogsData: ', travelogsData)
         const publicTrips = tripsData.filter(trip => !trip.is_private); 

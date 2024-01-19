@@ -96,7 +96,7 @@ function Home() {
   
   useEffect(() => {
     async function fetchTravelogEntries() {
-      let url = 'http://localhost:5000/travelog/api/travelog-entries';
+      let url = '${API_BASE_URL}/travelog/api/travelog-entries';
       // Append user ID as a query parameter if the user is logged in
       if (user) {
         url += `?userId=${user.user_id}`;
@@ -137,7 +137,7 @@ function Home() {
     async function fetchTrips() {
       if (user) {
         try {
-          const response = await fetch(`http://localhost:5000/trip/api/trips?userId=${user.user_id}`);
+          const response = await fetch(`${API_BASE_URL}/trip/api/trips?userId=${user.user_id}`);
           if (response.ok) {
             const tripsData = await response.json();
             // Sort trips immediately after fetching
@@ -228,7 +228,7 @@ function Home() {
   // Fetch newest user 
   const fetchNewestUser = async () => {
     try {
-      const response = await fetch('http://localhost:5000/recent/api/users/newest');
+      const response = await fetch('${API_BASE_URL}/recent/api/users/newest');
       if (!response.ok) throw new Error('Network response was not ok');
       const user = await response.json();
       setNewestUser(user); // Update state with the fetched user
@@ -241,7 +241,7 @@ function Home() {
   // Fetch newest trip 
   const fetchNewestTrip = async () => {
     try {
-      const response = await fetch('http://localhost:5000/recent/api/trips/newest');
+      const response = await fetch('${API_BASE_URL}/recent/api/trips/newest');
       if (!response.ok) throw new Error('Network response was not ok');
       const trip = await response.json();
       setNewestTrip(trip); // Update state with the fetched trip
@@ -262,7 +262,7 @@ function Home() {
   // Fetch newest travelog 
   const fetchNewestTravelog = async () => {
     try {
-      const response = await fetch('http://localhost:5000/recent/api/travelogs/newest');
+      const response = await fetch('${API_BASE_URL}/recent/api/travelogs/newest');
       if (!response.ok) throw new Error('Network response was not ok');
       const travelog = await response.json();
       setNewestTravelog(travelog); // Update state with the fetched travelog

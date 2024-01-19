@@ -18,7 +18,7 @@ function TripFilter() {
 
   useEffect(() => {
     const fetchTrips = async (filterType) => {
-      const url = `http://localhost:5000/trip/api/trips/sorting/filter?filterType=${filterType}&userId=${user.user_id}`;
+      const url = `${API_BASE_URL}/trip/api/trips/sorting/filter?filterType=${filterType}&userId=${user.user_id}`;
       try {
         const response = await axios.get(url);
         if (response.status === 200) {

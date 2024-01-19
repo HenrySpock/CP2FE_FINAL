@@ -12,7 +12,7 @@ function VerificationCheck() {
   useEffect(() => {
     const checkVerification = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/auth/verification_check?email=${encodeURIComponent(email)}`);
+        const response = await fetch(`${API_BASE_URL}/auth/verification_check?email=${encodeURIComponent(email)}`);
         const message = await response.text();
         
         if (response.ok) {

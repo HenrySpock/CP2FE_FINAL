@@ -11,7 +11,7 @@ function DeleteConfirmationModal({ show, onClose }) {
 
   const handleSubmit = async () => {
     try {
-      await axios.delete(`http://localhost:5000/user/api/user/${user.user_id}`, { data: { password } });
+      await axios.delete(`${API_BASE_URL}/user/api/user/${user.user_id}`, { data: { password } });
       // Log out the user and redirect to home
       logout();
       navigate('/');

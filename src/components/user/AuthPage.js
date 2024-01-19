@@ -28,7 +28,7 @@ function AuthPage() {
   useEffect(() => {
     const checkMaintenanceMode = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/maintenance/status');
+        const response = await fetch('${API_BASE_URL}/api/maintenance/status');
                         
         const data = await response.json();
         setIsMaintenanceMode(data.maintenanceActive);
@@ -42,7 +42,7 @@ function AuthPage() {
     };
   
     checkMaintenanceMode();
-    const interval = setInterval(checkMaintenanceMode, 100000);  
+    const interval = setInterval(checkMaintenanceMode, 60000);  
   
     return () => clearInterval(interval); // cleanup interval on component unmount
   }, []);
@@ -85,7 +85,7 @@ function AuthPage() {
     data.email = email; 
   
     try {
-      const response = await fetch('http://localhost:5000/auth/api/user/validate_security_answer', {
+      const response = await fetch('${API_BASE_URL}/auth/api/user/validate_security_answer', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),
@@ -114,7 +114,7 @@ function AuthPage() {
     data.email = email;  
 
     try {
-      const response = await fetch('http://localhost:5000/auth/api/user/reset_password', {
+      const response = await fetch('${API_BASE_URL}/auth/api/user/reset_password', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data),

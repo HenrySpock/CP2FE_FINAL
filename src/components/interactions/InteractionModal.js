@@ -20,15 +20,15 @@ function InteractionModal({ isOpen, friendshipStatus, setFriendshipStatus, curre
 
   // console.log('currentUser: ', currentUser, 'profileUser: ', profileUser) 
   const handleBefriend = async () => {
-    const url = `http://localhost:5000/api/friends/request`;
+    const url = `${API_BASE_URL}/api/friends/request`;
   
     try {
-      const response1 = await fetch(`http://localhost:5000/user/api/users/${currentUser}`);
+      const response1 = await fetch(`${API_BASE_URL}/user/api/users/${currentUser}`);
       const data1 = await response1.json(); 
       const user1Id = data1.user_id;   
       // console.log('user1Id: ', user1Id);
   
-      const response2 = await fetch(`http://localhost:5000/user/api/users/${profileUser}`);
+      const response2 = await fetch(`${API_BASE_URL}/user/api/users/${profileUser}`);
       const data2 = await response2.json();
       const user2Id = data2.user_id;  
       // console.log('user2Id: ', user2Id);
@@ -60,11 +60,11 @@ function InteractionModal({ isOpen, friendshipStatus, setFriendshipStatus, curre
   }; 
 
   const handleUnfriend = async () => {
-    const response1 = await fetch(`http://localhost:5000/user/api/users/${currentUser}`);
+    const response1 = await fetch(`${API_BASE_URL}/user/api/users/${currentUser}`);
     const data1 = await response1.json(); 
     const user1Id = data1.user_id;
   
-    const response2 = await fetch(`http://localhost:5000/user/api/users/${profileUser}`);
+    const response2 = await fetch(`${API_BASE_URL}/user/api/users/${profileUser}`);
     const data2 = await response2.json();
     const user2Id = data2.user_id;
   
@@ -74,7 +74,7 @@ function InteractionModal({ isOpen, friendshipStatus, setFriendshipStatus, curre
     };
   
     try {
-      const response = await fetch('http://localhost:5000/api/friends/unfriend', {
+      const response = await fetch('${API_BASE_URL}/api/friends/unfriend', {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',
@@ -96,12 +96,12 @@ function InteractionModal({ isOpen, friendshipStatus, setFriendshipStatus, curre
   };
 
 const handleCancelRequest = async () => {
-  const response1 = await fetch(`http://localhost:5000/user/api/users/${currentUser}`);
+  const response1 = await fetch(`${API_BASE_URL}/user/api/users/${currentUser}`);
   const data1 = await response1.json(); 
   const user1Id = data1.user_id;
 
   
-  const response2 = await fetch(`http://localhost:5000/user/api/users/${profileUser}`);
+  const response2 = await fetch(`${API_BASE_URL}/user/api/users/${profileUser}`);
   const data2 = await response2.json();
   const user2Id = data2.user_id;
 
@@ -111,7 +111,7 @@ const handleCancelRequest = async () => {
   };
 
   try {
-    const response = await fetch('http://localhost:5000/api/friends/request', {
+    const response = await fetch('${API_BASE_URL}/api/friends/request', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -134,16 +134,16 @@ const handleCancelRequest = async () => {
 
 const handleFollow = async () => {
   // Fetch the user IDs
-  const response1 = await fetch(`http://localhost:5000/user/api/users/${currentUser}`);
+  const response1 = await fetch(`${API_BASE_URL}/user/api/users/${currentUser}`);
   const data1 = await response1.json();
   const user1Id = data1.user_id;
   
-  const response2 = await fetch(`http://localhost:5000/user/api/users/${profileUser}`);
+  const response2 = await fetch(`${API_BASE_URL}/user/api/users/${profileUser}`);
   const data2 = await response2.json();
   const user2Id = data2.user_id;
   
   // Set the URL and method based on the following state
-  const url = isFollowing ? 'http://localhost:5000/api/unfollow' : 'http://localhost:5000/api/follow';
+  const url = isFollowing ? '${API_BASE_URL}/api/unfollow' : '${API_BASE_URL}/api/follow';
   const method = isFollowing ? 'DELETE' : 'POST';
 
   try {
@@ -182,7 +182,7 @@ const submitReport = async (complaint) => {
       email: contextUser.email, 
     };
 
-    const response = await fetch(`http://localhost:5000/feedback/api/users/${profileUser}/report`, {
+    const response = await fetch(`${API_BASE_URL}/feedback/api/users/${profileUser}/report`, {
       method: 'POST', 
       headers: {
         'Content-Type': 'application/json',
@@ -203,16 +203,16 @@ const submitReport = async (complaint) => {
 
 const handleBlock = async (blockedUserId) => {
 
-  const response1 = await fetch(`http://localhost:5000/user/api/users/${currentUser}`);
+  const response1 = await fetch(`${API_BASE_URL}/user/api/users/${currentUser}`);
   const data1 = await response1.json();
   const blocker_id = data1.user_id;
   
-  const response2 = await fetch(`http://localhost:5000/user/api/users/${profileUser}`);
+  const response2 = await fetch(`${API_BASE_URL}/user/api/users/${profileUser}`);
   const data2 = await response2.json();
   const blocked_id = data2.user_id;
 
   try {
-    const response = await fetch('http://localhost:5000/api/block', {
+    const response = await fetch('${API_BASE_URL}/api/block', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ blocker_id: blocker_id, blocked_id: blocked_id })

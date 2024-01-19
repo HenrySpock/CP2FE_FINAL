@@ -10,7 +10,7 @@ function Register() {
 
   const checkBannedEmail = async (email) => {
     try {
-      const response = await fetch(`http://localhost:5000/feedback/api/check-banned-email?email=${encodeURIComponent(email)}`);
+      const response = await fetch(`${API_BASE_URL}/feedback/api/check-banned-email?email=${encodeURIComponent(email)}`);
       const data = await response.json();
       return response.ok ? true : data.message;
     } catch (error) {
@@ -34,7 +34,7 @@ function Register() {
     }
 
     try {
-      const response = await fetch('http://localhost:5000/auth/register', {
+      const response = await fetch('${API_BASE_URL}/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

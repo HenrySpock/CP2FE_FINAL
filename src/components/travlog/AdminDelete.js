@@ -21,7 +21,7 @@ function AdminDelete({ travelogId, navigate }) {
   // Function to handle confirmation of deletion
   const handleConfirmDeletion = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/travelog/api/travelog/${travelogId}`, {
+      const response = await fetch(`${API_BASE_URL}/travelog/api/travelog/${travelogId}`, {
         method: 'DELETE',
       });
 

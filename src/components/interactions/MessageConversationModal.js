@@ -24,7 +24,7 @@ function MessageConversationModal({ activeConversation, onClose, friends, isAdmi
 
   const markMessagesAsRead = (conversationId) => {
     // console.log('conversationId: ', conversationId)
-    fetch(`http://localhost:5000/tally/mark-messages-as-read`, {
+    fetch(`${API_BASE_URL}/tally/mark-messages-as-read`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -50,7 +50,7 @@ function MessageConversationModal({ activeConversation, onClose, friends, isAdmi
   }; 
 
   useEffect(() => {
-    const socket = io('http://localhost:5000', { query: { userId: user.user_id }});  
+    const socket = io('${API_BASE_URL}', { query: { userId: user.user_id }});  
 
     socket.on('new-message', (message) => {  
       // console.log('Received new message:', message);
@@ -64,7 +64,7 @@ function MessageConversationModal({ activeConversation, onClose, friends, isAdmi
   useEffect(() => {
     const fetchConversation = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/conversations/${user.user_id}/${activeConversation.user_id}`);
+        const response = await fetch(`${API_BASE_URL}/api/conversations/${user.user_id}/${activeConversation.user_id}`);
 
         const data = await response.json();
         if (data.success) {
@@ -96,7 +96,7 @@ function MessageConversationModal({ activeConversation, onClose, friends, isAdmi
       markMessagesAsRead(activeConversation.user_id);
       try {
         // console.log('isWarning on POST request: ', activeConversation.isWarning)
-        const response = await fetch('http://localhost:5000/api/messages', {
+        const response = await fetch('${API_BASE_URL}/api/messages', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -125,7 +125,7 @@ function MessageConversationModal({ activeConversation, onClose, friends, isAdmi
 
   const handleDeleteConversation = async () => {
     try {
-        const response = await fetch(`http://localhost:5000/api/conversations/${user.user_id}/${activeConversation.user_id}`, {
+        const response = await fetch(`${API_BASE_URL}/api/conversations/${user.user_id}/${activeConversation.user_id}`, {
             method: 'DELETE',
         });
 

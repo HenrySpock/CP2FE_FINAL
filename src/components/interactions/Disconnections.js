@@ -17,8 +17,8 @@ function Disconnections() {
   async function unblockUser(blockId) {
     try {
       // console.log('blockId: ', blockId);
-      await axios.delete(`http://localhost:5000/api/block/${blockId}`); 
-      const response = await axios.get(`http://localhost:5000/api/user/${userId}/blocked-users`);
+      await axios.delete(`${API_BASE_URL}/api/block/${blockId}`); 
+      const response = await axios.get(`${API_BASE_URL}/api/user/${userId}/blocked-users`);
       setBlockedUsers(response.data);
     } catch (error) {
       console.error(error);
@@ -28,12 +28,12 @@ function Disconnections() {
   useEffect(() => {
     if (userId) {
       const fetchDeniedRequests = async () => {
-        const response = await axios.get(`http://localhost:5000/api/user/${userId}/denied-requests`);
+        const response = await axios.get(`${API_BASE_URL}/api/user/${userId}/denied-requests`);
         setDeniedRequests(response.data);
       };
 
       const fetchBlockedUsers = async () => {
-        const response = await axios.get(`http://localhost:5000/api/user/${userId}/blocked-users`);
+        const response = await axios.get(`${API_BASE_URL}/api/user/${userId}/blocked-users`);
         setBlockedUsers(response.data);
       };
 
@@ -44,7 +44,7 @@ function Disconnections() {
 
   const handleAccept = async (sender_id, recipient_id) => {
     try {
-      const response = await fetch('http://localhost:5000/api/friends/request/undenied', {
+      const response = await fetch('${API_BASE_URL}/api/friends/request/undenied', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ sender_id, recipient_id })
@@ -68,7 +68,7 @@ function Disconnections() {
 
   const handleDismiss = async (friendshipId) => {
     try {
-      const response = await fetch('http://localhost:5000/api/friends/request/dismiss', {
+      const response = await fetch('${API_BASE_URL}/api/friends/request/dismiss', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ friendshipId })

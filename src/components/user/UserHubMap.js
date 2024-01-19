@@ -36,7 +36,7 @@ function UserHubMap({ travelogs, trips }) {
   const handleRecenter = async (newLat, newLng) => {
     if (!isNaN(newLat) && !isNaN(newLng)) {
       try {
-        const response = await fetch(`http://localhost:5000/travelog/api/user/${user.user_id}/mapCenter`, {
+        const response = await fetch(`${API_BASE_URL}/travelog/api/user/${user.user_id}/mapCenter`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ mapCenter: [newLat, newLng] })
@@ -57,7 +57,7 @@ function UserHubMap({ travelogs, trips }) {
     // Update the user context and database
     try {
       // console.log('newZoomLevel: ', newZoomLevel);
-      const response = await fetch(`http://localhost:5000/user/api/user/${user.user_id}`, {
+      const response = await fetch(`${API_BASE_URL}/user/api/user/${user.user_id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ userZoom: newZoomLevel })  
@@ -89,7 +89,7 @@ function UserHubMap({ travelogs, trips }) {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/user/api/user/${user.user_id}`);
+        const response = await fetch(`${API_BASE_URL}/user/api/user/${user.user_id}`);
         const userData = await response.json();
         if (response.ok) {  
           // console.log('User data:', userData);

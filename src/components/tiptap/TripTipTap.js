@@ -24,7 +24,7 @@ const TripTipTap = () => {
   useEffect(() => {
     const fetchTripentry = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/trip/get_tripentry/${tripId}`);
+        const response = await fetch(`${API_BASE_URL}/trip/get_tripentry/${tripId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch tripentry');
         }
@@ -64,7 +64,7 @@ const TripTipTap = () => {
         return; // Stop the function here as forbidden words are found
       }
 
-      const response = await fetch(`http://localhost:5000/trip/update_tripentry/${tripId}`, {
+      const response = await fetch(`${API_BASE_URL}/trip/update_tripentry/${tripId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -85,7 +85,7 @@ const TripTipTap = () => {
 
   const handleDeleteEntryClick = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/trip/delete_tripentry/${tripId}`, {
+      const response = await fetch(`${API_BASE_URL}/trip/delete_tripentry/${tripId}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
