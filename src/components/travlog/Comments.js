@@ -21,7 +21,7 @@ const Comments = ({ travelog, setTravelog, trip, setTrip, profileUser, userData,
           const authorId = travelog ? travelog.user_id : trip ? trip.user_id : null; 
           if (!authorId) throw new Error('No author ID provided');
   
-          const response = await fetch(`${API_BASE_URL}/travelog/api/users/${authorId}/block-status/${currentUser.user_id}`);
+          const response = await fetch(`https://lgcbe.onrender.com/travelog/api/users/${authorId}/block-status/${currentUser.user_id}`);
           if (!response.ok) throw new Error('Network response was not ok ' + response.statusText);
           const data = await response.json();
           if (data.isBlocked) {

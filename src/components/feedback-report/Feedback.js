@@ -19,7 +19,7 @@ function Feedback() {
     };
   
     try {
-      const response = await fetch('${API_BASE_URL}/feedback/submit-feedback', {
+      const response = await fetch('https://lgcbe.onrender.com/feedback/submit-feedback', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

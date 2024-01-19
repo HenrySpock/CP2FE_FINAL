@@ -103,7 +103,7 @@ function TripLikes({ currentUser, profileUser, userData, contextUser, trip_id })
       // console.log('api/likers/trip trip_id: ', trip_id)
       const fetchLikers = async () => {
         try {
-          const response = await fetch(`${API_BASE_URL}/api/likers/trip?trip_id=${trip_id}`);
+          const response = await fetch(`https://lgcbe.onrender.com/api/likers/trip?trip_id=${trip_id}`);
           if (!response.ok) {
             throw new Error('Failed to fetch trip likers');
           }
@@ -124,7 +124,7 @@ function TripLikes({ currentUser, profileUser, userData, contextUser, trip_id })
       // console.log('api/likers/trip/writing trip_id: ', trip_id)
       const fetchWritingLikers = async () => {
         try {
-          const response = await fetch(`${API_BASE_URL}/api/likers/trip/writing?trip_id=${trip_id}`);
+          const response = await fetch(`https://lgcbe.onrender.com/api/likers/trip/writing?trip_id=${trip_id}`);
           if (!response.ok) {
             throw new Error('Failed to fetch writing likers');
           }
@@ -144,7 +144,7 @@ function TripLikes({ currentUser, profileUser, userData, contextUser, trip_id })
     if (trip_id) {
       const fetchEducationalLikers = async () => {
         try {
-          const response = await fetch(`${API_BASE_URL}/api/likers/educational-trip?trip_id=${trip_id}`);
+          const response = await fetch(`https://lgcbe.onrender.com/api/likers/educational-trip?trip_id=${trip_id}`);
           if (!response.ok) {
             throw new Error('Failed to fetch educational trip likers');
           }
@@ -164,7 +164,7 @@ function TripLikes({ currentUser, profileUser, userData, contextUser, trip_id })
     const fetchLikeStatus = async () => {
       if (userData && contextUser && trip_id) {
         try {
-          const response = await fetch(`${API_BASE_URL}/api/likes/trip/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&trip_id=${trip_id}`);
+          const response = await fetch(`https://lgcbe.onrender.com/api/likes/trip/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&trip_id=${trip_id}`);
           if (!response.ok) {
             throw new Error('Failed to check like status');
           }
@@ -185,7 +185,7 @@ useEffect(() => {
   const fetchWritingLikeStatus = async () => {
     if (userData && contextUser && trip_id) {
       try {
-        const response = await fetch(`${API_BASE_URL}/api/likes/writing/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&trip_id=${trip_id}`);
+        const response = await fetch(`https://lgcbe.onrender.com/api/likes/writing/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&trip_id=${trip_id}`);
         if (!response.ok) {
           throw new Error('Failed to check writing like status');
         }
@@ -208,7 +208,7 @@ useEffect(() => {
     const fetchEducationalLikeStatus = async () => {
       if (userData && contextUser && trip_id) {
         try {
-          const response = await fetch(`${API_BASE_URL}/api/likes/educational-trip/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&trip_id=${trip_id}`);
+          const response = await fetch(`https://lgcbe.onrender.com/api/likes/educational-trip/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&trip_id=${trip_id}`);
           if (!response.ok) {
             throw new Error('Failed to check educational like status');
           }
@@ -229,7 +229,7 @@ useEffect(() => {
     // console.log('trip_likes trip_id: ', trip_id)
     
     try {
-      const response = await fetch('${API_BASE_URL}/api/likes/trip', {
+      const response = await fetch('https://lgcbe.onrender.com/api/likes/trip', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

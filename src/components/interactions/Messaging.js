@@ -15,7 +15,7 @@ function Messages() {
   
   const markMessagesAsRead = (conversationId) => {
     // console.log('conversationId: ', conversationId)
-    fetch(`${API_BASE_URL}/tally/mark-messages-as-read`, {
+    fetch(`https://lgcbe.onrender.com/tally/mark-messages-as-read`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -36,7 +36,7 @@ function Messages() {
  
   useEffect(() => {
     const fetchAndUpdateAdminMessages = () => {
-      fetch(`${API_BASE_URL}/api/admin-messages/${user.user_id}`)
+      fetch(`https://lgcbe.onrender.com/api/admin-messages/${user.user_id}`)
         .then(response => response.json())
         .then(({ adminUser, unreadCount, readCount, allReportsCleared }) => {
           // console.log('ALLREPORTSCLEARED: ', allReportsCleared)
@@ -57,7 +57,7 @@ function Messages() {
     if (user) {
       const intervalId = setInterval(() => { 
          
-            fetch(`${API_BASE_URL}/api/friends/${user.user_id}`)
+            fetch(`https://lgcbe.onrender.com/api/friends/${user.user_id}`)
               .then(response => response.json())
               .then(data => {
                 // console.log('Fetched friends data:', data);

@@ -73,7 +73,7 @@ function TripDet() {
   useEffect(() => {
     const fetchUserDataByUsername = async (username) => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/user/api/users/${username}`);
+        const response = await axios.get(`https://lgcbe.onrender.com/user/api/users/${username}`);
         if (response.status === 200) {
           setUserData(response.data); // Set userData state with the fetched user data
         } else if (response.status === 404) {
@@ -149,7 +149,7 @@ function TripDet() {
       if (trip_id) {
         try {
           // First, try to fetch a public trip or a private trip where the user is the author
-          const response = await axios.get(`${API_BASE_URL}/trip/api/tripgetnotprivate/${trip_id}`);
+          const response = await axios.get(`https://lgcbe.onrender.com/trip/api/tripgetnotprivate/${trip_id}`);
           if (response.data) {
             // Trip data is successfully fetched
             setIsLoadingUser(false);
@@ -169,7 +169,7 @@ function TripDet() {
       if (user && trip_id) {
         try {
           // Check if the current user is the author of a private trip
-          const authorResponse = await axios.get(`${API_BASE_URL}/trip/api/tripget/${trip_id}`, { params: { userId: user.user_id } });
+          const authorResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/tripget/${trip_id}`, { params: { userId: user.user_id } });
           if (authorResponse.data) {
             setIsLoadingUser(false);
             setIsAccessCheckComplete(true);
@@ -183,7 +183,7 @@ function TripDet() {
       if (user && user.user_id && trip_id) {
         try {
           // Perform the permissions check for other users
-          const permissionResponse = await axios.get(`${API_BASE_URL}/permissions/check`, { params: { tripId: trip_id, granteeId: user.user_id } });
+          const permissionResponse = await axios.get(`https://lgcbe.onrender.com/permissions/check`, { params: { tripId: trip_id, granteeId: user.user_id } });
           const permissionData = permissionResponse.data;
           if (permissionData.hasAccess) {
             setIsLoadingUser(false);
@@ -206,7 +206,7 @@ function TripDet() {
     const incrementViewCount = async () => {
       // console.log('Incrementing view count for trip_id:', trip_id);
       try {
-        const response = await fetch(`${API_BASE_URL}/viewcount/api/trip/increment-view-count/${trip_id}`, { method: 'PATCH' });
+        const response = await fetch(`https://lgcbe.onrender.com/viewcount/api/trip/increment-view-count/${trip_id}`, { method: 'PATCH' });
         if (!response.ok) throw new Error('Failed to increment view count');
         // console.log('View count incremented for trip:', trip_id);
       } catch (error) {
@@ -217,7 +217,7 @@ function TripDet() {
     if (user) {
       const fetchTrip = async () => {
         try {
-          const response = await axios.get(`${API_BASE_URL}/trip/api/tripdet/${trip_id}`);
+          const response = await axios.get(`https://lgcbe.onrender.com/trip/api/tripdet/${trip_id}`);
           setTrip(response.data);
           setEditedTrip(response.data); 
           setMapOptions(currentOptions => ({
@@ -244,7 +244,7 @@ function TripDet() {
   useEffect(() => {
     const fetchTravelogs = async () => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/trip/api/travelogs/${trip_id}`); 
+        const response = await axios.get(`https://lgcbe.onrender.com/trip/api/travelogs/${trip_id}`); 
 
         const sortedTravelogs = response.data.sort((a, b) => new Date(a.dateVisited) - new Date(b.dateVisited));
         setTravelogs(sortedTravelogs);
@@ -263,7 +263,7 @@ function TripDet() {
     const fetchUserTravelogs = async () => { 
       // console.log('user.user_id: ', user.user_id);
       try {
-        const response = await axios.get(`${API_BASE_URL}/travelog/api/user/${user.user_id}/travelogs`);
+        const response = await axios.get(`https://lgcbe.onrender.com/travelog/api/user/${user.user_id}/travelogs`);
         const userTravelogs = response.data;
         const available = userTravelogs.filter(t => t.tripId === null);
         setAvailableTravelogs(available);
@@ -324,7 +324,7 @@ function TripDet() {
   
     try {
       // Update the trip itself
-      await axios.patch(`${API_BASE_URL}/trip/api/trips/${trip_id}`, editedTrip);
+      await axios.patch(`https://lgcbe.onrender.com/trip/api/trips/${trip_id}`, editedTrip);
   
       // Make a list of travelog IDs that were initially selected for the trip
       const initiallySelectedTravelogs = travelogs.map(t => t.travelogId);
@@ -335,12 +335,12 @@ function TripDet() {
   
       // Send requests to update travelogs that have been selected
       const addPromises = travelogsToAdd.map(travelog =>
-        axios.patch(`${API_BASE_URL}/travelog/api/travelog/${travelog.travelogId}`, { tripId: trip_id, user_id: user.user_id })
+        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelogId}`, { tripId: trip_id, user_id: user.user_id })
       );
   
       // Send requests to update travelogs that have been deselected
       const removePromises = travelogsToRemove.map(travelog =>
-        axios.patch(`${API_BASE_URL}/travelog/api/travelog/${travelog.travelogId}`, { tripId: null, user_id: user.user_id })
+        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelogId}`, { tripId: null, user_id: user.user_id })
       );
   
       // Wait for all the update requests to finish
@@ -368,7 +368,7 @@ function TripDet() {
       try {
         const user_id = user.user_id;
         // console.log('user_id on deleting frontend: ', user_id)
-        await axios.delete(`${API_BASE_URL}/trip/api/trips/${trip_id}?user_id=${user_id}`);
+        await axios.delete(`https://lgcbe.onrender.com/trip/api/trips/${trip_id}?user_id=${user_id}`);
         navigate('/hub'); // Navigate back to the hub after deletion
       } catch (error) {
         console.error('Error deleting trip:', error);
@@ -387,7 +387,7 @@ function TripDet() {
         email: user.email,
       };
 
-      const response = await fetch(`${API_BASE_URL}/feedback/api/trip/${trip_id}/report`, { 
+      const response = await fetch(`https://lgcbe.onrender.com/feedback/api/trip/${trip_id}/report`, { 
         method: 'POST', // Use PATCH to update the user table and send the complaint details
         headers: {
           'Content-Type': 'application/json',

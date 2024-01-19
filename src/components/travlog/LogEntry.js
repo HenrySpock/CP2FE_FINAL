@@ -91,7 +91,7 @@ function LogEntry() {
     if (user && user.user_id) {
       const fetchTrips = async () => {
         try {
-          const response = await axios.get(`${API_BASE_URL}/trip/api/trips/${user.user_id}`);
+          const response = await axios.get(`https://lgcbe.onrender.com/trip/api/trips/${user.user_id}`);
           setTrips(response.data);
           // console.log('Fetched Trips: ', response.data);
         } catch (error) {
@@ -181,7 +181,7 @@ function LogEntry() {
 
     try {
       setError(null); // Clear any previous errors
-      const response = await axios.get('${API_BASE_URL}/yelp/yelp-search', {
+      const response = await axios.get('https://lgcbe.onrender.com/yelp/yelp-search', {
         params: {
           country,
           state,
@@ -238,7 +238,7 @@ function LogEntry() {
       
       try {
         // Submit the travelog data and the image URLs together
-        const response = await axios.post('${API_BASE_URL}/travelog/api/travelog', dataToSend); 
+        const response = await axios.post('https://lgcbe.onrender.com/travelog/api/travelog', dataToSend); 
         // console.log('All data saved successfully', response.data);
         resetForm();
         setIsSubmitting(false); 

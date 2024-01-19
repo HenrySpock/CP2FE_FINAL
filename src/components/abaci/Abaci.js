@@ -81,7 +81,7 @@ function Abaci() {
   // "Most Prolific Authors"
   const fetchProlificAuthors = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/prolific-authors');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/prolific-authors');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -100,7 +100,7 @@ function Abaci() {
   // "Most Prolific Trip Authors"
   const fetchProlificTripAuthors = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/prolific-trip-authors');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/prolific-trip-authors');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -119,7 +119,7 @@ function Abaci() {
   // "Most Prolific Travelog Authors"
   const fetchProlificTravelogAuthors = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/prolific-travelog-authors');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/prolific-travelog-authors');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -138,7 +138,7 @@ function Abaci() {
   // Fetch function for Most Prolific Photographers
   const fetchProlificPhotographers = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/prolific-photographers');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/prolific-photographers');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -157,7 +157,7 @@ function Abaci() {
   // Fetch function for Top 5 Followed Users
   const fetchMostFollowedUsers = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/top-followed-users');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/top-followed-users');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -176,7 +176,7 @@ function Abaci() {
   // Fetch function for Most Followed Authors
   const fetchMostFollowedAuthors = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-followed-authors');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-followed-authors');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -195,7 +195,7 @@ function Abaci() {
   // Fetch function for Most Followed Photographers
   const fetchMostFollowedPhotographers = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-followed-photographers');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-followed-photographers');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -214,7 +214,7 @@ function Abaci() {
   // Fetch most liked travelers 
   const fetchLikedTravelers = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-liked-travelers');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-liked-travelers');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -233,7 +233,7 @@ function Abaci() {
   // Inside your React component
   const fetchLikedAuthors = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-liked-authors');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-liked-authors');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -252,7 +252,7 @@ function Abaci() {
   // Fetching most liked trip authors 
   const fetchLikedTripAuthors = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-liked-trip-authors');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-liked-trip-authors');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -271,7 +271,7 @@ function Abaci() {
   // Fetching most liked trip authors 
   const fetchLikedTravelogAuthors = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-liked-travelog-authors');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-liked-travelog-authors');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -290,7 +290,7 @@ function Abaci() {
     // Fetching most liked photographers
   const fetchLikedPhotographers = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-liked-photographers');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-liked-photographers');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -309,7 +309,7 @@ function Abaci() {
     // Fetching users who have taken the most trips
   const fetchTopTripTravelers = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/top-trip-travelers');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/top-trip-travelers');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -328,7 +328,7 @@ function Abaci() {
   // Fetching users who have visited the most sites
   const fetchTopTravelogTravelers = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/top-travelog-travelers');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/top-travelog-travelers');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -346,7 +346,7 @@ function Abaci() {
 
   const fetchMostLikedTrips = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-liked-trips');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-liked-trips');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -363,7 +363,7 @@ function Abaci() {
 
   const fetchMostLikedTravelogs = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-liked-travelogs');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-liked-travelogs');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -380,7 +380,7 @@ function Abaci() {
 
   const fetchTopUsersByUniqueCountries = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/top-users-by-unique-countries');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/top-users-by-unique-countries');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -461,7 +461,7 @@ function Abaci() {
 // Fetch function for Most Visited Countries
 const fetchCountriesMostVisited = async () => {
   try {
-    const response = await fetch('${API_BASE_URL}/abaci/countries-most-traveled');
+    const response = await fetch('https://lgcbe.onrender.com/abaci/countries-most-traveled');
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
@@ -481,7 +481,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchCountriesMostWantToVisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/countries-most-want-to-visit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/countries-most-want-to-visit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -501,7 +501,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchCountriesMostWantToRevisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/countries-most-want-to-revisit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/countries-most-want-to-revisit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -521,7 +521,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchCitiesVisited = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/cities-visited');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/cities-visited');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -541,7 +541,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchCitiesMostWantToVisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/cities-most-want-to-visit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/cities-most-want-to-visit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -561,7 +561,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchCitiesMostWantToRevisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/cities-most-want-to-revisit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/cities-most-want-to-revisit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -581,7 +581,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchSitesVisited = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/sites-visited');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/sites-visited');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -602,7 +602,7 @@ const fetchCountriesMostVisited = async () => {
   
   const fetchSitesMostWantToVisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/sites-most-want-to-visit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/sites-most-want-to-visit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -623,7 +623,7 @@ const fetchCountriesMostVisited = async () => {
   
   const fetchSitesMostWantToRevisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/sites-most-want-to-revisit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/sites-most-want-to-revisit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -644,7 +644,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchVideoGameSitesVisited = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/video-game-sites-visited');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/video-game-sites-visited');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -661,7 +661,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchVideoGameSitesMostWantToVisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/video-game-sites-most-want-to-visit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/video-game-sites-most-want-to-visit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -678,7 +678,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchVideoGameSitesMostWantToRevisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/video-game-sites-most-want-to-revisit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/video-game-sites-most-want-to-revisit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -695,7 +695,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchFilmSitesVisited = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/film-sites-visited');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/film-sites-visited');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -712,7 +712,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchFilmSitesMostWantToVisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/film-sites-most-want-to-visit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/film-sites-most-want-to-visit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -729,7 +729,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchFilmSitesMostWantToRevisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/film-sites-most-want-to-revisit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/film-sites-most-want-to-revisit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -746,7 +746,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchUNESCOSitesVisited = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/unesco-sites-visited');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/unesco-sites-visited');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -763,7 +763,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchUNESCOSitesMostWantToVisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/unesco-sites-most-want-to-visit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/unesco-sites-most-want-to-visit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -780,7 +780,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchUNESCOSitesMostWantToRevisit = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/unesco-sites-most-want-to-revisit');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/unesco-sites-most-want-to-revisit');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -797,7 +797,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchEducationalTrips = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/educational-trips');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/educational-trips');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -814,7 +814,7 @@ const fetchCountriesMostVisited = async () => {
   
   const fetchInformativeTravelogs = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/informative-travelogs');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/informative-travelogs');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -831,7 +831,7 @@ const fetchCountriesMostVisited = async () => {
   
   const fetchMostEducationalAuthors = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-educational-authors');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-educational-authors');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -848,7 +848,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchLongestTrips = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/longest-trips');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/longest-trips');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -865,7 +865,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchDensestTrips = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/densest-trips');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/densest-trips');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -882,7 +882,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchDiverseTrips = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/diverse-trips');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/diverse-trips');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -899,7 +899,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchDiverseTravelers = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/diverse-travelers');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/diverse-travelers');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -916,7 +916,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchDiverseTripConversations = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/diverse-trip-conversations');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/diverse-trip-conversations');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -933,7 +933,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchDiverseTravelogConversations = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/diverse-travelog-conversations');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/diverse-travelog-conversations');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -950,7 +950,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchLongestTripConversations = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/longest-trip-conversations');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/longest-trip-conversations');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -967,7 +967,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchLongestTravelogConversations = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/longest-travelog-conversations');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/longest-travelog-conversations');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -984,7 +984,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchMostLikedCommenters = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-liked-commenters');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-liked-commenters');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -1001,7 +1001,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchTopLikedTripComments = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/top-liked-trip-comments');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/top-liked-trip-comments');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -1018,7 +1018,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchTopLikedTravelogComments = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/top-liked-travelog-comments');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/top-liked-travelog-comments');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -1035,7 +1035,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchTopLikedImages = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/top-liked-images');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/top-liked-images');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -1052,7 +1052,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchMostViewedProfiles = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-viewed-profiles');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-viewed-profiles');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -1069,7 +1069,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchMostViewedTrips = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-viewed-trips');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-viewed-trips');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -1086,7 +1086,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchMostViewedTravelogs = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-viewed-travelogs');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-viewed-travelogs');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -1103,7 +1103,7 @@ const fetchCountriesMostVisited = async () => {
 
   const fetchMostViewedImages = async () => {
     try {
-      const response = await fetch('${API_BASE_URL}/abaci/most-viewed-images');
+      const response = await fetch('https://lgcbe.onrender.com/abaci/most-viewed-images');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }

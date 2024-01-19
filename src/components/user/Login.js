@@ -16,14 +16,14 @@ function Login() {
   
     try {
       // Get user's email based on the username
-      const emailResponse = await fetch(`${API_BASE_URL}/feedback/api/get-user-email?username=${encodeURIComponent(data.username)}`);
+      const emailResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/get-user-email?username=${encodeURIComponent(data.username)}`);
       if (!emailResponse.ok) {
         setErrorMessage('Username / Email not found or invalid.');
         return;
       }
       const { email } = await emailResponse.json(); 
       // Check for suspension
-      const suspensionResponse = await fetch(`${API_BASE_URL}/feedback/api/check-suspension?userEmail=${encodeURIComponent(email)}`);
+      const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${encodeURIComponent(email)}`);
       if (suspensionResponse.ok) {
         const suspensionData = await suspensionResponse.json();
         // console.log('suspensionData: ', suspensionData)
@@ -34,7 +34,7 @@ function Login() {
       }
   
       // Proceed with login if not suspended
-      const response = await fetch('${API_BASE_URL}/auth/login', {
+      const response = await fetch('https://lgcbe.onrender.com/auth/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

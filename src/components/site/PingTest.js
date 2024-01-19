@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 
 function PingTest() {
   useEffect(() => { 
-    const backendPingUrl = '${API_BASE_URL}/ping';  
+    const backendPingUrl = 'https://lgcbe.onrender.com/ping';  
 
     // Make a GET request to the backend's ping endpoint
     fetch(backendPingUrl)

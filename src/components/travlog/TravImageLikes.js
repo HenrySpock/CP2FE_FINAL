@@ -32,7 +32,7 @@ function ImageLikes({ currentUser, profileUser, userData, contextUser, travelog_
 
     // Fetch Likers
     const fetchLikers = useCallback(async () => {
-      const response = await fetch(`${API_BASE_URL}/api/likers/image?image_id=${image_id}`);
+      const response = await fetch(`https://lgcbe.onrender.com/api/likers/image?image_id=${image_id}`);
       const data = await response.json();
       setLikers(data);
     }, [image_id]);
@@ -61,7 +61,7 @@ function ImageLikes({ currentUser, profileUser, userData, contextUser, travelog_
           }
 
           // Fetch Like Status
-          const response = await fetch(`${API_BASE_URL}/api/likes/image/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&image_id=${image_id}`);
+          const response = await fetch(`https://lgcbe.onrender.com/api/likes/image/check?user_id=${userData.user_id}&liker_id=${contextUser.user_id}&image_id=${image_id}`);
           const data = await response.json();
           setIsLiked(data.image);
 
@@ -77,7 +77,7 @@ function ImageLikes({ currentUser, profileUser, userData, contextUser, travelog_
     const handleLikeClick = async () => {
         if (isCurrentUserProfileUser) return;
 
-        const response = await fetch('${API_BASE_URL}/api/likes/image', {
+        const response = await fetch('https://lgcbe.onrender.com/api/likes/image', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({

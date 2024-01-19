@@ -20,7 +20,7 @@ function Password() {
       return;
     }
     try {
-      await axios.patch(`${API_BASE_URL}/user/api/user/${user.user_id}/password`, {
+      await axios.patch(`https://lgcbe.onrender.com/user/api/user/${user.user_id}/password`, {
         oldPassword,
         newPassword
       });

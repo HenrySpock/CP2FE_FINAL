@@ -16,7 +16,7 @@ function EmailVerification() {
   const verifyEmailToken = async (token) => {
     // console.log("DEBUG Verifying token:", token);
     try {
-      const response = await fetch(`${API_BASE_URL}/auth/verify_email?token=${encodeURIComponent(token)}`, {
+      const response = await fetch(`https://lgcbe.onrender.com/auth/verify_email?token=${encodeURIComponent(token)}`, {
         method: 'PATCH', 
       });
 

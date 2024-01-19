@@ -52,7 +52,7 @@ function AdminPanel() {
   };
 
   const markMessagesAsRead = (conversationId) => {
-    fetch(`${API_BASE_URL}/tally/mark-messages-as-read`, {
+    fetch(`https://lgcbe.onrender.com/tally/mark-messages-as-read`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ function AdminPanel() {
           const otherUserId = report.ReportedUser?.user_id || report.ReportedTrip?.User.user_id || report.ReportedTravelog?.User.user_id || report.ReportedComment?.user_id;
           // console.log('otheruserId: ', otherUserId)
           if (otherUserId) {
-            const response = await fetch(`${API_BASE_URL}/tally/unread-messages-count?adminUserId=${user.user_id}&otherUserId=${otherUserId}`);
+            const response = await fetch(`https://lgcbe.onrender.com/tally/unread-messages-count?adminUserId=${user.user_id}&otherUserId=${otherUserId}`);
             if(response.ok) {
               const data = await response.json();
               newUnreadCounts[otherUserId] = data.unreadCount;
@@ -121,7 +121,7 @@ function AdminPanel() {
   useEffect(() => {
     async function fetchReportedFeedback() {
       try {
-        const response = await axios.get('${API_BASE_URL}/feedback/api/reported-feedback');
+        const response = await axios.get('https://lgcbe.onrender.com/feedback/api/reported-feedback');
         const reportedFeedbackData = response.data;
         // console.log('Reported Travelogs: ', response.data)
 
@@ -129,7 +129,7 @@ function AdminPanel() {
         const suspensionChecks = reportedFeedbackData.map(async (report) => {
           const userEmail = report.ReportedUser?.email || report.ReportedTrip?.User.email || report.ReportedTravelog?.User.email || report.ReportedComment?.user.email;
           if (userEmail) {
-            const suspensionResponse = await axios.get(`${API_BASE_URL}/feedback/api/check-suspension?userEmail=${userEmail}`);
+            const suspensionResponse = await axios.get(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${userEmail}`);
             return { userEmail, isSuspended: suspensionResponse.data.isSuspended };
           }
           return null;
@@ -151,7 +151,7 @@ function AdminPanel() {
     
   const handleClearReport = async (reportId, index) => {
     try {
-      const response = await axios.patch(`${API_BASE_URL}/feedback/api/clear-report/${reportId}/clear`, {
+      const response = await axios.patch(`https://lgcbe.onrender.com/feedback/api/clear-report/${reportId}/clear`, {
         cleared: true,
         adminUserId: user.user_id
       });
@@ -181,7 +181,7 @@ function AdminPanel() {
       // Fetch suspensions for all reported users
       reportedFeedback.forEach(async (report) => {
         if (report.ReportedUser) {
-          const response = await axios.get(`${API_BASE_URL}/feedback/api/check-suspension?userEmail=${report.ReportedUser.email}`);
+          const response = await axios.get(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${report.ReportedUser.email}`);
           if (response.data.isSuspended) {
             setSuspendedUsers(prev => new Set([...prev, report.ReportedUser.email]));
           }
@@ -198,7 +198,7 @@ function AdminPanel() {
     const isCurrentlySuspended = suspendedUsers.has(userEmail);
     const action = isCurrentlySuspended ? 'unsuspend' : 'suspend';
     try {
-      const response = await axios.post('${API_BASE_URL}/feedback/api/suspend', {
+      const response = await axios.post('https://lgcbe.onrender.com/feedback/api/suspend', {
         userEmail,
         action,
       });
@@ -233,7 +233,7 @@ function AdminPanel() {
     try {
       // console.log('email: ', email, 'userId: ', userId)
       // Add the email to the banned_emails table
-      const banResponse = await fetch('${API_BASE_URL}/feedback/ban-email', {
+      const banResponse = await fetch('https://lgcbe.onrender.com/feedback/ban-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email }),
@@ -241,7 +241,7 @@ function AdminPanel() {
 
       if (banResponse.ok) {
         // Email banned successfully, now delete the user
-        const deleteUserResponse = await fetch(`${API_BASE_URL}/user/api/user/${userId}`, {
+        const deleteUserResponse = await fetch(`https://lgcbe.onrender.com/user/api/user/${userId}`, {
           method: 'DELETE',
         });
 
@@ -269,7 +269,7 @@ function AdminPanel() {
   const handleNotifyUser = async (userId) => {
     // console.log('userId: ', userId)
     try {
-      const response = await fetch('${API_BASE_URL}/api/notify-user', {
+      const response = await fetch('https://lgcbe.onrender.com/api/notify-user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

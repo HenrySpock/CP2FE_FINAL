@@ -19,7 +19,7 @@ function Permissions() {
   useEffect(() => {
     const fetchFriendsAndPermissions = async () => {
       try {
-        const friendsResponse = await axios.get(`${API_BASE_URL}/api/friends/${user.user_id}`);
+        const friendsResponse = await axios.get(`https://lgcbe.onrender.com/api/friends/${user.user_id}`);
         const friendsList = friendsResponse.data;
 
         const grantAccessList = [];
@@ -27,7 +27,7 @@ function Permissions() {
 
         for (const friend of friendsList) {
           // Updated endpoint to check permissions for specific entityId and entityType
-          const permissionResponse = await axios.get(`${API_BASE_URL}/api/permissions/specific/${friend.user_id}`, {
+          const permissionResponse = await axios.get(`https://lgcbe.onrender.com/api/permissions/specific/${friend.user_id}`, {
             params: { entityId: entityId, entityType: entityType }
           });
           const hasSpecificAccess = permissionResponse.data.hasAccess;
@@ -79,7 +79,7 @@ function Permissions() {
     }));
 
     try {
-      await axios.patch('${API_BASE_URL}/permissions/update', updatedPermissions);
+      await axios.patch('https://lgcbe.onrender.com/permissions/update', updatedPermissions);
       const detailPage = entityType === 'travelog' ? 'trav_det' : 'trip_det';
       navigate(`/${detailPage}/${entityId}`); // Navigate back to the relevant page
     } catch (error) {

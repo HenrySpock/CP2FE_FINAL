@@ -128,7 +128,7 @@ const updateImageUrl = (earliestTravelog) => {
     const fetchTravelogs = async () => {
       if (user) {
         try {
-          const response = await fetch(`${API_BASE_URL}/trip/api/travelogs?userId=${user.user_id}&tripId=null`);
+          const response = await fetch(`https://lgcbe.onrender.com/trip/api/travelogs?userId=${user.user_id}&tripId=null`);
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
@@ -173,7 +173,7 @@ const updateImageUrl = (earliestTravelog) => {
 
     // console.log('newTrip: ', newTrip)
     try {
-      const response = await fetch('${API_BASE_URL}/trip/api/trips', {
+      const response = await fetch('https://lgcbe.onrender.com/trip/api/trips', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -192,7 +192,7 @@ const updateImageUrl = (earliestTravelog) => {
         // console.log('trying to set trip_id on travelog: ', travelog, 'the tripId is: ', tripId)
         try {
           const travelogId = travelog.travelogId; 
-          const travelogResponse = await fetch(`${API_BASE_URL}/travelog/api/travelog/${travelogId}`, {
+          const travelogResponse = await fetch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',

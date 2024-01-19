@@ -23,26 +23,26 @@ const Tally = () => {
             // TALLYING 06 
           
 
-          const userNotificationsResponse = await fetch(`${API_BASE_URL}/tally/unread-user-notifications?userId=${user.user_id}`, {
+          const userNotificationsResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-user-notifications?userId=${user.user_id}`, {
             method: 'GET', 
           });
  
-          const userMessagesResponse = await fetch(`${API_BASE_URL}/tally/unread-user-messages?userId=${user.user_id}&isAdmin=${user.isAdmin}`, {
+          const userMessagesResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-user-messages?userId=${user.user_id}&isAdmin=${user.isAdmin}`, {
             method: 'GET',
           });
 
-          const adminMessagesResponse = await fetch(`${API_BASE_URL}/tally/unread-admin-messages?userId=${user.user_id}`, {
+          const adminMessagesResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-admin-messages?userId=${user.user_id}`, {
             method: 'GET',
           });
           
-          const adminReportsResponse = await fetch(`${API_BASE_URL}/tally/unread-admin-reports`, {
+          const adminReportsResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-admin-reports`, {
             method: 'GET',
           });
   
           const checkUserStatus = async () => {
             if (user && isAuthenticated) {
               // Check for maintenance mode
-              const maintenanceResponse = await fetch('${API_BASE_URL}/api/maintenance/status');
+              const maintenanceResponse = await fetch('https://lgcbe.onrender.com/api/maintenance/status');
               const maintenanceData = await maintenanceResponse.json();
 
               if (maintenanceData.maintenanceActive && !user.isAdmin) {
@@ -51,7 +51,7 @@ const Tally = () => {
               }
 
               // Check for suspension
-              const suspensionResponse = await fetch(`${API_BASE_URL}/feedback/api/check-suspension?userEmail=${encodeURIComponent(user.email)}`);
+              const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${encodeURIComponent(user.email)}`);
               const suspensionData = await suspensionResponse.json();
               if (suspensionData.isSuspended) {
                 logout();
@@ -59,7 +59,7 @@ const Tally = () => {
               }
 
               // Check for banned email
-              const bannedEmailResponse = await fetch(`${API_BASE_URL}/feedback/api/check-banned-email?email=${encodeURIComponent(user.email)}`);
+              const bannedEmailResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-banned-email?email=${encodeURIComponent(user.email)}`);
               const bannedEmailData = await bannedEmailResponse.json();
               if (bannedEmailData.message === 'Invalid email address. Use another.') {
                 logout();
@@ -72,7 +72,7 @@ const Tally = () => {
 
           const checkForMaintenance = async () => {
             try {
-              const maintenanceResponse = await fetch('${API_BASE_URL}/api/maintenance/status');
+              const maintenanceResponse = await fetch('https://lgcbe.onrender.com/api/maintenance/status');
               
               const maintenanceData = await maintenanceResponse.json();
 

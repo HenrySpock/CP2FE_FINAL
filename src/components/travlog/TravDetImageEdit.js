@@ -48,7 +48,7 @@ function TravDetImageEdit({ user, travelogId, fetchTravelog, initialImages, user
 
     const incrementImageViewCount = async (image_id) => {
         try {
-          const response = await fetch(`${API_BASE_URL}/viewcount/api/image/increment-view-count/${image_id}`, {
+          const response = await fetch(`https://lgcbe.onrender.com/viewcount/api/image/increment-view-count/${image_id}`, {
             method: 'PATCH',
           });
       
@@ -127,14 +127,14 @@ function TravDetImageEdit({ user, travelogId, fetchTravelog, initialImages, user
       try {
           // First, delete the images marked for deletion
           if (deletedImageIds.length > 0) {
-              await axios.post(`${API_BASE_URL}/travelog/api/travelog/${travelogId}/delete-images`, {
+              await axios.post(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}/delete-images`, {
                   imageIds: deletedImageIds,
                   user_id: user.user_id,
               });
           }
   
           // Then, save the remaining images
-          const response = await axios.patch(`${API_BASE_URL}/travelog/api/travelog/${travelogId}/images`, {
+          const response = await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}/images`, {
               images: images,
               user_id: user.user_id,
               imageInfo: imageInfo,

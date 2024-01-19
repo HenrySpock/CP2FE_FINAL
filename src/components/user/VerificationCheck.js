@@ -12,7 +12,7 @@ function VerificationCheck() {
   useEffect(() => {
     const checkVerification = async () => {
       try {
-        const response = await fetch(`${API_BASE_URL}/auth/verification_check?email=${encodeURIComponent(email)}`);
+        const response = await fetch(`https://lgcbe.onrender.com/auth/verification_check?email=${encodeURIComponent(email)}`);
         const message = await response.text();
         
         if (response.ok) {

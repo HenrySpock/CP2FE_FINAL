@@ -20,7 +20,7 @@ async function PostComment({ handleClose, onCommentSubmit, content, user, user_i
         throw new Error('Invalid parent type');
     }
     
-    const response = await axios.post('${API_BASE_URL}/api/comment', postData);
+    const response = await axios.post('https://lgcbe.onrender.com/api/comment', postData);
 
     if (response.data.success) {  
       // console.log('Comment submitted successfully:', response.data.comment); 

@@ -25,7 +25,7 @@ function Results() {
 
     async function fetchUsers() {
       try {
-        const response = await fetch(`${API_BASE_URL}/search/users?username=${encodeURIComponent(searchTerm)}&currentUserId=${user.user_id}`);
+        const response = await fetch(`https://lgcbe.onrender.com/search/users?username=${encodeURIComponent(searchTerm)}&currentUserId=${user.user_id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -40,7 +40,7 @@ function Results() {
     // Fetch Trips
     async function fetchTrips() {
       try {
-        const response = await fetch(`${API_BASE_URL}/search/trips?title=${encodeURIComponent(searchTerm)}&tripEntry=${encodeURIComponent(searchTerm)}&currentUserId=${user.user_id}`);
+        const response = await fetch(`https://lgcbe.onrender.com/search/trips?title=${encodeURIComponent(searchTerm)}&tripEntry=${encodeURIComponent(searchTerm)}&currentUserId=${user.user_id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -55,7 +55,7 @@ function Results() {
     // Fetch Travelogs
     async function fetchTravelogs() {
       try {
-        const response = await fetch(`${API_BASE_URL}/search/travelogs?searchTerm=${encodeURIComponent(searchTerm)}&currentUserId=${user.user_id}`);
+        const response = await fetch(`https://lgcbe.onrender.com/search/travelogs?searchTerm=${encodeURIComponent(searchTerm)}&currentUserId=${user.user_id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
@@ -70,7 +70,7 @@ function Results() {
     // Fetch Travelogs 
     async function fetchTravelogImages() {
       try {
-        const response = await fetch(`${API_BASE_URL}/search/images/travelogs?searchTerm=${encodeURIComponent(searchTerm)}&currentUserId=${user.user_id}`);
+        const response = await fetch(`https://lgcbe.onrender.com/search/images/travelogs?searchTerm=${encodeURIComponent(searchTerm)}&currentUserId=${user.user_id}`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }

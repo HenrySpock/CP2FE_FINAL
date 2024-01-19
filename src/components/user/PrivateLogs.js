@@ -16,8 +16,8 @@ function PrivateLogs() {
 
         try {
           // Fetch trips and travelogs the user has access to
-          const tripsResponse = await axios.get(`${API_BASE_URL}/permissions/trips/${user_id}`);
-          const travelogsResponse = await axios.get(`${API_BASE_URL}/permissions/travelogs/${user_id}`);
+          const tripsResponse = await axios.get(`https://lgcbe.onrender.com/permissions/trips/${user_id}`);
+          const travelogsResponse = await axios.get(`https://lgcbe.onrender.com/permissions/travelogs/${user_id}`);
           // console.log('tripsResponse', tripsResponse);
           // console.log('travelogsResponse', travelogsResponse);
           setPrivateData({

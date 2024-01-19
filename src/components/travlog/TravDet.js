@@ -115,7 +115,7 @@ function TravDet() {
   useEffect(() => {
     const fetchUserDataByUsername = async (username) => {
       try {
-        const response = await axios.get(`${API_BASE_URL}/user/api/users/${username}`);
+        const response = await axios.get(`https://lgcbe.onrender.com/user/api/users/${username}`);
         if (response.status === 200) {
           setUserData(response.data); // Set userData state with the fetched user data
 
@@ -148,7 +148,7 @@ function TravDet() {
       }
   
       const userId = user.user_id; 
-      await axios.delete(`${API_BASE_URL}/travelog/api/travelog/${travelogId}?user_id=${userId}`);
+      await axios.delete(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}?user_id=${userId}`);
       navigate('/hub'); 
     } catch (error) {
       console.error('Error deleting travelog:', error);
@@ -177,7 +177,7 @@ function TravDet() {
         email: user.email,  
       };
 
-      const response = await fetch(`${API_BASE_URL}/feedback/api/travelog/${travelogId}/report`, {
+      const response = await fetch(`https://lgcbe.onrender.com/feedback/api/travelog/${travelogId}/report`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
@@ -222,7 +222,7 @@ function TravDet() {
       if (travelog && currentUser) { 
         try {
           // Check block status
-          const blockResponse = await fetch(`${API_BASE_URL}/travelog/api/users/${travelog.user_id}/block-status/${currentUser.user_id}`);
+          const blockResponse = await fetch(`https://lgcbe.onrender.com/travelog/api/users/${travelog.user_id}/block-status/${currentUser.user_id}`);
           if (!blockResponse.ok) throw new Error('Error checking block status');
           const blockData = await blockResponse.json();
           if (blockData.isBlocked) {
@@ -232,7 +232,7 @@ function TravDet() {
   
           // Check permissions if travelog is private
           if (travelog.isPrivate) {
-            const permissionUrl = `${API_BASE_URL}/permissions/check?travelogId=${travelog.travelogId}&granteeId=${currentUser.user_id}`;
+            const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelogId=${travelog.travelogId}&granteeId=${currentUser.user_id}`;
             const permissionResponse = await fetch(permissionUrl);
   
             if (!permissionResponse.ok) throw new Error('Error checking permissions');
@@ -262,7 +262,7 @@ function TravDet() {
   const fetchTravelog = useCallback(async () => {
     try {
       // console.log('********WTF travelogId: ', travelogId)
-      const response = await axios.get(`${API_BASE_URL}/travelog/api/travelog/${travelogId}`);
+      const response = await axios.get(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}`);
 
       if (response.data.dateVisited) {
         setFormattedDateVisited(moment(response.data.dateVisited).format('MMMM Do YYYY, h:mm a'));  
@@ -292,7 +292,7 @@ function TravDet() {
     try {
       
       // Send a request to the backend to increment the view count
-      const response = await fetch(`${API_BASE_URL}/viewcount/api/travelog/increment-view-count/${travelogId}`, {
+      const response = await fetch(`https://lgcbe.onrender.com/viewcount/api/travelog/increment-view-count/${travelogId}`, {
         method: 'PATCH', 
       });
 
@@ -341,8 +341,8 @@ function TravDet() {
 
     try {
       console.log('editedTravelog', editedTravelog)
-      // const response = await axios.patch(`${API_BASE_URL}/travelog/api/travelog/${travelogId}`, editedTravelog);
-      await axios.patch(`${API_BASE_URL}/travelog/api/travelog/${travelogId}`, editedTravelog);
+      // const response = await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}`, editedTravelog);
+      await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}`, editedTravelog);
       // console.log('Update successful:', response.data - I removed const response from the await because it compiled as an unused variable once logging was turned off.);
       setTravelog(editedTravelog);  // Update the displayed travelog data.
       setIsEditMode(false);  // Exit edit mode.

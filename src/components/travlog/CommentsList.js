@@ -12,7 +12,7 @@ function CommentsList({ travelog, trip, profileUser, userData, contextUser, }) {
 
   useEffect(() => {
     const fetchComments = async () => {
-      let url = '${API_BASE_URL}/api/comments';
+      let url = 'https://lgcbe.onrender.com/api/comments';
       let entityId, entityType;
   
       if (travelog && travelog.travelogId) {
@@ -34,7 +34,7 @@ function CommentsList({ travelog, trip, profileUser, userData, contextUser, }) {
   
         // Check block status for each comment author
         const fetchBlockStatusPromises = comments.map(async (comment) => {
-          const blockResponse = await axios.get(`${API_BASE_URL}/api/users/${comment.username}/block-status/${contextUser.username}`);
+          const blockResponse = await axios.get(`https://lgcbe.onrender.com/api/users/${comment.username}/block-status/${contextUser.username}`);
           return blockResponse.data.isBlocked ? null : comment;
         });
   

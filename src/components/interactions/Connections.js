@@ -17,19 +17,19 @@ function ConnectionsPage() {
   useEffect(() => {
     // Check if user is defined before making the request
     if (user) { 
-      fetch(`${API_BASE_URL}/api/friends/${user.user_id}`)
+      fetch(`https://lgcbe.onrender.com/api/friends/${user.user_id}`)
         .then(response => response.json())
         .then(data => setFriends(data))
         .catch(error => console.error('Error fetching friends:', error));
 
       // Fetch followers
-      fetch(`${API_BASE_URL}/api/followers/${user.user_id}`)
+      fetch(`https://lgcbe.onrender.com/api/followers/${user.user_id}`)
         .then(response => response.json())
         .then(data => setFollowers(data))
         .catch(error => console.error('Error fetching followers:', error));
 
       // Fetch followings
-      fetch(`${API_BASE_URL}/api/followings/${user.user_id}`)
+      fetch(`https://lgcbe.onrender.com/api/followings/${user.user_id}`)
         .then(response => response.json())
         .then(data => setFollowings(data))
         .catch(error => console.error('Error fetching followings:', error));
