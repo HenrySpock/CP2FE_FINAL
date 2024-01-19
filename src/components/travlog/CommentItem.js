@@ -128,8 +128,8 @@ function CommentItem({ comment, contextUser,}) {
           return;
         }
   
-        // const response = await axios.get(url);
-        // console.log('Response from fetch: ', response.data); 
+        const response = await axios.get(url);
+        console.log('Response from fetch: ', response.data); 
         setLoading(false);
       } catch (error) {
         console.error('Error fetching replies:', error);
