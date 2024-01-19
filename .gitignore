@@ -26,3 +26,4 @@ castletracker_backup.sql
 castletracker_data_dump.sql
 
 config.js
+package-lock.json
