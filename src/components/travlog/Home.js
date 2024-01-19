@@ -160,8 +160,7 @@ function Home() {
   return (
     <div className="home-trav-card" onClick={() => {
           if(user) {
-              // navigate(`/trav_det/${travelog.travelogId}`);
-              navigate(`/trav_det/${travelog.travelog_id}`);
+              navigate(`/trav_det/${travelog.travelogId}`);
           } else {
               navigate('/auth');
           }
@@ -216,8 +215,7 @@ function Home() {
     if (travelogEntries.length > 0) {
       const randomIndex = Math.floor(Math.random() * travelogEntries.length);
       const randomTravelog = travelogEntries[randomIndex];
-      // navigate(`/trav_det/${randomTravelog.travelogId}`);
-      navigate(`/trav_det/${randomTravelog.travelog_id}`);
+      navigate(`/trav_det/${randomTravelog.travelogId}`);
     } else { 
       // console.log('No travelog entries available');
     }
@@ -358,8 +356,7 @@ function Home() {
           </div>
 
           <div className='home-col-div'><h2>Newest Travelog</h2>
-            {/* <div onClick={() => navigate(`/trav_det/${newestTravelog.travelogId}`)}> */}
-            <div onClick={() => navigate(`/trav_det/${newestTravelog.travelog_id}`)}>
+            <div onClick={() => navigate(`/trav_det/${newestTravelog.travelogId}`)}>
             {newestTravelog &&
                 <div className="recent-card">
                   <img src={newestTravelog.Images[0].image_url} alt={`${newestTravelog.Images[0].title}`} /> 
@@ -383,8 +380,7 @@ function Home() {
           <h2 className="recent-trav-title">Recent Travelogs</h2>
           <div className="recent-travelogs">
             {recentTravelogs.map(travelog => (
-              // <TravelogCard key={travelog.travelogId} travelog={travelog} />
-              <TravelogCard key={travelog.travelog_id} travelog={travelog} />
+              <TravelogCard key={travelog.travelogId} travelog={travelog} />
             ))}
           </div>
         </div>
@@ -455,8 +451,7 @@ function Home() {
 
           <div className="home-travelogs-list">
             {sortedTravelogEntries.slice((currentTravelogPage - 1) * itemsPerPage, currentTravelogPage * itemsPerPage).map(travelog => (
-              // <TravelogCard key={travelog.travelogId} travelog={travelog} />
-              <TravelogCard key={travelog.travelog_id} travelog={travelog} />
+              <TravelogCard key={travelog.travelogId} travelog={travelog} />
             ))}
           </div>  
 
