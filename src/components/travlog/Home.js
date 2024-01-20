@@ -294,7 +294,7 @@ function Home() {
       <div className='home-center'>
         <div>
         <h2>
-          {user ? `Let's go Castling, ${user.firstName}!` : `Let's go Castling!`}
+          {user ? `Let's go Castling, ${user.first_name}!` : `Let's go Castling!`}
         </h2>
         </div>
 
