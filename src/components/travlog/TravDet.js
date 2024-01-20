@@ -262,7 +262,7 @@ function TravDet() {
   const fetchTravelog = useCallback(async () => {
     try {
       // console.log('********WTF travelogId: ', travelogId)
-      const response = await axios.get(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}`);
+      const response = await axios.get(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`);
 
       if (response.data.dateVisited) {
         setFormattedDateVisited(moment(response.data.dateVisited).format('MMMM Do YYYY, h:mm a'));  
