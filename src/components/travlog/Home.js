@@ -264,6 +264,10 @@ function Home() {
     try {
       const response = await fetch('https://lgcbe.onrender.com/recent/api/travelogs/newest');
       if (!response.ok) throw new Error('Network response was not ok');
+      if (response.status === 204) {
+        console.log('No travelogs found');
+        return;
+      }
       const travelog = await response.json();
       setNewestTravelog(travelog); // Update state with the fetched travelog
     } catch (error) {
