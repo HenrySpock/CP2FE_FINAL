@@ -99,7 +99,7 @@ function AdminPanel() {
         }
   
         setUnreadCounts(newUnreadCounts);
-      }, 6000); // Fetch every 60 seconds
+      }, 600000); // Fetch every 60 seconds
   
       return () => clearInterval(intervalId);
     }

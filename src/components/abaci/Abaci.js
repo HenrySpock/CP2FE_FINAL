@@ -1201,7 +1201,7 @@ const fetchCountriesMostVisited = async () => {
       fetchMostViewedTrips();
       fetchMostViewedTravelogs();
       fetchMostViewedImages();
-    }, 60000);
+    }, 6000000);
 
     return () => clearInterval(interval);
   });
