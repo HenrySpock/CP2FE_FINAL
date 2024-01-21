@@ -77,7 +77,7 @@ function App() {
             <Route path="/log_entry" element={<LogEntry />} />
             <Route path="/hub" element={<UserHub />} />
             <Route path="/Abaci" element={<Abaci />} />
-            <Route path="/trav_det/:travelogId" element={<TravDet />} />
+            <Route path="/trav_det/:travelog_id" element={<TravDet />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/password" element={<Password />} />
             <Route path="/public_profile/:username" element={<PublicProfile />} />
