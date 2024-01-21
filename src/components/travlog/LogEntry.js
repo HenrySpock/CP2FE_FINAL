@@ -233,7 +233,7 @@ function LogEntry() {
         ...formData,
         user_id: user.user_id, // <-- access user_id from user object
         username: user.username,
-        tripId: selectedTripId || null,
+        trip_id: selectedTrip_id || null,
       };
       
       try {
@@ -242,8 +242,8 @@ function LogEntry() {
         // console.log('All data saved successfully', response.data);
         resetForm();
         setIsSubmitting(false); 
-        const travelogId = response.data.newTravelog.travelogId; 
-        navigate(`/trav_det/${travelogId}`);
+        const travelog_id = response.data.newTravelog.travelog_id; 
+        navigate(`/trav_det/${travelog_id}`);
       } catch (error) {
         console.error('Error submitting the data:', error);
         setError('An error occurred while submitting the form.');
@@ -471,13 +471,6 @@ function LogEntry() {
         )}
   
         
-
-
-  
-        
-
-
-
         {showMapModal && (
           <DetermineLatLong
             onCoordinateSelected={handleCoordinateSelected}
