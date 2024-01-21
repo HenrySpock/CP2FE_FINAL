@@ -83,6 +83,7 @@ function AuthPage() {
     const data = Object.fromEntries(formData);
     // console.log('email: ', email)
     data.email = email; 
+    console.log('rest form data: ', data)
   
     try {
       const response = await fetch('https://lgcbe.onrender.com/auth/api/user/validate_security_answer', {
