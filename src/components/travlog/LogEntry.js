@@ -233,7 +233,7 @@ function LogEntry() {
         ...formData,
         user_id: user.user_id, // <-- access user_id from user object
         username: user.username,
-        trip_id: selectedTrip_id || null,
+        trip_id: selectedTripId || null,
       };
       
       try {
