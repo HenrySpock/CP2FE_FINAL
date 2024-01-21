@@ -242,8 +242,8 @@ function LogEntry() {
         // console.log('All data saved successfully', response.data);
         resetForm();
         setIsSubmitting(false); 
-        console.log('response.data.newTravelog: ', response.data.newTravelog)
         const travelogId = response.data.newTravelog.travelogId; 
+        console.log('travelogId: ', travelogId, 'response.data.newTravelog: ', response.data.newTravelog )
         navigate(`/trav_det/${travelogId}`);
       } catch (error) {
         console.error('Error submitting the data:', error);
