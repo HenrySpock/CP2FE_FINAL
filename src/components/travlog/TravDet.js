@@ -25,6 +25,8 @@ function TravDet() {
   const { isAdmin, user, isLoading } = useContext(UserContext);
   const [travelog, setTravelog] = useState(null);  
   const { travelog_id } = useParams();   
+  console.log("Travelog ID from URL:", travelog_id);
+  
   const { user: currentUser } = useContext(UserContext);    
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedTravelog, setEditedTravelog] = useState(null);
