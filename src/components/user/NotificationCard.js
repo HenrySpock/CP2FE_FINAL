@@ -3,7 +3,7 @@ import React from 'react';
 import './UserHub.css'
  
 const NotificationCard = ({ notification, onAccept, onDeny }) => {
-  const { sender_id, recipient_id, notificationId } = notification;
+  const { sender_id, recipient_id, notification_id } = notification;
   
   let notificationContent;
   try {
@@ -106,8 +106,8 @@ const NotificationCard = ({ notification, onAccept, onDeny }) => {
 
       {notification.type === 'friend-request' && (
         <div>
-          <button className='accept-deny' onClick={() => onAccept(sender_id, recipient_id, notificationId)}>Accept</button>
-          <button className='accept-deny' onClick={() => onDeny(sender_id, recipient_id, notificationId)}>Deny</button>
+          <button className='accept-deny' onClick={() => onAccept(sender_id, recipient_id, notification_id)}>Accept</button>
+          <button className='accept-deny' onClick={() => onDeny(sender_id, recipient_id, notification_id)}>Deny</button>
         </div>
       )}
 
