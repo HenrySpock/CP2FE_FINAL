@@ -20,7 +20,7 @@ function TravelogFilter() {
   const bottomRef = useRef(null);
 
   const fetchTravelogs = useCallback(async (filterType) => {
-    const url = `https://lgcbe.onrender.com/travelog/api/travelogs/filter?filterType=${filterType}&userId=${user.user_id}`;
+    const url = `https://lgcbe.onrender.com/travelog/api/travelogs/filter?filterType=${filterType}&user_id=${user.user_id}`;
     try {
       const response = await axios.get(url);
       if (response.status === 200) {  
