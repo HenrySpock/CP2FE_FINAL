@@ -210,7 +210,7 @@ useEffect(() => {
       const response = await fetch('https://lgcbe.onrender.com/api/friends/request/accept', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sender_id, recipient_id, notificationId })
+        body: JSON.stringify({ sender_id, recipient_id, notification_id })
       });
   
       if (!response.ok) {
@@ -220,7 +220,7 @@ useEffect(() => {
       const data = await response.json();
       if (data.success) {
         // Remove the accepted notification from state
-        setNotifications(notifications => notifications.filter(notification => notification.notificationId !== notificationId));
+        setNotifications(notifications => notifications.filter(notification => notification.notification_id !== notification_id));
       }
     } catch (error) {
       console.error('Error accepting friend request:', error);
