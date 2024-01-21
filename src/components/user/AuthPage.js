@@ -191,7 +191,7 @@ function AuthPage() {
               {/* Additional security questions here */}
             </select>
             <div>
-              <input className='security-answer-input' type="text" name="securityAnswer" placeholder="Security Answer" required />
+              <input className='security-answer-input' type="text" name="answer" placeholder="Security Answer" required />
               <button className='security-submit-btn' type="submit">Submit</button>
             </div>
           </form>
