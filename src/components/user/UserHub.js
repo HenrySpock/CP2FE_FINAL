@@ -299,10 +299,10 @@ const handleDeleteNotification = async (notificationId) => {
               </div> 
 
               {notifications.map(notification => ( 
-                <div className='notification-slate' key={notification.notificationId}>
+                <div className='notification-slate' key={notification.notification_id}>
                   <NotificationCard notification={notification} onAccept={handleAccept} onDeny={handleDeny} />
                   {notification && (
-                    <button className='notification-delete-btn' onClick={() => handleDeleteNotification(notification.notificationId)}>Delete</button>
+                    <button className='notification-delete-btn' onClick={() => handleDeleteNotification(notification.notification_id)}>Delete</button>
                   )} 
                 </div>
               ))}
