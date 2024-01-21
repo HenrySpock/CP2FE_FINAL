@@ -66,8 +66,8 @@ function Register() {
       {errorMessage && <p className='error-message'>{errorMessage}</p>} 
         <form className='register-form' onSubmit={handleSubmit} onChange={clearErrorMessage}>
         <div className='reg-dual'>
-          <input className='register-form' type="text" name="firstName" placeholder="First Name" required />
-          <input className='register-form' type="text" name="lastName" placeholder="Last Name" required />
+          <input className='register-form' type="text" name="first_name" placeholder="First Name" required />
+          <input className='register-form' type="text" name="last_name" placeholder="Last Name" required />
         </div>
         <div className='reg-dual'>
           <input className='register-form' type="text" name="username" placeholder="Username" required />
@@ -78,7 +78,7 @@ function Register() {
           <input className='register-form' type="password" name="retypedPassword" placeholder="Retype Password" required />
         </div>
           <input className='register-form' type="text" name="adminKey" placeholder="Admin Key" />
-          <select className='register-form reg-select' name="securityQuestion" defaultValue="Select a security question" required>
+          <select className='register-form reg-select' name="security_question" defaultValue="Select a security question" required>
             <option value="What is the name of your first pet?">What is the name of your first pet?</option>
             <option value="What is your mother's maiden name?">What is your mother's maiden name?</option> 
             <option value="What is the worst Star Wars movie?">What is the worst Star Wars movie?</option>

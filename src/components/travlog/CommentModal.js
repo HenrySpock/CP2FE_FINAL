@@ -33,8 +33,8 @@ const handleFormSubmit = (e) => {
 const handleCommentSubmit = async () => {
   let entityId, entityType;
 
-  if (travelog && travelog.travelogId) {
-      entityId = travelog.travelogId;
+  if (travelog && travelog.travelog_id) {
+      entityId = travelog.travelog_id;
       entityType = 'travelog_id';
   } else if (trip && trip.trip_id) {
       entityId = trip.trip_id;
