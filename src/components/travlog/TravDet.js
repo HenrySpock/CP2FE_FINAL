@@ -24,7 +24,7 @@ import TravDetImageEdit from './TravDetImageEdit';
 function TravDet() {
   const { isAdmin, user, isLoading } = useContext(UserContext);
   const [travelog, setTravelog] = useState(null);  
-  const { travelogId } = useParams();   
+  const { travelog_id } = useParams();   
   const { user: currentUser } = useContext(UserContext);    
   const [isEditMode, setIsEditMode] = useState(false);
   const [editedTravelog, setEditedTravelog] = useState(null);
@@ -100,7 +100,7 @@ function TravDet() {
 
   // Function to handle opening the report modal
   const openReportModal = () => {
-    // console.log('travelog_id: ', travelog.travelogId, 'user_id: ', user.user_id, 'username: ', user.username, 'email: ', user.email) 
+    // console.log('travelog_id: ', travelog.travelog_id, 'user_id: ', user.user_id, 'username: ', user.username, 'email: ', user.email) 
     setIsReportModalOpen(true);
   };
 
@@ -148,7 +148,7 @@ function TravDet() {
       }
   
       const userId = user.user_id; 
-      await axios.delete(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}?user_id=${userId}`);
+      await axios.delete(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}?user_id=${userId}`);
       navigate('/hub'); 
     } catch (error) {
       console.error('Error deleting travelog:', error);
@@ -172,12 +172,12 @@ function TravDet() {
       const reportPayload = { 
         user_id: user.user_id,
         complaint_text: complaint,
-        reported_travelog_id: travelog.travelogId,
+        reported_travelog_id: travelog.travelog_id,
         username: user.username,  
         email: user.email,  
       };
 
-      const response = await fetch(`https://lgcbe.onrender.com/feedback/api/travelog/${travelogId}/report`, {
+      const response = await fetch(`https://lgcbe.onrender.com/feedback/api/travelog/${travelog_id}/report`, {
         method: 'POST', 
         headers: {
           'Content-Type': 'application/json',
@@ -232,7 +232,7 @@ function TravDet() {
   
           // Check permissions if travelog is private
           if (travelog.isPrivate) {
-            const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelogId=${travelog.travelogId}&granteeId=${currentUser.user_id}`;
+            const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelog_id=${travelog.travelog_id}&granteeId=${currentUser.user_id}`;
             const permissionResponse = await fetch(permissionUrl);
   
             if (!permissionResponse.ok) throw new Error('Error checking permissions');
@@ -261,7 +261,7 @@ function TravDet() {
   // Fetch current travelog data 
   const fetchTravelog = useCallback(async () => {
     try {
-      // console.log('********WTF travelogId: ', travelogId)
+      // console.log('********WTF travelog_id: ', travelog_id)
       const response = await axios.get(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`);
 
       if (response.data.dateVisited) {
@@ -285,14 +285,14 @@ function TravDet() {
     } catch (error) {
       console.error('Error fetching travelog:', error);
     }
-  }, [travelogId]); 
+  }, [travelog_id]); 
 
   const incrementViewCount = useCallback(async () => {
     // console.log('currentUser & profileUser: ', currentUser, profileUser) 
     try {
       
       // Send a request to the backend to increment the view count
-      const response = await fetch(`https://lgcbe.onrender.com/viewcount/api/travelog/increment-view-count/${travelogId}`, {
+      const response = await fetch(`https://lgcbe.onrender.com/viewcount/api/travelog/increment-view-count/${travelog_id}`, {
         method: 'PATCH', 
       });
 
@@ -300,11 +300,11 @@ function TravDet() {
         throw new Error('Failed to increment view count');
       }
 
-      // console.log('View count incremented for travelogId:', travelogId);
+      // console.log('View count incremented for travelog_id:', travelog_id);
     } catch (error) {
       console.error('Error incrementing view count:', error);
     }
-  }, [travelogId, 
+  }, [travelog_id, 
     // currentUser, profileUser
   ]);
 
@@ -317,11 +317,11 @@ function TravDet() {
     // Check if both currentUser and profileUser are available and different
     if (username && profileUser && username !== profileUser) {
       // console.log('currentUser & profileUser: ', username, profileUser); 
-      incrementViewCount(travelogId);
+      incrementViewCount(travelog_id);
     } else {
       // console.log('Condition not met, and incrementViewCount not called');
     }
-  }, [travelogId, currentUser, profileUser, fetchTravelog, incrementViewCount]);
+  }, [travelog_id, currentUser, profileUser, fetchTravelog, incrementViewCount]);
    
   useEffect(() => {
     if (travelog) {
@@ -341,8 +341,8 @@ function TravDet() {
 
     try {
       console.log('editedTravelog', editedTravelog)
-      // const response = await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}`, editedTravelog);
-      await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}`, editedTravelog);
+      // const response = await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`, editedTravelog);
+      await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`, editedTravelog);
       // console.log('Update successful:', response.data - I removed const response from the await because it compiled as an unused variable once logging was turned off.);
       setTravelog(editedTravelog);  // Update the displayed travelog data.
       setIsEditMode(false);  // Exit edit mode.
@@ -357,7 +357,7 @@ function TravDet() {
   };
   
   const handleWriteEntryClick = () => {
-    navigate(`/travtiptap/${travelogId}`);
+    navigate(`/travtiptap/${travelog_id}`);
   }; 
 
   if (!isAccessCheckComplete) {
@@ -729,7 +729,7 @@ function TravDet() {
                         profileUser={profileUser}
                         userData={userData}
                         contextUser={user}
-                        travelog_id={travelogId}
+                        travelog_id={travelog_id}
                       />
  
                       <div className="tooltip">
@@ -752,7 +752,7 @@ function TravDet() {
 
                           {
                             travelog && currentUser && travelog.user_id === currentUser.user_id && (
-                              <button className="trav-det-btn width-narrow" onClick={() => navigate(`/permissions?entity=travelog&id=${travelog.travelogId}`)}>
+                              <button className="trav-det-btn width-narrow" onClick={() => navigate(`/permissions?entity=travelog&id=${travelog.travelog_id}`)}>
                                 Grant Permissions
                               </button>
                             )
@@ -788,7 +788,7 @@ function TravDet() {
                           />
 
                           {isAdmin && ( 
-                            <AdminDelete travelogId={travelogId} navigate={navigate} />
+                            <AdminDelete travelog_id={travelog_id} navigate={navigate} />
                           )}
 
                       </div>
@@ -800,7 +800,7 @@ function TravDet() {
                     <div> 
                         <TravDetImageEdit 
                             user={user}
-                            travelogId={travelogId}
+                            travelog_id={travelog_id}
                             fetchTravelog={fetchTravelog}
                             initialImages={travelog?.Images || []}
                             username={username}
