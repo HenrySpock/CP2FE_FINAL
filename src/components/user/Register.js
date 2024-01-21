@@ -34,6 +34,7 @@ function Register() {
     }
 
     try {
+      console.log('data for new user on frontend: ', data)
       const response = await fetch('https://lgcbe.onrender.com/auth/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
