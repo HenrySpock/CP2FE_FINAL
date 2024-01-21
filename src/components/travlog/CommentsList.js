@@ -15,16 +15,16 @@ function CommentsList({ travelog, trip, profileUser, userData, contextUser, }) {
       let url = 'https://lgcbe.onrender.com/api/comments';
       let entityId, entityType;
   
-      if (travelog && travelog.travelogId) {
-        entityId = travelog.travelogId;
-        entityType = 'travelogId';
-        url += `?travelogId=${entityId}`;
+      if (travelog && travelog.travelog_id) {
+        entityId = travelog.travelog_id;
+        entityType = 'travelog_id';
+        url += `?travelog_id=${entityId}`;
       } else if (trip && trip.trip_id) {
         entityId = trip.trip_id;
-        entityType = 'tripId';
-        url += `?tripId=${entityId}`;
+        entityType = 'trip_id';
+        url += `?trip_id=${entityId}`;
       } else {
-        console.error('No travelogId or tripId provided');
+        console.error('No travelog_id or trip_id provided');
         return;
       }
   
@@ -52,7 +52,7 @@ function CommentsList({ travelog, trip, profileUser, userData, contextUser, }) {
     };
   
     fetchComments();
-  }, [travelog?.travelogId, trip?.tripId, travelog, trip, contextUser.username]);
+  }, [travelog?.travelog_id, trip?.trip_id, travelog, trip, contextUser.username]);
 
 
 
