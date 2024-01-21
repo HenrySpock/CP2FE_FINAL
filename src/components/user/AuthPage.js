@@ -83,7 +83,7 @@ function AuthPage() {
     const data = Object.fromEntries(formData);
     // console.log('email: ', email)
     data.email = email; 
-    console.log('rest form data: ', data)
+    console.log('reset form data: ', data)
   
     try {
       const response = await fetch('https://lgcbe.onrender.com/auth/api/user/validate_security_answer', {
@@ -182,7 +182,7 @@ function AuthPage() {
           <form onSubmit={handleResetSubmit}>
             <input className='security-email-input' type="email" name="email" placeholder="Email" required onChange={(e) => setEmail(e.target.value)} />
 
-            <select className='security-select' name="securityQuestion" required>
+            <select className='security-select' name="security_question" required>
               <option value="">Select your security question</option>
               <option value="What is the name of your first pet?">What is the name of your first pet?</option>
               <option value="What is your mother's maiden name?">What is your mother's maiden name?</option>
