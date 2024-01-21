@@ -205,7 +205,7 @@ useEffect(() => {
     }
   };
 
-  const handleAccept = async (sender_id, recipient_id, notificationId) => {
+  const handleAccept = async (sender_id, recipient_id, notification_id) => {
     try {
       const response = await fetch('https://lgcbe.onrender.com/api/friends/request/accept', {
         method: 'POST',
