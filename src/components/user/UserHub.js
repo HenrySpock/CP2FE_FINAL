@@ -275,7 +275,7 @@ const handleDeleteNotification = async (notificationId) => {
         <div className='home-center'>
             <div>
               <h2>
-                {user ? `Welcome to your dashboard, ${user.firstName}!` : null}
+                {user ? `Welcome to your dashboard, ${user.username}!` : null}
               </h2>
             </div>            
         </div>
