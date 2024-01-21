@@ -13,13 +13,13 @@ function UserHubMap({ travelogs, trips }) {
   const { user } = useContext(UserContext); 
 
   const mapOptions = {
-    center: user.mapCenter,
+    center: user.map_center,
     zoom: 4, 
     minZoom: 2,
     maxZoom: 18,
   }; 
 
-  const [mapCenter, setMapCenter] = useState(user.mapCenter);
+  const [mapCenter, setMapCenter] = useState(user.map_center);
   const [showMapModal, setShowMapModal] = useState(false);
   const [userZoom, setUserZoom] = useState(mapOptions.zoom);
   const [showZoomInput, setShowZoomInput] = useState(false); 
@@ -36,14 +36,14 @@ function UserHubMap({ travelogs, trips }) {
   const handleRecenter = async (newLat, newLng) => {
     if (!isNaN(newLat) && !isNaN(newLng)) {
       try {
-        const response = await fetch(`https://lgcbe.onrender.com/travelog/api/user/${user.user_id}/mapCenter`, {
+        const response = await fetch(`https://lgcbe.onrender.com/travelog/api/user/${user.user_id}/map_center`, {
           method: 'PATCH',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ mapCenter: [newLat, newLng] })
+          body: JSON.stringify({ map_center: [newLat, newLng] })
         });
         const data = await response.json();
         if (data.success) {
-          setMapCenter(data.mapCenter);
+          setMapCenter(data.map_center);
         } else {
           console.error(data.message);
         }
@@ -60,7 +60,7 @@ function UserHubMap({ travelogs, trips }) {
       const response = await fetch(`https://lgcbe.onrender.com/user/api/user/${user.user_id}`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userZoom: newZoomLevel })  
+        body: JSON.stringify({ user_zoom: newZoomLevel })  
       });
       const data = await response.json();
       if (response.ok) {
@@ -93,8 +93,8 @@ function UserHubMap({ travelogs, trips }) {
         const userData = await response.json();
         if (response.ok) {  
           // console.log('User data:', userData);
-          setMapCenter(userData.mapCenter);
-          setUserZoom(userData.userZoom);
+          setMapCenter(userData.map_center);
+          setUserZoom(userData.user_zoom);
         } else {
           console.error('Error fetching user data:', userData.message);
         }
