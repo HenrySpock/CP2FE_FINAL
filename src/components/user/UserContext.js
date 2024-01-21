@@ -39,7 +39,7 @@ export const UserProvider = ({ children }) => {
   const login = async (userData) => {
     setUser(userData.user);   
     setIsAuthenticated(true);
-    setIsAdmin(userData.user.isAdmin);  // Update isAdmin based on user data
+    setIsAdmin(userData.user.is_admin);  // Update isAdmin based on user data
     localStorage.setItem('token', userData.token); // Store the token in localStorage
 
     // console.log("Logging in, user data:", userData);
@@ -111,7 +111,7 @@ export const UserProvider = ({ children }) => {
           // console.log('User data:', userData);  
           setUser(userData);
           setIsAuthenticated(true);  
-          setIsAdmin(userData.isAdmin);  
+          setIsAdmin(userData.is_admin);  
 
           // Check for suspension
           const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${encodeURIComponent(userData.email)}`);
