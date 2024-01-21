@@ -243,8 +243,8 @@ function LogEntry() {
         resetForm();
         setIsSubmitting(false); 
         console.log('response.data.newTravelog: ', response.data.newTravelog)
-        const travelog_id = response.data.newTravelog.travelogId; 
-        navigate(`/trav_det/${travelog_id}`);
+        const travelogId = response.data.newTravelog.travelogId; 
+        navigate(`/trav_det/${travelogId}`);
       } catch (error) {
         console.error('Error submitting the data:', error);
         setError('An error occurred while submitting the form.');
