@@ -281,15 +281,7 @@ function TripDet() {
   if (isLoadingUser) {
     return <div>Loading user...</div>;
   }
-
-  useEffect(() => { 
-    if (isLoadingUser === false) {
-      if (!user) { 
-        navigate('/');
-      }
-    }
-  }, [user, isLoadingUser, navigate]);
-
+ 
   const selectTravelog = (travelog_id) => {
     const travelog = availableTravelogs.find(t => t.travelog_id === travelog_id);
     if (travelog) {
