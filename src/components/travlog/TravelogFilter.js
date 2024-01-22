@@ -51,9 +51,9 @@ function TravelogFilter() {
       const fetchData = async (filterType) => {
         const data = await fetchTravelogs(filterType);
         for (const travelog of data) {
-          if (!travelogIds.has(travelog.travelogId)) {   
+          if (!travelogIds.has(travelog.travelogI_id)) {   
             newTravelogs.push(travelog);
-            travelogIds.add(travelog.travelogId);   
+            travelogIds.add(travelog.travelog_id);   
           }
         }
       };
@@ -74,13 +74,13 @@ function TravelogFilter() {
       newTravelogs.sort((a, b) => {
         switch (sortBy) {
           case 'username':  
-            return a.userId - b.userId;
+            return a.user_id - b.user_id;
             
           case 'country':
             return a.country.localeCompare(b.country);
           case 'createdAt':
           default:
-            return new Date(b.createdAt) - new Date(a.createdAt);
+            return new Date(b.created_at) - new Date(a.created_at);
         }
       });
 
@@ -162,7 +162,7 @@ function TravelogFilter() {
       <div>
         
         {travelogs.map((travelog, index) => (
-          <Link key={travelog.travelogId} to={`/trav_det/${travelog.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+          <Link key={travelog.travelog_id} to={`/trav_det/${travelog.travelog_id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
             <div className="hub-trip-trav-card">
                 <div className="hub-mini-img-div"> 
                 {travelog.Images[0] && (  
@@ -176,16 +176,16 @@ function TravelogFilter() {
                 <div className='hub-trip-trav-card-text'>
                   <h3>{travelog.title}</h3>
                   <p>{travelog.site}</p>
-                  <p>Visited On {new Date(travelog.dateVisited).toLocaleDateString('en-CA')}</p>
-                  {travelog.User && travelog.userId !== user.user_id && (
+                  <p>Visited On {new Date(travelog.date_visited).toLocaleDateString('en-CA')}</p>
+                  {travelog.User && travelog.user_id !== user.user_id && (
                     <p>by <Link to={`/public_profile/${travelog.User.username}`}>{travelog.User.username}</Link></p>
                   )}
-                  {travelog.userId === user.user_id && (
+                  {travelog.user_id === user.user_id && (
                     <p>by <Link to={`/public_profile/${user.username}`}>{user.username}</Link></p>
                   )}
                   
                   <p>In {travelog.city}, {travelog.country}</p> 
-                  {travelog.isPrivate ? <p>(Private Entry)</p> : null}
+                  {travelog.is_private ? <p>(Private Entry)</p> : null}
                 </div>
             </div>
           </Link>
