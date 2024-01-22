@@ -144,7 +144,7 @@ useEffect(() => {
 
           // Fetch trips
           const tripsResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/trips/${user.user_id}`);
-          // console.log('tripsResponse: ', tripsResponse)
+          console.log('tripsResponse: ', tripsResponse)
           // SORTING 
           setTrips(tripsResponse.data); 
           setFilteredTrips(tripsResponse.data);

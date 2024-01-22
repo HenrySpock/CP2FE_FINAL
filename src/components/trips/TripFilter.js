@@ -14,11 +14,11 @@ function TripFilter() {
     followersTrips: false
   });
   const [trips, setTrips] = useState([]); 
-  const [sortBy, setSortBy] = useState('createdAt');  
+  const [sortBy, setSortBy] = useState('created_at');  
 
   useEffect(() => {
     const fetchTrips = async (filterType) => {
-      const url = `https://lgcbe.onrender.com/trip/api/trips/sorting/filter?filterType=${filterType}&userId=${user.user_id}`;
+      const url = `https://lgcbe.onrender.com/trip/api/trips/sorting/filter?filterType=${filterType}&user_id=${user.user_id}`;
       try {
         const response = await axios.get(url);
         if (response.status === 200) {
@@ -65,9 +65,9 @@ function TripFilter() {
         switch (sortBy) {
           case 'username':
             return a.User.username.localeCompare(b.User.username);
-          case 'createdAt':
+          case 'created_at':
           default:
-            return new Date(b.createdAt) - new Date(a.createdAt);
+            return new Date(b.created_at) - new Date(a.created_at);
         }
       });
 
@@ -97,7 +97,7 @@ function TripFilter() {
             value={sortBy}
             onChange={(event) => setSortBy(event.target.value)}
           >
-            <option value="createdAt">Newest First</option>
+            <option value="created_at">Newest First</option>
             <option value="username">Username</option>
           </select>
         </div>
@@ -159,15 +159,15 @@ function TripFilter() {
               <div className='hub-trip-trav-card-text'>
                 <h3>{trip.title}</h3>
                 <p>{trip.description}</p>
-                <p>From {new Date(trip.dateOfDeparture).toLocaleDateString('en-CA')} 
-                  to {new Date(trip.dateOfReturn).toLocaleDateString('en-CA')}
+                <p>From {new Date(trip.date_of_departure).toLocaleDateString('en-CA')} 
+                  to {new Date(trip.date_of_return).toLocaleDateString('en-CA')}
                 </p>
                 <p>Explored by<span> </span>
                   <Link to={`/public_profile/${trip.username}`} style={{ color: 'inherit' }}>
                     {trip.username}
                   </Link>
                 </p> 
-                {trip.isPrivate === true ? <p>(Private Entry)</p> :  null }
+                {trip.is_private === true ? <p>(Private Entry)</p> :  null }
               </div>
               
             </div>
