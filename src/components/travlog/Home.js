@@ -137,7 +137,7 @@ function Home() {
     async function fetchTrips() {
       if (user) {
         try {
-          const response = await fetch(`https://lgcbe.onrender.com/trip/api/trips?userId=${user.user_id}`);
+          const response = await fetch(`https://lgcbe.onrender.com/trip/api/trips?user_id=${user.user_id}`);
           if (response.ok) {
             const tripsData = await response.json();
             // Sort trips immediately after fetching
