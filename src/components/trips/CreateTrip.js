@@ -186,25 +186,25 @@ const updateImageUrl = (earliestTravelog) => {
       }
 
       const trip = await response.json();
-      const tripId = trip.trip_id;
+      const trip_id = trip.trip_id;
  
       for (const travelog of selectedTravelogs) {
         // console.log('trying to set trip_id on travelog: ', travelog, 'the tripId is: ', tripId)
         try {
-          const travelogId = travelog.travelogId; 
-          const travelogResponse = await fetch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}`, {
+          const travelog_id = travelog.travelog_id; 
+          const travelogResponse = await fetch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ tripId: tripId, user_id: user.user_id }) 
+            body: JSON.stringify({ trip_id: trip_id, user_id: user.user_id }) 
           });
       
           if (!travelogResponse.ok) {
-            throw new Error(`Failed to update travelog ${travelogId}`);
+            throw new Error(`Failed to update travelog ${travelog_id}`);
           }
         } catch (error) {
-          console.error(`Failed to update travelog ${travelog.travelogId} with tripId:`, error);
+          console.error(`Failed to update travelog ${travelog.travelog_id} with tripId:`, error);
         }
       } 
       setIsSubmitting(false);
