@@ -52,12 +52,12 @@ function TripDet() {
   useEffect(() => {
     // Parse the URL to get the comment ID
     const urlSearchParams = new URLSearchParams(window.location.search);
-    const commentId = urlSearchParams.get('comment');
+    const comment_id = urlSearchParams.get('comment');
     
-    if (commentId) {
+    if (comment_id) {
       // Delay the execution of the scroll logic
       setTimeout(() => {
-        const commentElement = document.getElementById(`comment: ${commentId}`);
+        const commentElement = document.getElementById(`comment: ${comment_id}`);
         // console.log('************COMMENT ELEMENT: ', commentElement)
   
         if (commentElement) {
@@ -169,7 +169,7 @@ function TripDet() {
       if (user && trip_id) {
         try {
           // Check if the current user is the author of a private trip
-          const authorResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/tripget/${trip_id}`, { params: { userId: user.user_id } });
+          const authorResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/tripget/${trip_id}`, { params: { user_id: user.user_id } });
           if (authorResponse.data) {
             setIsLoadingUser(false);
             setIsAccessCheckComplete(true);
@@ -183,7 +183,7 @@ function TripDet() {
       if (user && user.user_id && trip_id) {
         try {
           // Perform the permissions check for other users
-          const permissionResponse = await axios.get(`https://lgcbe.onrender.com/permissions/check`, { params: { tripId: trip_id, granteeId: user.user_id } });
+          const permissionResponse = await axios.get(`https://lgcbe.onrender.com/permissions/check`, { params: { trip_id: trip_id, grantee_id: user.user_id } });
           const permissionData = permissionResponse.data;
           if (permissionData.hasAccess) {
             setIsLoadingUser(false);
@@ -223,7 +223,7 @@ function TripDet() {
           setMapOptions(currentOptions => ({
             ...currentOptions,
             center: [parseFloat(response.data.latitude), parseFloat(response.data.longitude)],
-            zoom: response.data.tripZoom || 4,
+            zoom: response.data.trip_zoom || 4,
           }));
         } catch (error) {
           console.error('Error fetching trip:', error);
@@ -246,7 +246,7 @@ function TripDet() {
       try {
         const response = await axios.get(`https://lgcbe.onrender.com/trip/api/travelogs/${trip_id}`); 
 
-        const sortedTravelogs = response.data.sort((a, b) => new Date(a.dateVisited) - new Date(b.dateVisited));
+        const sortedTravelogs = response.data.sort((a, b) => new Date(a.date_visited) - new Date(b.date_visited));
         setTravelogs(sortedTravelogs);
         setSelectedTravelogs(sortedTravelogs);
         // console.log('returned travelogs for this trip: ', sortedTravelogs);
@@ -265,7 +265,7 @@ function TripDet() {
       try {
         const response = await axios.get(`https://lgcbe.onrender.com/travelog/api/user/${user.user_id}/travelogs`);
         const userTravelogs = response.data;
-        const available = userTravelogs.filter(t => t.tripId === null);
+        const available = userTravelogs.filter(t => t.trip_id === null);
         setAvailableTravelogs(available);
         
       } catch (error) {
@@ -284,19 +284,19 @@ function TripDet() {
     return <div>Loading user...</div>;
   }
 
-  const selectTravelog = (travelogId) => {
-    const travelog = availableTravelogs.find(t => t.travelogId === travelogId);
+  const selectTravelog = (travelog_id) => {
+    const travelog = availableTravelogs.find(t => t.travelog_id === travelog_id);
     if (travelog) {
-      setAvailableTravelogs(availableTravelogs.filter(t => t.travelogId !== travelogId));
+      setAvailableTravelogs(availableTravelogs.filter(t => t.travelog_id !== travelog_id));
       setSelectedTravelogs([...selectedTravelogs, travelog]);
       setError('');
     }
   };
   
-  const deselectTravelog = (travelogId) => {
-    const travelog = selectedTravelogs.find(t => t.travelogId === travelogId);
+  const deselectTravelog = (travelog_id) => {
+    const travelog = selectedTravelogs.find(t => t.travelog_id === travelog_id);
     if (travelog) {
-      setSelectedTravelogs(selectedTravelogs.filter(t => t.travelogId !== travelogId));
+      setSelectedTravelogs(selectedTravelogs.filter(t => t.travelog_id !== travelog_id));
       setAvailableTravelogs([...availableTravelogs, travelog]);
     }
   };
@@ -327,20 +327,20 @@ function TripDet() {
       await axios.patch(`https://lgcbe.onrender.com/trip/api/trips/${trip_id}`, editedTrip);
   
       // Make a list of travelog IDs that were initially selected for the trip
-      const initiallySelectedTravelogs = travelogs.map(t => t.travelogId);
+      const initiallySelectedTravelogs = travelogs.map(t => t.travelog_id);
   
       // Determine which travelogs to add or remove based on the initial selection
-      const travelogsToAdd = selectedTravelogs.filter(t => !initiallySelectedTravelogs.includes(t.travelogId));
-      const travelogsToRemove = travelogs.filter(t => !selectedTravelogs.some(s => s.travelogId === t.travelogId));
+      const travelogsToAdd = selectedTravelogs.filter(t => !initiallySelectedTravelogs.includes(t.travelog_id));
+      const travelogsToRemove = travelogs.filter(t => !selectedTravelogs.some(s => s.travelogId === t.travelog_id));
   
       // Send requests to update travelogs that have been selected
       const addPromises = travelogsToAdd.map(travelog =>
-        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelogId}`, { tripId: trip_id, user_id: user.user_id })
+        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelog_id}`, { tripId: trip_id, user_id: user.user_id })
       );
   
       // Send requests to update travelogs that have been deselected
       const removePromises = travelogsToRemove.map(travelog =>
-        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelogId}`, { tripId: null, user_id: user.user_id })
+        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelog_id}`, { tripId: null, user_id: user.user_id })
       );
   
       // Wait for all the update requests to finish
@@ -439,8 +439,8 @@ return (
                 <input
                   id="dateOfDeparture"
                   type="date"
-                  value={editedTrip.dateOfDeparture || ''}
-                  onChange={(e) => setEditedTrip({ ...editedTrip, dateOfDeparture: e.target.value })}
+                  value={editedTrip.date_of_departure || ''}
+                  onChange={(e) => setEditedTrip({ ...editedTrip, date_of_departure: e.target.value })}
                 />
               </div>
 
@@ -449,8 +449,8 @@ return (
                 <input
                   id="dateOfReturn"
                   type="date"
-                  value={editedTrip.dateOfReturn || ''}
-                  onChange={(e) => setEditedTrip({ ...editedTrip, dateOfReturn: e.target.value })}
+                  value={editedTrip.date_of_return || ''}
+                  onChange={(e) => setEditedTrip({ ...editedTrip, date_of_return: e.target.value })}
                 />
               </div>
 
@@ -525,8 +525,8 @@ return (
                   type="number" 
                   min="0" 
                   max="18" 
-                  value={editedTrip.tripZoom || 4} // Default to 4 if tripZoom is not set
-                  onChange={(e) => setEditedTrip({ ...editedTrip, tripZoom: parseInt(e.target.value, 10) })}
+                  value={editedTrip.trip_zoom || 4} // Default to 4 if tripZoom is not set
+                  onChange={(e) => setEditedTrip({ ...editedTrip, trip_zoom: parseInt(e.target.value, 10) })}
                 />
               </div>
 
@@ -535,8 +535,8 @@ return (
                 <input
                   id="isPrivate"
                   type="checkbox"
-                  checked={editedTrip.isPrivate}
-                  onChange={(e) => setEditedTrip({ ...editedTrip, isPrivate: e.target.checked })}
+                  checked={editedTrip.is_private}
+                  onChange={(e) => setEditedTrip({ ...editedTrip, is_private: e.target.checked })}
                 />
               </div>
 
@@ -557,9 +557,9 @@ return (
               <div className="travelog-selection-container">
                 {availableTravelogs.map((travelog, index) => (
                   <div 
-                    key={travelog.travelogId} 
+                    key={travelog.travelog_id} 
                     className="trip-edit-mini-card"
-                    onClick={() => selectTravelog(travelog.travelogId)}  
+                    onClick={() => selectTravelog(travelog.travelog_id)}  
                     style={{ cursor: 'pointer' }} 
                   >
                     <div className="trip-edit-img-div">
@@ -574,7 +574,7 @@ return (
                     <div className='trip-edit-mini-card-text'>
                       <h3>{travelog.title}</h3>
                       <p>{travelog.site}</p>
-                      <p>&nbsp;Visited On {new Date(travelog.dateVisited).toLocaleDateString('en-CA')}</p> 
+                      <p>&nbsp;Visited On {new Date(travelog.date_visited).toLocaleDateString('en-CA')}</p> 
                     </div>
                   </div>
                 ))}
@@ -585,9 +585,9 @@ return (
               <div className="travelog-selection-container">
                 {selectedTravelogs.map((travelog, index) => (
                   <div 
-                    key={travelog.travelogId} 
+                    key={travelog.travelog_id} 
                     className="trip-edit-mini-card selected"
-                    onClick={() => deselectTravelog(travelog.travelogId)}  
+                    onClick={() => deselectTravelog(travelog.travelog_id)}  
                     style={{ cursor: 'pointer' }}  
                   >
                     <div className="trip-edit-img-div">
@@ -602,7 +602,7 @@ return (
                     <div className='trip-edit-mini-card-text'>
                       <h3>{travelog.title}</h3>
                       <p>{travelog.site}</p>
-                      <p>&nbsp;Visited On {new Date(travelog.dateVisited).toLocaleDateString('en-CA')}</p> 
+                      <p>&nbsp;Visited On {new Date(travelog.date_visited).toLocaleDateString('en-CA')}</p> 
                     </div>
                   </div>
                 ))}
@@ -627,7 +627,7 @@ return (
                     attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                   />
                   {travelogs.map((entry, index) => ( 
-                    <TripDetMarker key={entry.travelogId} entry={entry} order={index + 1} showNumbers={showMarkerNumbers} />
+                    <TripDetMarker key={entry.travelog_id} entry={entry} order={index + 1} showNumbers={showMarkerNumbers} />
                   ))}
 
                   {/* Create polyline based on travelogs */}
@@ -659,12 +659,12 @@ return (
               <div className='trip-details'>
                 <h3>Trip Details</h3>
                 <p>Traveler: <Link to={`/Public_Profile/${trip.username}`}>{trip.username}</Link></p>
-                <p>Departure Date: {trip.dateOfDeparture}</p>
-                <p>Return Date: {trip.dateOfReturn}</p>
+                <p>Departure Date: {trip.date_of_departure}</p>
+                <p>Return Date: {trip.date_of_return}</p>
                 <p>Latitude: {trip.latitude}</p>
                 <p>Longitude: {trip.longitude}</p>
-                <p>Zoom Level: {trip.tripZoom}</p>
-                <p>Private: {trip.isPrivate ? 'Yes' : 'No'}</p>
+                <p>Zoom Level: {trip.trip_zoom}</p>
+                <p>Private: {trip.is_private ? 'Yes' : 'No'}</p>
                 <p>Visited: {trip.have_visited ? 'Yes' : 'No'}</p> 
                 {
                   currentUser === profileUser &&
@@ -750,7 +750,7 @@ return (
 
               <h2 className='trip-heading' >Travelogs For This Trip</h2>
                 {travelogs.map((travelog, index) => (
-                  <Link key={travelog.travelogId} to={`/trav_det/${travelog.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <Link key={travelog.travelog_id} to={`/trav_det/${travelog.travelog_id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className="trip-det-mini-card">
                         <div className="trip-det-mini-img-div"> 
                         {travelog.Images[0] && (  
@@ -764,11 +764,11 @@ return (
                         <div className='trip-det-mini-card-text'>
                           <h3>{travelog.title}</h3>
                           <p>{travelog.site}</p>
-                          <p>&nbsp;Visited On {new Date(travelog.dateVisited).toLocaleDateString('en-CA')}</p>
-                          {travelog.User && travelog.userId !== user.user_id && (
+                          <p>&nbsp;Visited On {new Date(travelog.date_visited).toLocaleDateString('en-CA')}</p>
+                          {travelog.User && travelog.user_id !== user.user_id && (
                             <p>&nbsp;by <Link to={`/public_profile/${travelog.User.username}`}>{travelog.User.username}</Link></p>
                           )}
-                          {travelog.userId === user.user_id && (
+                          {travelog.user_id === user.user_id && (
                             <p>&nbsp;by <Link to={`/public_profile/${user.username}`}>{user.username}</Link></p>
                           )}
                           <p>&nbsp;In {travelog.city}, {travelog.country}</p> 

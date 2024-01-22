@@ -21,7 +21,7 @@ const initialFormData = {
   city: '',
   latitude: '',
   longitude: '',
-  dateVisited: '',
+  date_visited: '',
   title: '', 
   imageUrls: [''],
   address: '',
@@ -453,7 +453,7 @@ function LogEntry() {
       <div className='triple-label log-entry-button-bar'>
 
         <label className='log-entry-label'>          
-          <input type="datetime-local" value={formData.dateVisited} onChange={e => setFormData({ ...formData, dateVisited: e.target.value })} required/>
+          <input type="datetime-local" value={formData.date_visited} onChange={e => setFormData({ ...formData, date_visited: e.target.value })} required/>
         </label> 
         <label className='log-entry-label'> 
           <input type="text" value={formData.latitude.toString()} onChange={e => setFormData({ ...formData, latitude: parseFloat(e.target.value) || 0 })} placeholder="Latitude" required/>
