@@ -265,11 +265,13 @@ function TravDet() {
     try {
       // console.log('********WTF travelog_id: ', travelog_id)
       const response = await axios.get(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`);
+      console.log('response.data.date_visited: ', response.data.date_visited)
+      if (response.data.date_visited) {
+        setFormattedDateVisited(moment(response.data.date_visited).format('MMMM Do YYYY, h:mm a'));  
+ 
 
-      if (response.data.dateVisited) {
-        setFormattedDateVisited(moment(response.data.dateVisited).format('MMMM Do YYYY, h:mm a'));  
         // Keep the ISO format for editing
-        response.data.dateVisited = moment(response.data.dateVisited).format('YYYY-MM-DDTHH:mm'); //  
+        response.data.date_visited = moment(response.data.date_visited).format('YYYY-MM-DDTHH:mm'); //  
       }
 
     
@@ -446,8 +448,8 @@ function TravDet() {
                     <label>Date Visited:</label>
                     <input
                       type="datetime-local"
-                      value={editedTravelog.dateVisited}
-                      onChange={e => setEditedTravelog({ ...editedTravelog, dateVisited: e.target.value })}
+                      value={editedTravelog.date_visited}
+                      onChange={e => setEditedTravelog({ ...editedTravelog, date_visited: e.target.value })}
                     />
                   </div> 
                   
