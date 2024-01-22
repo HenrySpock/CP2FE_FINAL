@@ -145,7 +145,7 @@ function TripDet() {
   useEffect(() => {
     const checkUserAndPermissions = async () => {
       if (!user) {
-        navigate('/');
+        navigate('/auth');
       }
       if (trip_id) {
         try {
