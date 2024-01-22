@@ -209,6 +209,8 @@ function Documentation() {
       as possible to prevent account consequences. If a friend is an admin and they have to communicate with you about a report on your content, their friend card moves to 
       an admin section until such time as that report is cleared. 
 
+      { is_admin === true && (
+      <>
       <h2 className='heading'>For A Logged In Admin</h2> 
       (needs a check against user object for isAdmin=true)
       <h3 className='heading'>Admin Panel</h3> 
@@ -237,7 +239,8 @@ function Documentation() {
           <p>Banning is permanent, delets any content related to the user and adds their email to the database whether it is prevented from being used again.</p>
 
       <p>If a report is older 3 days, it turns red, indicating some decision should be made.</p>
-
+      </>
+      )}
      
       <div style={{ textAlign: 'center', marginTop: '20px' }}>
         <button onClick={goToAbout} className="explicit-doc-btn heading">
