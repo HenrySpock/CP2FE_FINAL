@@ -282,9 +282,11 @@ function TripDet() {
     return <div>Loading user...</div>;
   }
 
-  useEffect(() => {
-    if (!isLoadingUser && !user) {
-      navigate('/auth');
+  useEffect(() => { 
+    if (isLoadingUser === false) {
+      if (!user) { 
+        navigate('/');
+      }
     }
   }, [user, isLoadingUser, navigate]);
 
