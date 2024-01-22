@@ -72,7 +72,7 @@ function HomeOther() {
     return (
       <div className="other-trav-card" onClick={() => {
             if(user) {
-                navigate(`/trav_det/${travelog.travelogId}`);
+                navigate(`/trav_det/${travelog.travelog_id}`);
             } else {
                 navigate('/auth');
             }
