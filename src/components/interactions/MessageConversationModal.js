@@ -128,9 +128,9 @@ function MessageConversationModal({ activeConversation, onClose, friends, isAdmi
         const response = await fetch(`https://lgcbe.onrender.com/api/conversations/${user.user_id}/${activeConversation.user_id}`, {
             method: 'DELETE',
         });
-        console.log('data from deletion: ', data)
         const data = await response.json();
         if (data.success) {
+            console.log('data from deletion: ', data)
             setShowDeleteConfirm(false);  // Close the confirmation modal
             setMessages([]);  // Clear the messages
         } else {
