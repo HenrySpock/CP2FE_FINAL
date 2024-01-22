@@ -348,7 +348,7 @@ function Home() {
           
 
 
-          {/* <div className='home-col-div'><h2>Newest Trip</h2>
+          <div className='home-col-div'><h2>Newest Trip</h2>
             <div onClick={() => navigate(`/trip_det/${newestTrip.trip_id}`)}>
               {newestTrip &&
                 <div className="recent-card">
@@ -372,33 +372,9 @@ function Home() {
                 </div>
               }
             </div>
-          </div> */}
-
-          <div className='home-col-div'><h2>Newest Trip</h2>
-            <div onClick={() => user ? navigate(`/trip_det/${newestTrip.trip_id}`) : navigate('/')}>
-              {newestTrip &&
-                <div className="recent-card">
-                    <img src={newestTrip.image_url} alt={`${newestTrip.title}`} /> 
-                  <div>
-                    <p className='recent-username-text'>{newestTrip.title}</p> 
-                  </div>
-                </div>
-              }
-            </div>
           </div>
 
-          <div className='home-col-div'><h2>Newest Travelog</h2>
-            <div onClick={() => user ? navigate(`/trav_det/${newestTravelog.travelog_id}`) : navigate('/')}>
-            {newestTravelog &&
-                <div className="recent-card">
-                  <img src={newestTravelog.Images[0].image_url} alt={`${newestTravelog.Images[0].title}`} /> 
-                  <div>
-                    <p className='recent-username-text'>{newestTravelog.title}</p> 
-                  </div>
-                </div>
-              }
-            </div>
-          </div>
+ 
 
         </div>
       </div>

@@ -49,7 +49,7 @@ function CustomMarkers({ travelogEntries, tripEntries }) {
           return (
             <Marker position={[entry.latitude, entry.longitude]} icon={customIcon} key={entry.travelog_id}> 
               <Popup>
-                <Link to={`/trav_det/${entry.travelogId}`} className="custom-popup">
+                <Link to={`/trav_det/${entry.travelog_id}`} className="custom-popup">
                   <Link to={`/public_profile/${entry.User.username}`}>
                     <span> {entry.User.username}</span>
                   </Link> <br /> 
