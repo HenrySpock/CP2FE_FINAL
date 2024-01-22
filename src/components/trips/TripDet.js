@@ -411,6 +411,10 @@ function TripDet() {
     return <div>Loading...</div>;
   }
 
+  if (isAccessCheckComplete && !user) {
+    return <div>Loading...</div>;
+  }
+
 return (
   <div>
     {trip ? (

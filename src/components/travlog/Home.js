@@ -18,7 +18,7 @@ function Home() {
 
   const { user } = useContext(UserContext);  // Access user data from UserContext
 
-  const [sortBy, setSortBy] = useState('createdAt');
+  const [sortBy, setSortBy] = useState('created_at');
   const [travelogEntries, setTravelogEntries] = useState([]);
   const [recentTravelogs, setRecentTravelogs] = useState([]);
 
