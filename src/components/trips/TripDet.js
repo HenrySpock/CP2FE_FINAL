@@ -65,9 +65,7 @@ function TripDet() {
         }
       }, 60000); // Delay in milliseconds 
     }
-  }, []);    
-  
-
+  }, []);     
 
   // Call the fetchUserDataByUsername function when profileUser is available
   useEffect(() => {
@@ -283,6 +281,12 @@ function TripDet() {
   if (isLoadingUser) {
     return <div>Loading user...</div>;
   }
+
+  useEffect(() => {
+    if (!isLoading && !user) {
+      navigate('/auth');
+    }
+  }, [user, isLoading, navigate]);
 
   const selectTravelog = (travelog_id) => {
     const travelog = availableTravelogs.find(t => t.travelog_id === travelog_id);
