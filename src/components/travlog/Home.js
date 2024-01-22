@@ -160,7 +160,7 @@ function Home() {
   return (
     <div className="home-trav-card" onClick={() => {
           if(user) {
-              navigate(`/trav_det/${travelog.travelogId}`);
+              navigate(`/trav_det/${travelog.travelog_id}`);
           } else {
               navigate('/auth');
           }
@@ -215,7 +215,7 @@ function Home() {
     if (travelogEntries.length > 0) {
       const randomIndex = Math.floor(Math.random() * travelogEntries.length);
       const randomTravelog = travelogEntries[randomIndex];
-      navigate(`/trav_det/${randomTravelog.travelogId}`);
+      navigate(`/trav_det/${randomTravelog.travelog_id}`);
     } else { 
       // console.log('No travelog entries available');
     }
@@ -346,7 +346,9 @@ function Home() {
  
         <div className="home-map-col hmcr">
           
-          <div className='home-col-div'><h2>Newest Trip</h2>
+
+
+          {/* <div className='home-col-div'><h2>Newest Trip</h2>
             <div onClick={() => navigate(`/trip_det/${newestTrip.trip_id}`)}>
               {newestTrip &&
                 <div className="recent-card">
@@ -360,7 +362,33 @@ function Home() {
           </div>
 
           <div className='home-col-div'><h2>Newest Travelog</h2>
-            <div onClick={() => navigate(`/trav_det/${newestTravelog.travelogId}`)}>
+            <div onClick={() => navigate(`/trav_det/${newestTravelog.travelog_id}`)}>
+            {newestTravelog &&
+                <div className="recent-card">
+                  <img src={newestTravelog.Images[0].image_url} alt={`${newestTravelog.Images[0].title}`} /> 
+                  <div>
+                    <p className='recent-username-text'>{newestTravelog.title}</p> 
+                  </div>
+                </div>
+              }
+            </div>
+          </div> */}
+
+          <div className='home-col-div'><h2>Newest Trip</h2>
+            <div onClick={() => user ? navigate(`/trip_det/${newestTrip.trip_id}`) : navigate('/')}>
+              {newestTrip &&
+                <div className="recent-card">
+                    <img src={newestTrip.image_url} alt={`${newestTrip.title}`} /> 
+                  <div>
+                    <p className='recent-username-text'>{newestTrip.title}</p> 
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+
+          <div className='home-col-div'><h2>Newest Travelog</h2>
+            <div onClick={() => user ? navigate(`/trav_det/${newestTravelog.travelog_id}`) : navigate('/')}>
             {newestTravelog &&
                 <div className="recent-card">
                   <img src={newestTravelog.Images[0].image_url} alt={`${newestTravelog.Images[0].title}`} /> 
@@ -384,7 +412,7 @@ function Home() {
           <h2 className="recent-trav-title">Recent Travelogs</h2>
           <div className="recent-travelogs">
             {recentTravelogs.map(travelog => (
-              <TravelogCard key={travelog.travelogId} travelog={travelog} />
+              <TravelogCard key={travelog.travelog_id} travelog={travelog} />
             ))}
           </div>
         </div>
@@ -421,7 +449,7 @@ function Home() {
  
           <div className="home-trips-list">
             {sortedTripEntries.slice((currentTripPage - 1) * itemsPerPage, currentTripPage * itemsPerPage).map(trip => (
-              <TripCard key={trip.tripId} trip={trip} />
+              <TripCard key={trip.trip_id} trip={trip} />
             ))}
           </div> 
 
@@ -455,7 +483,7 @@ function Home() {
 
           <div className="home-travelogs-list">
             {sortedTravelogEntries.slice((currentTravelogPage - 1) * itemsPerPage, currentTravelogPage * itemsPerPage).map(travelog => (
-              <TravelogCard key={travelog.travelogId} travelog={travelog} />
+              <TravelogCard key={travelog.travelog_id} travelog={travelog} />
             ))}
           </div>  
 
