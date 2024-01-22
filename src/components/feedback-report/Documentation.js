@@ -209,7 +209,7 @@ function Documentation() {
       as possible to prevent account consequences. If a friend is an admin and they have to communicate with you about a report on your content, their friend card moves to 
       an admin section until such time as that report is cleared. 
 
-      { is_admin === true && (
+      { user.is_admin === true && (
       <>
       <h2 className='heading'>For A Logged In Admin</h2> 
       (needs a check against user object for isAdmin=true)
