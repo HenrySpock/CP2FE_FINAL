@@ -209,7 +209,7 @@ function Documentation() {
       as possible to prevent account consequences. If a friend is an admin and they have to communicate with you about a report on your content, their friend card moves to 
       an admin section until such time as that report is cleared. 
 
-      <h2 className='heading'>For A Logged In Admind</h2> 
+      <h2 className='heading'>For A Logged In Admin</h2> 
       (needs a check against user object for isAdmin=true)
       <h3 className='heading'>Admin Panel</h3> 
       <p>First off, in your navbar, if you have uncleared reports or messages from reported users, these will appear as badges next to your Admin Panel link - blue for messages
