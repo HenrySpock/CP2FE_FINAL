@@ -129,8 +129,8 @@ const updateImageUrl = (earliestTravelog) => {
       if (user) {
         try {
           console.log('user.user_id: ', user.user_id)
-          // const response = await fetch(`https://lgcbe.onrender.com/trip/api/travelogs?user_id=${user.user_id}&trip_id=null`);
-          const response = await fetch(`https://lgcbe.onrender.com/trip/api/travelogs?user_id=${user.user_id}`);
+          const response = await fetch(`https://lgcbe.onrender.com/trip/api/travelogs?user_id=${user.user_id}&trip_id=null`);
+          
           if (!response.ok) {
             throw new Error('Network response was not ok');
           }
