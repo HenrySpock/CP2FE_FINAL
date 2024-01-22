@@ -64,8 +64,8 @@ function UserHub() {
   const { socket } = useWebSocket();  
 
   // Function to delete a notification from state
-  const deleteNotification = (notificationId) => {
-    setNotifications(prevNotifications => prevNotifications.filter(notification => notification.notificationId !== notificationId));
+  const deleteNotification = (notification_id) => {
+    setNotifications(prevNotifications => prevNotifications.filter(notification => notification.notification_id !== notification_id));
   };
 
   useEffect(() => {
@@ -99,7 +99,7 @@ function UserHub() {
         });
         socket.on('notification-deleted', (data) => {
             // console.log('Notification deleted:', data);
-            deleteNotification(data.notificationId);
+            deleteNotification(data.notification_id);
         });
         // New listener for unfriend event...
         socket.on('unfriend', (data) => {
@@ -108,8 +108,8 @@ function UserHub() {
         });
         socket.on('remove-follow-notification', (data) => {
           // console.log('Follow notification removed:', data);
-          // console.log('data.notificationId for deleting: ', data.notificationId)
-          deleteNotification(data.notificationId);  
+          // console.log('data.notification_id for deleting: ', data.notification_id)
+          deleteNotification(data.notification_id);  
         });
 
         return () => {
@@ -184,12 +184,12 @@ useEffect(() => {
     fetchNotifications();
   }, [user]); 
 
-  const handleDeny = async (sender_id, recipient_id, notificationId) => {
+  const handleDeny = async (sender_id, recipient_id, notification_id) => {
     try {
       const response = await fetch('https://lgcbe.onrender.com/api/friends/request/deny', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ sender_id, recipient_id, notificationId })
+        body: JSON.stringify({ sender_id, recipient_id, notification_id })
       });
 
       if (!response.ok) {
@@ -198,7 +198,7 @@ useEffect(() => {
 
       const data = await response.json();
       if (data.success) {
-        setNotifications(notifications => notifications.filter(notification => notification.notificationId !== notificationId));
+        setNotifications(notifications => notifications.filter(notification => notification.notification_id !== notification_id));
       }
     } catch (error) {
       console.error('Error denying friend request:', error);
@@ -230,9 +230,9 @@ useEffect(() => {
 
 // };
 
-const handleDeleteNotification = async (notificationId) => {
+const handleDeleteNotification = async (notification_id) => {
   try {
-    const response = await fetch(`https://lgcbe.onrender.com/api/notifications/delete/${notificationId}`, {
+    const response = await fetch(`https://lgcbe.onrender.com/api/notifications/delete/${notification_id}`, {
       method: 'DELETE'
     });
 
@@ -241,7 +241,7 @@ const handleDeleteNotification = async (notificationId) => {
     }
 
     // Update the state to remove the notification from the list
-    deleteNotification(notificationId);
+    deleteNotification(notification_id);
 
   } catch (error) {
     console.error('Error deleting notification:', error);
@@ -312,10 +312,10 @@ const handleDeleteNotification = async (notificationId) => {
               <div className={`notification-card-modal-overlay ${isNotificationCardModalOpen ? 'open' : ''}`} onClick={handleOverlayClick}>
                 <NotificationCardModal isOpen={isNotificationCardModalOpen} onClose={closeNotificationCardModal}>
                   {notifications.map(notification => ( 
-                    <div className='notification-slate' key={notification.notificationId}>
+                    <div className='notification-slate' key={notification.notification_id}>
                       <NotificationCard notification={notification} onAccept={handleAccept} onDeny={handleDeny} />
                       {notification && (
-                        <button className='notification-delete-btn' onClick={() => handleDeleteNotification(notification.notificationId)}>Delete</button>
+                        <button className='notification-delete-btn' onClick={() => handleDeleteNotification(notification.notification_id)}>Delete</button>
                       )} 
                     </div>
                   ))}
