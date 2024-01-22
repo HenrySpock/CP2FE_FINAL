@@ -243,11 +243,11 @@ function TripDet() {
     const fetchTravelogs = async () => {
       try {
         const response = await axios.get(`https://lgcbe.onrender.com/trip/api/travelogs/${trip_id}`); 
-
+        
         const sortedTravelogs = response.data.sort((a, b) => new Date(a.date_visited) - new Date(b.date_visited));
         setTravelogs(sortedTravelogs);
         setSelectedTravelogs(sortedTravelogs);
-        // console.log('returned travelogs for this trip: ', sortedTravelogs);
+        console.log('returned travelogs for this trip: ', sortedTravelogs);
       } catch (error) {
         console.error('Error fetching travelogs:', error);
       }
