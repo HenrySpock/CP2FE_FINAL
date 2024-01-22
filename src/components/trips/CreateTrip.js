@@ -65,13 +65,13 @@ function CreateTrip() {
 // Function to handle selecting a travelog
 const handleSelectTravelog = (selectedTravelog) => {
   setAvailableTravelogs(prevTravelogs =>
-    prevTravelogs.filter(travelog => travelog.travelogId !== selectedTravelog.travelogId)
+    prevTravelogs.filter(travelog => travelog.travelog_id !== selectedTravelog.travelog_id)
   );
   setSelectedTravelogs(prevSelected => {
     const newSelectedTravelogs = [...prevSelected, selectedTravelog];
 
     // Sort and find the earliest travelog
-    const earliestTravelog = newSelectedTravelogs.sort((a, b) => a.travelogId - b.travelogId)[0];
+    const earliestTravelog = newSelectedTravelogs.sort((a, b) => a.travelog_id - b.travelog_id)[0];
 
     const [newLat, newLng] = calculateCenterOfBounds(newSelectedTravelogs); 
 
@@ -89,11 +89,11 @@ const handleSelectTravelog = (selectedTravelog) => {
 // Function to handle deselecting a travelog
 const handleDeselectTravelog = (deselectedTravelog) => {
   setSelectedTravelogs(prevSelected => {
-    const newSelectedTravelogs = prevSelected.filter(travelog => travelog.travelogId !== deselectedTravelog.travelogId);
+    const newSelectedTravelogs = prevSelected.filter(travelog => travelog.travelog_id !== deselectedTravelog.travelog_id);
 
     if (newSelectedTravelogs.length > 0) {
       // Sort and find the earliest travelog
-      const earliestTravelog = newSelectedTravelogs.sort((a, b) => a.travelogId - b.travelogId)[0]; 
+      const earliestTravelog = newSelectedTravelogs.sort((a, b) => a.travelog_id - b.travelog_id)[0]; 
       const [newLat, newLng] = calculateCenterOfBounds(newSelectedTravelogs);
       setLatitude(newLat);
       setLongitude(newLng);
@@ -135,7 +135,7 @@ const updateImageUrl = (earliestTravelog) => {
             throw new Error('Network response was not ok');
           }
           const data = await response.json();
-          // console.log('travelogs: ', data);
+          console.log('travelogs: ', data);
           setAvailableTravelogs(data);
         } catch (error) {
           console.error('There has been a problem with your fetch operation:', error);
@@ -164,8 +164,8 @@ const updateImageUrl = (earliestTravelog) => {
       user_id: user.user_id,  
       username: user.username,
       title,
-      dateOfDeparture: departureDate,
-      dateOfReturn: returnDate,
+      date_of_departure: departureDate,
+      date_of_return: returnDate,
       latitude, 
       longitude, 
       image_url: imageUrl,
@@ -306,7 +306,7 @@ const updateImageUrl = (earliestTravelog) => {
           <div className='travelog-container'>
 
               {availableTravelogs.map(travelog => (
-                <div key={travelog.id} onClick={() => handleSelectTravelog(travelog)} className='selectable'>
+                <div key={travelog.travelog_id} onClick={() => handleSelectTravelog(travelog)} className='selectable'>
                   <img src={travelog.Images[0].image_url} alt={travelog.Images} 
                   />
                   <p>Country: {travelog.country}</p>
@@ -322,7 +322,7 @@ const updateImageUrl = (earliestTravelog) => {
           <div className='travelog-container'>
 
               {selectedTravelogs.map(travelog => (
-                <div key={travelog.id} onClick={() => handleDeselectTravelog(travelog)} className='selectable'> 
+                <div key={travelog.travelog_id} onClick={() => handleDeselectTravelog(travelog)} className='selectable'> 
                   <img src={travelog.Images[0].image_url} alt={travelog.Images} 
                   />
                   <p>Country: {travelog.country}</p>
