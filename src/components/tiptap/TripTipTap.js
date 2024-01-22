@@ -13,18 +13,18 @@ import './TipTap.css'
 const TripTipTap = () => {
  
   const navigate = useNavigate();
-  const { id: tripId } = useParams(); // Get the travelog ID from the URL
+  const { id: trip_id } = useParams(); // Get the travelog ID from the URL
   const { user } = useContext(UserContext);   
   const [formattedText, setFormattedText] = useState('');
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
  
-  // console.log('trip id: ', tripId);
+  // console.log('trip id: ', trip_id);
 
   useEffect(() => {
     const fetchTripentry = async () => {
       try {
-        const response = await fetch(`https://lgcbe.onrender.com/trip/get_tripentry/${tripId}`);
+        const response = await fetch(`https://lgcbe.onrender.com/trip/get_tripentry/${trip_id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch tripentry');
         }
@@ -41,7 +41,7 @@ const TripTipTap = () => {
     };
   
     fetchTripentry();
-  }, [tripId]);
+  }, [trip_id]);
 
   useEffect(() => {
     // console.log('Formatted text after update:', formattedText);
@@ -64,7 +64,7 @@ const TripTipTap = () => {
         return; // Stop the function here as forbidden words are found
       }
 
-      const response = await fetch(`https://lgcbe.onrender.com/trip/update_tripentry/${tripId}`, {
+      const response = await fetch(`https://lgcbe.onrender.com/trip/update_tripentry/${trip_id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -74,7 +74,7 @@ const TripTipTap = () => {
   
       if (response.ok) {
         // console.log("Entry saved successfully");
-        navigate(`/trip_det/${tripId}`); 
+        navigate(`/trip_det/${trip_id}`); 
       } else {
         throw new Error("Failed to save entry");
       }
@@ -85,7 +85,7 @@ const TripTipTap = () => {
 
   const handleDeleteEntryClick = async () => {
     try {
-      const response = await fetch(`https://lgcbe.onrender.com/trip/delete_tripentry/${tripId}`, {
+      const response = await fetch(`https://lgcbe.onrender.com/trip/delete_tripentry/${trip_id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const TripTipTap = () => {
   
       if (response.ok) {
         // console.log("Entry deleted successfully");
-        navigate(`/trip_det/${tripId}`);
+        navigate(`/trip_det/${trip_id}`);
       } else {
         throw new Error("Failed to delete entry");
       }
@@ -105,7 +105,7 @@ const TripTipTap = () => {
   };
 
   const handleCancelClick = () => {
-    navigate(`/trip_det/${tripId}`); // Navigate back to the travelog details page
+    navigate(`/trip_det/${trip_id}`); // Navigate back to the travelog details page
   };
 
   return (

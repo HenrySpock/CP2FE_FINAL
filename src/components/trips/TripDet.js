@@ -336,12 +336,12 @@ function TripDet() {
   
       // Send requests to update travelogs that have been selected
       const addPromises = travelogsToAdd.map(travelog =>
-        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelog_id}`, { tripId: trip_id, user_id: user.user_id })
+        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelog_id}`, { trip_id: trip_id, user_id: user.user_id })
       );
   
       // Send requests to update travelogs that have been deselected
       const removePromises = travelogsToRemove.map(travelog =>
-        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelog_id}`, { tripId: null, user_id: user.user_id })
+        axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog.travelog_id}`, { trip_id: null, user_id: user.user_id })
       );
   
       // Wait for all the update requests to finish

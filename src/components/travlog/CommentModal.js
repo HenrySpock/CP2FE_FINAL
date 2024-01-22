@@ -40,7 +40,7 @@ const handleCommentSubmit = async () => {
       entityId = trip.trip_id;
       entityType = 'trip_id';
   } else {
-      console.error('No travelogId or tripId provided');
+      console.error('No travelog_id or trip_id provided');
       setErrorMessage('Error: No travelog or trip information provided.');
       return;
   }

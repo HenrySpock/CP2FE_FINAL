@@ -191,7 +191,7 @@ const updateImageUrl = (earliestTravelog) => {
       const trip_id = trip.trip_id;
  
       for (const travelog of selectedTravelogs) {
-        // console.log('trying to set trip_id on travelog: ', travelog, 'the tripId is: ', tripId)
+        // console.log('trying to set trip_id on travelog: ', travelog, 'the trip_id is: ', trip_id)
         try {
           const travelog_id = travelog.travelog_id; 
           const travelogResponse = await fetch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`, {
@@ -206,7 +206,7 @@ const updateImageUrl = (earliestTravelog) => {
             throw new Error(`Failed to update travelog ${travelog_id}`);
           }
         } catch (error) {
-          console.error(`Failed to update travelog ${travelog.travelog_id} with tripId:`, error);
+          console.error(`Failed to update travelog ${travelog.travelog_id} with trip_id:`, error);
         }
       } 
       setIsSubmitting(false);

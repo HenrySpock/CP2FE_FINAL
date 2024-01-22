@@ -120,11 +120,11 @@ function CommentItem({ comment, contextUser,}) {
         // Determine the URL based on whether the comment is related to a travelog or a trip
         let url = 'https://lgcbe.onrender.com/api/comments';
         if (comment.comment.travelog_id) {
-          url += `?travelogId=${comment.comment.travelog_id}`;
+          url += `?travelog_id=${comment.comment.travelog_id}`;
         } else if (comment.comment.trip_id) {
-          url += `?tripId=${comment.comment.trip_id}`;
+          url += `?trip_id=${comment.comment.trip_id}`;
         } else {
-          console.error('No travelogId or tripId provided in the comment');
+          console.error('No travelog_id or trip_id provided in the comment');
           return;
         }
   

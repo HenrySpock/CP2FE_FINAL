@@ -224,8 +224,7 @@ useEffect(() => {
   }, [userData, contextUser, trip_id]);
 
   // POST fetch for likes 
-  const toggleLike = async (user_id, liker_id, liketype) => {
-    const tripId = trip_id
+  const toggleLike = async (user_id, liker_id, liketype) => { 
     // console.log('trip_likes trip_id: ', trip_id)
     
     try {
@@ -234,7 +233,7 @@ useEffect(() => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ user_id, liker_id, liketype, tripId })
+        body: JSON.stringify({ user_id, liker_id, liketype, trip_id })
       });
   
       if (!response.ok) {
