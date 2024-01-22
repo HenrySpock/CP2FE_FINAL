@@ -130,7 +130,7 @@ function HomeOther() {
               {/* Render Travelog Cards */}
               <div className="other-travelogs-list">
                   {currentItems.map(travelog => (                   
-                        <TravelogCard key={travelog.travelogId} travelog={travelog} />                  
+                        <TravelogCard key={travelog.travelog_id} travelog={travelog} />                  
                   ))}
               </div>
             </div>
