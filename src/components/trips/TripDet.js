@@ -144,6 +144,9 @@ function TripDet() {
   
   useEffect(() => {
     const checkUserAndPermissions = async () => {
+      if (!user) {
+        navigate('/');
+      }
       if (trip_id) {
         try {
           // First, try to fetch a public trip or a private trip where the user is the author
@@ -408,10 +411,6 @@ function TripDet() {
   };
 
   if (!isAccessCheckComplete) {
-    return <div>Loading...</div>;
-  }
-
-  if (isAccessCheckComplete && !user) {
     return <div>Loading...</div>;
   }
 
