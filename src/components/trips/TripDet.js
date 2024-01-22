@@ -283,10 +283,10 @@ function TripDet() {
   }
 
   useEffect(() => {
-    if (!isLoading && !user) {
+    if (!isLoadingUser && !user) {
       navigate('/auth');
     }
-  }, [user, isLoading, navigate]);
+  }, [user, isLoadingUser, navigate]);
 
   const selectTravelog = (travelog_id) => {
     const travelog = availableTravelogs.find(t => t.travelog_id === travelog_id);
