@@ -63,6 +63,7 @@ function Profile() {
       const fetchUser = async () => {
         try {
           const response = await axios.get(`https://lgcbe.onrender.com/user/api/user/${user.user_id}`);
+          console.log('response.data from user fetch on profile.js: ', response.data)
           setUser(response.data);  // Update the user data in UserContext
         } catch (error) {
           console.error('Error fetching user details:', error);

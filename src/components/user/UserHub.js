@@ -334,7 +334,7 @@ const handleDeleteNotification = async (notification_id) => {
                 <div className='hub-avatar'>
                   <img src={ user.avatar } alt="user avatar"/>
                 </div>
-                <p>Name: {user.firstName} {user.lastName}</p>
+                <p>Name: {user.first_name} {user.last_name}</p>
                 <p>Username: {user.username}</p>
                 <p>Email: {user.email}</p>
                 <button onClick={() => navigate('/connections')} className='hub-btn'>
