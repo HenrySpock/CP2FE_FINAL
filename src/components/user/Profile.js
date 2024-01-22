@@ -112,8 +112,8 @@ function Profile() {
 
     try {
         const updateData = {
-            firstName: editedUser.firstName,
-            lastName: editedUser.lastName,
+            first_name: editedUser.first_name,
+            last_name: editedUser.last_name,
             email: editedUser.email,
             securityQuestion: editedUser.securityQuestion, 
             adminKey: editedUser.adminKey,
@@ -168,8 +168,8 @@ return (
             <label>          
               <input className='profile-form' 
                 type="text" 
-                name="firstName" 
-                value={editedUser.firstName || ''} 
+                name="first_name" 
+                value={editedUser.first_name || ''} 
                 onChange={handleInputChange} 
               />
             </label>
@@ -180,8 +180,8 @@ return (
             <label>
               <input className='profile-form' 
                 type="text" 
-                name="lastName" 
-                value={editedUser.lastName || ''} 
+                name="last_name" 
+                value={editedUser.last_name || ''} 
                 onChange={handleInputChange} 
               />
             </label>
