@@ -137,6 +137,7 @@ useEffect(() => {
         try {
           // Fetch travelogs
           const travelogsResponse = await axios.get(`https://lgcbe.onrender.com/travelog/api/user/${user.user_id}/travelogs`);
+          console.log('travelogsResponse: ', travelogsResponse)
           // SORTING 
           setTravelogs(travelogsResponse.data);
           setFilteredTravelogs(travelogsResponse.data);
