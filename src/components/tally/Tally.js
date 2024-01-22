@@ -128,7 +128,7 @@ const Tally = () => {
     // Start polling every second
     if (isAuthenticated  
       ) { 
-      intervalId = setInterval(fetchCounts, 6000000);
+      intervalId = setInterval(fetchCounts, 10000);
     }
 
     // Clean up the interval on component unmount  

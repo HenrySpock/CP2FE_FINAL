@@ -70,7 +70,7 @@ function Messages() {
 
             fetchAndUpdateAdminMessages();
 
-       }, 6000000);  
+       }, 1000);  
   
       return () => clearInterval(intervalId);  
     }
