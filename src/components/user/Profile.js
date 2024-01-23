@@ -49,7 +49,7 @@ function Profile() {
   
   const checkSuspension = async (email) => {
     try {
-      const response = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${encodeURIComponent(email)}`);
+      const response = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?user_email=${encodeURIComponent(email)}`);
       const data = await response.json();
       return data.isSuspended ? `Email suspended for ${data.remainingTime} more hours.` : true;
     } catch (error) {

@@ -51,7 +51,7 @@ const Tally = () => {
               }
 
               // Check for suspension
-              const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${encodeURIComponent(user.email)}`);
+              const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?user_email=${encodeURIComponent(user.email)}`);
               const suspensionData = await suspensionResponse.json();
               if (suspensionData.isSuspended) {
                 logout();

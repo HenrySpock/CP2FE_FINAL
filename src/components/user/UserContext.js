@@ -114,7 +114,7 @@ export const UserProvider = ({ children }) => {
           setIsAdmin(userData.is_admin);  
 
           // Check for suspension
-          const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${encodeURIComponent(userData.email)}`);
+          const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?user_email=${encodeURIComponent(userData.email)}`);
           // console.log('suspensionResponse: ', suspensionResponse)
           if (suspensionResponse.ok) {
             const suspensionData = await suspensionResponse.json();

@@ -127,17 +127,17 @@ function AdminPanel() {
 
         // Fetch suspension status for each reported feedback
         const suspensionChecks = reportedFeedbackData.map(async (report) => {
-          const userEmail = report.ReportedUser?.email || report.ReportedTrip?.User.email || report.ReportedTravelog?.User.email || report.ReportedComment?.user.email;
-          if (userEmail) {
-            const suspensionResponse = await axios.get(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${userEmail}`);
-            return { userEmail, isSuspended: suspensionResponse.data.isSuspended };
+          const user_email = report.ReportedUser?.email || report.ReportedTrip?.User.email || report.ReportedTravelog?.User.email || report.ReportedComment?.user.email;
+          if (user_email) {
+            const suspensionResponse = await axios.get(`https://lgcbe.onrender.com/feedback/api/check-suspension?user_email=${user_email}`);
+            return { user_email, isSuspended: suspensionResponse.data.isSuspended };
           }
           return null;
         });
 
         // Wait for all suspension checks to complete
         const suspensions = await Promise.all(suspensionChecks);
-        const suspendedUsersSet = new Set(suspensions.filter(s => s?.isSuspended).map(s => s.userEmail));
+        const suspendedUsersSet = new Set(suspensions.filter(s => s?.isSuspended).map(s => s.user_email));
         setSuspendedUsers(suspendedUsersSet);
 
         setReportedFeedback(reportedFeedbackData);
@@ -181,7 +181,7 @@ function AdminPanel() {
       // Fetch suspensions for all reported users
       reportedFeedback.forEach(async (report) => {
         if (report.ReportedUser) {
-          const response = await axios.get(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${report.ReportedUser.email}`);
+          const response = await axios.get(`https://lgcbe.onrender.com/feedback/api/check-suspension?user_email=${report.ReportedUser.email}`);
           if (response.data.isSuspended) {
             setSuspendedUsers(prev => new Set([...prev, report.ReportedUser.email]));
           }
@@ -194,23 +194,23 @@ function AdminPanel() {
 
   // SUSTOG 
   // Toggle suspension status
-  const toggleSuspension = async (userEmail) => {
-    const isCurrentlySuspended = suspendedUsers.has(userEmail);
+  const toggleSuspension = async (user_email) => {
+    const isCurrentlySuspended = suspendedUsers.has(user_email);
     const action = isCurrentlySuspended ? 'unsuspend' : 'suspend';
     try {
       const response = await axios.post('https://lgcbe.onrender.com/feedback/api/suspend', {
-        userEmail,
+        user_email,
         action,
       });
       if (response.data.success) {
         if (isCurrentlySuspended) {
           setSuspendedUsers(prev => {
             const updated = new Set(prev);
-            updated.delete(userEmail);
+            updated.delete(user_email);
             return updated;
           });
         } else {
-          setSuspendedUsers(prev => new Set([...prev, userEmail]));
+          setSuspendedUsers(prev => new Set([...prev, user_email]));
         }
       } else {
         console.error(`Failed to ${action} user.`);
@@ -344,9 +344,9 @@ function AdminPanel() {
           }
 
           // SUSTOG 
-          const userEmail = userEmails[index];
-          // console.log('userEmail in return: ', userEmail) 
-          const isUserSuspended = suspendedUsers.has(userEmail);
+          const user_email = userEmails[index];
+          // console.log('user_email in return: ', user_email) 
+          const isUserSuspended = suspendedUsers.has(user_email);
 
           // MESSAGE COUNT BADGES 
           const otherUserId = report.ReportedUser?.user_id || report.ReportedTrip?.User.user_id || report.ReportedTravelog?.User.user_id || report.ReportedComment?.user_id;
@@ -401,11 +401,11 @@ function AdminPanel() {
                       <button className='admin-panel-btn' 
                         onClick={(e) => {
                           e.preventDefault();
-                          toggleSuspension(userEmail);
+                          toggleSuspension(user_email);
                         }}
-                        disabled={!userEmail || isReportOlderThan84Hours(report.createdAt)}
+                        disabled={!user_email || isReportOlderThan84Hours(report.createdAt)}
                       >
-                        {suspendedUsers.has(userEmail) ? 'Unsuspend' : 'Suspend'}
+                        {suspendedUsers.has(user_email) ? 'Unsuspend' : 'Suspend'}
                       </button>
 
                       <button className='admin-panel-btn' onClick={(e) => {
@@ -453,9 +453,9 @@ function AdminPanel() {
           }
 
           // SUSTOG 
-          const userEmail = userEmails[index];
-          // console.log('userEmail in return: ', userEmail) 
-          const isUserSuspended = suspendedUsers.has(userEmail);
+          const user_email = userEmails[index];
+          // console.log('user_email in return: ', user_email) 
+          const isUserSuspended = suspendedUsers.has(user_email);
 
           // MESSAGE COUNT BADGES 
           const otherUserId = report.ReportedUser?.user_id || report.ReportedTrip?.User.user_id || report.ReportedTravelog?.User.user_id || report.ReportedComment?.user_id;
@@ -504,11 +504,11 @@ function AdminPanel() {
                     <button className='admin-panel-btn' 
                       onClick={(e) => {
                         e.preventDefault();
-                        toggleSuspension(userEmail);
+                        toggleSuspension(user_email);
                       }}
-                      disabled={!userEmail || isReportOlderThan84Hours(report.createdAt)}
+                      disabled={!user_email || isReportOlderThan84Hours(report.createdAt)}
                     >
-                      {suspendedUsers.has(userEmail) ? 'Unsuspend' : 'Suspend'}
+                      {suspendedUsers.has(user_email) ? 'Unsuspend' : 'Suspend'}
                     </button>
 
                     <button className='admin-panel-btn' onClick={(e) => {
@@ -556,9 +556,9 @@ function AdminPanel() {
           }
 
           // SUSTOG 
-          const userEmail = userEmails[index];
-          // console.log('userEmail in return: ', userEmail) 
-          const isUserSuspended = suspendedUsers.has(userEmail);
+          const user_email = userEmails[index];
+          // console.log('user_email in return: ', user_email) 
+          const isUserSuspended = suspendedUsers.has(user_email);
 
           // MESSAGE COUNT BADGES 
           const otherUserId = report.ReportedUser?.user_id || report.ReportedTrip?.User.user_id || report.ReportedTravelog?.User.user_id || report.ReportedComment?.user_id;
@@ -607,11 +607,11 @@ function AdminPanel() {
                       <button className='admin-panel-btn' 
                         onClick={(e) => {
                           e.preventDefault();
-                          toggleSuspension(userEmail);
+                          toggleSuspension(user_email);
                         }}
-                        disabled={!userEmail || isReportOlderThan84Hours(report.createdAt)}
+                        disabled={!user_email || isReportOlderThan84Hours(report.createdAt)}
                       >
-                        {suspendedUsers.has(userEmail) ? 'Unsuspend' : 'Suspend'}
+                        {suspendedUsers.has(user_email) ? 'Unsuspend' : 'Suspend'}
                       </button>
                       
                       <button className='admin-panel-btn' onClick={(e) => {
@@ -659,9 +659,9 @@ function AdminPanel() {
           }
 
           // SUSTOG 
-          const userEmail = userEmails[index];
-          // console.log('userEmail in return: ', userEmail) 
-          const isUserSuspended = suspendedUsers.has(userEmail);
+          const user_email = userEmails[index];
+          // console.log('user_email in return: ', user_email) 
+          const isUserSuspended = suspendedUsers.has(user_email);
 
           // MESSAGE COUNT BADGES 
           const otherUserId = report.ReportedUser?.user_id || report.ReportedTrip?.User.user_id || report.ReportedTravelog?.User.user_id || report.ReportedComment?.user_id;
@@ -709,11 +709,11 @@ function AdminPanel() {
                       <button className='admin-panel-btn' 
                         onClick={(e) => {
                           e.preventDefault();
-                          toggleSuspension(userEmail);
+                          toggleSuspension(user_email);
                         }}
-                        disabled={!userEmail || isReportOlderThan84Hours(report.createdAt)}
+                        disabled={!user_email || isReportOlderThan84Hours(report.createdAt)}
                       >
-                        {suspendedUsers.has(userEmail) ? 'Unsuspend' : 'Suspend'}
+                        {suspendedUsers.has(user_email) ? 'Unsuspend' : 'Suspend'}
                       </button>
 
                       <button className='admin-panel-btn' onClick={(e) => {

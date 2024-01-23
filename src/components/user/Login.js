@@ -23,7 +23,7 @@ function Login() {
       }
       const { email } = await emailResponse.json(); 
       // Check for suspension
-      const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${encodeURIComponent(email)}`);
+      const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?user_email=${encodeURIComponent(email)}`);
       if (suspensionResponse.ok) {
         const suspensionData = await suspensionResponse.json();
         // console.log('suspensionData: ', suspensionData)
