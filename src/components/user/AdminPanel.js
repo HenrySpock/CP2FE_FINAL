@@ -149,16 +149,16 @@ function AdminPanel() {
     fetchReportedFeedback();
   }, []);
     
-  const handleClearReport = async (reportId, index) => {
+  const handleClearReport = async (report_id, index) => {
     try {
-      const response = await axios.patch(`https://lgcbe.onrender.com/feedback/api/clear-report/${reportId}/clear`, {
+      const response = await axios.patch(`https://lgcbe.onrender.com/feedback/api/clear-report/${report_id}/clear`, {
         cleared: true,
         adminUserId: user.user_id
       });
       if (response.status === 200) {
 
         // Remove the cleared report from the local state
-        const updatedReportedFeedback = reportedFeedback.filter((report) => report.reportId !== reportId);
+        const updatedReportedFeedback = reportedFeedback.filter((report) => report.report_id !== report_id);
         setReportedFeedback(updatedReportedFeedback);
 
         // Update the complaint visibility for the cleared report
@@ -390,7 +390,7 @@ function AdminPanel() {
                       </button>
                       <button className='admin-panel-btn' onClick={(e) => {
                         e.preventDefault();
-                        handleClearReport(report.reportId, index)
+                        handleClearReport(report.report_id, index)
                         }}
                         disabled={isUserSuspended}
                       >
@@ -467,7 +467,7 @@ function AdminPanel() {
                 <div className="admin-mini-card" style={isReportOlderThan84Hours(report.createdAt) ? oldReportStyle : null}>
                   <div className='admin-mini-card-text'>
 
-                  <Link key={report.reportId} to={`/trip_det/${report.ReportedTrip.trip_id}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
+                  <Link key={report.report_id} to={`/trip_det/${report.ReportedTrip.trip_id}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
                     <h3 className="link-to-report-entity">Reported Trip Title: {report.ReportedTrip.title}</h3>   
                   </Link>
 
@@ -494,7 +494,7 @@ function AdminPanel() {
                     </button>
                     <button className='admin-panel-btn' onClick={(e) => {
                       e.preventDefault();
-                      handleClearReport(report.reportId, index)
+                      handleClearReport(report.report_id, index)
                       }}
                       disabled={isUserSuspended}
                     >
@@ -570,7 +570,7 @@ function AdminPanel() {
                 <div className="admin-mini-card" style={isReportOlderThan84Hours(report.createdAt) ? oldReportStyle : null}>
                   <div className='admin-mini-card-text'>
 
-                  <Link key={report.reportId} to={`/trav_det/${report.ReportedTravelog.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
+                  <Link key={report.report_id} to={`/trav_det/${report.ReportedTravelog.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
                     <h3 className="link-to-report-entity">Reported Travelog Title: {report.ReportedTravelog.title}</h3>   
                   </Link>
 
@@ -597,7 +597,7 @@ function AdminPanel() {
                       </button>
                       <button className='admin-panel-btn' onClick={(e) => {
                         e.preventDefault();
-                        handleClearReport(report.reportId, index)
+                        handleClearReport(report.report_id, index)
                         }}
                         disabled={isUserSuspended}
                       >
@@ -672,7 +672,7 @@ function AdminPanel() {
             <div className="admin-card">
               <div className="admin-mini-card" style={isReportOlderThan84Hours(report.createdAt) ? oldReportStyle : null}>
                   <div className='admin-mini-card-text'>
-                    <Link key={report.reportId} to={`/trav_det/${report.ReportedComment.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
+                    <Link key={report.report_id} to={`/trav_det/${report.ReportedComment.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
                       <h3 className="link-to-report-entity">Reported Comment: {report.ReportedComment.content}</h3>   
                     </Link>
                     <p>Author: {report.ReportedComment.user.username}</p>                                     
@@ -699,7 +699,7 @@ function AdminPanel() {
                       </button>
                       <button className='admin-panel-btn' onClick={(e) => {
                         e.preventDefault();
-                        handleClearReport(report.reportId, index)
+                        handleClearReport(report.report_id, index)
                         }}
                         disabled={isUserSuspended}
                       >

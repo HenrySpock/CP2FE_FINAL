@@ -116,7 +116,7 @@ function Profile() {
             first_name: editedUser.first_name,
             last_name: editedUser.last_name,
             email: editedUser.email,
-            securityQuestion: editedUser.securityQuestion, 
+            security_question: editedUser.security_question, 
             adminKey: editedUser.adminKey,
             avatar: editedUser.avatar,
             bio: editedUser.bio
@@ -240,8 +240,8 @@ return (
             <p>Security Question:</p>
             <label>
               <select className='profile-form'
-                name="securityQuestion" 
-                value={editedUser.securityQuestion || 'Select a security question'} 
+                name="security_question" 
+                value={editedUser.security_question || 'Select a security question'} 
                 onChange={handleInputChange}
               >
                 <option value="What is the name of your first pet?">What is the name of your first pet?</option>

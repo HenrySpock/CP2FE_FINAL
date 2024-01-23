@@ -25,7 +25,7 @@ const initialFormData = {
   title: '', 
   imageUrls: [''],
   address: '',
-  phoneNumber: '',
+  phone_number: '',
   isPrivate: false,
   have_visited: true, 
   category: '',
@@ -150,7 +150,7 @@ function LogEntry() {
     }));
   };
 
-  const populateForm = (country, state, city, poi, latitude, longitude, address, phoneNumber) => {
+  const populateForm = (country, state, city, poi, latitude, longitude, address, phone_number) => {
     country = convertCountryCodeToName(country);
     setFormData(prevState => ({
       ...prevState,
@@ -161,7 +161,7 @@ function LogEntry() {
       latitude,
       longitude,
       address, 
-      phoneNumber
+      phone_number
     }));
     setShowModal(true);
   };
@@ -501,7 +501,7 @@ function LogEntry() {
       <div className='triple-label log-entry-button-bar'> 
 
         <label className='log-entry-label'>
-          <input type="text" value={formData.phoneNumber} onChange={e => setFormData({ ...formData, phoneNumber: e.target.value })} placeholder="Phone Number"/>
+          <input type="text" value={formData.phone_number} onChange={e => setFormData({ ...formData, phone_number: e.target.value })} placeholder="Phone Number"/>
         </label>  
         <label className='log-entry-label'> 
           {formData.imageUrls.map((url, index) => (

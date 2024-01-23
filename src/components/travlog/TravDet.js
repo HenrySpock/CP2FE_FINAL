@@ -439,8 +439,8 @@ function TravDet() {
                     <label>Phone Number:</label>
                     <input
                       type="text"
-                      value={editedTravelog.phoneNumber}
-                      onChange={e => setEditedTravelog({ ...editedTravelog, phoneNumber: e.target.value })}
+                      value={editedTravelog.phone_number}
+                      onChange={e => setEditedTravelog({ ...editedTravelog, phone_number: e.target.value })}
                     />
                   </div>
                   
@@ -695,7 +695,7 @@ function TravDet() {
                           <p>State: {travelog.state}</p> 
                           <p>City: {travelog.city}</p>
                           <p>Address: {travelog.address}</p>
-                          <p>Phone: {travelog.phoneNumber}</p> 
+                          <p>Phone: {travelog.phone_number}</p> 
  
 
  
