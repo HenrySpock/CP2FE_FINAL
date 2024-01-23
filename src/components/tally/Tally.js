@@ -27,7 +27,7 @@ const Tally = () => {
             method: 'GET', 
           });
  
-          const userMessagesResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-user-messages?user_id=${user.user_id}&isAdmin=${user.isAdmin}`, {
+          const userMessagesResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-user-messages?user_id=${user.user_id}&is_admin=${user.is_admin}`, {
             method: 'GET',
           });
 
@@ -45,7 +45,7 @@ const Tally = () => {
               const maintenanceResponse = await fetch('https://lgcbe.onrender.com/api/maintenance/status');
               const maintenanceData = await maintenanceResponse.json();
 
-              if (maintenanceData.maintenanceActive && !user.isAdmin) {
+              if (maintenanceData.maintenanceActive && !user.is_admin) {
                 logout();
                 return;
               }

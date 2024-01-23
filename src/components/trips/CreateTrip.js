@@ -19,13 +19,13 @@ function CreateTrip() {
 
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
-  const [imageUrl, setImageUrl] = useState('');
+  const [image_url, setImage_url] = useState('');
  
   const [error, setError] = useState(''); 
 
   const [showMapModal, setShowMapModal] = useState(false);
 
-  const [isPrivate, setIsPrivate] = useState(false);
+  const [is_private, setIs_private] = useState(false);
   const [haveVisited, setHaveVisited] = useState(true);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -102,7 +102,7 @@ const handleDeselectTravelog = (deselectedTravelog) => {
     } else {
       setLatitude('');
       setLongitude('');
-      setImageUrl(''); // Reset image URL if no travelogs are selected
+      setImage_url(''); // Reset image URL if no travelogs are selected
     }
 
     return newSelectedTravelogs;
@@ -113,9 +113,9 @@ const handleDeselectTravelog = (deselectedTravelog) => {
 const updateImageUrl = (earliestTravelog) => {
   // Check if there are images and set the URL of the first one
   if (earliestTravelog.Images && earliestTravelog.Images.length > 0) {
-    setImageUrl(earliestTravelog.Images[0].image_url);
+    setImage_url(earliestTravelog.Images[0].image_url);
   } else {
-    setImageUrl(''); // Reset or set a default image URL if there are no images
+    setImage_url(''); // Reset or set a default image URL if there are no images
   }
 };
  
@@ -168,8 +168,8 @@ const updateImageUrl = (earliestTravelog) => {
       date_of_return: returnDate,
       latitude, 
       longitude, 
-      image_url: imageUrl,
-      is_private: isPrivate,
+      image_url: image_url,
+      is_private: is_private,
       have_visited: haveVisited,
     };
 
@@ -242,7 +242,7 @@ const updateImageUrl = (earliestTravelog) => {
 
         <div className='triple-label'>
           <label className='create-trip-label'>
-            <input type="text" value={imageUrl} onChange={(e) => setImageUrl(e.target.value)} placeholder='Image URL'/>
+            <input type="text" value={image_url} onChange={(e) => setImage_url(e.target.value)} placeholder='Image URL'/>
           </label> 
           <label className='create-trip-label'>
             <input type="text" value={latitude} onChange={(e) => setLatitude(e.target.value)} placeholder='Latitude'/>
@@ -264,7 +264,7 @@ const updateImageUrl = (earliestTravelog) => {
 
           <label>
             <span>Private</span> 
-            <input type="checkbox" name="isPrivate" checked={isPrivate} onChange={e => setIsPrivate(e.target.checked)} />
+            <input type="checkbox" name="is_private" checked={is_private} onChange={e => setIs_private(e.target.checked)} />
           </label>
         </div>
  

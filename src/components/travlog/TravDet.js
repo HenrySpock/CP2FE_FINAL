@@ -22,7 +22,7 @@ import TravDetImageEdit from './TravDetImageEdit';
 // COMMENTONCOMMENT 
 
 function TravDet() {
-  const { isAdmin, user, isLoading } = useContext(UserContext);
+  const { is_admin, user, isLoading } = useContext(UserContext);
   const [travelog, setTravelog] = useState(null);  
   const { travelog_id } = useParams();   
   console.log("Travelog ID from URL:", travelog_id);
@@ -233,7 +233,7 @@ function TravDet() {
           }
   
           // Check permissions if travelog is private
-          if (travelog.isPrivate) {
+          if (travelog.is_private) {
             const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelog_id=${travelog.travelog_id}&granteeId=${currentUser.user_id}`;
             const permissionResponse = await fetch(permissionUrl);
   
@@ -457,8 +457,8 @@ function TravDet() {
                     <label>Is Private:</label>
                     <input
                       type="checkbox"
-                      checked={editedTravelog.isPrivate}
-                      onChange={e => setEditedTravelog({ ...editedTravelog, isPrivate: e.target.checked })}
+                      checked={editedTravelog.is_private}
+                      onChange={e => setEditedTravelog({ ...editedTravelog, is_private: e.target.checked })}
                     />
                   </div>
 
@@ -791,7 +791,7 @@ function TravDet() {
                             onSubmit={submitReport}
                           />
 
-                          {isAdmin && ( 
+                          {is_admin && ( 
                             <AdminDelete travelog_id={travelog_id} navigate={navigate} />
                           )}
 

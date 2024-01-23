@@ -40,9 +40,9 @@ function CustomMarkers({ travelogEntries, tripEntries }) {
       {travelogEntries && travelogEntries.length > 0 && travelogEntries.map(entry => {
       
 
-          const imageUrl = entry.Images[0]?.image_url;
+          const image_url = entry.Images[0]?.image_url;
           const customIcon = new L.Icon({
-            iconUrl: imageUrl,
+            iconUrl: image_url,
             iconSize: iconSize,          
           });
 
@@ -56,7 +56,7 @@ function CustomMarkers({ travelogEntries, tripEntries }) {
                   <span>Travelog: {entry.title}</span> <br />
                   <span>In {entry.country}</span> <br />  
 
-                  <img src={imageUrl} alt="Travelog" width="75" className="trav-pop-img" />
+                  <img src={image_url} alt="Travelog" width="75" className="trav-pop-img" />
                 </Link>
               </Popup>
             </Marker>
@@ -68,9 +68,9 @@ function CustomMarkers({ travelogEntries, tripEntries }) {
       {tripEntries && tripEntries.length > 0 && tripEntries.map(trip => { 
  
           
-          const imageUrl = trip.image_url;
+          const image_url = trip.image_url;
           const customIcon = new L.Icon({
-            iconUrl: imageUrl,
+            iconUrl: image_url,
             iconSize: iconSize,
           });
 
@@ -82,7 +82,7 @@ function CustomMarkers({ travelogEntries, tripEntries }) {
                     <span> {trip.username}</span>
                   </Link> <br />  
                   <span>Trip: {trip.title}</span> <br /> 
-                  <img src={imageUrl} alt="Trip" width="75" className="trip-pop-img" />
+                  <img src={image_url} alt="Trip" width="75" className="trip-pop-img" />
                 </Link>
               </Popup>
             </Marker>

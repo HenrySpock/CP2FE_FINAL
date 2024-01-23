@@ -32,13 +32,13 @@ function TripDetMarker({ entry, order, showNumbers }) {
       };
     }, [map]);
 
-  const imageUrl = entry.Images[0]?.image_url; 
+  const image_url = entry.Images[0]?.image_url; 
 
   const customIcon = new L.DivIcon({ 
 
     html: `
     <div style="position: relative; width: ${iconSize}px; height: ${iconSize}px;">
-        <img src="${imageUrl}" style="width: 25px; height: 25px;">
+        <img src="${image_url}" style="width: 25px; height: 25px;">
         ${showNumbers ? `<div style="position: absolute; top: 0; right: 0; transform: translate(100%, -50%);">
             <div style="background-color: rgba(0, 170, 255, 0.5); border-radius: 50%; width: 15px; height: 15px; display: flex; align-items: center; justify-content: center; font-size: ${iconSize / 8}px;">
                 ${order}
@@ -58,7 +58,7 @@ function TripDetMarker({ entry, order, showNumbers }) {
           Travelog: {entry.title} <br />
           Site: {entry.site} <br />
           In {entry.country} <br /> 
-          <img src={imageUrl} alt="Travelog" width="100" className="trav-pop-img"/>
+          <img src={image_url} alt="Travelog" width="100" className="trav-pop-img"/>
         </Link>
       </Popup>
     </Marker>

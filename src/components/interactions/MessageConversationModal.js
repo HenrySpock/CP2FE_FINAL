@@ -9,10 +9,10 @@ import { Modal, Button } from 'react-bootstrap';
 
 import './Messaging.css'
  
-function MessageConversationModal({ activeConversation, onClose, friends, isAdmin 
+function MessageConversationModal({ activeConversation, onClose, friends, is_admin 
  }) { 
   // console.log('activeConversation on MessageConversationModal: ', activeConversation)
-  // console.log('isAdmin: ', isAdmin)
+  // console.log('is_admin: ', is_admin)
   const [messages, setMessages] = useState([]); // Store messages of the active conversation
   const [newMessage, setNewMessage] = useState(''); // New message input
 
@@ -195,7 +195,7 @@ function MessageConversationModal({ activeConversation, onClose, friends, isAdmi
               </div>
               <button className='messaging-btn' onClick={handleSendMessage}>Send</button>  
  
-              {!isAdmin === true && (
+              {!is_admin === true && (
                 <button className='messaging-btn' onClick={() => setShowDeleteConfirm(true)}>Delete Conversation</button>
               )}
  

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './TravDet.css'
 
-function TravDetFullScreen({ imageUrl, title, description, onClose }) {
+function TravDetFullScreen({ image_url, title, description, onClose }) {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === 'Escape') {
@@ -14,7 +14,7 @@ function TravDetFullScreen({ imageUrl, title, description, onClose }) {
     };
   }, [onClose]);
 
-  if (!imageUrl) return null;
+  if (!image_url) return null;
 
   return (
     <div className="fullscreen-modal" onClick={onClose}>
@@ -24,7 +24,7 @@ function TravDetFullScreen({ imageUrl, title, description, onClose }) {
           <p>{description}</p>
         </div>
       )}
-      <img src={imageUrl} alt="Fullscreen" className="fullscreen-image" />
+      <img src={image_url} alt="Fullscreen" className="fullscreen-image" />
     </div>
   );
 }

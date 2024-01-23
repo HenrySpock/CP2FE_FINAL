@@ -52,9 +52,9 @@ function TravDetMarker({ entry }) {
     };
   }, [map]);
 
-  const imageUrl = entry.Images[0]?.image_url;
+  const image_url = entry.Images[0]?.image_url;
   const customIcon = new L.Icon({
-    iconUrl: imageUrl,
+    iconUrl: image_url,
     iconSize: iconSize,
   });
 
@@ -68,7 +68,7 @@ return (
           In {entry.country} <br />   
 
           <img 
-            src={imageUrl} 
+            src={image_url} 
             alt="Travelog" 
             width="100" 
             className="trav-pop-img" 
@@ -82,7 +82,7 @@ return (
     {isFullScreen && (
       <div className="fullsize-image">
         <img 
-          src={imageUrl} 
+          src={image_url} 
           alt="Full screen travelog" 
           style={{ 
             maxWidth: '100%', 

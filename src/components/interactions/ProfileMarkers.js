@@ -36,9 +36,9 @@ function ProfileMarkers({ travelogs, trips }) {
     <>
       {/* Render markers for profile user's travelogs */}
       {travelogs.map(travelog => {
-        const imageUrl = travelog.Images[0]?.image_url;  
+        const image_url = travelog.Images[0]?.image_url;  
         const customIcon = new L.Icon({
-          iconUrl: imageUrl || 'default-icon.png',  
+          iconUrl: image_url || 'default-icon.png',  
           iconSize: iconSize,          
         });
 
@@ -51,7 +51,7 @@ function ProfileMarkers({ travelogs, trips }) {
                  </Link> <br /> 
                  <span>Travelog: {travelog.title}</span> <br />
                  <span>In {travelog.country}</span> <br />
-                 {imageUrl && <img src={imageUrl} alt="Travelog" width="100" className="trav-pop-img" />}
+                 {image_url && <img src={image_url} alt="Travelog" width="100" className="trav-pop-img" />}
                </Link>
              </Popup>
           </Marker>
@@ -60,9 +60,9 @@ function ProfileMarkers({ travelogs, trips }) {
 
       {/* Render markers for profile user's trips */}
       {trips.map(trip => {
-        const imageUrl = trip.image_url; 
+        const image_url = trip.image_url; 
         const tripIcon = new L.Icon({
-          iconUrl: imageUrl || 'default-icon.png', 
+          iconUrl: image_url || 'default-icon.png', 
           iconSize: iconSize,
         });
 
@@ -74,7 +74,7 @@ function ProfileMarkers({ travelogs, trips }) {
                   <span>{trip.username}</span>
                 </Link> <br /> 
                 <span>Trip: {trip.title}</span> <br />
-                {imageUrl && <img src={imageUrl} alt="Trip" width="100" className="trip-pop-img" />}
+                {image_url && <img src={image_url} alt="Trip" width="100" className="trip-pop-img" />}
               </Link>
             </Popup>
           </Marker>

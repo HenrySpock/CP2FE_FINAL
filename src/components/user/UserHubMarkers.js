@@ -40,9 +40,9 @@ function UserHubMarkers({ travelogs, trips }) {
       {/* Render markers for travelogs */}
       {/* {console.log('travelogs in jsx of userhubmarkers: ', travelogs)} */}
       {travelogs.map(travelog => {
-        const imageUrl = travelog.Images[0]?.image_url;  
+        const image_url = travelog.Images[0]?.image_url;  
         const customIcon = new L.Icon({
-          iconUrl: imageUrl,
+          iconUrl: image_url,
           iconSize: iconSize,          
         });
 
@@ -56,7 +56,7 @@ function UserHubMarkers({ travelogs, trips }) {
                  <span>Travelog: {travelog.title}</span> <br />
                  <span>In {travelog.country}</span> <br />  
 
-                 <img src={imageUrl} alt="Travelog" width="100" className="trav-pop-img" />
+                 <img src={image_url} alt="Travelog" width="100" className="trav-pop-img" />
                </Link>
              </Popup>
           </Marker>
@@ -65,9 +65,9 @@ function UserHubMarkers({ travelogs, trips }) {
 
       {/* Render markers for trips */}
       {trips.map(trip => {
-        const imageUrl = trip.image_url; 
+        const image_url = trip.image_url; 
         const tripIcon = new L.Icon({
-          iconUrl: imageUrl,
+          iconUrl: image_url,
           iconSize: iconSize,
         });
 
@@ -80,7 +80,7 @@ function UserHubMarkers({ travelogs, trips }) {
                  </Link> <br /> 
                  <span>Trip: {trip.title}</span> <br />  
 
-                 <img src={imageUrl} alt="Trip" width="100" className="trip-pop-img" />
+                 <img src={image_url} alt="Trip" width="100" className="trip-pop-img" />
               </Link> 
             </Popup>
           </Marker>

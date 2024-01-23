@@ -211,8 +211,8 @@ function Documentation() {
 
       { user.is_admin === true && (
       <>
-      <h2 className='heading'>For A Logged In Admin</h2> 
-      (needs a check against user object for isAdmin=true)
+      <h2 className='heading'>For A Logged In Admin</h2>  
+      
       <h3 className='heading'>Admin Panel</h3> 
       <p>First off, in your navbar, if you have uncleared reports or messages from reported users, these will appear as badges next to your Admin Panel link - blue for messages
       and orange for reports.  </p>

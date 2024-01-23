@@ -26,7 +26,7 @@ const initialFormData = {
   imageUrls: [''],
   address: '',
   phone_number: '',
-  isPrivate: false,
+  is_private: false,
   have_visited: true, 
   category: '',
   unesco: false,
@@ -62,11 +62,11 @@ function LogEntry() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   
   const handlePrivacyChange = (event) => {
-    const isPrivate = event.target.checked;
-    // console.log(isPrivate);
+    const is_private = event.target.checked;
+    // console.log(is_private);
     setFormData(prevState => ({
       ...prevState,
-      isPrivate: isPrivate,
+      is_private: is_private,
     }));
   };
   const handleUnescoChange = (event) => {
@@ -437,7 +437,7 @@ function LogEntry() {
         </label>
         <label className='checkbox'>
           <span>Private</span>
-          <input type="checkbox" name="isPrivate" checked={formData.isPrivate} onChange={handlePrivacyChange} />
+          <input type="checkbox" name="is_private" checked={formData.is_private} onChange={handlePrivacyChange} />
         </label>
 
         <label className='log-entry-label'> 

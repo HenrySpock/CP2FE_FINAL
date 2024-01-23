@@ -19,9 +19,9 @@ function TravDetImageEdit({ user, travelogId, fetchTravelog, initialImages, user
     // console.log('on TravDetImageEdit username: ', username, 'profileuser: ', profileUser, 'images: ', images)
  
 
-  const openFullscreenModal = (imageUrl, imageId, title, description) => {
-    // console.log("Opening fullscreen for:", imageUrl, 'image_id: ', imageId, 'title', title, 'description', description);
-    setFullscreenImageUrl(imageUrl); 
+  const openFullscreenModal = (image_url, imageId, title, description) => {
+    // console.log("Opening fullscreen for:", image_url, 'image_id: ', imageId, 'title', title, 'description', description);
+    setFullscreenImageUrl(image_url); 
     setCurrentTitle(title);
     setCurrentDescription(description);
  
@@ -284,7 +284,7 @@ function TravDetImageEdit({ user, travelogId, fetchTravelog, initialImages, user
         )}
         {fullscreenImageUrl && ( 
             <TravDetFullScreen 
-              imageUrl={fullscreenImageUrl}
+              image_url={fullscreenImageUrl}
               title={currentTitle}
               description={currentDescription} 
               onClose={closeFullscreenModal} 

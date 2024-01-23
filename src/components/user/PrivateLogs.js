@@ -59,7 +59,7 @@ function PrivateLogs() {
                 <p>by <Link to={`/public_profile/${travelog.User.username}`}>{travelog.User.username}</Link></p>
               )}
               <p>In {travelog.city}, {travelog.country}</p> 
-              {travelog.isPrivate ? <p>(Private Entry)</p> : null}
+              {travelog.is_private ? <p>(Private Entry)</p> : null}
             </div>
         </div>
       </Link>

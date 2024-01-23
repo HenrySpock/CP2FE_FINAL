@@ -3,7 +3,7 @@ import React, { createContext, useState, useEffect } from 'react';
 export const UserContext = createContext({
   user: null,
   setUser: () => {},
-  isAdmin: false,
+  is_admin: false,
   isAuthenticated: false, 
   login: () => {}, 
   logout: () => {}, 
@@ -24,7 +24,7 @@ export const UserContext = createContext({
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [is_admin, setIs_admin] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
  
   //TALLYING 02
@@ -39,7 +39,7 @@ export const UserProvider = ({ children }) => {
   const login = async (userData) => {
     setUser(userData.user);   
     setIsAuthenticated(true);
-    setIsAdmin(userData.user.is_admin);  // Update isAdmin based on user data
+    setIs_admin(userData.user.is_admin);  // Update is_admin based on user data
     localStorage.setItem('token', userData.token); // Store the token in localStorage
 
     // console.log("Logging in, user data:", userData);
@@ -68,7 +68,7 @@ export const UserProvider = ({ children }) => {
     // console.log('LOGGING OUT - USER_ID: ', user.user_id)
     setUser(null);
     setIsAuthenticated(false);
-    setIsAdmin(false);  // Reset isAdmin to false on logout
+    setIs_admin(false);  // Reset is_admin to false on logout
     localStorage.removeItem('token'); // Remove the token from localStorage
 
     // console.log("Logging out, user data:", user);
@@ -111,10 +111,10 @@ export const UserProvider = ({ children }) => {
           // console.log('User data:', userData);  
           setUser(userData);
           setIsAuthenticated(true);  
-          setIsAdmin(userData.is_admin);  
+          setIs_admin(userData.is_admin);  
 
           // Check for suspension
-          const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?user_email=${encodeURIComponent(userData.email)}`);
+          const suspensionResponse = await fetch(`https://lgcbe.onrender.com/feedback/api/check-suspension?userEmail=${encodeURIComponent(userData.email)}`);
           // console.log('suspensionResponse: ', suspensionResponse)
           if (suspensionResponse.ok) {
             const suspensionData = await suspensionResponse.json();
@@ -134,7 +134,7 @@ export const UserProvider = ({ children }) => {
   }; 
 
   return (
-    <UserContext.Provider value={{ user, setUser, isAdmin, isAuthenticated, login, logout, isLoading,
+    <UserContext.Provider value={{ user, setUser, is_admin, isAuthenticated, login, logout, isLoading,
 
       //TALLYING 03
       unreadUserNotifications, setUnreadUserNotifications,

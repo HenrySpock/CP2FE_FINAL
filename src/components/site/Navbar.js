@@ -6,7 +6,7 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import './Navbar.css'
 
 function Navbar() {
-  const { isAdmin, isAuthenticated, logout,  
+  const { is_admin, isAuthenticated, logout,  
 
   //TALLYING 09
   unreadUserNotifications,
@@ -87,7 +87,7 @@ function Navbar() {
               </NavLink>
               <NavLink to="/log_entry" className="active nav-link">Log An Entry</NavLink>
               <NavLink to="/create_trip" className="active nav-link">Create Trip</NavLink>
-              {isAdmin && (
+              {is_admin && (
                 <> 
                   <NavLink to="/admin" className="active nav-link">
                     <div>

@@ -209,7 +209,7 @@ useEffect(() => {
         // Fetch travelogs
         const travelogsResponse = await fetch(`https://lgcbe.onrender.com/travelog/api/user/${userData.user_id}/travelogs`);
         const travelogsData = await travelogsResponse.json();
-        const publicTravelogs = travelogsData.filter(travelog => !travelog.isPrivate); 
+        const publicTravelogs = travelogsData.filter(travelog => !travelog.is_private); 
 
         
         setProfileTravelogs(publicTravelogs);

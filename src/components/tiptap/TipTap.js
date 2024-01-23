@@ -27,7 +27,7 @@ const TipTap = ({ maxLength, postFormattedText, initialContent }) => {
 
   // INSERT IMAGE 
   const [showImageModal, setShowImageModal] = useState(false);
-  const [imageUrl, setImageUrl] = useState('');
+  const [image_url, setImage_url] = useState('');
 
   // console.log('initialContent: ', initialContent, 'content: ', content);
 
@@ -37,7 +37,7 @@ const TipTap = ({ maxLength, postFormattedText, initialContent }) => {
 
   const closeImageModal = () => {
     setShowImageModal(false);
-    setImageUrl('');
+    setImage_url('');
   };
 
 
@@ -85,9 +85,9 @@ const TipTap = ({ maxLength, postFormattedText, initialContent }) => {
 
   // INSERT IMAGE 
   const insertImage = () => {
-    if (imageUrl) {
-      editor.chain().focus().setImage({ src: imageUrl }).run();
-      setImageUrl('');
+    if (image_url) {
+      editor.chain().focus().setImage({ src: image_url }).run();
+      setImage_url('');
       closeImageModal();
     }
   };
@@ -223,8 +223,8 @@ const TipTap = ({ maxLength, postFormattedText, initialContent }) => {
               <input
                 type="text"
                 placeholder="Enter image URL"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
+                value={image_url}
+                onChange={(e) => setImage_url(e.target.value)}
               />
               <button onClick={insertImage}>Insert</button>
               <button onClick={closeImageModal}>Cancel</button>

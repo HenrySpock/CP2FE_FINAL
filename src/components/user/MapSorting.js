@@ -213,9 +213,9 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
   
     // Filter based on visibility
     if (selectedVisibility !== 'ALL') {
-      const isPrivate = selectedVisibility === 'Private';
-      filteredTravelogs = filteredTravelogs.filter(t => t.isPrivate === isPrivate);
-      filteredTrips = filteredTrips.filter(t => t.is_private === isPrivate);
+      const is_private = selectedVisibility === 'Private';
+      filteredTravelogs = filteredTravelogs.filter(t => t.is_private === is_private);
+      filteredTrips = filteredTrips.filter(t => t.is_private === is_private);
     }
     
     // Further filter based on type
