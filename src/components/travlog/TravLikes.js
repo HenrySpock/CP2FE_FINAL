@@ -26,7 +26,8 @@ function LikedUsersList({ likers }) {
 function TravLikes({  
   userData, 
   profileUser, 
-  contextUser, travelog_id }) { 
+  contextUser, 
+  travelog_id }) { 
 
   const { user: currentUser } = useContext(UserContext); 
 
@@ -93,7 +94,7 @@ function TravLikes({
   // LIKE BADGE PROCESS 04
   useEffect(() => {
     // Fetch likers for a specific travelog
-    const travelog_id = travelog_id;  
+    
     fetch(`https://lgcbe.onrender.com/api/likers/want-to-travel?travelog_id=${travelog_id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -106,7 +107,7 @@ function TravLikes({
 
 useEffect(() => {
   // Fetch likers for a specific travelog
-  const travelog_id = travelog_id; 
+  
   fetch(`https://lgcbe.onrender.com/api/likers/traveled?travelog_id=${travelog_id}`)
     .then((response) => response.json())
     .then((data) => {
@@ -119,7 +120,7 @@ useEffect(() => {
 
   useEffect(() => {
     // Fetch likers for trip
-    const travelog_id = travelog_id;
+    
     fetch(`https://lgcbe.onrender.com/api/likers/retraveled?travelog_id=${travelog_id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -133,7 +134,7 @@ useEffect(() => {
 
   useEffect(() => {
     // Fetch likers for trip
-    const travelog_id = travelog_id;
+    
     fetch(`https://lgcbe.onrender.com/api/travelog/likers/writing?travelog_id=${travelog_id}`)
       .then((response) => response.json())
       .then((data) => {
@@ -147,7 +148,7 @@ useEffect(() => {
  
   useEffect(() => {
     // Fetch likers for trip
-    const travelog_id = travelog_id;
+    
     fetch(`https://lgcbe.onrender.com/api/likers/informative?travelog_id=${travelog_id}`)
       .then((response) => response.json())
       .then((data) => {
