@@ -15,7 +15,7 @@ function TravelogFilter() {
   });
   const [travelogs, setTravelogs] = useState([]); 
 
-  const [sortBy, setSortBy] = useState('createdAt'); 
+  const [sortBy, setSortBy] = useState('created_at'); 
   const [filterClicked, setFilterClicked] = useState(false);
   const bottomRef = useRef(null);
 
@@ -78,7 +78,7 @@ function TravelogFilter() {
             
           case 'country':
             return a.country.localeCompare(b.country);
-          case 'createdAt':
+          case 'created_at':
           default:
             return new Date(b.created_at) - new Date(a.created_at);
         }
@@ -112,7 +112,7 @@ function TravelogFilter() {
             value={sortBy}
             onChange={(event) => setSortBy(event.target.value)}
           >
-            <option value="createdAt">Newest First</option>
+            <option value="created_at">Newest First</option>
             <option value="username">Username</option>
             <option value="country">Country</option>
           </select>

@@ -84,12 +84,12 @@ function TravDet() {
   useEffect(() => {
     // Parse the URL to get the comment ID
     const urlSearchParams = new URLSearchParams(window.location.search);
-    const commentId = urlSearchParams.get('comment');
+    const comment_id = urlSearchParams.get('comment');
     
-    if (commentId) {
+    if (comment_id) {
       // Delay the execution of the scroll logic
       setTimeout(() => {
-        const commentElement = document.getElementById(`comment: ${commentId}`);
+        const commentElement = document.getElementById(`comment: ${comment_id}`);
         // console.log('************COMMENT ELEMENT: ', commentElement)
   
         if (commentElement) {

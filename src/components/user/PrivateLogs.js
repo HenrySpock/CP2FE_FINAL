@@ -54,7 +54,7 @@ function PrivateLogs() {
             <div className='hub-mini-card-text'>
               <h3>{travelog.title}</h3>
               <p>{travelog.site}</p>
-              <p>Visited On {moment(travelog.dateVisited).format('LL')}</p> 
+              <p>Visited On {moment(travelog.date_visited).format('LL')}</p> 
               {travelog.User && (
                 <p>by <Link to={`/public_profile/${travelog.User.username}`}>{travelog.User.username}</Link></p>
               )}
@@ -83,8 +83,8 @@ function PrivateLogs() {
           <div className='hub-mini-card-text'>
             <h3>{trip.title}</h3>
             <p>{trip.description}</p>
-            <p>From {moment(trip.dateOfDeparture).format('LL')} 
-               to {moment(trip.dateOfReturn).format('LL')}</p>
+            <p>From {moment(trip.date_of_departure).format('LL')} 
+               to {moment(trip.date_of_return).format('LL')}</p>
             {trip.is_private ? <p>(Private Entry)</p> : null}
           </div>
         </div>

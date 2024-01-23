@@ -106,8 +106,8 @@ function AdminPanel() {
   }, [reportedFeedback, user]);
 // console.log('user.user_id: ', user.user_id)
 
-  const isReportOlderThan84Hours = (createdAt) => {
-    const reportDate = new Date(createdAt);
+  const isReportOlderThan84Hours = (created_at) => {
+    const reportDate = new Date(created_at);
     const now = new Date();
     const hoursDiff = (now - reportDate) / (1000 * 60 * 60); // Convert milliseconds difference to hours
     return hoursDiff > 84;
@@ -356,7 +356,7 @@ function AdminPanel() {
           return (
             
               <div className="admin-card">
-                <div className="admin-mini-card" style={isReportOlderThan84Hours(report.createdAt) ? oldReportStyle : null}>
+                <div className="admin-mini-card" style={isReportOlderThan84Hours(report.created_at) ? oldReportStyle : null}>
                   <div className='admin-mini-card-text'>
 
                   <Link to={`/public_profile/${report.ReportedUser.username}`} style={{ textDecoration: 'none', color: 'inherit' }} key={report.report_id}>
@@ -403,7 +403,7 @@ function AdminPanel() {
                           e.preventDefault();
                           toggleSuspension(user_email);
                         }}
-                        disabled={!user_email || isReportOlderThan84Hours(report.createdAt)}
+                        disabled={!user_email || isReportOlderThan84Hours(report.created_at)}
                       >
                         {suspendedUsers.has(user_email) ? 'Unsuspend' : 'Suspend'}
                       </button>
@@ -464,7 +464,7 @@ function AdminPanel() {
           return (
             
               <div className="admin-card">
-                <div className="admin-mini-card" style={isReportOlderThan84Hours(report.createdAt) ? oldReportStyle : null}>
+                <div className="admin-mini-card" style={isReportOlderThan84Hours(report.created_at) ? oldReportStyle : null}>
                   <div className='admin-mini-card-text'>
 
                   <Link key={report.report_id} to={`/trip_det/${report.ReportedTrip.trip_id}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
@@ -506,7 +506,7 @@ function AdminPanel() {
                         e.preventDefault();
                         toggleSuspension(user_email);
                       }}
-                      disabled={!user_email || isReportOlderThan84Hours(report.createdAt)}
+                      disabled={!user_email || isReportOlderThan84Hours(report.created_at)}
                     >
                       {suspendedUsers.has(user_email) ? 'Unsuspend' : 'Suspend'}
                     </button>
@@ -567,7 +567,7 @@ function AdminPanel() {
           return (
             
               <div className="admin-card">
-                <div className="admin-mini-card" style={isReportOlderThan84Hours(report.createdAt) ? oldReportStyle : null}>
+                <div className="admin-mini-card" style={isReportOlderThan84Hours(report.created_at) ? oldReportStyle : null}>
                   <div className='admin-mini-card-text'>
 
                   <Link key={report.report_id} to={`/trav_det/${report.ReportedTravelog.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
@@ -609,7 +609,7 @@ function AdminPanel() {
                           e.preventDefault();
                           toggleSuspension(user_email);
                         }}
-                        disabled={!user_email || isReportOlderThan84Hours(report.createdAt)}
+                        disabled={!user_email || isReportOlderThan84Hours(report.created_at)}
                       >
                         {suspendedUsers.has(user_email) ? 'Unsuspend' : 'Suspend'}
                       </button>
@@ -670,7 +670,7 @@ function AdminPanel() {
           return (
             
             <div className="admin-card">
-              <div className="admin-mini-card" style={isReportOlderThan84Hours(report.createdAt) ? oldReportStyle : null}>
+              <div className="admin-mini-card" style={isReportOlderThan84Hours(report.created_at) ? oldReportStyle : null}>
                   <div className='admin-mini-card-text'>
                     <Link key={report.report_id} to={`/trav_det/${report.ReportedComment.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
                       <h3 className="link-to-report-entity">Reported Comment: {report.ReportedComment.content}</h3>   
@@ -711,7 +711,7 @@ function AdminPanel() {
                           e.preventDefault();
                           toggleSuspension(user_email);
                         }}
-                        disabled={!user_email || isReportOlderThan84Hours(report.createdAt)}
+                        disabled={!user_email || isReportOlderThan84Hours(report.created_at)}
                       >
                         {suspendedUsers.has(user_email) ? 'Unsuspend' : 'Suspend'}
                       </button>

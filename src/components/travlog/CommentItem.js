@@ -155,10 +155,10 @@ function CommentItem({ comment, contextUser,}) {
     return <p>Loading replies...</p>;
   }
  
-  const commentId = comment.comment_id
+  const comment_id = comment.comment_id
   
   return ( 
-    <div className="comment" style={{ marginLeft: `${comment.comment.depth * 30}px` }}  id={`comment: ${commentId}`}>
+    <div className="comment" style={{ marginLeft: `${comment.comment.depth * 30}px` }}  id={`comment: ${comment_id}`}>
       <div className="comment-header"> 
 
         <div className="comment-header">

@@ -43,7 +43,7 @@ const ScheduleMaint = () => {
       const response = await fetch('https://lgcbe.onrender.com/api/schedule_maintenance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ startDate, endDate, maintenance_key, adminId: user.user_id })
+        body: JSON.stringify({ startDate, endDate, maintenance_key, admin_id: user.user_id })
       });
 
       if (response.ok) { 

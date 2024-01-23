@@ -375,7 +375,7 @@ useEffect(() => {
                   <div className='prof-mini-card-text'>
                     <h3>{travelog.title}</h3>
                     <p>{travelog.site}</p>
-                    <p>Visited On {new Date(travelog.dateVisited).toLocaleDateString('en-CA')}</p> 
+                    <p>Visited On {new Date(travelog.date_visited).toLocaleDateString('en-CA')}</p> 
                   </div>
                 </div>
               </Link>

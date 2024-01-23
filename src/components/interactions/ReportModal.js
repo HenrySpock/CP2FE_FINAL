@@ -2,23 +2,23 @@ import React, { useState, useEffect } from 'react';
 import './ReportModal.css'
 
 function ReportUserModal({ isOpen, onClose, onSubmit }) {
-  const [complaintText, setComplaintText] = useState('');
+  const [complaint_text, setComplaint_text] = useState('');
 
   const handleInputChange = (e) => {
-    setComplaintText(e.target.value);
+    setComplaint_text(e.target.value);
   };
 
   const handleSubmit = () => {
-    // Perform validation on complaintText here if needed
-    onSubmit(complaintText);
-    setComplaintText(''); // Clear the input field
+    // Perform validation on complaint_text here if needed
+    onSubmit(complaint_text);
+    setComplaint_text(''); // Clear the input field
     onClose();
   };
 
     // Close the modal if isOpen changes to false
     useEffect(() => {
       if (!isOpen) {
-        setComplaintText('');
+        setComplaint_text('');
       }
     }, [isOpen]);
   
@@ -33,7 +33,7 @@ function ReportUserModal({ isOpen, onClose, onSubmit }) {
           <h2>Report</h2>
           <textarea
             placeholder="Please describe your complaint in 500 characters or less."
-            value={complaintText}
+            value={complaint_text}
             onChange={handleInputChange}
             maxLength={500}
           />

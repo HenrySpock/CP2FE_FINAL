@@ -14,10 +14,10 @@ function Disconnections() {
   const [showDenied, setShowDenied] = useState(false);
   const [showBlocked, setShowBlocked] = useState(false);
 
-  async function unblockUser(blockId) {
+  async function unblockUser(block_id) {
     try {
-      // console.log('blockId: ', blockId);
-      await axios.delete(`https://lgcbe.onrender.com/api/block/${blockId}`); 
+      // console.log('block_id: ', block_id);
+      await axios.delete(`https://lgcbe.onrender.com/api/block/${block_id}`); 
       const response = await axios.get(`https://lgcbe.onrender.com/api/user/${user_id}/blocked-users`);
       setBlockedUsers(response.data);
     } catch (error) {
@@ -119,10 +119,10 @@ function Disconnections() {
         {showBlocked && (
           <div className='disconnections-card-divs'>
             {blockedUsers.map(user => (
-              <div  className='disconnection-card' key={user.blockId}> 
+              <div  className='disconnection-card' key={user.block_id}> 
                   {user.username} 
                 <img src={user.avatar} alt={`${user.username}'s avatar`} /> 
-                <button className='disconections-mini-btn' onClick={() => unblockUser(user.blocksReceived[0].blockId)}><p>Unblock</p></button>
+                <button className='disconections-mini-btn' onClick={() => unblockUser(user.blocksReceived[0].block_id)}><p>Unblock</p></button>
               </div>
             ))}
           </div>
