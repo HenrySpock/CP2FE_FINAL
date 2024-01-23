@@ -149,8 +149,8 @@ function TravDet() {
         return;  
       }
   
-      const userId = user.user_id; 
-      await axios.delete(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}?user_id=${userId}`);
+      const user_id = user.user_id; 
+      await axios.delete(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}?user_id=${user_id}`);
       navigate('/hub'); 
     } catch (error) {
       console.error('Error deleting travelog:', error);

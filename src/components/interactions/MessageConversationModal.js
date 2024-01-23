@@ -31,7 +31,7 @@ function MessageConversationModal({ activeConversation, onClose, friends, isAdmi
         'Authorization': `Bearer ${localStorage.getItem('token')}`, // if using token-based auth
       },
       body: JSON.stringify({
-        userId: user.user_id,
+        user_id: user.user_id,
         conversationId: conversationId
       }),
     })
@@ -50,7 +50,7 @@ function MessageConversationModal({ activeConversation, onClose, friends, isAdmi
   }; 
 
   useEffect(() => {
-    const socket = io('https://lgcbe.onrender.com', { query: { userId: user.user_id }});  
+    const socket = io('https://lgcbe.onrender.com', { query: { user_id: user.user_id }});  
 
     socket.on('new-message', (message) => {  
       // console.log('Received new message:', message);

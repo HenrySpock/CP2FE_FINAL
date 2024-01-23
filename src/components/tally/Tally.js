@@ -23,15 +23,15 @@ const Tally = () => {
             // TALLYING 06 
           
 
-          const userNotificationsResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-user-notifications?userId=${user.user_id}`, {
+          const userNotificationsResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-user-notifications?user_id=${user.user_id}`, {
             method: 'GET', 
           });
  
-          const userMessagesResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-user-messages?userId=${user.user_id}&isAdmin=${user.isAdmin}`, {
+          const userMessagesResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-user-messages?user_id=${user.user_id}&isAdmin=${user.isAdmin}`, {
             method: 'GET',
           });
 
-          const adminMessagesResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-admin-messages?userId=${user.user_id}`, {
+          const adminMessagesResponse = await fetch(`https://lgcbe.onrender.com/tally/unread-admin-messages?user_id=${user.user_id}`, {
             method: 'GET',
           });
           

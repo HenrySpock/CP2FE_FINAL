@@ -29,7 +29,7 @@ function HomeOther() {
     if (!user || !user.user_id) return;
 
     try {
-        const response = await fetch(`https://lgcbe.onrender.com/travelog/api/travelog-entries?userId=${user.user_id}`);
+        const response = await fetch(`https://lgcbe.onrender.com/travelog/api/travelog-entries?user_id=${user.user_id}`);
         const data = await response.json();
         const offsetTravelogs = applyMarkerOffset(data);
 

@@ -7,7 +7,7 @@ import './Disconnections.css'
 
 function Disconnections() {
   const { user } = useContext(UserContext);
-  const userId = user ? user.user_id : null;
+  const user_id = user ? user.user_id : null;
 
   const [deniedRequests, setDeniedRequests] = useState([]);
   const [blockedUsers, setBlockedUsers] = useState([]);
@@ -18,7 +18,7 @@ function Disconnections() {
     try {
       // console.log('blockId: ', blockId);
       await axios.delete(`https://lgcbe.onrender.com/api/block/${blockId}`); 
-      const response = await axios.get(`https://lgcbe.onrender.com/api/user/${userId}/blocked-users`);
+      const response = await axios.get(`https://lgcbe.onrender.com/api/user/${user_id}/blocked-users`);
       setBlockedUsers(response.data);
     } catch (error) {
       console.error(error);
@@ -26,21 +26,21 @@ function Disconnections() {
   }
 
   useEffect(() => {
-    if (userId) {
+    if (user_id) {
       const fetchDeniedRequests = async () => {
-        const response = await axios.get(`https://lgcbe.onrender.com/api/user/${userId}/denied-requests`);
+        const response = await axios.get(`https://lgcbe.onrender.com/api/user/${user_id}/denied-requests`);
         setDeniedRequests(response.data);
       };
 
       const fetchBlockedUsers = async () => {
-        const response = await axios.get(`https://lgcbe.onrender.com/api/user/${userId}/blocked-users`);
+        const response = await axios.get(`https://lgcbe.onrender.com/api/user/${user_id}/blocked-users`);
         setBlockedUsers(response.data);
       };
 
       fetchDeniedRequests();
       fetchBlockedUsers();
     }
-  }, [userId]);
+  }, [user_id]);
 
   const handleAccept = async (sender_id, recipient_id) => {
     try {
@@ -106,7 +106,7 @@ function Disconnections() {
                   {request.Requester.username}
                 </Link>
                 <img src={request.Requester.avatar} alt={`${request.Requester.username}'s avatar`} />
-                <button className='disconections-mini-btn' onClick={() => handleAccept(request.Requester.user_id, userId)}><p>Accept</p></button> 
+                <button className='disconections-mini-btn' onClick={() => handleAccept(request.Requester.user_id, user_id)}><p>Accept</p></button> 
                 <button className='disconections-mini-btn' onClick={() => handleDismiss(request.friendshipId)}><p>Dismiss</p></button>
               </div>
             ))}

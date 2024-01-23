@@ -201,7 +201,8 @@ const submitReport = async (complaint) => {
 };
 
 
-const handleBlock = async (blockedUserId) => {
+// const handleBlock = async (blockedUserId) => {
+const handleBlock = async (profileUser, currentUser) => {
 
   const response1 = await fetch(`https://lgcbe.onrender.com/user/api/users/${currentUser}`);
   const data1 = await response1.json();
@@ -249,7 +250,7 @@ const renderFriendButton = () => {
       <button className='interaction-mini-btn blue-button' onClick={handleFollow}>
             {isFollowing ? 'Unfollow' : 'Follow'}
       </button> 
-      <button className='interaction-mini-btn red-button' onClick={() => handleBlock(profileUser)}>Block</button> 
+      <button className='interaction-mini-btn red-button' onClick={() => handleBlock(profileUser, currentUser)}>Block</button> 
       <button className='interaction-mini-btn orange-button' onClick={openReportModal}>Report</button> 
       <ReportModal
         isOpen={isReportModalOpen}

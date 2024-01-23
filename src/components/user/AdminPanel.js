@@ -59,7 +59,7 @@ function AdminPanel() {
         'Authorization': `Bearer ${localStorage.getItem('token')}`, 
       },
       body: JSON.stringify({
-        userId: user.user_id,
+        user_id: user.user_id,
         conversationId: conversationId
       }),
     })
@@ -221,7 +221,7 @@ function AdminPanel() {
   };
 
   // Function to ban an email and delete a user
-  const handleBanUser = async (userId, email) => {
+  const handleBanUser = async (user_id, email) => {
     
     // Confirmation dialog
     const confirmBan = window.confirm("This is irreversible. Are you sure?");
@@ -231,7 +231,7 @@ function AdminPanel() {
     }
     
     try {
-      // console.log('email: ', email, 'userId: ', userId)
+      // console.log('email: ', email, 'user_id: ', user_id)
       // Add the email to the banned_emails table
       const banResponse = await fetch('https://lgcbe.onrender.com/feedback/ban-email', {
         method: 'POST',
@@ -241,14 +241,14 @@ function AdminPanel() {
 
       if (banResponse.ok) {
         // Email banned successfully, now delete the user
-        const deleteUserResponse = await fetch(`https://lgcbe.onrender.com/user/api/user/${userId}`, {
+        const deleteUserResponse = await fetch(`https://lgcbe.onrender.com/user/api/user/${user_id}`, {
           method: 'DELETE',
         });
 
         if (deleteUserResponse.ok) {
         // User deleted successfully 
         // Remove the cleared user's reports from the local state
-        const updatedReportedFeedback = reportedFeedback.filter((report) => report.reported_user_id !== userId);
+        const updatedReportedFeedback = reportedFeedback.filter((report) => report.reported_user_id !== user_id);
         setReportedFeedback(updatedReportedFeedback);
         return true;
 
@@ -266,15 +266,15 @@ function AdminPanel() {
     }
   };
 
-  const handleNotifyUser = async (userId) => {
-    // console.log('userId: ', userId)
+  const handleNotifyUser = async (user_id) => {
+    // console.log('user_id: ', user_id)
     try {
       const response = await fetch('https://lgcbe.onrender.com/api/notify-user', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ userId }),
+        body: JSON.stringify({ user_id }),
       });
   
       if (response.ok) {

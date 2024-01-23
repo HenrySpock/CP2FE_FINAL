@@ -99,7 +99,7 @@ function Home() {
       let url = 'https://lgcbe.onrender.com/travelog/api/travelog-entries';
       // Append user ID as a query parameter if the user is logged in
       if (user) {
-        url += `?userId=${user.user_id}`;
+        url += `?user_id=${user.user_id}`;
       }
   
       try {

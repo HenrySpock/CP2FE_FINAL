@@ -22,7 +22,7 @@ function Messages() {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,  
       },
       body: JSON.stringify({
-        userId: user.user_id,
+        user_id: user.user_id,
         conversationId: conversationId
       }),
     })

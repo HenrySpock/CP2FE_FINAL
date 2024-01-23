@@ -15,7 +15,7 @@ export const WebSocketProvider = ({ children }) => {
 
     useEffect(() => {
         if (user && user.user_id) {
-            const newSocket = io('https://lgcbe.onrender.com/', { query: { userId: user.user_id } });
+            const newSocket = io('https://lgcbe.onrender.com/', { query: { user_id: user.user_id } });
             
             newSocket.on('connect_error', (error) => {
                 console.error('Connection Error:', error);
