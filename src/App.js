@@ -6,7 +6,7 @@ import './App.css';
 import PingTest from './components/site/PingTest';
 
 // Router Components
-import { BrowserRouter as Router, Route, Routes, useNavigate } from 'react-router-dom'; 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; 
 
 // Context Providers
 import { UserProvider } from './components/user/UserContext';
@@ -55,10 +55,9 @@ import ScheduleMaint from './components/user/ScheduleMaint'
 import HomeOther from './components/travlog/HomeOther'
 
 function App() { 
-  const navigate = useNavigate();
   return (
     // User Context Wrapper 
-    <UserProvider navigate={navigate}>    
+    <UserProvider>    
       {/* WebSocket provider  */}
       <WebSocketProvider> 
  

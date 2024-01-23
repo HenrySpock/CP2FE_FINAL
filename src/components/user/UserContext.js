@@ -21,7 +21,7 @@ export const UserContext = createContext({
   setUnreadAdminReports: () => {}, 
 });
 
-export const UserProvider = ({ children, navigate }) => { 
+export const UserProvider = ({ children }) => { 
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [is_admin, setIs_admin] = useState(false);
@@ -85,8 +85,7 @@ export const UserProvider = ({ children, navigate }) => {
       } catch (error) {
         console.error('Error updating logout status:', error);
       }
-    }
-    navigate('/auth');
+    } 
   }; 
 
   useEffect(() => { 
