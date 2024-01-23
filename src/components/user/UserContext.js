@@ -1,4 +1,5 @@
 import React, { createContext, useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const UserContext = createContext({
   user: null,
@@ -22,6 +23,7 @@ export const UserContext = createContext({
 });
 
 export const UserProvider = ({ children }) => {
+  const navigate = useNavigate();
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [is_admin, setIs_admin] = useState(false);
@@ -70,7 +72,8 @@ export const UserProvider = ({ children }) => {
     setIsAuthenticated(false);
     setIs_admin(false);  // Reset is_admin to false on logout
     localStorage.removeItem('token'); // Remove the token from localStorage
-
+    
+    
     // console.log("Logging out, user data:", user);
     if (user && user.user_id) {
       try {
@@ -85,6 +88,7 @@ export const UserProvider = ({ children }) => {
         console.error('Error updating logout status:', error);
       }
     }
+    navigate('/auth');
   }; 
 
   useEffect(() => { 
