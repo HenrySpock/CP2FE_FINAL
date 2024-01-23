@@ -55,6 +55,7 @@ import ScheduleMaint from './components/user/ScheduleMaint'
 import HomeOther from './components/travlog/HomeOther'
 
 function App() { 
+  const navigate = useNavigate();
   return (
     // User Context Wrapper 
     <UserProvider navigate={navigate}>    
