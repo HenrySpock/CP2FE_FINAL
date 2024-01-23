@@ -62,7 +62,7 @@ return (
   <>
     <Marker position={[entry.latitude, entry.longitude]} icon={customIcon}>
       <Popup>
-        <Link to={`/trav_det/${entry.travelogId}`} className="custom-popup">
+        <Link to={`/trav_det/${entry.travelog_id}`} className="custom-popup">
           <Link to={`/public_profile/${entry.username}`}>{entry.username}</Link> <br />
           Travelog: {entry.title} <br />
           In {entry.country} <br />   

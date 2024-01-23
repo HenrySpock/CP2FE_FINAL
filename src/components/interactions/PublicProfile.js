@@ -361,7 +361,7 @@ useEffect(() => {
           <h2>Travelogs</h2>
           <div>
             {profileTravelogs.map(travelog => (   
-              <Link key={travelog.travelogId} to={`/trav_det/${travelog.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Link key={travelog.travelog_id} to={`/trav_det/${travelog.travelog_id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                 <div className="prof-mini-card">
                   <div className="prof-mini-img-div">
                     {travelog.Images[0] && (

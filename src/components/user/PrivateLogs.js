@@ -40,7 +40,7 @@ function PrivateLogs() {
   <h2>Private Travelogs</h2>
   <div>
     {privateData.travelogs.map(travelog => (
-      <Link key={travelog.travelogId} to={`/trav_det/${travelog.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+      <Link key={travelog.travelog_id} to={`/trav_det/${travelog.travelog_id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
         <div className="hub-mini-card">
             <div className="hub-mini-img-div"> 
             {travelog.Images[0] && (

@@ -4,7 +4,7 @@ import { Modal, Button } from 'react-bootstrap';
 import './TravDet.css'
 
 // Define the AdminDelete component
-function AdminDelete({ travelogId, navigate }) {
+function AdminDelete({ travelog_id, navigate }) {
   // State to control the visibility of the modal
   const [showModal, setShowModal] = useState(false);
 
@@ -21,7 +21,7 @@ function AdminDelete({ travelogId, navigate }) {
   // Function to handle confirmation of deletion
   const handleConfirmDeletion = async () => {
     try {
-      const response = await fetch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}`, {
+      const response = await fetch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`, {
         method: 'DELETE',
       });
 

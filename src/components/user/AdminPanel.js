@@ -570,7 +570,7 @@ function AdminPanel() {
                 <div className="admin-mini-card" style={isReportOlderThan84Hours(report.created_at) ? oldReportStyle : null}>
                   <div className='admin-mini-card-text'>
 
-                  <Link key={report.report_id} to={`/trav_det/${report.ReportedTravelog.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
+                  <Link key={report.report_id} to={`/trav_det/${report.ReportedTravelog.travelog_id}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
                     <h3 className="link-to-report-entity">Reported Travelog Title: {report.ReportedTravelog.title}</h3>   
                   </Link>
 
@@ -672,7 +672,7 @@ function AdminPanel() {
             <div className="admin-card">
               <div className="admin-mini-card" style={isReportOlderThan84Hours(report.created_at) ? oldReportStyle : null}>
                   <div className='admin-mini-card-text'>
-                    <Link key={report.report_id} to={`/trav_det/${report.ReportedComment.travelogId}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
+                    <Link key={report.report_id} to={`/trav_det/${report.ReportedComment.travelog_id}`} style={{ textDecoration: 'none', color: 'inherit' }}> 
                       <h3 className="link-to-report-entity">Reported Comment: {report.ReportedComment.content}</h3>   
                     </Link>
                     <p>Author: {report.ReportedComment.user.username}</p>                                     

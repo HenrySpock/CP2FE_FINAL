@@ -6,7 +6,7 @@ import ImageLikes from './TravImageLikes'
 import './TravDet.css'
 import TravDetFullScreen from './TravDetFullScreen'
 
-function TravDetImageEdit({ user, travelogId, fetchTravelog, initialImages, username ='', profileUser, userData }) {
+function TravDetImageEdit({ user, travelog_id, fetchTravelog, initialImages, username ='', profileUser, userData }) {
     const [images, setImages] = useState(initialImages || []); 
     const [isEditImagesMode, setIsEditImagesMode] = useState(false);
     const [fullscreenImageUrl, setFullscreenImageUrl] = useState(null);
@@ -127,14 +127,14 @@ function TravDetImageEdit({ user, travelogId, fetchTravelog, initialImages, user
       try {
           // First, delete the images marked for deletion
           if (deletedImageIds.length > 0) {
-              await axios.post(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}/delete-images`, {
+              await axios.post(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}/delete-images`, {
                   imageIds: deletedImageIds,
                   user_id: user.user_id,
               });
           }
   
           // Then, save the remaining images
-          const response = await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelogId}/images`, {
+          const response = await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}/images`, {
               images: images,
               user_id: user.user_id,
               imageInfo: imageInfo,
@@ -269,7 +269,7 @@ function TravDetImageEdit({ user, travelogId, fetchTravelog, initialImages, user
                 profileUser={profileUser}
                 userData={userData}
                 contextUser={user}
-                travelog_id={travelogId}
+                travelog_id={travelog_id}
                 image_id={image.image_id} 
               />
 

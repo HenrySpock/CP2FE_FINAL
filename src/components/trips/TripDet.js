@@ -332,7 +332,7 @@ function TripDet() {
   
       // Determine which travelogs to add or remove based on the initial selection
       const travelogsToAdd = selectedTravelogs.filter(t => !initiallySelectedTravelogs.includes(t.travelog_id));
-      const travelogsToRemove = travelogs.filter(t => !selectedTravelogs.some(s => s.travelogId === t.travelog_id));
+      const travelogsToRemove = travelogs.filter(t => !selectedTravelogs.some(s => s.travelog_id === t.travelog_id));
   
       // Send requests to update travelogs that have been selected
       const addPromises = travelogsToAdd.map(travelog =>

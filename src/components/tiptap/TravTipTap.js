@@ -10,7 +10,7 @@ import './TipTap.css'
 
 const TravTipTap = () => {
   const navigate = useNavigate();
-  const { id: travelogId } = useParams(); // Get the travelog ID from the URL
+  const { id: travelog_id } = useParams(); // Get the travelog ID from the URL
   const { user } = useContext(UserContext);  
   const [formattedText, setFormattedText] = useState('');
   const [error, setError] = useState('');
@@ -19,7 +19,7 @@ const TravTipTap = () => {
   useEffect(() => {
     const fetchTraventry = async () => {
       try {
-        const response = await fetch(`https://lgcbe.onrender.com/travelog/get_traventry/${travelogId}`);
+        const response = await fetch(`https://lgcbe.onrender.com/travelog/get_traventry/${travelog_id}`);
         if (!response.ok) {
           throw new Error('Failed to fetch traventry');
         }
@@ -35,7 +35,7 @@ const TravTipTap = () => {
     };
   
     fetchTraventry();
-  }, [travelogId]);
+  }, [travelog_id]);
 
   useEffect(() => {
     // console.log('Formatted text after update:', formattedText);
@@ -61,7 +61,7 @@ const TravTipTap = () => {
         return; // Stop the function here as forbidden words are found
       }
 
-      const response = await fetch(`https://lgcbe.onrender.com/travelog/update_traventry/${travelogId}`, {
+      const response = await fetch(`https://lgcbe.onrender.com/travelog/update_traventry/${travelog_id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -71,7 +71,7 @@ const TravTipTap = () => {
   
       if (response.ok) {
         // console.log("Entry saved successfully");
-        navigate(`/trav_det/${travelogId}`);
+        navigate(`/trav_det/${travelog_id}`);
       } else {
         throw new Error("Failed to save entry");
       }
@@ -82,7 +82,7 @@ const TravTipTap = () => {
 
   const handleDeleteEntryClick = async () => {
     try {
-      const response = await fetch(`https://lgcbe.onrender.com/travelog/delete_traventry/${travelogId}`, {
+      const response = await fetch(`https://lgcbe.onrender.com/travelog/delete_traventry/${travelog_id}`, {
         method: 'PATCH',
         headers: {
           'Content-Type': 'application/json',
@@ -92,7 +92,7 @@ const TravTipTap = () => {
   
       if (response.ok) {
         // console.log("Entry deleted successfully");
-        navigate(`/trav_det/${travelogId}`);
+        navigate(`/trav_det/${travelog_id}`);
       } else {
         throw new Error("Failed to delete entry");
       }
@@ -102,7 +102,7 @@ const TravTipTap = () => {
   }
 
   const handleCancelClick = () => {
-    navigate(`/trav_det/${travelogId}`); // Navigate back to the travelog details page
+    navigate(`/trav_det/${travelog_id}`); // Navigate back to the travelog details page
   };
   
   return (

@@ -93,8 +93,8 @@ function TravLikes({
   // LIKE BADGE PROCESS 04
   useEffect(() => {
     // Fetch likers for a specific travelog
-    const travelogId = travelog_id;  
-    fetch(`https://lgcbe.onrender.com/api/likers/want-to-travel?travelog_id=${travelogId}`)
+    const travelog_id = travelog_id;  
+    fetch(`https://lgcbe.onrender.com/api/likers/want-to-travel?travelog_id=${travelog_id}`)
       .then((response) => response.json())
       .then((data) => {
         setWantToTravelLikers(data);
@@ -106,8 +106,8 @@ function TravLikes({
 
 useEffect(() => {
   // Fetch likers for a specific travelog
-  const travelogId = travelog_id; 
-  fetch(`https://lgcbe.onrender.com/api/likers/traveled?travelog_id=${travelogId}`)
+  const travelog_id = travelog_id; 
+  fetch(`https://lgcbe.onrender.com/api/likers/traveled?travelog_id=${travelog_id}`)
     .then((response) => response.json())
     .then((data) => {
       setTraveledLikers(data);
@@ -119,8 +119,8 @@ useEffect(() => {
 
   useEffect(() => {
     // Fetch likers for trip
-    const travelogId = travelog_id;
-    fetch(`https://lgcbe.onrender.com/api/likers/retraveled?travelog_id=${travelogId}`)
+    const travelog_id = travelog_id;
+    fetch(`https://lgcbe.onrender.com/api/likers/retraveled?travelog_id=${travelog_id}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log('Retraveled Likers:', data);  
@@ -133,8 +133,8 @@ useEffect(() => {
 
   useEffect(() => {
     // Fetch likers for trip
-    const travelogId = travelog_id;
-    fetch(`https://lgcbe.onrender.com/api/travelog/likers/writing?travelog_id=${travelogId}`)
+    const travelog_id = travelog_id;
+    fetch(`https://lgcbe.onrender.com/api/travelog/likers/writing?travelog_id=${travelog_id}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log('Retraveled Likers:', data);  
@@ -147,8 +147,8 @@ useEffect(() => {
  
   useEffect(() => {
     // Fetch likers for trip
-    const travelogId = travelog_id;
-    fetch(`https://lgcbe.onrender.com/api/likers/informative?travelog_id=${travelogId}`)
+    const travelog_id = travelog_id;
+    fetch(`https://lgcbe.onrender.com/api/likers/informative?travelog_id=${travelog_id}`)
       .then((response) => response.json())
       .then((data) => {
         // console.log('Retraveled Likers:', data);  

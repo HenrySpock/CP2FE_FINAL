@@ -53,7 +53,7 @@ function TripDetMarker({ entry, order, showNumbers }) {
   return (
     <Marker position={[entry.latitude, entry.longitude]} icon={customIcon}>
       <Popup>
-        <Link to={`/trav_det/${entry.travelogId}`} className="custom-popup">
+        <Link to={`/trav_det/${entry.travelog_id}`} className="custom-popup">
           <Link to={`/public_profile/${entry.username}`}>{entry.username}</Link> <br />
           Travelog: {entry.title} <br />
           Site: {entry.site} <br />

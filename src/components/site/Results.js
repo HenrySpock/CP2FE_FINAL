@@ -129,7 +129,7 @@ function Results() {
           <div className="result-travelog-cards-container">
             {travelogs.map(travelog => (
               <div key={travelog.travelog_id} className="result-travelog-card">
-                <Link to={`/trav_det/${travelog.travelogId}`} className="result-travelog-detail-link">
+                <Link to={`/trav_det/${travelog.travelog_id}`} className="result-travelog-detail-link">
                   <img src={travelog.Images[0].image_url} alt={`Travelog titled: ${travelog.title}`} />
                 </Link>
                 <p className='result-travelog-title'>{travelog.title}</p>
@@ -145,8 +145,8 @@ function Results() {
         <div className="result-images-cards-container">
           {travelogImages.flatMap(travelog =>
             travelog.Images.map((image, index) => (
-              <div key={`${travelog.travelogId}_${index}`} className="result-images-card">
-                <Link to={`/trav_det/${travelog.travelogId}`} className="result-images-detail-link">
+              <div key={`${travelog.travelog_id}_${index}`} className="result-images-card">
+                <Link to={`/trav_det/${travelog.travelog_id}`} className="result-images-detail-link">
                   <img src={image.image_url} alt={`First Associated Idnex for ${travelog.title}`} />
                 </Link>
                 <p className='result-images-title'>{travelog.title}</p>
