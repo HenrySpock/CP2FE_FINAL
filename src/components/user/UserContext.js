@@ -1,5 +1,4 @@
-import React, { createContext, useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { createContext, useState, useEffect } from 'react'; 
 
 export const UserContext = createContext({
   user: null,
@@ -22,8 +21,7 @@ export const UserContext = createContext({
   setUnreadAdminReports: () => {}, 
 });
 
-export const UserProvider = ({ children }) => {
-  const navigate = useNavigate();
+export const UserProvider = ({ children, navigate }) => { 
   const [user, setUser] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [is_admin, setIs_admin] = useState(false);
