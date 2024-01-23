@@ -57,7 +57,7 @@ const handleCommentSubmit = async () => {
       await PostComment({ 
           user: user,
           user_id: user.user_id,  
-          parentId: comment_id,
+          parent_id: comment_id,
           [entityType]: entityId,
           content: commentText,
       });

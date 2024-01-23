@@ -7,7 +7,7 @@ import './ScheduleMaint.css'
 const ScheduleMaint = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [maintenanceKey, setMaintenanceKey] = useState('');
+  const [maintenance_key, setMaintenance_key] = useState('');
   const navigate = useNavigate();
   const { user } = useContext(UserContext);
   const [newEndTime, setNewEndTime] = useState('');
@@ -27,7 +27,7 @@ const ScheduleMaint = () => {
   };
  
   const handleSchedule = async () => { 
-    if (!startDate || !endDate || !maintenanceKey ) { 
+    if (!startDate || !endDate || !maintenance_key ) { 
       setErrorMessage('Please enter start / end dates and maintenance key.');
       return;
     }
@@ -43,7 +43,7 @@ const ScheduleMaint = () => {
       const response = await fetch('https://lgcbe.onrender.com/api/schedule_maintenance', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ startDate, endDate, maintenanceKey, adminId: user.user_id })
+        body: JSON.stringify({ startDate, endDate, maintenance_key, adminId: user.user_id })
       });
 
       if (response.ok) { 
@@ -162,12 +162,12 @@ const ScheduleMaint = () => {
                 />
               </div>
               <div className='schedule-form'>
-                <label htmlFor="maintenanceKey">Maintenance Key:</label>
+                <label htmlFor="maintenance_key">Maintenance Key:</label>
                 <input
                   type="text"
-                  id="maintenanceKey"
-                  value={maintenanceKey}
-                  onChange={(e) => setMaintenanceKey(e.target.value)}
+                  id="maintenance_key"
+                  value={maintenance_key}
+                  onChange={(e) => setMaintenance_key(e.target.value)}
                 />
               </div>
             </div>

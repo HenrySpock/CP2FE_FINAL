@@ -11,7 +11,7 @@ function AuthPage() {
   const [email, setEmail] = useState('');
 
   const [isMaintenanceMode, setIsMaintenanceMode] = useState(false);
-  const [maintenanceKey, setMaintenanceKey] = useState('');
+  const [maintenance_key, setMaintenance_key] = useState('');
   const [enteredKey, setEnteredKey] = useState('');
  
   const [maintenanceEndTime, setMaintenanceEndTime] = useState(null);
@@ -33,7 +33,7 @@ function AuthPage() {
         const data = await response.json();
         setIsMaintenanceMode(data.maintenanceActive);
         if (data.maintenanceActive) {
-          setMaintenanceKey(data.maintenanceInfo.maintenance_key);
+          setMaintenance_key(data.maintenanceInfo.maintenance_key);
           setMaintenanceEndTime(new Date(data.maintenanceInfo.timestamp_end));
         }
       } catch (error) {
@@ -74,7 +74,7 @@ function AuthPage() {
   };
 
   // Check if entered key is correct 
-  const isKeyCorrect = enteredKey === maintenanceKey; 
+  const isKeyCorrect = enteredKey === maintenance_key; 
 
   const handleResetSubmit = async (event) => {
     event.preventDefault();

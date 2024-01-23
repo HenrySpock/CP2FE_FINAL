@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 
-async function PostComment({ handleClose, onCommentSubmit, content, user, user_id, travelog_id, parentId, trip_id }) {
+async function PostComment({ handleClose, onCommentSubmit, content, user, user_id, travelog_id, parent_id, trip_id }) {
   try {
 
     const postData = {
@@ -14,8 +14,8 @@ async function PostComment({ handleClose, onCommentSubmit, content, user, user_i
         postData.travelog_id = travelog_id;
     } else if (trip_id) {
         postData.trip_id = trip_id;
-    } else if (parentId) {
-        postData.parent_id = parentId;
+    } else if (parent_id) {
+        postData.parent_id = parent_id;
     } else {
         throw new Error('Invalid parent type');
     }

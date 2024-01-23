@@ -222,8 +222,8 @@ useEffect(() => {
         setProfileTrips(publicTrips); 
 
         // Set the map center to the profile user's mapCenter if available
-        if (userData.mapCenter) {
-          setProfileMapCenter(userData.mapCenter);
+        if (userData.map_center) {
+          setProfileMapCenter(userData.map_center);
         }
  
 
@@ -297,7 +297,7 @@ useEffect(() => {
             </div> 
 
               <ProfileMap
-                mapCenter={profileMapCenter} 
+                map_center={profileMapCenter} 
                 userZoom={userData.user_zoom}
                 travelogs={filteredTravelogs} 
                 trips={filteredTrips}       

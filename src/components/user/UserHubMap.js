@@ -19,7 +19,7 @@ function UserHubMap({ travelogs, trips }) {
     maxZoom: 18,
   }; 
 
-  const [mapCenter, setMapCenter] = useState(user.map_center);
+  const [map_center, setMapCenter] = useState(user.map_center);
   const [showMapModal, setShowMapModal] = useState(false);
   const [userZoom, setUserZoom] = useState(mapOptions.zoom);
   const [showZoomInput, setShowZoomInput] = useState(false); 
@@ -27,7 +27,7 @@ function UserHubMap({ travelogs, trips }) {
   function UpdateCenter() {
     const map = useMap();
     useEffect(() => {
-      map.flyTo(mapCenter, userZoom);  
+      map.flyTo(map_center, userZoom);  
     }, [map]); 
   
     return null;  
