@@ -26,7 +26,7 @@ function CreateTrip() {
   const [showMapModal, setShowMapModal] = useState(false);
 
   const [is_private, setIs_private] = useState(false);
-  const [haveVisited, setHaveVisited] = useState(true);
+  const [have_visited, setHave_visited] = useState(true);
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
@@ -170,7 +170,7 @@ const updateImageUrl = (earliestTravelog) => {
       longitude, 
       image_url: image_url,
       is_private: is_private,
-      have_visited: haveVisited,
+      have_visited: have_visited,
     };
 
     // console.log('newTrip: ', newTrip)
@@ -258,7 +258,7 @@ const updateImageUrl = (earliestTravelog) => {
         <div className='check-container pick-marker'>
           <label>
             <span>Have Visited</span> 
-            <input type="checkbox" name="have_visited" checked={haveVisited} onChange={e => setHaveVisited(e.target.checked)}/>
+            <input type="checkbox" name="have_visited" checked={have_visited} onChange={e => setHave_visited(e.target.checked)}/>
           </label>
 
 

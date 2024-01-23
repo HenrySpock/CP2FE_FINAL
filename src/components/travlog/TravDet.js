@@ -234,7 +234,7 @@ function TravDet() {
   
           // Check permissions if travelog is private
           if (travelog.is_private) {
-            const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelog_id=${travelog.travelog_id}&granteeId=${currentUser.user_id}`;
+            const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelog_id=${travelog.travelog_id}&grantee_id=${currentUser.user_id}`;
             const permissionResponse = await fetch(permissionUrl);
   
             if (!permissionResponse.ok) throw new Error('Error checking permissions');

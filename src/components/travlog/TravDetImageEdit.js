@@ -19,14 +19,14 @@ function TravDetImageEdit({ user, travelogId, fetchTravelog, initialImages, user
     // console.log('on TravDetImageEdit username: ', username, 'profileuser: ', profileUser, 'images: ', images)
  
 
-  const openFullscreenModal = (image_url, imageId, title, description) => {
-    // console.log("Opening fullscreen for:", image_url, 'image_id: ', imageId, 'title', title, 'description', description);
+  const openFullscreenModal = (image_url, image_id, title, description) => {
+    // console.log("Opening fullscreen for:", image_url, 'image_id: ', image_id, 'title', title, 'description', description);
     setFullscreenImageUrl(image_url); 
     setCurrentTitle(title);
     setCurrentDescription(description);
  
     if (username && profileUser && username !== profileUser) {
-      incrementImageViewCount(imageId); 
+      incrementImageViewCount(image_id); 
     } else {
       // console.log('Condition not met, and incrementImageViewCount not called');
     }

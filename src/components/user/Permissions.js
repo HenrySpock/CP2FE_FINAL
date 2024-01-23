@@ -72,8 +72,8 @@ function Permissions() {
   const handleGrant = async () => {
     // Update permissions in the database
     const updatedPermissions = [...grantAccess, ...revokeAccess].map(friend => ({
-      granterId: user.user_id,
-      granteeId: friend.user_id,
+      granter_id: user.user_id,
+      grantee_id: friend.user_id,
       [`${entityType}Id`]: entityId,
       action: revokeAccess.includes(friend) ? 'grant' : 'revoke'
     }));

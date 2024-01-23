@@ -66,12 +66,12 @@ function Disconnections() {
     }
   };
 
-  const handleDismiss = async (friendshipId) => {
+  const handleDismiss = async (friendship_id) => {
     try {
       const response = await fetch('https://lgcbe.onrender.com/api/friends/request/dismiss', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ friendshipId })
+        body: JSON.stringify({ friendship_id })
       });
   
       if (!response.ok) {
@@ -82,7 +82,7 @@ function Disconnections() {
       if (data.success) {
         // Remove the dismissed request from the deniedRequests state
         setDeniedRequests(deniedRequests => 
-          deniedRequests.filter(request => request.friendshipId !== friendshipId)
+          deniedRequests.filter(request => request.friendship_id !== friendship_id)
         );
       }
     } catch (error) {
@@ -101,13 +101,13 @@ function Disconnections() {
         {showDenied && (
           <div className='disconnections-card-divs'>
             {deniedRequests.map(request => (
-              <div  className='disconnection-card' key={request.friendshipId}>
+              <div  className='disconnection-card' key={request.friendship_id}>
                 <Link to={`/publicprofile/${request.Requester.user_id}`}>
                   {request.Requester.username}
                 </Link>
                 <img src={request.Requester.avatar} alt={`${request.Requester.username}'s avatar`} />
                 <button className='disconections-mini-btn' onClick={() => handleAccept(request.Requester.user_id, user_id)}><p>Accept</p></button> 
-                <button className='disconections-mini-btn' onClick={() => handleDismiss(request.friendshipId)}><p>Dismiss</p></button>
+                <button className='disconections-mini-btn' onClick={() => handleDismiss(request.friendship_id)}><p>Dismiss</p></button>
               </div>
             ))}
           </div>
