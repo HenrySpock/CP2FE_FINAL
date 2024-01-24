@@ -26,7 +26,7 @@ const NotificationCard = ({ notification, onAccept, onDeny }) => {
         )}
 
         {/* Check if it's a 'like' notification and render likerUsername as a link */}
-        {/* [] has liked your [trip likes]*/}
+        {/* [] has liked your [trip like]. View*/}
         {notification.type === 'trip' && (
           <a href={notificationContent.likerUrl}>
             {notificationContent.likerUsername}
@@ -48,6 +48,7 @@ const NotificationCard = ({ notification, onAccept, onDeny }) => {
         )}
 
         {/* Check if it's a 'like' notification and render likerUsername as a link */}
+        {/* liked your comment */}
         {notification.type === 'comment-like' && (
           <a href={notificationContent.likerUrl}>
             {notificationContent.likerUsername}
@@ -55,6 +56,7 @@ const NotificationCard = ({ notification, onAccept, onDeny }) => {
         )}
 
         {/* Check if it's a 'like' notification and render likerUsername as a link */}
+        {/* commented on your travelog/trip */}
         {notification.type === 'comment' && (
           <a href={notificationContent.url}>
             {notificationContent.username}
