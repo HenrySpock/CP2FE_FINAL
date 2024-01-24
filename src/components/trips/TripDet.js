@@ -147,6 +147,7 @@ function TripDet() {
 
       if (trip_id) {
         try {
+          const user_id = user.user_id
           // First, try to fetch a public trip or a private trip where the user is the author
           const response = await axios.get(`https://lgcbe.onrender.com/trip/api/tripgetnotprivate/${trip_id}`);
           if (response.data) {
