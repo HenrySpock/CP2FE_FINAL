@@ -287,7 +287,7 @@ return (
       </form>
 
         <div className='profile-buttons'>
-          <button className='profile-btn' onClick={() => navigate('/hub')}>Return to User Hub</button>
+          <button className='profile-btn' onClick={() => navigate('/hub')}>User Hub</button>
           <button className='profile-btn' onClick={toggleTooltips}> {user.tooltips ? 'Turn Tooltips Off' : 'Turn Tooltips On'} </button>
           <button className='profile-btn' onClick={handleSave}>Save Details</button>
           <button className='profile-btn' onClick={() => navigate('/password')}>Edit Password</button>

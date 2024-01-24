@@ -44,3 +44,19 @@
   object-fit: contain;  
   border-bottom: 2px solid #717171; 
 }  
+
+.permissions-btn {
+  padding: 7px 0 7px 0;
+  margin-top: 4px;
+  background-color: rgb(180, 180, 180); 
+  color: white;
+  border: 1px solid rgb(120, 120, 120);
+  border-radius: 4px;
+  cursor: pointer;
+  width: 92%;
+  font-size: 14px;
+}
+
+.permissions-btn:hover {
+  background-color: rgb(140, 140, 140);  
+}

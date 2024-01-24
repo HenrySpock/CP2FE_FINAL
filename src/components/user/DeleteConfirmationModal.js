@@ -3,6 +3,7 @@ import { UserContext } from './UserContext';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { Modal, Button } from 'react-bootstrap'; 
+import './Profile.css'
 
 function DeleteConfirmationModal({ show, onClose }) {
   const { user, logout } = useContext(UserContext);
@@ -35,8 +36,8 @@ function DeleteConfirmationModal({ show, onClose }) {
         />
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="secondary" onClick={onClose}>Cancel</Button>
-        <Button variant="danger" onClick={handleSubmit}>Delete</Button>
+        <Button className='del-con-btn' variant="secondary" onClick={onClose}>Cancel</Button>
+        <Button className='del-con-btn' variant="danger" onClick={handleSubmit}>Delete</Button>
       </Modal.Footer>
     </Modal>
   );

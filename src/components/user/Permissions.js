@@ -126,8 +126,8 @@ function Permissions() {
         ))}
       </div>
 
-      <button onClick={handleGrant}>Grant / Revoke</button>
-      <button onClick={handleCancel}>Cancel</button>
+      <button className='permissions-btn' onClick={handleGrant}>Grant / Revoke</button>
+      <button className='permissions-btn' onClick={handleCancel}>Cancel</button>
     </div>
   );
 };
