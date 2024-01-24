@@ -196,9 +196,7 @@ function TripDet() {
         }
       }
 
-      if (!user) {
-        navigate('/auth');
-      }
+
     };
   
     checkUserAndPermissions();
