@@ -271,11 +271,11 @@ function TravDet() {
  
 
         // Keep the ISO format for editing
-        response.data.date_visited = moment(response.data.date_visited).format('YYYY-MM-DDTHH:mm'); //  
+        response.data.date_visited = moment(response.data.date_visited).format('YYYY-MM-DDTHH:mm');   
       }
 
     
-
+      console.log('travelog: ', response.data)
       setTravelog(response.data);
       setImages(response.data.Images); 
       // console.log('RESPONSE.DATA.IMAGES: ', response.data.Images)
@@ -349,6 +349,7 @@ function TravDet() {
       await axios.patch(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`, editedTravelog);
       // console.log('Update successful:', response.data - I removed const response from the await because it compiled as an unused variable once logging was turned off.);
       setTravelog(editedTravelog);  // Update the displayed travelog data.
+      setFormattedDateVisited(moment(editedTravelog.date_visited).format('MMMM Do YYYY, h:mm a'));
       setIsEditMode(false);  // Exit edit mode.
     } catch (error) {
       console.error('Error updating travelog:', error);
