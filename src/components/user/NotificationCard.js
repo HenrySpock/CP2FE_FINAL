@@ -26,6 +26,7 @@ const NotificationCard = ({ notification, onAccept, onDeny }) => {
         )}
 
         {/* Check if it's a 'like' notification and render likerUsername as a link */}
+        {/* [] has liked your [trip likes]*/}
         {notification.type === 'trip' && (
           <a href={notificationContent.likerUrl}>
             {notificationContent.likerUsername}

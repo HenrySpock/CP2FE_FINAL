@@ -144,9 +144,7 @@ function TripDet() {
   
   useEffect(() => {
     const checkUserAndPermissions = async () => {
-      if (!user) {
-        navigate('/auth');
-      }
+
       if (trip_id) {
         try {
           // First, try to fetch a public trip or a private trip where the user is the author
@@ -196,6 +194,10 @@ function TripDet() {
           console.error('Error in permissions check:', error);
           navigate('/');  // Redirect on error
         }
+      }
+
+      if (!user) {
+        navigate('/auth');
       }
     };
   
