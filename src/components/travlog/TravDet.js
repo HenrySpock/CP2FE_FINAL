@@ -145,7 +145,7 @@ function TravDet() {
   const handleDeleteTravelog = async () => { 
     try {
       if (travelog && travelog.Trip) {  
-        setError('This travelog is part of a trip. Please remove it from the trip before deleting.');
+        setError('This travelog is part of a trip. You must remove it from the trip or delete the trip to delete the travelog.');
         return;  
       }
   
