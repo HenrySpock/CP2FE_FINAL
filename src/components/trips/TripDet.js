@@ -142,73 +142,78 @@ function TripDet() {
     setShowConfirmModal(true);
   }; 
   
+
   useEffect(() => {
-    const checkUserAndPermissions = async () => {
-      console.log('user is: ', user)
-      if (trip_id) {
-        try { 
-          // First, try to fetch a public trip or a private trip where the user is the author
-          const response = await axios.get(`https://lgcbe.onrender.com/trip/api/tripgetnotprivate/${trip_id}`);
-          if (response.data) {
-            // Trip data is successfully fetched
-            setIsLoadingUser(false);
-            setIsAccessCheckComplete(true);
-            return; // Exit the function as the trip is either public or the user is the author of a private trip
-          }
-        } catch (error) {
-          // Handle the error for private trips without access
-          if (error.response && error.response.status === 404) {
-            console.log('Trip is private or user does not have access');
-          } else {
-            console.error('Error in fetching trip:', error);
-          }
-        }
-      }
-  
-      if (user && trip_id) {
-        try {
-          // Check if the current user is the author of a private trip
-          const authorResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/tripget/${trip_id}`, { params: { user_id: user.user_id } });
-          if (authorResponse.data) {
-            setIsLoadingUser(false);
-            setIsAccessCheckComplete(true);
-            return; // User is the author, so they can access the trip
-          }
-        } catch (error) {
-          console.error('Error in author check:', error);
-        }
-      }
-  
-      if (user && user.user_id && trip_id) {
-        try {
-          // Perform the permissions check for other users
-          // const permissionResponse = await axios.get(`https://lgcbe.onrender.com/permissions/check`, { params: { trip_id: trip_id, grantee_id: user.user_id } });
-          console.log('attempting to hit https://lgcbe.onrender.com/api/permissions/specific/${user.user_id}')
-          const permissionResponse = await axios.get(`https://lgcbe.onrender.com/api/permissions/specific/${user.user_id}`, { 
-            params: { entityId: trip_id, entityType: 'trip', grantee_id: user.user_id }
-          });
+    console.log('Effect ran. User:', user, 'Trip ID:', trip_id);
+  }, [user, trip_id]);
 
-          const permissionData = permissionResponse.data;
-          console.log('permissionData: ', permissionData)
-          if (permissionData.hasAccess) {
-            setIsLoadingUser(false);
-            setIsAccessCheckComplete(true); // User has permissions to access the private trip
-          } else {
-            navigate('/'); // Redirect if no access
-          }
-        } catch (error) {
-          console.error('Error in permissions check:', error);
-          navigate('/');  // Redirect on error
-        }
-      }
-
-      if (!user) {
-        navigate('/auth');
-      }
-    };
+  // useEffect(() => {
+  //   const checkUserAndPermissions = async () => {
+  //     console.log('user is: ', user)
+  //     if (trip_id) {
+  //       try { 
+  //         // First, try to fetch a public trip or a private trip where the user is the author
+  //         const response = await axios.get(`https://lgcbe.onrender.com/trip/api/tripgetnotprivate/${trip_id}`);
+  //         if (response.data) {
+  //           // Trip data is successfully fetched
+  //           setIsLoadingUser(false);
+  //           setIsAccessCheckComplete(true);
+  //           return; // Exit the function as the trip is either public or the user is the author of a private trip
+  //         }
+  //       } catch (error) {
+  //         // Handle the error for private trips without access
+  //         if (error.response && error.response.status === 404) {
+  //           console.log('Trip is private or user does not have access');
+  //         } else {
+  //           console.error('Error in fetching trip:', error);
+  //         }
+  //       }
+  //     }
   
-    checkUserAndPermissions();
-  }, [user, trip_id, navigate]); 
+  //     if (user && trip_id) {
+  //       try {
+  //         // Check if the current user is the author of a private trip
+  //         const authorResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/tripget/${trip_id}`, { params: { user_id: user.user_id } });
+  //         if (authorResponse.data) {
+  //           setIsLoadingUser(false);
+  //           setIsAccessCheckComplete(true);
+  //           return; // User is the author, so they can access the trip
+  //         }
+  //       } catch (error) {
+  //         console.error('Error in author check:', error);
+  //       }
+  //     }
+  
+  //     if (user && user.user_id && trip_id) {
+  //       try {
+  //         // Perform the permissions check for other users
+  //         // const permissionResponse = await axios.get(`https://lgcbe.onrender.com/permissions/check`, { params: { trip_id: trip_id, grantee_id: user.user_id } });
+  //         console.log('attempting to hit https://lgcbe.onrender.com/api/permissions/specific/${user.user_id}')
+  //         const permissionResponse = await axios.get(`https://lgcbe.onrender.com/api/permissions/specific/${user.user_id}`, { 
+  //           params: { entityId: trip_id, entityType: 'trip', grantee_id: user.user_id }
+  //         });
+
+  //         const permissionData = permissionResponse.data;
+  //         console.log('permissionData: ', permissionData)
+  //         if (permissionData.hasAccess) {
+  //           setIsLoadingUser(false);
+  //           setIsAccessCheckComplete(true); // User has permissions to access the private trip
+  //         } else {
+  //           navigate('/'); // Redirect if no access
+  //         }
+  //       } catch (error) {
+  //         console.error('Error in permissions check:', error);
+  //         navigate('/');  // Redirect on error
+  //       }
+  //     }
+
+  //     if (!user) {
+  //       navigate('/auth');
+  //     }
+  //   };
+  
+  //   checkUserAndPermissions();
+  // }, [user, trip_id, navigate]); 
 
   useEffect(() => {
 
