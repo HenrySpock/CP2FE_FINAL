@@ -756,7 +756,7 @@ function TravDet() {
                           )}
 
                           {
-                            travelog && currentUser && travelog.user_id === currentUser.user_id && (
+                            travelog && ( travelog.is_private === true ) && currentUser && travelog.user_id === currentUser.user_id && (
                               <button className="trav-det-btn width-narrow" onClick={() => navigate(`/permissions?entity=travelog&id=${travelog.travelog_id}`)}>
                                 Grant Permissions
                               </button>

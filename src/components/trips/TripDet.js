@@ -725,7 +725,7 @@ return (
                   
 
                   {
-                    trip && user && trip.user_id === user.user_id && (
+                    trip && ( trip.is_private === true ) && user && trip.user_id === user.user_id && (
                       <button className='trip-det-btn' onClick={() => navigate(`/permissions?entity=trip&id=${trip.trip_id}`)}>
                         Grant Permissions
                       </button>
