@@ -144,7 +144,7 @@ function TripDet() {
   
   useEffect(() => {
     const checkUserAndPermissions = async () => {
-
+      console.log('user is: ', user)
       if (trip_id) {
         try { 
           // First, try to fetch a public trip or a private trip where the user is the author
