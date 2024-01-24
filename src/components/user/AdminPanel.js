@@ -248,7 +248,16 @@ function AdminPanel() {
         if (deleteUserResponse.ok) {
         // User deleted successfully 
         // Remove the cleared user's reports from the local state
-        const updatedReportedFeedback = reportedFeedback.filter((report) => report.reported_user_id !== user_id);
+        // const updatedReportedFeedback = reportedFeedback.filter((report) => report.reported_user_id !== user_id);
+        // setReportedFeedback(updatedReportedFeedback);
+        // return true;
+
+        const updatedReportedFeedback = reportedFeedback.filter((report) => {
+          return report.reported_user_id !== user_id &&
+                 report.ReportedTrip?.User.user_id !== user_id &&
+                 report.ReportedTravelog?.User.user_id !== user_id &&
+                 report.ReportedComment?.user_id !== user_id;
+        });
         setReportedFeedback(updatedReportedFeedback);
         return true;
 
