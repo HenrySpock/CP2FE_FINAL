@@ -147,6 +147,7 @@ function TripDet() {
 
       if (trip_id) {
         try { 
+          console.log('step 01')
           // First, try to fetch a public trip or a private trip where the user is the author
           const response = await axios.get(`https://lgcbe.onrender.com/trip/api/tripgetnotprivate/${trip_id}`);
           if (response.data) {
@@ -166,6 +167,7 @@ function TripDet() {
       }
   
       if (user && trip_id) {
+        console.log('step 02')
         try {
           // Check if the current user is the author of a private trip
           const authorResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/tripget/${trip_id}`, { params: { user_id: user.user_id } });
@@ -180,6 +182,7 @@ function TripDet() {
       }
   
       if (user && user.user_id && trip_id) {
+        console.log('step 03')
         try {
           // Perform the permissions check for other users
           const permissionResponse = await axios.get(`https://lgcbe.onrender.com/api/permissions/check`, { params: { trip_id: trip_id, grantee_id: user.user_id } });
@@ -196,7 +199,10 @@ function TripDet() {
         }
       }
 
-
+      if (!user) {
+        console.log('step 04')
+        navigate('/auth');
+      }
     };
   
     checkUserAndPermissions();
