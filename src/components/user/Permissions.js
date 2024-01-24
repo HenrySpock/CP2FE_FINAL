@@ -74,7 +74,7 @@ function Permissions() {
     const updatedPermissions = [...grantAccess, ...revokeAccess].map(friend => ({
       granter_id: user.user_id,
       grantee_id: friend.user_id,
-      [`${entityType}Id`]: entityId,
+      [`${entityType}_id`]: entityId,
       action: revokeAccess.includes(friend) ? 'grant' : 'revoke'
     }));
 
