@@ -42,7 +42,7 @@ function AuthPage() {
     };
   
     checkMaintenanceMode();
-    const interval = setInterval(checkMaintenanceMode, 6000000);  
+    const interval = setInterval(checkMaintenanceMode, 10000);  
   
     return () => clearInterval(interval); // cleanup interval on component unmount
   }, []);
@@ -63,7 +63,7 @@ function AuthPage() {
           setTimeRemaining('Maintenance period has ended');
         }
       }
-    }, 6000000);
+    }, 10000);
 
     return () => clearInterval(countdown); // cleanup interval on component unmount
   }, [maintenanceEndTime]);
