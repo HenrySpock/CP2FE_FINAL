@@ -113,7 +113,7 @@ margin: 10px auto;
 .recent-card > img {
   width: 45%; 
   
-  height: 78%;
+  height: 75%;
   object-fit: contain;  
   border-bottom: 2px solid #717171; 
 }  

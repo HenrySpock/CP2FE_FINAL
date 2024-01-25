@@ -99,8 +99,8 @@
 
 .del-con-btn {
   padding: 7px 0 7px 0;
-  margin-top: 4px;
-  background-color: rgb(180, 180, 180); 
+  margin: 5px 5px 0 5px;
+  background-color: rgb(160, 160, 160); 
   color: white;
   border: 1px solid rgb(120, 120, 120);
   border-radius: 4px;
@@ -110,5 +110,5 @@
 }
 
 .del-con-btn:hover {
-  background-color: rgb(140, 140, 140);  
+  background-color: rgb(120, 120, 120);  
 }
