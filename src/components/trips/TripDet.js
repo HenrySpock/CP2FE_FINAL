@@ -175,6 +175,8 @@ function TripDet() {
         }
       }
   
+      console.log('user, trip_id: ', user, trip_id)
+      
       if (user && trip_id) {
         try {
           // Check if the current user is the author of the private trip
