@@ -149,9 +149,9 @@ function Messages() {
                     </Link> 
                   </div>
                   <div className="badge-container">   
-                    {friend.unreadCount > 0 && (
+                    
                       <span className="badge badge-blue">{friend.unreadCount}</span>
-                    )}
+                    
                   </div>
                 </>
               );
