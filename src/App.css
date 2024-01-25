@@ -269,6 +269,7 @@
   bottom: -3px; 
   min-width: 360px;
   max-width: 360px; 
+  
 }
 
 .message-thread {
@@ -582,4 +583,8 @@
   width: 90%;
   margin: auto;
   text-align: center;
+}
+
+.modal-shrink .modal-content {
+  background: none; /* Override background style */
 }
