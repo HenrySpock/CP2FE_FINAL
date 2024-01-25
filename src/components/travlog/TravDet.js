@@ -282,38 +282,36 @@ function TravDet() {
   
       console.log('user is: ', currentUser)
   
-      if (travelog && currentUser) {
-        if (travelog.username === currentUser.username) {
+      if (travelog && currentUser){
+        if (travelog.username === currentUser.username){
           setIsAccessCheckComplete(true);
           return;
         }
-  
-        if (travelog.is_private) {
-          const permissionUrl = new URL(`https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}`);
-          permissionUrl.searchParams.append('entityId', travelog.travelog_id);
-          permissionUrl.searchParams.append('entityType', 'travelog');
-          permissionUrl.searchParams.append('grantee_id', currentUser.user_id);
-  
-          try {
-            const permissionResponse = await fetch(permissionUrl.toString());
-            if (!permissionResponse.ok) throw new Error('Error checking permissions');
-            const permissionData = await permissionResponse.json();
-            if (!permissionData.hasAccess) {
-              navigate('/');
-              return;
-            }
-          } catch (error) {
-            console.error('Error in access checks:', error);
-            navigate('/');  // Redirect on error
-          }
-        }
-  
-        setIsAccessCheckComplete(true);
       }
+      
+      if (travelog && currentUser && travelog.is_private) { 
+        try {
+          const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}?entityId=${travelog.travelog_id}&entityType=travelog&grantee_id=${currentUser.user_id}`;
+          const permissionResponse = await fetch(permissionUrl);
+  
+          if (!permissionResponse.ok) throw new Error('Error checking permissions');
+          const permissionData = await permissionResponse.json();
+          if (!permissionData.hasAccess) {
+            navigate('/'); // Redirect if no access
+            return;
+          }
+        } catch (error) {
+          console.error('Error in access checks:', error);
+          navigate('/');  // Redirect on error
+        }
+      }
+  
+      setIsAccessCheckComplete(true);
     };
   
     checkAccess();
   }, [travelog, currentUser, navigate]);
+  
   
   
   useEffect(() => {
