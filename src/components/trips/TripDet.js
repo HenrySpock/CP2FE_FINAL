@@ -170,19 +170,20 @@ function TripDet() {
         }
       }
   
-      // if (user && trip_id) {
-      //   try {
-      //     // Check if the current user is the author of a private trip
-      //     const authorResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/tripget/${trip_id}`, { params: { user_id: user.user_id } });
-      //     if (authorResponse.data) {
-      //       setIsLoadingUser(false);
-      //       setIsAccessCheckComplete(true);
-      //       return; // User is the author, so they can access the trip
-      //     }
-      //   } catch (error) {
-      //     console.error('Error in author check:', error);
-      //   }
-      // }
+      if (user && trip_id) {
+        try {
+          // Check if the current user is the author of a private trip
+          const authorResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/tripget/${trip_id}`, { params: { user_id: user.user_id } });
+          console.log('authorResponse.data: ', authorResponse.data)
+          if (authorResponse.data) {
+            setIsLoadingUser(false);
+            setIsAccessCheckComplete(true);
+            return; // User is the author, so they can access the trip
+          }
+        } catch (error) {
+          console.error('Error in author check:', error);
+        }
+      }
   
       // if (user && user.user_id && trip_id) {
       //   try {
