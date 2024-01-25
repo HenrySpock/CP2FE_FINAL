@@ -248,15 +248,9 @@ function TravDet() {
           console.log('travelog.travelog_id, currentUser.user_id: ', travelog.travelog_id, currentUser.user_id)
 
           if (travelog.is_private) {
-            const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}`;
-            const permissionResponse = await fetch(permissionUrl, {
-            params: {
-              entityId: travelog.travelog_id,
-              entityType: 'travelog',
-              grantee_id: currentUser.user_id
-              
-            }
-          });
+            const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}?entityId=${travelog.travelog_id}&entityType=travelog&grantee_id=${currentUser.user_id}`;
+            const permissionResponse = await fetch(permissionUrl);
+          
 
             if (!permissionResponse.ok) throw new Error('Error checking permissions');
             const permissionData = await permissionResponse.json();
