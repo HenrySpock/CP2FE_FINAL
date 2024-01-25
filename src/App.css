@@ -256,8 +256,7 @@
   background-color: #e4e4e4;
   border-left: 1px solid #ccc;
   display: flex; 
-  bottom: -100px;
-  height: 400px;
+  bottom: -100px; 
 }
 
 /* Conversation div inside the message list */
@@ -270,7 +269,7 @@
   bottom: -3px; 
   min-width: 360px;
   max-width: 360px; 
-  
+  height: 400px;
 }
 
 .message-thread {
