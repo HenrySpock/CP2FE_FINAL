@@ -136,24 +136,17 @@ function Messages() {
               if (isFriendAdmin && !allReportsCleared) return null; // Do not render this friend card
 
               return (
-                <>
-                  <div key={friend.user_id} className="messaging-card" onClick={() => handleFriendClick(friend)}>
-                    {/* <div className="badge-container">   
-                      {friend.unreadCount > 0 && (
-                        <span className="badge badge-blue">{friend.unreadCount}</span>
-                      )}
-                    </div> */}
-                    <img src={friend.avatar} alt={`${friend.username}'s avatar`} />
-                    <Link to={`/public_profile/${friend.username}`} className="friend-username-link">
-                      <p className='friend-username-text'>{friend.username}</p>
-                    </Link> 
-                  </div>
+                <div key={friend.user_id} className="messaging-card" onClick={() => handleFriendClick(friend)}>
                   <div className="badge-container">   
-                    
+                    {friend.unreadCount > 0 && (
                       <span className="badge badge-blue">{friend.unreadCount}</span>
-                    
+                    )}
                   </div>
-                </>
+                  <img src={friend.avatar} alt={`${friend.username}'s avatar`} />
+                  <Link to={`/public_profile/${friend.username}`} className="friend-username-link">
+                    <p className='friend-username-text'>{friend.username}</p>
+                  </Link> 
+                </div>
               );
             })}
           </div>
