@@ -275,27 +275,27 @@ function TravDet() {
 
   useEffect(() => {
     const checkAccess = async () => {
-      if (!user) {
-        console.log('User not available yet');
+      if (!currentUser || !travelog) {
+        console.log('User or travelog not available yet');
         return;
       }
   
-      console.log('user is: ', currentUser)
+      console.log('user is: ', currentUser);
   
-      if (travelog && currentUser){
-        if (travelog.username === currentUser.username){
-          setIsAccessCheckComplete(true);
-          return;
-        }
+      if (travelog.username === currentUser.username) {
+        setIsAccessCheckComplete(true);
+        return;
       }
-      
-      if (travelog && currentUser && travelog.is_private) { 
+  
+      if (travelog.is_private) { 
         try {
-          const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}?entityId=${travelog.travelog_id}&entityType=travelog&grantee_id=${currentUser.user_id}`;
+          const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}?entityId=${travelog.travelog_id}&entityType=travelog`;
+          
           const permissionResponse = await fetch(permissionUrl);
   
           if (!permissionResponse.ok) throw new Error('Error checking permissions');
           const permissionData = await permissionResponse.json();
+          
           if (!permissionData.hasAccess) {
             navigate('/'); // Redirect if no access
             return;
@@ -311,6 +311,7 @@ function TravDet() {
   
     checkAccess();
   }, [travelog, currentUser, navigate]);
+  
   
   
   
