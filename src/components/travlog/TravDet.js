@@ -219,7 +219,9 @@ function TravDet() {
         console.log('User not available yet');
         return;
       }
-      
+
+      console.log('user is: ', currentUser)
+
       if (travelog && currentUser){
         if (travelog.username === currentUser.username){
           // console.log('travelog.username', travelog.username, 'currentUser.username', currentUser.username) 
@@ -239,10 +241,20 @@ function TravDet() {
           }
   
           // Check permissions if travelog is private
-          if (travelog.is_private) {
-            const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelog_id=${travelog.travelog_id}&grantee_id=${currentUser.user_id}`;
-            const permissionResponse = await fetch(permissionUrl);
+          // if (travelog.is_private) {
+          //   const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelog_id=${travelog.travelog_id}&grantee_id=${currentUser.user_id}`;
+          //   const permissionResponse = await fetch(permissionUrl);
   
+          if (travelog.is_private) {
+            const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}`;
+            const permissionResponse = await fetch(permissionUrl, {
+            params: {
+              entityId: travelog.travelog_id,
+              entityType: 'travelog',
+              grantee_id: currentUser.user_id
+            }
+          });
+
             if (!permissionResponse.ok) throw new Error('Error checking permissions');
             const permissionData = await permissionResponse.json();
             if (!permissionData.hasAccess) {
@@ -250,6 +262,8 @@ function TravDet() {
               return;
             }
           }
+
+
  
           setIsAccessCheckComplete(true);
         } catch (error) {
