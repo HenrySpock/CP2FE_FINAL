@@ -145,9 +145,9 @@ function TripDet() {
 
   useEffect(() => {
     console.log('Effect ran. User:', user, 'Trip ID:', trip_id);
-  }, [user, trip_id]);
+  // }, [user, trip_id]);
 
-  useEffect(() => {
+  // useEffect(() => {
     const checkUserAndPermissions = async () => {
       console.log('user is: ', user)
       if (trip_id) {
