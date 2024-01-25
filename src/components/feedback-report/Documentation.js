@@ -232,7 +232,7 @@ function Documentation() {
       <p>Notify: </p>
           <p>This sends a notification to the reported user that their account is under review.</p>
       <p>Clear: </p>
-          <p>This clears the report once the reported issue has been addressed satisfactorily. </p>
+          <p>This clears the report once the reported issue has been addressed satisfactorily. Reports cannot be cleared while a user is suspended. </p>
       <p>Suspend User: </p>
           <p>Suspensions are for 3 days and prevent login. </p>
       <p>Ban User: </p>
