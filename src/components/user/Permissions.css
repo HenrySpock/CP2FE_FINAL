@@ -48,7 +48,7 @@
 .permissions-btn {
   padding: 5px 10px 5px 10px;
   margin: 1em 1em 0 0;
-  background-color: rgb(200, 200, 200); 
+  background-color: rgb(160, 160, 160); 
   color: white;
   border: 1px solid rgb(140, 140, 140);
   border-radius: 6px;
@@ -58,5 +58,5 @@
 } 
 
 .permissions-btn:hover {
-  background-color: rgb(140, 140, 140);  
+  background-color: rgb(120, 120, 120);  
 }

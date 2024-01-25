@@ -398,30 +398,14 @@ function AdminPanel() {
                           Notify
                       </button>
 
-                      {/* <button className='admin-panel-btn' onClick={(e) => {
+                      <button className='admin-panel-btn' onClick={(e) => {
                         e.preventDefault();
                         handleClearReport(report.report_id, index)
                         }}
                         disabled={isUserSuspended}
                       >
                         Clear
-                      </button>  */}
-
-                      <div className="tooltip">
-                        <button 
-                          className='admin-panel-btn' 
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleClearReport(report.report_id, index);
-                          }}
-                          disabled={isUserSuspended}
-                        >
-                          Clear
-                        </button>
-                        {isUserSuspended && 
-                          <span className="tooltip-text">A report cannot be cleared if the user is suspended.</span>
-                        }
-                      </div>
+                      </button>  
   
                       {/* SUSTOG - REPLACES ABOVE */}
                       <button className='admin-panel-btn' 
@@ -519,30 +503,14 @@ function AdminPanel() {
                         Notify
                     </button>
 
-                    {/* <button className='admin-panel-btn' onClick={(e) => {
+                    <button className='admin-panel-btn' onClick={(e) => {
                       e.preventDefault();
                       handleClearReport(report.report_id, index)
                       }}
                       disabled={isUserSuspended}
                     >
                       Clear
-                    </button>  */}
-
-                    <div className="tooltip">
-                        <button 
-                          className='admin-panel-btn' 
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleClearReport(report.report_id, index);
-                          }}
-                          disabled={isUserSuspended}
-                        >
-                          Clear
-                        </button>
-                        {isUserSuspended && 
-                          <span className="tooltip-text">A report cannot be cleared if the user is suspended.</span>
-                        }
-                      </div>
+                    </button> 
 
                     <button className='admin-panel-btn' 
                       onClick={(e) => {
@@ -639,30 +607,14 @@ function AdminPanel() {
                           Notify
                       </button>
 
-                      {/* <button className='admin-panel-btn' onClick={(e) => {
+                      <button className='admin-panel-btn' onClick={(e) => {
                         e.preventDefault();
                         handleClearReport(report.report_id, index)
                         }}
                         disabled={isUserSuspended}
                       >
                         Clear
-                      </button>  */}
-
-                      <div className="tooltip">
-                        <button 
-                          className='admin-panel-btn' 
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleClearReport(report.report_id, index);
-                          }}
-                          disabled={isUserSuspended}
-                        >
-                          Clear
-                        </button>
-                        {isUserSuspended && 
-                          <span className="tooltip-text">A report cannot be cleared if the user is suspended.</span>
-                        }
-                      </div>
+                      </button> 
 
                       <button className='admin-panel-btn' 
                         onClick={(e) => {
@@ -758,31 +710,14 @@ function AdminPanel() {
                           Notify
                       </button>
 
-                      {/* <button className='admin-panel-btn' 
-                      onClick={(e) => {
+                      <button className='admin-panel-btn' onClick={(e) => {
                         e.preventDefault();
                         handleClearReport(report.report_id, index)
                       }}
                         disabled={isUserSuspended}
                       >
                         Clear
-                      </button>  */}
-
-                      <div className="tooltip">
-                        <button 
-                          className='admin-panel-btn' 
-                          onClick={(e) => {
-                            e.preventDefault();
-                            handleClearReport(report.report_id, index);
-                          }}
-                          disabled={isUserSuspended}
-                        >
-                          Clear
-                        </button>
-                        {isUserSuspended && 
-                          <span className="tooltip-text">A report cannot be cleared if the user is suspended.</span>
-                        }
-                      </div>
+                      </button> 
 
                       <button className='admin-panel-btn' 
                         onClick={(e) => {
