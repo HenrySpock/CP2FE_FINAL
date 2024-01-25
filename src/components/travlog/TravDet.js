@@ -244,7 +244,9 @@ function TravDet() {
           // if (travelog.is_private) {
           //   const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelog_id=${travelog.travelog_id}&grantee_id=${currentUser.user_id}`;
           //   const permissionResponse = await fetch(permissionUrl);
-  
+          
+          console.log('travelog.travelog_id, currentUser.user_id: ', travelog.travelog_id, currentUser.user_id)
+
           if (travelog.is_private) {
             const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}`;
             const permissionResponse = await fetch(permissionUrl, {
@@ -252,6 +254,7 @@ function TravDet() {
               entityId: travelog.travelog_id,
               entityType: 'travelog',
               grantee_id: currentUser.user_id
+              
             }
           });
 
