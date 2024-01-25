@@ -175,7 +175,7 @@ function UserHubMap({ travelogs, trips }) {
             onChange={(e) => setUserZoom(parseInt(e.target.value, 10))}
           />
           <button onClick={() => handleZoomChange(userZoom)} className='zoomlevel-btn'>Update</button>
-          <button onClick={() => handleZoomChange(4)} className='userhubmap-btn'>Default</button>
+          <button onClick={() => handleZoomChange(4)} className='zoomlevel-btn'>Default</button>
         </div>
       )} 
     </div>
