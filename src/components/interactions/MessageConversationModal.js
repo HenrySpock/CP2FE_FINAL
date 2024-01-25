@@ -194,7 +194,7 @@ function MessageConversationModal({ activeConversation, onClose, friends, is_adm
                 <button className='messaging-btn' onClick={handleSendMessage}>Send</button>  
   
                 {!is_admin === true && (
-                  <button className='messaging-btn' onClick={() => setShowDeleteConfirm(true)}>Delete Conversation</button>
+                  <button className='messaging-btn' onClick={() => setShowDeleteConfirm(true)}>Delete</button>
                 )}
               </div>
               {renderDeleteConfirmationModal()}
