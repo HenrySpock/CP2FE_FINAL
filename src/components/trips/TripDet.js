@@ -144,6 +144,11 @@ function TripDet() {
   
 
   useEffect(() => {
+    if (!user) {
+      console.log('User not available yet');
+      return;
+    }
+    
     console.log('Effect ran. User:', user, 'Trip ID:', trip_id);
   // }, [user, trip_id]);
 
@@ -152,7 +157,7 @@ function TripDet() {
       console.log('user is: ', user)
       if (trip_id) {
         try { 
-          // First, try to fetch a public trip or a private trip where the user is the author
+          // First, try to fetch a public trip or a private trip is not private
           const response = await axios.get(`https://lgcbe.onrender.com/trip/api/tripgetnotprivate/${trip_id}`);
           if (response.data) {
             // Trip data is successfully fetched
@@ -172,7 +177,7 @@ function TripDet() {
   
       if (user && trip_id) {
         try {
-          // Check if the current user is the author of a private trip
+          // Check if the current user is the author of the private trip
           const authorResponse = await axios.get(`https://lgcbe.onrender.com/trip/api/tripget/${trip_id}`, { params: { user_id: user.user_id } });
           console.log('authorResponse.data: ', authorResponse.data)
           if (authorResponse.data) {
