@@ -280,7 +280,7 @@ function TravDet() {
         return;
       }
   
-      console.log('user is: ', currentUser);
+      console.log('user is, currentUser.user_id, travelog.travelog_id: ', user, currentUser.user_id, travelog.travelog_id );
   
       if (travelog.username === currentUser.username) {
         setIsAccessCheckComplete(true);
@@ -288,6 +288,7 @@ function TravDet() {
       }
   
       if (travelog.is_private) { 
+        console.log('checking permissions specific')
         try {
           const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}?entityId=${travelog.travelog_id}&entityType=travelog`;
           
