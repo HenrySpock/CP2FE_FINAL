@@ -211,67 +211,110 @@ function TravDet() {
   }; 
 
 
+  // useEffect(() => {
+
+  //   const checkAccess = async () => {
+  //     if (!user) {
+  //       console.log('User not available yet');
+  //       return;
+  //     }
+
+  //     console.log('user is: ', currentUser)
+
+  //     if (travelog && currentUser){
+  //       if (travelog.username === currentUser.username){
+  //         // console.log('travelog.username', travelog.username, 'currentUser.username', currentUser.username) 
+  //         setIsAccessCheckComplete(true);
+  //         return;
+  //       }
+  //     }
+
+  //     if (travelog && currentUser) { 
+  //       try {
+  //         // Check block status
+  //         const blockResponse = await fetch(`https://lgcbe.onrender.com/travelog/api/users/${travelog.user_id}/block-status/${currentUser.user_id}`);
+  //         if (!blockResponse.ok) throw new Error('Error checking block status');
+  //         const blockData = await blockResponse.json();
+  //         if (blockData.isBlocked) {
+  //           navigate('/');
+  //           return; // Exit early if user is blocked
+  //         }
+  
+  //         // Check permissions if travelog is private
+  //         // if (travelog.is_private) {
+  //         //   const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelog_id=${travelog.travelog_id}&grantee_id=${currentUser.user_id}`;
+  //         //   const permissionResponse = await fetch(permissionUrl);
+          
+  //         console.log('travelog.travelog_id, currentUser.user_id: ', travelog.travelog_id, currentUser.user_id)
+
+  //         if (travelog.is_private) {
+  //           const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}?entityId=${travelog.travelog_id}&entityType=travelog&grantee_id=${currentUser.user_id}`;
+  //           const permissionResponse = await fetch(permissionUrl);
+          
+
+  //           if (!permissionResponse.ok) throw new Error('Error checking permissions');
+  //           const permissionData = await permissionResponse.json();
+  //           if (!permissionData.hasAccess) {
+  //             navigate('/'); // Redirect if no access
+  //             return;
+  //           }
+  //         }
+
+
+ 
+  //         setIsAccessCheckComplete(true);
+  //       } catch (error) {
+  //         console.error('Error in access checks:', error);
+  //         navigate('/');  // Redirect on error
+  //       }
+  //     }
+  //   };
+  
+  //   checkAccess();
+  // }, [travelog, currentUser, navigate]); 
+
   useEffect(() => {
-
-
     const checkAccess = async () => {
       if (!user) {
         console.log('User not available yet');
         return;
       }
-
+  
       console.log('user is: ', currentUser)
-
-      if (travelog && currentUser){
-        if (travelog.username === currentUser.username){
-          // console.log('travelog.username', travelog.username, 'currentUser.username', currentUser.username) 
+  
+      if (travelog && currentUser) {
+        if (travelog.username === currentUser.username) {
           setIsAccessCheckComplete(true);
           return;
         }
-      }
-      if (travelog && currentUser) { 
-        try {
-          // Check block status
-          const blockResponse = await fetch(`https://lgcbe.onrender.com/travelog/api/users/${travelog.user_id}/block-status/${currentUser.user_id}`);
-          if (!blockResponse.ok) throw new Error('Error checking block status');
-          const blockData = await blockResponse.json();
-          if (blockData.isBlocked) {
-            navigate('/');
-            return; // Exit early if user is blocked
-          }
   
-          // Check permissions if travelog is private
-          // if (travelog.is_private) {
-          //   const permissionUrl = `https://lgcbe.onrender.com/permissions/check?travelog_id=${travelog.travelog_id}&grantee_id=${currentUser.user_id}`;
-          //   const permissionResponse = await fetch(permissionUrl);
-          
-          console.log('travelog.travelog_id, currentUser.user_id: ', travelog.travelog_id, currentUser.user_id)
-
-          if (travelog.is_private) {
-            const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}?entityId=${travelog.travelog_id}&entityType=travelog&grantee_id=${currentUser.user_id}`;
-            const permissionResponse = await fetch(permissionUrl);
-          
-
+        if (travelog.is_private) {
+          const permissionUrl = new URL(`https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}`);
+          permissionUrl.searchParams.append('entityId', travelog.travelog_id);
+          permissionUrl.searchParams.append('entityType', 'travelog');
+          permissionUrl.searchParams.append('grantee_id', currentUser.user_id);
+  
+          try {
+            const permissionResponse = await fetch(permissionUrl.toString());
             if (!permissionResponse.ok) throw new Error('Error checking permissions');
             const permissionData = await permissionResponse.json();
             if (!permissionData.hasAccess) {
-              navigate('/'); // Redirect if no access
+              navigate('/');
               return;
             }
+          } catch (error) {
+            console.error('Error in access checks:', error);
+            navigate('/');  // Redirect on error
           }
-
-
- 
-          setIsAccessCheckComplete(true);
-        } catch (error) {
-          console.error('Error in access checks:', error);
-          navigate('/');  // Redirect on error
         }
+  
+        setIsAccessCheckComplete(true);
       }
     };
   
     checkAccess();
-  }, [travelog, currentUser, navigate]); 
+  }, [travelog, currentUser, navigate]);
+  
   
   useEffect(() => {
     // console.log('travelog prop changed:', travelog);
