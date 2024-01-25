@@ -23,11 +23,9 @@ function DeleteConfirmationModal({ show, onClose }) {
   };
 
   return (
-    <Modal show={show} onHide={onClose}>
-      <Modal.Header>
-        <Modal.Title>Confirm Deletion</Modal.Title>
-      </Modal.Header>
+    <Modal show={show} onHide={onClose}> 
       <Modal.Body>
+        <Modal.Title>Confirm Deletion</Modal.Title>
         <input 
           type="password" 
           placeholder="Enter password to confirm deletion" 
@@ -36,10 +34,7 @@ function DeleteConfirmationModal({ show, onClose }) {
         />        
         <Button className='del-con-btn' variant="danger" onClick={handleSubmit}>Delete</Button>
         <Button className='del-con-btn' variant="secondary" onClick={onClose}>Cancel</Button>
-      </Modal.Body>
-      <Modal.Footer>
-
-      </Modal.Footer>
+      </Modal.Body> 
     </Modal>
   );
 }
