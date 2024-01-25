@@ -140,3 +140,8 @@
   margin-left: 36%;
   width: 500px;
 }
+
+.conversation-modal-btns {
+  display: flex;
+  gap: 1em;
+}
