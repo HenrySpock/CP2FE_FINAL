@@ -33,11 +33,12 @@ function DeleteConfirmationModal({ show, onClose }) {
           placeholder="Enter password to confirm deletion" 
           value={password} 
           onChange={(e) => setPassword(e.target.value)} 
-        />
+        />        
+        <Button className='del-con-btn' variant="danger" onClick={handleSubmit}>Delete</Button>
+        <Button className='del-con-btn' variant="secondary" onClick={onClose}>Cancel</Button>
       </Modal.Body>
       <Modal.Footer>
-        <Button className='del-con-btn' variant="secondary" onClick={onClose}>Cancel</Button>
-        <Button className='del-con-btn' variant="danger" onClick={handleSubmit}>Delete</Button>
+
       </Modal.Footer>
     </Modal>
   );

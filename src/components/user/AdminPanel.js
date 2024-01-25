@@ -706,10 +706,11 @@ function AdminPanel() {
                         handleNotifyUser(report.ReportedComment.user_id, index)}}>
                           Notify
                       </button>
-                      <button className='admin-panel-btn' onClick={(e) => {
+                      <button className='admin-panel-btn' 
+                      onClick={(e) => {
                         e.preventDefault();
                         handleClearReport(report.report_id, index)
-                        }}
+                      }}
                         disabled={isUserSuspended}
                       >
                         Clear
