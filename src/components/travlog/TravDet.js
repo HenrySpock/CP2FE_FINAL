@@ -282,30 +282,30 @@ function TravDet() {
   
       console.log('user is, currentUser.user_id, travelog.travelog_id: ', user, currentUser.user_id, travelog.travelog_id );
   
-      if (travelog.username === currentUser.username) {
-        setIsAccessCheckComplete(true);
-        return;
-      }
+      // if (travelog.username === currentUser.username) {
+      //   setIsAccessCheckComplete(true);
+      //   return;
+      // }
   
-      if (travelog.is_private) { 
-        console.log('checking permissions specific')
-        try {
-          const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}?entityId=${travelog.travelog_id}&entityType=travelog`;
+      // if (travelog.is_private) { 
+      //   console.log('checking permissions specific')
+      //   try {
+      //     const permissionUrl = `https://lgcbe.onrender.com/api/permissions/specific/${currentUser.user_id}?entityId=${travelog.travelog_id}&entityType=travelog`;
           
-          const permissionResponse = await fetch(permissionUrl);
+      //     const permissionResponse = await fetch(permissionUrl);
   
-          if (!permissionResponse.ok) throw new Error('Error checking permissions');
-          const permissionData = await permissionResponse.json();
+      //     if (!permissionResponse.ok) throw new Error('Error checking permissions');
+      //     const permissionData = await permissionResponse.json();
           
-          if (!permissionData.hasAccess) {
-            navigate('/'); // Redirect if no access
-            return;
-          }
-        } catch (error) {
-          console.error('Error in access checks:', error);
-          navigate('/');  // Redirect on error
-        }
-      }
+      //     if (!permissionData.hasAccess) {
+      //       navigate('/'); // Redirect if no access
+      //       return;
+      //     }
+      //   } catch (error) {
+      //     console.error('Error in access checks:', error);
+      //     navigate('/');  // Redirect on error
+      //   }
+      // }
   
       setIsAccessCheckComplete(true);
     };
