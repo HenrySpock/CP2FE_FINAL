@@ -212,7 +212,13 @@ function TravDet() {
 
 
   useEffect(() => {
+
+
     const checkAccess = async () => {
+      if (!user) {
+        console.log('User not available yet');
+        return;
+      }
       
       if (travelog && currentUser){
         if (travelog.username === currentUser.username){
