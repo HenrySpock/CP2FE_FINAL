@@ -25,7 +25,6 @@
   justify-content: flex-start;
   align-items: stretch;
   gap: 15px;   
-  height: 400px;
 }
 
 .messaging-card:hover {

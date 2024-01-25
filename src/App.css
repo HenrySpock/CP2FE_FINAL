@@ -257,6 +257,7 @@
   border-left: 1px solid #ccc;
   display: flex; 
   bottom: -100px;
+  height: 400px;
 }
 
 /* Conversation div inside the message list */
