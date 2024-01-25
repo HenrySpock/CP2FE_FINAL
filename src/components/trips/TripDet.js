@@ -148,7 +148,7 @@ function TripDet() {
       console.log('User not available yet');
       return;
     }
-    
+
     console.log('Effect ran. User:', user, 'Trip ID:', trip_id);
   // }, [user, trip_id]);
 
@@ -190,28 +190,28 @@ function TripDet() {
         }
       }
   
-      // if (user && user.user_id && trip_id) {
-      //   try {
-      //     // Perform the permissions check for other users
-      //     // const permissionResponse = await axios.get(`https://lgcbe.onrender.com/permissions/check`, { params: { trip_id: trip_id, grantee_id: user.user_id } });
-      //     console.log('attempting to hit https://lgcbe.onrender.com/api/permissions/specific/${user.user_id}')
-      //     const permissionResponse = await axios.get(`https://lgcbe.onrender.com/api/permissions/specific/${user.user_id}`, { 
-      //       params: { entityId: trip_id, entityType: 'trip', grantee_id: user.user_id }
-      //     });
+      if (user && user.user_id && trip_id) {
+        try {
+          // Perform the permissions check for other users
+          // const permissionResponse = await axios.get(`https://lgcbe.onrender.com/permissions/check`, { params: { trip_id: trip_id, grantee_id: user.user_id } });
+          console.log('attempting to hit https://lgcbe.onrender.com/api/permissions/specific/${user.user_id}')
+          const permissionResponse = await axios.get(`https://lgcbe.onrender.com/api/permissions/specific/${user.user_id}`, { 
+            params: { entityId: trip_id, entityType: 'trip', grantee_id: user.user_id }
+          });
 
-      //     const permissionData = permissionResponse.data;
-      //     console.log('permissionData: ', permissionData)
-      //     if (permissionData.hasAccess) {
-      //       setIsLoadingUser(false);
-      //       setIsAccessCheckComplete(true); // User has permissions to access the private trip
-      //     } else {
-      //       navigate('/'); // Redirect if no access
-      //     }
-      //   } catch (error) {
-      //     console.error('Error in permissions check:', error);
-      //     navigate('/');  // Redirect on error
-      //   }
-      // }
+          const permissionData = permissionResponse.data;
+          console.log('permissionData: ', permissionData)
+          if (permissionData.hasAccess) {
+            setIsLoadingUser(false);
+            setIsAccessCheckComplete(true); // User has permissions to access the private trip
+          } else {
+            navigate('/'); // Redirect if no access
+          }
+        } catch (error) {
+          console.error('Error in permissions check:', error);
+          navigate('/');  // Redirect on error
+        }
+      }
 
       // if (!user) {
       //   navigate('/auth');
