@@ -143,19 +143,16 @@ function MessageConversationModal({ activeConversation, onClose, friends, is_adm
 
   const renderDeleteConfirmationModal = () => {
     return (
-      <Modal show={showDeleteConfirm} onHide={() => setShowDeleteConfirm(false)}>
-        <Modal.Header>
-          <Modal.Title>Delete Conversation</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Are you sure you want to delete this conversation?</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={() => setShowDeleteConfirm(false)}>
+      <Modal show={showDeleteConfirm} onHide={() => setShowDeleteConfirm(false)}> 
+        <Modal.Body>
+          <p>Are you sure you want to delete this conversation?</p>
+          <Button variant="del-cont-btn secondary" onClick={() => setShowDeleteConfirm(false)}>
             Cancel
           </Button>
-          <Button variant="danger" onClick={handleDeleteConversation}>
+          <Button variant="del-cont-btn danger" onClick={handleDeleteConversation}>
             Delete
           </Button>
-        </Modal.Footer>
+        </Modal.Body> 
       </Modal>
     );
   };
