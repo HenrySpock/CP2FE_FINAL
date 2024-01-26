@@ -147,10 +147,10 @@ function MessageConversationModal({ activeConversation, onClose, friends, is_adm
         <Modal.Body>
           <p>Are you sure you want to delete this conversation?</p>
           <div className='conversation-modal-btns'>
-              <Button variant="del-cont-btn secondary" onClick={() => setShowDeleteConfirm(false)}>
+              <Button className='del-con-btn' variant="secondary" onClick={() => setShowDeleteConfirm(false)}>
                 Cancel
               </Button>
-              <Button variant="del-cont-btn danger" onClick={handleDeleteConversation}>
+              <Button className='del-con-btn' variant="danger" onClick={handleDeleteConversation}>
                 Delete
               </Button>
           </div>
