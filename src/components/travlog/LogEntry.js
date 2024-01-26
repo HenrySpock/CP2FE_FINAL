@@ -374,7 +374,7 @@ function LogEntry() {
             <option value="AirBnB / Bed and Breakfast / Hotel / Resort">AirBnB / Bed and Breakfast / Hotel / Resort</option>
             <option value="Amusement Park / Playground / Theme Park / Water Park">Amusement Park / Playground / Theme Park / Water Park</option>
             <option value="Aquarium / Zoo">Aquarium / Zoo</option>
-            <option value="Arboretum / Botanical Garden / Japanese Garden">Arboretum / Botanical Garden / Japanese Garden</option>
+            <option value="Arboretum / Botanical Garden / Japanese Garden / Park">Arboretum / Botanical Garden / Japanese Garden / Park</option>
             <option value="Athletic Event / Game / Gym / Sport / Studio">Athletic Event / Game / Gym / Sport / Studio</option>
             <option value="Auditorium / Music Venue / Performance Hall">Auditorium / Music Venue / Performance Hall</option>
             <option value="Bakery / Desert / Gelato / Ice Cream / Patisserie">Bakery / Desert / Gelato / Ice Cream / Patisserie</option>
@@ -383,8 +383,7 @@ function LogEntry() {
             <option value="Boutique / Mall / Shopping Center / Store">Boutique / Mall / Shopping Center / Store</option>
             <option value="Brewery / Vineyard / Winery">Brewery / Vineyard / Winery</option>
             <option value="Camping Site / Cycling / Hiking">Camping Site / Cycling / Hiking</option>
-            <option value="National Park / Retreat">National Park / Retreat</option>
-            <option value="National Park / Retreat">National Park / Retreat</option>
+            <option value="National Park / Retreat">National Park / Retreat</option> 
             <option value="Cinema / Theater">Cinema / Theater</option>
             <option value="Educational Workshop">Educational Workshop</option>
             <option value="Farm / Orchard">Farm / Orchard</option>
