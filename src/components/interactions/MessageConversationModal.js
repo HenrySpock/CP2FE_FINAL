@@ -146,12 +146,14 @@ function MessageConversationModal({ activeConversation, onClose, friends, is_adm
       <Modal show={showDeleteConfirm} onHide={() => setShowDeleteConfirm(false)}> 
         <Modal.Body>
           <p>Are you sure you want to delete this conversation?</p>
-          <Button variant="del-cont-btn secondary" onClick={() => setShowDeleteConfirm(false)}>
-            Cancel
-          </Button>
-          <Button variant="del-cont-btn danger" onClick={handleDeleteConversation}>
-            Delete
-          </Button>
+          <div className='conversation-modal-btns'>
+              <Button variant="del-cont-btn secondary" onClick={() => setShowDeleteConfirm(false)}>
+                Cancel
+              </Button>
+              <Button variant="del-cont-btn danger" onClick={handleDeleteConversation}>
+                Delete
+              </Button>
+          </div>
         </Modal.Body> 
       </Modal>
     );
@@ -190,13 +192,12 @@ function MessageConversationModal({ activeConversation, onClose, friends, is_adm
                   ></textarea>                  
                 </div> 
               </div>
-              <div className='conversation-modal-btns'>
-                <button className='messaging-btn' onClick={handleSendMessage}>Send</button>  
-  
-                {!is_admin === true && (
-                  <button className='messaging-btn' onClick={() => setShowDeleteConfirm(true)}>Delete</button>
-                )}
-              </div>
+              <button className='messaging-btn' onClick={handleSendMessage}>Send</button>  
+ 
+              {!is_admin === true && (
+                <button className='messaging-btn' onClick={() => setShowDeleteConfirm(true)}>Delete Conversation</button>
+              )}
+ 
               {renderDeleteConfirmationModal()}
             </div>
           )}
