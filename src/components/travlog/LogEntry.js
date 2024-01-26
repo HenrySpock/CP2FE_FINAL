@@ -389,6 +389,7 @@ function LogEntry() {
             <option value="Farm / Orchard">Farm / Orchard</option>
             <option value="Festival / State Fair (non-musical)">Festival / State Fair (non-musical)</option>
             <option value="Ghost Tour / Haunted Site">Ghost Tour / Haunted Site</option>
+            <option value="Home / Private Residence">Home / Private Residence</option>
             <option value="Lighthouse / Tower View">Lighthouse / Tower View</option>
             <option value="Luxury Train Ride / Vehicular Sightseeing Tour">Luxury Train Ride / Vehicular Sightseeing Tour</option>
             <option value="Museum (non-medieval) / Art Gallery">Museum (non-medieval) / Art Gallery</option>
