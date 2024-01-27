@@ -372,6 +372,7 @@ function LogEntry() {
 
             <optgroup label="Non-Medieval Sites">  
             <option value="AirBnB / Bed and Breakfast / Hotel / Resort">AirBnB / Bed and Breakfast / Hotel / Resort</option>
+            <option value="Airport / Bus Station / Port / Train Station">Airport / Bus Station / Port / Train Station</option>
             <option value="Amusement Park / Playground / Theme Park / Water Park">Amusement Park / Playground / Theme Park / Water Park</option>
             <option value="Aquarium / Zoo">Aquarium / Zoo</option>
             <option value="Arboretum / Botanical Garden / Japanese Garden / Park">Arboretum / Botanical Garden / Japanese Garden / Park</option>

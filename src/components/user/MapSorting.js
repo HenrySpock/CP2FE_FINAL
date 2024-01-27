@@ -35,6 +35,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     "Other Medieval Site": true, 
  
     "AirBnB / Bed and Breakfast / Hotel / Resort": false,
+    "Airport / Bus Station / Port / Train Station": false,
     "Amusement & Theme Park / Playground / Water Park": false,
     "Aquarium / Zoo": false,
     "Arboretum / Botanical Garden / Japanese Garden / Park": false,
@@ -122,6 +123,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
   
     { label: "Non-Medieval Sites", isHeader: true },
     { value: "AirBnB / Bed and Breakfast / Hotel / Resort", label: "AirBnB / Bed and Breakfast / Hotel / Resort" },
+    { value: "Airport / Bus Station / Port / Train Station", label: "Airport / Bus Station / Port / Train Station" },
     { value: "Amusement & Theme Park / Playground / Water Park", label: "Amusement & Theme Park / Playground / Water Park" },
     { value: "Aquarium / Zoo", label: "Aquarium / Zoo" },
     { value: "Arboretum / Botanical Garden / Japanese Garden / Park", label: "Arboretum / Botanical Garden / Japanese Garden / Park" },
@@ -176,6 +178,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
   const nonMedievalCategories = [
     { label: "Non-Medieval Sites", isHeader: true },
     { value: "AirBnB / Bed and Breakfast / Hotel / Resort", label: "AirBnB / Bed and Breakfast / Hotel / Resort" },
+    { value: "Airport / Bus Station / Port / Train Station", label: "Airport / Bus Station / Port / Train Station" },
     { value: "Amusement & Theme Park / Playground / Water Park", label: "Amusement & Theme Park / Playground / Water Park" },
     { value: "Aquarium / Zoo", label: "Aquarium / Zoo" },
     { value: "Arboretum / Botanical Garden / Japanese Garden / Park", label: "Arboretum / Botanical Garden / Japanese Garden / Park" },

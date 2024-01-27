@@ -591,6 +591,7 @@ function TravDet() {
   
     <option value="">𝗡𝗼𝗻-𝗠𝗲𝗱𝗶𝗲𝘃𝗮𝗹 𝗦𝗶𝘁𝗲𝘀</option>
     <option value="AirBnB / Bed and Breakfast / Hotel / Resort">AirBnB / Bed and Breakfast / Hotel / Resort</option>
+    <option value="Airport / Bus Station / Port / Train Station">Airport / Bus Station / Port / Train Station</option>
     <option value="Amusement & Theme Park / Playground / Water Park">Amusement & Theme Park / Playground / Water Park</option>
     <option value="Aquarium / Zoo">Aquarium / Zoo</option>
     <option value="Arboretum / Botanical Garden / Japanese Garden / Park">Arboretum / Botanical Garden / Japanese Garden / Park</option>
