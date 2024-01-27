@@ -592,7 +592,7 @@ function TravDet() {
     <option value="">𝗡𝗼𝗻-𝗠𝗲𝗱𝗶𝗲𝘃𝗮𝗹 𝗦𝗶𝘁𝗲𝘀</option>
     <option value="AirBnB / Bed and Breakfast / Hotel / Resort">AirBnB / Bed and Breakfast / Hotel / Resort</option>
     <option value="Airport / Bus Station / Port / Train Station">Airport / Bus Station / Port / Train Station</option>
-    <option value="Amusement & Theme Park / Playground / Water Park">Amusement & Theme Park / Playground / Water Park</option>
+    <option value="Amusement Park / Theme Park / Water Park">Amusement Park / Theme Park / Water Park</option>
     <option value="Aquarium / Zoo">Aquarium / Zoo</option>
     <option value="Arboretum / Botanical Garden / Japanese Garden / Park">Arboretum / Botanical Garden / Japanese Garden / Park</option>
     <option value="Athletic Event / Game / Gym / Sport / Studio">Athletic Event / Game / Gym / Sport / Studio</option>
@@ -609,6 +609,7 @@ function TravDet() {
     <option value="Festival / State Fair (non-musical)">Festival / State Fair (non-musical)</option>
     <option value="Ghost Tour / Haunted Site">Ghost Tour / Haunted Site</option>
     <option value="Home / Private Residence">Home / Private Residence</option>
+    <option value="Indoor Playground / Outdoor Playground">Indoor Playground / Outdoor Playground</option>
     <option value="Lighthouse / Tower View">Lighthouse / Tower View</option>
     <option value="Luxury Train Ride / Vehicular Sightseeing Tour">Luxury Train Ride / Vehicular Sightseeing Tour</option>
     <option value="Museum (non-medieval) / Art Gallery">Museum (non-medieval) / Art Gallery</option>
