@@ -599,6 +599,7 @@ function TravDet() {
     <option value="Auditorium / Music Venue / Performance Hall">Auditorium / Music Venue / Performance Hall</option>
     <option value="Bakery / Desert / Gelato / Ice Cream / Patisserie">Bakery / Desert / Gelato / Ice Cream / Patisserie</option>
     <option value="Bistro / Restaurant">Bistro / Restaurant</option>
+    <option value="Boat Ride / Boat Rental / Ferry">Boat Ride / Boat Rental / Ferry</option>
     <option value="Bookshop / Library">Bookshop / Library</option>
     <option value="Boutique / Mall / Shopping Center / Store">Boutique / Mall / Shopping Center / Store</option>
     <option value="Brewery / Vineyard / Winery / Pub / Bar">Brewery / Vineyard / Winery / Pub / Bar</option>
