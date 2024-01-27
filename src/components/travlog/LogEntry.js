@@ -382,7 +382,7 @@ function LogEntry() {
             <option value="Bistro / Restaurant">Bistro / Restaurant</option>
             <option value="Bookshop / Library">Bookshop / Library</option>
             <option value="Boutique / Mall / Shopping Center / Store">Boutique / Mall / Shopping Center / Store</option>
-            <option value="Brewery / Vineyard / Winery">Brewery / Vineyard / Winery</option>
+            <option value="Brewery / Vineyard / Winery / Pub / Bar">Brewery / Vineyard / Winery / Pub / Bar</option>
             <option value="Camping Site / Cycling / Hiking">Camping Site / Cycling / Hiking</option>
             <option value="National Park / Retreat">National Park / Retreat</option> 
             <option value="Cinema / Theater">Cinema / Theater</option>
