@@ -391,6 +391,7 @@ function LogEntry() {
             <option value="Farm / Orchard">Farm / Orchard</option>
             <option value="Festival / State Fair (non-musical)">Festival / State Fair (non-musical)</option>
             <option value="Ghost Tour / Haunted Site">Ghost Tour / Haunted Site</option>
+            <option value="Hike / Walk / Walking Tour">Hike / Walk / Walking Tour</option>
             <option value="Home / Private Residence">Home / Private Residence</option>
             <option value="Indoor Playground / Outdoor Playground">Indoor Playground / Outdoor Playground</option>
             <option value="Lighthouse / Tower View">Lighthouse / Tower View</option>
@@ -404,7 +405,6 @@ function LogEntry() {
             <option value="Spa / Hot Spring">Spa / Hot Spring</option>
             <option value="Tavern">Tavern</option>
             <option value="Train Musuem / Transportation Museum">Train Musuem / Transportation Museum</option>
-            <option value="Walking Tour">Walking Tour</option>
             </optgroup>
           </select>
         </label>

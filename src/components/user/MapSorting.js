@@ -54,6 +54,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     "Farm / Orchard": false,
     "Festival / State Fair (non-musical)": false,
     "Ghost Tour / Haunted Site": false,
+    "Hike / Walk / Walking Tour": false,
     "Home / Private Residence": false,
     "Indoor Playground / Outdoor Playground": false,
     "Lighthouse / Tower View": false,
@@ -67,7 +68,6 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     "Spa / Hot Spring": false,
     "Tavern": false,
     "Train Musuem / Transportation Museum": false,
-    "Walking Tour": false,
   };
 
   const [categoryChecked, setCategoryChecked] = useState(initialCategoryState);
@@ -143,6 +143,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     { value: "Farm / Orchard", label: "Farm / Orchard" },
     { value: "Festival / State Fair (non-musical)", label: "Festival / State Fair (non-musical)" },
     { value: "Ghost Tour / Haunted Site", label: "Ghost Tour / Haunted Site" },
+    { value: "Hike / Walk / Walking Tour", label: "Hike / Walk / Walking Tour" },
     { value: "Home / Private Residence", label: "Home / Private Residence" },
     { value: "Indoor Playground / Outdoor Playground", label: "Indoor Playground / Outdoor Playground" },
     { value: "Lighthouse / Tower View", label: "Lighthouse / Tower View" },
@@ -157,7 +158,6 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     { value: "Spa / Hot Spring", label: "Spa / Hot Spring" },
     { value: "Tavern", label: "Tavern" },
     { value: "Train Musuem / Transportation Museum", label: "Train Musuem / Transportation Museum" },
-    { value: "Walking Tour", label: "Walking Tour" },
   ];
 
   const medievalCategories = [
@@ -201,6 +201,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     { value: "Farm / Orchard", label: "Farm / Orchard" },
     { value: "Festival / State Fair (non-musical)", label: "Festival / State Fair (non-musical)" },
     { value: "Ghost Tour / Haunted Site", label: "Ghost Tour / Haunted Site" },
+    { value: "Hike / Walk / Walking Tour", label: "Hike / Walk / Walking Tour" },
     { value: "Home / Private Residence", label: "Home / Private Residence" },
     { value: "Indoor Playground / Outdoor Playground", label: "Indoor Playground / Outdoor Playground" },
     { value: "Lighthouse / Tower View", label: "Lighthouse / Tower View" },
@@ -214,7 +215,6 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     { value: "Spa / Hot Spring", label: "Spa / Hot Spring" },
     { value: "Tavern", label: "Tavern" },
     { value: "Train Musuem / Transportation Museum", label: "Train Musuem / Transportation Museum" },
-    { value: "Walking Tour", label: "Walking Tour" },
   ];
 
   // Function to filter data
