@@ -326,14 +326,20 @@ function TravDet() {
       // console.log('********WTF travelog_id: ', travelog_id)
       const response = await axios.get(`https://lgcbe.onrender.com/travelog/api/travelog/${travelog_id}`);
       console.log('response.data.date_visited: ', response.data.date_visited)
-      if (response.data.date_visited) {
-        const localDateVisited = moment.utc(response.data.date_visited).local();
-        setFormattedDateVisited(localDateVisited.format('MMMM Do YYYY, h:mm a'));
-        // setFormattedDateVisited(moment(response.data.date_visited).format('MMMM Do YYYY, h:mm a'));  
+      // if (response.data.date_visited) {
+      //   const localDateVisited = moment.utc(response.data.date_visited).local();
+      //   setFormattedDateVisited(localDateVisited.format('MMMM Do YYYY, h:mm a'));
+      //   // setFormattedDateVisited(moment(response.data.date_visited).format('MMMM Do YYYY, h:mm a'));  
  
 
+      //   // Keep the ISO format for editing
+      //   response.data.date_visited = moment(response.data.date_visited).format('YYYY-MM-DDTHH:mm');   
+      // }
+
+      if (response.data.date_visited) {
+        setFormattedDateVisited(moment.utc(response.data.date_visited).format('MMMM Do YYYY, h:mm a'));  
         // Keep the ISO format for editing
-        response.data.date_visited = moment(response.data.date_visited).format('YYYY-MM-DDTHH:mm');   
+        response.data.date_visited = moment.utc(response.data.date_visited).format('YYYY-MM-DDTHH:mm');
       }
 
     
