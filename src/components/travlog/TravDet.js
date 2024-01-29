@@ -573,25 +573,47 @@ function TravDet() {
 
     <option value="">None</option>
     <option value="">𝗠𝗲𝗱𝗶𝗲𝘃𝗮𝗹 𝗦𝗶𝘁𝗲𝘀</option>
+    <option value="Ancient">Ancient</option>
+    <option value="Battlefield">Battlefield</option>
     <option value="Bazaar / Market">Bazaar / Market</option>
     <option value="Blacksmith / Tradesmith / Guild Shop / Factory">Blacksmith / Tradesmith / Guild Shop / Factory</option>
     <option value="Castle / Fortress / Palace">Castle / Fortress / Palace</option>
     <option value="Cathedral / Basilica">Cathedral / Basilica</option>
-    <option value="Church">Church</option>
+    <option value="Cemetery / Columbarium / Mausoleum / Tomb / Undercroft">Cemetery / Columbarium / Mausoleum / Tomb / Undercroft</option>
+    <option value="Church / Shrine / Synagogue / Temple">Church / Shrine / Synagogue / Temple</option>
     <option value="Commons / Plaza / Square">Commons / Plaza / Square</option>
-    <option value="Monastery / Abbey / Priory / Convent">Monastery / Abbey / Priory / Convent</option>
-    <option value="Town Hall">Town Hall</option>
-    <option value="Tower">Tower</option>
-    <option value="Library">Library</option>
-    <option value="Museum">Museum</option>
     <option value="Guildhall">Guildhall</option>
+    <option value="Historical Marker / Memorial">Historical Marker / Memorial</option>
+    <option value="Library">Library</option>
+    <option value="Monastery / Abbey / Priory / Convent">Monastery / Abbey / Priory / Convent</option>
     <option value="Monument / Wall">Monument / Wall</option>
+    <option value="Museum">Museum</option>
+    <option value="Tower">Tower</option>
+    <option value="Town Hall">Town Hall</option>
     <option value="Walled City / Star Fortress">Walled City / Star Fortress</option>
-    <option value="Battlefield">Battlefield</option>
-    <option value="Ancient">Ancient</option>
     <option value="Other Medieval Site">Other Medieval Site</option> 
-  
+   
+
+
     <option value="">𝗡𝗼𝗻-𝗠𝗲𝗱𝗶𝗲𝘃𝗮𝗹 𝗦𝗶𝘁𝗲𝘀</option>
+    <option value="(ancient) Acropolis / Necropolis">(ancient) Acropolis / Necropolis </option>
+    <option value="(ancient) Aqueduct">(ancient) Aqueduct </option>
+    <option value="(ancient) Amphitheatre / Theater">(ancient) Amphitheatre / Theater </option>
+    <option value="(ancient) Catacombs">(ancient) Catacombs </option>
+    <option value="(ancient) Colosseum">(ancient) Colosseum </option>
+    <option value="(ancient) City">(ancient) City </option>
+    <option value="(ancient) Forum">(ancient) Forum </option>
+    <option value="(ancient) Citadel / Fortress">(ancient) Citadel / Fortress </option>
+    <option value="(ancient) Mausoleum">(ancient) Mausoleum </option>
+    <option value="(ancient) Monolith / Monument / Obelisk">(ancient) Monolith / Monument / Obelisk </option>
+    <option value="(ancient) Palace">(ancient) Palace </option>
+    <option value="(ancient) Pyramid">(ancient) Pyramid </option>
+    <option value="(ancient) Stone Circle">(ancient) Stone Circle </option>
+    <option value="(ancient) Temple">(ancient) Temple </option>
+    <option value="(ancient) Thermae">(ancient) Thermae </option>
+    <option value="(ancient) Ziggurat">(ancient) Ziggurat </option>
+    <option value="Other Ancient Site">Other Ancient Site </option>
+
     <option value="AirBnB / Bed and Breakfast / Hotel / Resort">AirBnB / Bed and Breakfast / Hotel / Resort</option>
     <option value="Airport / Bus Station / Port / Train Station">Airport / Bus Station / Port / Train Station</option>
     <option value="Amusement Park / Theme Park / Water Park">Amusement Park / Theme Park / Water Park</option>
@@ -603,9 +625,11 @@ function TravDet() {
     <option value="Bistro / Restaurant">Bistro / Restaurant</option>
     <option value="Boat Ride / Boat Rental / Ferry">Boat Ride / Boat Rental / Ferry</option>
     <option value="Bookshop / Library">Bookshop / Library</option>
+    <option value="Historical Marker / Memorial (non-medieval)">Historical Marker / Memorial (non-medieval)</option>
     <option value="Boutique / Mall / Shopping Center / Store">Boutique / Mall / Shopping Center / Store</option>
     <option value="Brewery / Vineyard / Winery / Pub / Bar">Brewery / Vineyard / Winery / Pub / Bar</option>
     <option value="Camping Site / Cycling / Hiking">Camping Site / Cycling / Hiking</option>
+    <option value="Cemetery / Columbarium / Mausoleum (non-medieval)">Cemetery / Columbarium / Mausoleum (non-medieval)</option>
     <option value="Commons / Plaza / Square (non-medieval)">Commons / Plaza / Square (non-medieval)</option>
     <option value="Cinema / Theater">Cinema / Theater</option>
     <option value="Educational Workshop">Educational Workshop</option>
