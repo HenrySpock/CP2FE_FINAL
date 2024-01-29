@@ -18,10 +18,12 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
   const initialCategoryState = { 
     "No Category": true,
 
+    "Bazaar / Market": true,
     "Blacksmith / Tradesmith / Guild Shop / Factory": true,
     "Castle / Fortress / Palace": true,
     "Cathedral / Basilica": true,
     "Church": true,
+    "Commons / Plaza / Square": true,
     "Monastery / Abbey / Priory / Convent": true,
     "Town Hall": true,
     "Tower": true,
@@ -48,6 +50,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     "Boutique / Mall / Shopping Center / Store": false,
     "Brewery / Vineyard / Winery / Pub Bar": false,
     "Camping Site / Cycling / Hiking": false,
+    "Commons / Plaza / Square (non-medieval)": false,
     "National Park / Retreat": false, 
     "Cinema / Theater": false,
     "Educational Workshop": false,
@@ -107,10 +110,12 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
   
   const categories = [ 
     { label: "Medieval Sites", isHeader: true },
+    { value: "Bazaar / Market", label: "Bazaar / Market" },
     { value: "Blacksmith / Tradesmith / Guild Shop / Factory", label: "Blacksmith / Tradesmith / Guild Shop / Factory" },
     { value: "Castle / Fortress / Palace", label: "Castle / Fortress / Palace" },
     { value: "Cathedral / Basilica", label: "Cathedral / Basilica" },
     { value: "Church", label: "Church" },
+    { value: "Commons / Plaza / Square", label: "Commons / Plaza / Square" },
     { value: "Monastery / Abbey / Priory / Convent", label: "Monastery / Abbey / Priory / Convent" },
     { value: "Town Hall", label: "Town Hall" },
     { value: "Tower", label: "Tower" },
@@ -138,6 +143,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     { value: "Boutique / Mall / Shopping Center / Store", label: "Boutique / Mall / Shopping Center / Store" },
     { value: "Brewery / Vineyard / Winery / Pub / Bar", label: "Brewery / Vineyard / Winery / Pub / Bar" },
     { value: "Camping Site / Cycling / Hiking", label: "Camping Site / Cycling / Hiking" },
+    { value: "Commons / Plaza / Square (non-medieval)", label: "Commons / Plaza / Square (non-medieval)" },
     { value: "Cinema / Theater", label: "Cinema / Theater" },
     { value: "Educational Workshop", label: "Educational Workshop" },
     { value: "Farm / Orchard", label: "Farm / Orchard" },
@@ -162,10 +168,12 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
 
   const medievalCategories = [
     { label: "Medieval Sites", isHeader: true },
+    { value: "Bazaar / Market", label: "Bazaar / Market" },
     { value: "Blacksmith / Tradesmith / Guild Shop / Factory", label: "Blacksmith / Tradesmith / Guild Shop / Factory" },
     { value: "Castle / Fortress / Palace", label: "Castle / Fortress / Palace" },
     { value: "Cathedral / Basilica", label: "Cathedral / Basilica" },
     { value: "Church", label: "Church" },
+    { value: "Commons / Plaza / Square", label: "Commons / Plaza / Square" },
     { value: "Monastery / Abbey / Priory / Convent", label: "Monastery / Abbey / Priory / Convent" },
     { value: "Town Hall", label: "Town Hall" },
     { value: "Tower", label: "Tower" },
@@ -195,6 +203,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     { value: "Boutique / Mall / Shopping Center / Store", label: "Boutique / Mall / Shopping Center / Store" },
     { value: "Brewery / Vineyard / Winery / Pub / Bar", label: "Brewery / Vineyard / Winery / Pub / Bar" },
     { value: "Camping Site / Cycling / Hiking", label: "Camping Site / Cycling / Hiking" },
+    { value: "Commons / Plaza / Square (non-medieval)", label: "Commons / Plaza / Square (non-medieval)" },
     { value: "National Park / Retreat", label: "National Park / Retreat" }, 
     { value: "Cinema / Theater", label: "Cinema / Theater" },
     { value: "Educational Workshop", label: "Educational Workshop" },

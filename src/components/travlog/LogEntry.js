@@ -352,10 +352,12 @@ function LogEntry() {
             <option value="">Add Category?</option>
 
             <optgroup label="Medieval Sites">  
+            <option value="Bazaar / Market">Bazaar / Market</option>
             <option value="Blacksmith / Tradesmith / Guild Shop / Factory">Blacksmith / Tradesmith / Guild Shop / Factory</option>
             <option value="Castle / Fortress / Palace">Castle / Fortress / Palace</option>
             <option value="Cathedral / Basilica">Cathedral / Basilica</option>
             <option value="Church">Church</option>
+            <option value="Commons / Plaza / Square">Commons / Plaza / Square</option>
             <option value="Monastery / Abbey / Priory / Convent">Monastery / Abbey / Priory / Convent</option>
             <option value="Town Hall">Town Hall</option>
             <option value="Tower">Tower</option>
@@ -385,6 +387,7 @@ function LogEntry() {
             <option value="Boutique / Mall / Shopping Center / Store">Boutique / Mall / Shopping Center / Store</option>
             <option value="Brewery / Vineyard / Winery / Pub / Bar">Brewery / Vineyard / Winery / Pub / Bar</option>
             <option value="Camping Site / Cycling / Hiking">Camping Site / Cycling / Hiking</option>
+            <option value="Commons / Plaza / Square (non-medieval)">Commons / Plaza / Square (non-medieval)</option>
             <option value="National Park / Retreat">National Park / Retreat</option> 
             <option value="Cinema / Theater">Cinema / Theater</option>
             <option value="Educational Workshop">Educational Workshop</option>
