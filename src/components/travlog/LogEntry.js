@@ -218,7 +218,7 @@ function LogEntry() {
     setError(null); 
 
     // Convert date_visited to UTC
-    const utcDateVisited = moment(formData.date_visited).utc().format();
+    // const utcDateVisited = moment(formData.date_visited).utc().format();
 
     // Check the validity of each image URL
     const areImageUrlsValid = await Promise.all(
@@ -236,7 +236,7 @@ function LogEntry() {
   
       const dataToSend = {
         ...formData,
-        date_visited: utcDateVisited,
+        // date_visited: utcDateVisited,
         user_id: user.user_id, // <-- access user_id from user object
         username: user.username,
         trip_id: selectedTripId || null,
