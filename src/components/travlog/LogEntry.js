@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 
 import './LogEntry.css'
 
+import moment from 'moment';
+
 const convertCountryCodeToName = (countryCode) => {
   return countryCodeMapping[countryCode] || countryCode;
 };
@@ -215,6 +217,9 @@ function LogEntry() {
     // Clear any previous errors
     setError(null); 
 
+    // Convert date_visited to UTC
+    const utcDateVisited = moment(formData.date_visited).utc().format();
+
     // Check the validity of each image URL
     const areImageUrlsValid = await Promise.all(
       formData.imageUrls.map((url) =>
@@ -231,6 +236,7 @@ function LogEntry() {
   
       const dataToSend = {
         ...formData,
+        date_visited: utcDateVisited,
         user_id: user.user_id, // <-- access user_id from user object
         username: user.username,
         trip_id: selectedTripId || null,
