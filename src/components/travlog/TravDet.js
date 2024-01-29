@@ -581,6 +581,7 @@ function TravDet() {
     <option value="Cathedral / Basilica">Cathedral / Basilica</option>
     <option value="Cemetery / Columbarium / Mausoleum / Tomb / Undercroft">Cemetery / Columbarium / Mausoleum / Tomb / Undercroft</option>
     <option value="Church / Shrine / Synagogue / Temple">Church / Shrine / Synagogue / Temple</option>
+    <option value="City Gate / City Wall / Gate House">City Gate / City Wall / Gate House</option>
     <option value="Commons / Plaza / Square">Commons / Plaza / Square</option>
     <option value="Guildhall">Guildhall</option>
     <option value="Historical Marker / Memorial">Historical Marker / Memorial</option>

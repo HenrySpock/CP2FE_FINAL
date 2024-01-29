@@ -360,6 +360,7 @@ function LogEntry() {
             <option value="Cathedral / Basilica">Cathedral / Basilica</option>
             <option value="Cemetery / Columbarium / Mausoleum / Tomb / Undercroft">Cemetery / Columbarium / Mausoleum / Tomb / Undercroft</option>
             <option value="Church / Shrine / Synagogue / Temple">Church / Shrine / Synagogue / Temple</option>
+            <option value="City Gate / City Wall / Gate House">City Gate / City Wall / Gate House</option>
             <option value="Commons / Plaza / Square">Commons / Plaza / Square</option>
             <option value="Guildhall">Guildhall</option>
             <option value="Historical Marker / Memorial">Historical Marker / Memorial</option>
@@ -391,7 +392,7 @@ function LogEntry() {
             <option value="(ancient) Thermae">(ancient) Thermae </option>
             <option value="(ancient) Ziggurat">(ancient) Ziggurat </option>
             <option value="Other Ancient Site">Other Ancient Site </option>
-            
+
             <option value="AirBnB / Bed and Breakfast / Hotel / Resort">AirBnB / Bed and Breakfast / Hotel / Resort</option>
             <option value="Airport / Bus Station / Port / Train Station">Airport / Bus Station / Port / Train Station</option>
             <option value="Amusement Park / Theme Park / Water Park">Amusement Park / Theme Park / Water Park</option>

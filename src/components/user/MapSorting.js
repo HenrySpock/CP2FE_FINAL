@@ -25,6 +25,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     "Cathedral / Basilica": true,
     "Cemetery / Columbarium / Mausoleum / Tomb / Undercroft": true,
     "Church / Shrine / Synagogue / Temple": true,
+    "City Gate / City Wall / Gate House": true,
     "Commons / Plaza / Square": true,
     "Guildhall": true,
     "Historical Marker / Memorial": true,
@@ -139,6 +140,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     { value: "Cathedral / Basilica", label: "Cathedral / Basilica" },
     { value: "Cemetery / Columbarium / Mausoleum / Tomb / Undercroft", label: "Cemetery / Columbarium / Mausoleum / Tomb / Undercroft" },
     { value: "Church / Shrine / Synagogue / Temple", label: "Church / Shrine / Synagogue / Temple" },
+    { value: "City Gate / City Wall / Gate House", label: "City Gate / City Wall / Gate House" },
     { value: "Commons / Plaza / Square", label: "Commons / Plaza / Square" },
     { value: "Guildhall", label: "Guildhall" },
     { value: "Historical Marker / Memorial", label: "Historical Marker / Memorial" },
@@ -152,7 +154,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     { value: "Other Medieval Site", label: "Other Medieval Site" },
     
     { label: "Non-Medieval Sites", isHeader: true },
-    
+
     { label: "Ancient Sites", isHeader: true },
     { value: "(ancient) Acropolis / Necropolis", label: "(ancient) Acropolis / Necropolis" },
     { value: "(ancient) Aqueduct", label: "(ancient) Aqueduct" },
@@ -221,6 +223,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
     { value: "Cathedral / Basilica", label: "Cathedral / Basilica" },
     { value: "Cemetery / Columbarium / Mausoleum / Tomb / Undercroft", label: "Cemetery / Columbarium / Mausoleum / Tomb / Undercroft" },
     { value: "Church / Shrine / Synagogue / Temple", label: "Church / Shrine / Synagogue / Temple" },
+    { value: "City Gate / City Wall / Gate House", label: "City Gate / City Wall / Gate House" },
     { value: "Commons / Plaza / Square", label: "Commons / Plaza / Square" },
     { value: "Guildhall", label: "Guildhall" },
     { value: "Historical Marker / Memorial", label: "Historical Marker / Memorial" },
