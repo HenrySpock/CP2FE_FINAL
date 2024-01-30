@@ -640,6 +640,7 @@ function TravDet() {
     <option value="Camping Site / Cycling / Hiking">Camping Site / Cycling / Hiking</option>
     <option value="Cemetery / Columbarium / Mausoleum (non-medieval)">Cemetery / Columbarium / Mausoleum (non-medieval)</option>
     <option value="Commons / Plaza / Square (non-medieval)">Commons / Plaza / Square (non-medieval)</option>
+    <option value="Convention">Convention</option>
     <option value="Cinema / Theater">Cinema / Theater</option>
     <option value="Educational Workshop">Educational Workshop</option>
     <option value="Farm / Orchard">Farm / Orchard</option>
