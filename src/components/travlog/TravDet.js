@@ -591,6 +591,7 @@ function TravDet() {
     <option value="Church / Shrine / Synagogue / Temple">Church / Shrine / Synagogue / Temple</option>
     <option value="City Gate / City Wall / Gate House">City Gate / City Wall / Gate House</option>
     <option value="Commons / Plaza / Square">Commons / Plaza / Square</option>
+    <option value="Fair / Festival (period)">Fair / Festival (period)</option>
     <option value="Guildhall">Guildhall</option>
     <option value="Historical Marker / Memorial">Historical Marker / Memorial</option>
     <option value="Library">Library</option>
@@ -601,8 +602,6 @@ function TravDet() {
     <option value="Town Hall">Town Hall</option>
     <option value="Walled City / Star Fortress">Walled City / Star Fortress</option>
     <option value="Other Medieval Site">Other Medieval Site</option> 
-   
-
 
     <option value="">𝗡𝗼𝗻-𝗠𝗲𝗱𝗶𝗲𝘃𝗮𝗹 𝗦𝗶𝘁𝗲𝘀</option>
     <option value="(ancient) Acropolis / Necropolis">(ancient) Acropolis / Necropolis </option>
@@ -638,13 +637,13 @@ function TravDet() {
     <option value="Boutique / Mall / Shopping Center / Store">Boutique / Mall / Shopping Center / Store</option>
     <option value="Brewery / Vineyard / Winery / Pub / Bar">Brewery / Vineyard / Winery / Pub / Bar</option>
     <option value="Camping Site / Cycling / Hiking">Camping Site / Cycling / Hiking</option>
+    <option value="Carnival / Festival / State Fair (non-musical)">Carnival / Festival / State Fair (non-musical)</option>
     <option value="Cemetery / Columbarium / Mausoleum (non-medieval)">Cemetery / Columbarium / Mausoleum (non-medieval)</option>
     <option value="Commons / Plaza / Square (non-medieval)">Commons / Plaza / Square (non-medieval)</option>
     <option value="Convention">Convention</option>
     <option value="Cinema / Theater">Cinema / Theater</option>
     <option value="Educational Workshop">Educational Workshop</option>
     <option value="Farm / Orchard">Farm / Orchard</option>
-    <option value="Festival / State Fair (non-musical)">Festival / State Fair (non-musical)</option>
     <option value="Ghost Tour / Haunted Site">Ghost Tour / Haunted Site</option>
     <option value="Hike / Walk / Walking Tour">Hike / Walk / Walking Tour</option>
     <option value="Home / Private Residence">Home / Private Residence</option>

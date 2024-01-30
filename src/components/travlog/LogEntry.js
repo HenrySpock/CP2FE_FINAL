@@ -368,6 +368,7 @@ function LogEntry() {
             <option value="Church / Shrine / Synagogue / Temple">Church / Shrine / Synagogue / Temple</option>
             <option value="City Gate / City Wall / Gate House">City Gate / City Wall / Gate House</option>
             <option value="Commons / Plaza / Square">Commons / Plaza / Square</option>
+            <option value="Fair / Festival (period)">Fair / Festival (period)</option>
             <option value="Guildhall">Guildhall</option>
             <option value="Historical Marker / Memorial">Historical Marker / Memorial</option>
             <option value="Library">Library</option>
@@ -414,14 +415,13 @@ function LogEntry() {
             <option value="Boutique / Mall / Shopping Center / Store">Boutique / Mall / Shopping Center / Store</option>
             <option value="Brewery / Vineyard / Winery / Pub / Bar">Brewery / Vineyard / Winery / Pub / Bar</option>
             <option value="Camping Site / Cycling / Hiking">Camping Site / Cycling / Hiking</option>
+            <option value="Carnival / Festival / State Fair (non-musical)">Carnival / Festival / State Fair (non-musical)</option>
             <option value="Cemetery / Columbarium / Mausoleum (non-medieval)">Cemetery / Columbarium / Mausoleum (non-medieval)</option>
             <option value="Commons / Plaza / Square (non-medieval)">Commons / Plaza / Square (non-medieval)</option>
             <option value="Convention">Convention</option>
-            <option value="National Park / Retreat">National Park / Retreat</option> 
             <option value="Cinema / Theater">Cinema / Theater</option>
             <option value="Educational Workshop">Educational Workshop</option>
             <option value="Farm / Orchard">Farm / Orchard</option>
-            <option value="Festival / State Fair (non-musical)">Festival / State Fair (non-musical)</option>
             <option value="Ghost Tour / Haunted Site">Ghost Tour / Haunted Site</option>
             <option value="Hike / Walk / Walking Tour">Hike / Walk / Walking Tour</option>
             <option value="Home / Private Residence">Home / Private Residence</option>
@@ -429,6 +429,7 @@ function LogEntry() {
             <option value="Lighthouse / Tower View">Lighthouse / Tower View</option>
             <option value="Luxury Train Ride / Vehicular Sightseeing Tour">Luxury Train Ride / Vehicular Sightseeing Tour</option>
             <option value="Museum (non-medieval) / Art Gallery">Museum (non-medieval) / Art Gallery</option>
+            <option value="National Park / Retreat">National Park / Retreat</option>
             <option value="Observatory / Planetarium">Observatory / Planetarium</option>
             <option value="River Cruise">River Cruise</option>
             <option value="School / University">School / University</option>
