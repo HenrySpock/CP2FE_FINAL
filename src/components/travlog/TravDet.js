@@ -627,6 +627,7 @@ function TravDet() {
     <option value="Amusement Park / Theme Park / Water Park">Amusement Park / Theme Park / Water Park</option>
     <option value="Aquarium / Zoo">Aquarium / Zoo</option>
     <option value="Arboretum / Botanical Garden / Japanese Garden / Park">Arboretum / Botanical Garden / Japanese Garden / Park</option>
+    <option value="Area / Block / Neighborhood / Street / Zone">Area / Block / Neighborhood / Street / Zone</option>
     <option value="Athletic Event / Game / Gym / Pool / Sport / Studio">Athletic Event / Game / Gym / Pool / Sport / Studio</option>
     <option value="Auditorium / Music Venue / Performance Hall">Auditorium / Music Venue / Performance Hall</option>
     <option value="Bakery / Desert / Gelato / Ice Cream / Patisserie">Bakery / Desert / Gelato / Ice Cream / Patisserie</option>
