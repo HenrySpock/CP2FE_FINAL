@@ -784,7 +784,7 @@ return (
                         )}
                         </div>
                         <div className='trip-det-mini-card-text'>
-                          <h3>{travelog.title}</h3>
+                          <h3>&nbsp;{travelog.title}</h3>
                           <p>{travelog.site}</p>
                           <p>&nbsp;Visited On {new Date(travelog.date_visited).toLocaleDateString('en-CA')}</p>
                           {travelog.User && travelog.user_id !== user.user_id && (
