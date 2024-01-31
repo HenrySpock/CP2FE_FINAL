@@ -255,6 +255,7 @@ function TravDetImageEdit({ user, travelog_id, fetchTravelog, initialImages, use
     );
 
     const displayImagesView = (
+      <div>
         <div className="trav-image-gallery">
           {initialImages.map((image, index) => (
             <div key={index} className="gallery-image">
@@ -282,14 +283,18 @@ function TravDetImageEdit({ user, travelog_id, fetchTravelog, initialImages, use
             Edit Images
             </button>
         )}
-        {fullscreenImageUrl && ( 
+
+        </div>
+          <div>
+          {fullscreenImageUrl && ( 
             <TravDetFullScreen 
               image_url={fullscreenImageUrl}
               title={currentTitle}
               description={currentDescription} 
               onClose={closeFullscreenModal} 
             />
-        )}
+          )}
+          </div>
         </div>
       );
       
