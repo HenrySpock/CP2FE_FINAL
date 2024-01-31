@@ -141,6 +141,9 @@ function LogEntry() {
       ...prevState,
       imageUrls: updatedImageUrls,
     }));
+    if (error && error.startsWith("One or more image URLs are invalid")) {
+      setError(null);
+    }
   };
 
   const removeImageUrl = (index) => {
