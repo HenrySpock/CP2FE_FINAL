@@ -134,32 +134,45 @@ function LogEntry() {
       img.src = url;
   };
 
-  // Function to check all URLs and update the error state
-  const validateAllImageUrls = () => {
-    Promise.all(formData.imageUrls.map(url => 
-      new Promise(resolve => {
-        const img = new Image();
-        img.onload = () => resolve(true);
-        img.onerror = () => resolve(false);
-        img.src = url;
-      })
-    )).then(results => {
-      if (results.every(isValid => isValid)) {
-        setError(null); // Clear error if all URLs are valid
-      } else {
-        setError('One or more image URLs are invalid. Please check and try again.'); // Set error if any URL is invalid
-      }
-    });
+  // Function to validate all image URLs
+  const validateImageUrls = async () => {
+    const isValid = await Promise.all(
+      formData.imageUrls.map(url =>
+        new Promise(resolve => {
+          const img = new Image();
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = url;
+        })
+      )
+    );
+
+    return isValid.every(Boolean);
   };
 
-  const updateImageUrl = (index, url) => { 
-    const updatedImageUrls = [...formData.imageUrls];
-    updatedImageUrls[index] = url;
-    setFormData(prevState => ({
-      ...prevState,
-      imageUrls: updatedImageUrls,
-    }));
-    validateAllImageUrls();
+  // const updateImageUrl = (index, url) => { 
+  //   const updatedImageUrls = [...formData.imageUrls];
+  //   updatedImageUrls[index] = url;
+  //   setFormData(prevState => ({
+  //     ...prevState,
+  //     imageUrls: updatedImageUrls,
+  //   }));
+  //   validateAllImageUrls();
+  // };
+
+  // Update Image URL and Revalidate
+  const updateImageUrl = async (index, url) => {
+    const updatedImageUrls = formData.imageUrls.map((currentUrl, idx) => 
+      idx === index ? url : currentUrl
+    );
+
+    setFormData({ ...formData, imageUrls: updatedImageUrls });
+
+    // Revalidate URLs and update error state
+    const areAllUrlsValid = await validateImageUrls();
+    if (areAllUrlsValid) {
+      setError(null); // Clear error if all URLs are valid
+    }
   };
 
   const removeImageUrl = (index) => {
@@ -240,13 +253,20 @@ function LogEntry() {
     // const utcDateVisited = moment(formData.date_visited).utc().format();
 
     // Check the validity of each image URL
-    const areImageUrlsValid = await Promise.all(
-      formData.imageUrls.map((url) =>
-        new Promise((resolve) => {
-          isValidImageUrl(url, resolve);
-        })
-      )
-    );
+    // const areImageUrlsValid = await Promise.all(
+    //   formData.imageUrls.map((url) =>
+    //     new Promise((resolve) => {
+    //       isValidImageUrl(url, resolve);
+    //     })
+    //   )
+    // );
+
+    const areAllUrlsValid = await validateImageUrls();
+    if (!areAllUrlsValid) {
+      setError('One or more image URLs are invalid. Please check and try again.');
+      setIsSubmitting(false);
+      return;
+    }
   
     if (areImageUrlsValid.every((isValid) => isValid)) {
       // All image URLs are valid, proceed with form submission
