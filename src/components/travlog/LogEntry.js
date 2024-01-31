@@ -135,15 +135,15 @@ function LogEntry() {
   };
 
   const updateImageUrl = (index, url) => {
+    if (error && error.startsWith("One or more image URLs are invalid")) {
+      setError(null);
+    }
     const updatedImageUrls = [...formData.imageUrls];
     updatedImageUrls[index] = url;
     setFormData(prevState => ({
       ...prevState,
       imageUrls: updatedImageUrls,
     }));
-    if (error && error.startsWith("One or more image URLs are invalid")) {
-      setError(null);
-    }
   };
 
   const removeImageUrl = (index) => {
