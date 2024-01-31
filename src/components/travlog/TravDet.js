@@ -639,6 +639,7 @@ function TravDet() {
     <option value="Brewery / Vineyard / Winery / Pub / Bar">Brewery / Vineyard / Winery / Pub / Bar</option>
     <option value="Camping Site / Cycling / Hiking">Camping Site / Cycling / Hiking</option>
     <option value="Carnival / Festival / State Fair (non-musical)">Carnival / Festival / State Fair (non-musical)</option>
+    <option value="Carriage Ride / Train Ride / Vehicular Sightseeing Tour">Carriage Ride / Train Ride / Vehicular Sightseeing Tour</option>
     <option value="Cemetery / Columbarium / Mausoleum (non-medieval)">Cemetery / Columbarium / Mausoleum (non-medieval)</option>
     <option value="Cinema / Theater">Cinema / Theater</option>
     <option value="Commons / Plaza / Square (non-medieval)">Commons / Plaza / Square (non-medieval)</option>
@@ -650,7 +651,6 @@ function TravDet() {
     <option value="Home / Private Residence">Home / Private Residence</option>
     <option value="Indoor Playground / Outdoor Playground">Indoor Playground / Outdoor Playground</option>
     <option value="Lighthouse / Tower View">Lighthouse / Tower View</option>
-    <option value="Luxury Train Ride / Vehicular Sightseeing Tour">Luxury Train Ride / Vehicular Sightseeing Tour</option>
     <option value="Museum (non-medieval) / Art Gallery">Museum (non-medieval) / Art Gallery</option>
     <option value="National Park / Retreat">National Park / Retreat</option>
     <option value="Observatory / Planetarium">Observatory / Planetarium</option>

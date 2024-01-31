@@ -412,6 +412,7 @@ function LogEntry() {
             <option value="Bistro / Restaurant">Bistro / Restaurant</option>
             <option value="Boat Ride / Boat Rental / Ferry">Boat Ride / Boat Rental / Ferry</option>
             <option value="Bookshop / Library (non-medieval)">Bookshop / Library</option>
+            <option value="Carriage Ride / Train Ride / Vehicular Sightseeing Tour">Carriage Ride / Train Ride / Vehicular Sightseeing Tour</option>
             <option value="Historical Marker / Memorial">Historical Marker / Memorial</option>
             <option value="Boutique / Mall / Shopping Center / Store">Boutique / Mall / Shopping Center / Store</option>
             <option value="Brewery / Vineyard / Winery / Pub / Bar">Brewery / Vineyard / Winery / Pub / Bar</option>
@@ -428,7 +429,6 @@ function LogEntry() {
             <option value="Home / Private Residence">Home / Private Residence</option>
             <option value="Indoor Playground / Outdoor Playground">Indoor Playground / Outdoor Playground</option>
             <option value="Lighthouse / Tower View">Lighthouse / Tower View</option>
-            <option value="Luxury Train Ride / Vehicular Sightseeing Tour">Luxury Train Ride / Vehicular Sightseeing Tour</option>
             <option value="Museum (non-medieval) / Art Gallery">Museum (non-medieval) / Art Gallery</option>
             <option value="National Park / Retreat">National Park / Retreat</option>
             <option value="Observatory / Planetarium">Observatory / Planetarium</option>
