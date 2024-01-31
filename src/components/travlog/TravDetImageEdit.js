@@ -282,15 +282,16 @@ function TravDetImageEdit({ user, travelog_id, fetchTravelog, initialImages, use
             Edit Images
             </button>
         )}
-        {fullscreenImageUrl && ( 
-            <TravDetFullScreen 
-              image_url={fullscreenImageUrl}
-              title={currentTitle}
-              description={currentDescription} 
-              onClose={closeFullscreenModal} 
-            />
-        )}
+
         </div>
+                {fullscreenImageUrl && ( 
+                  <TravDetFullScreen 
+                    image_url={fullscreenImageUrl}
+                    title={currentTitle}
+                    description={currentDescription} 
+                    onClose={closeFullscreenModal} 
+                  />
+              )}
       );
       
 
