@@ -134,16 +134,32 @@ function LogEntry() {
       img.src = url;
   };
 
-  const updateImageUrl = (index, url) => {
-    if (error && error.startsWith("One or more image URLs are invalid")) {
-      setError(null);
-    }
+  // Function to check all URLs and update the error state
+  const validateAllImageUrls = () => {
+    Promise.all(formData.imageUrls.map(url => 
+      new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => resolve(true);
+        img.onerror = () => resolve(false);
+        img.src = url;
+      })
+    )).then(results => {
+      if (results.every(isValid => isValid)) {
+        setError(null); // Clear error if all URLs are valid
+      } else {
+        setError('One or more image URLs are invalid. Please check and try again.'); // Set error if any URL is invalid
+      }
+    });
+  };
+
+  const updateImageUrl = (index, url) => { 
     const updatedImageUrls = [...formData.imageUrls];
     updatedImageUrls[index] = url;
     setFormData(prevState => ({
       ...prevState,
       imageUrls: updatedImageUrls,
     }));
+    validateAllImageUrls();
   };
 
   const removeImageUrl = (index) => {
