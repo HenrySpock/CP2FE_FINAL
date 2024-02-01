@@ -419,22 +419,22 @@ function LogEntry() {
             </optgroup>
 
             <optgroup label="Ancient Sites">   
-              <option value="(ancient) Acropolis / Necropolis">(ancient) Acropolis / Necropolis </option>
-              <option value="(ancient) Aqueduct">(ancient) Aqueduct </option>
-              <option value="(ancient) Amphitheatre / Theater">(ancient) Amphitheatre / Theater </option>
-              <option value="(ancient) Catacombs">(ancient) Catacombs </option>
-              <option value="(ancient) Colosseum">(ancient) Colosseum </option>
-              <option value="(ancient) City">(ancient) City </option>
-              <option value="(ancient) Forum">(ancient) Forum </option>
-              <option value="(ancient) Citadel / Fortress">(ancient) Citadel / Fortress </option>
-              <option value="(ancient) Mausoleum">(ancient) Mausoleum </option>
-              <option value="(ancient) Monolith / Monument / Obelisk">(ancient) Monolith / Monument / Obelisk </option>
-              <option value="(ancient) Palace">(ancient) Palace </option>
-              <option value="(ancient) Pyramid">(ancient) Pyramid </option>
-              <option value="(ancient) Stone Circle">(ancient) Stone Circle </option>
-              <option value="(ancient) Temple">(ancient) Temple </option>
-              <option value="(ancient) Thermae">(ancient) Thermae </option>
-              <option value="(ancient) Ziggurat">(ancient) Ziggurat </option>
+              <option value="Acropolis / Necropolis (ancient)">(ancient) Acropolis / Necropolis (ancient)</option>
+              <option value="Aqueduct (ancient)">(ancient) Aqueduct (ancient)</option>
+              <option value="Amphitheatre / Theater (ancient)">(ancient) Amphitheatre / Theater (ancient)</option>
+              <option value="Catacombs / Tomb (ancient)">(ancient) Catacombs / Tomb (ancient)</option>
+              <option value="Colosseum (ancient)">(ancient) Colosseum (ancient)</option>
+              <option value="City (ancient)">(ancient) City (ancient)</option>
+              <option value="Forum (ancient)">(ancient) Forum (ancient)</option>
+              <option value="Citadel / Fortress (ancient)">(ancient) Citadel / Fortress (ancient)</option>
+              <option value="Mausoleum (ancient)">(ancient) Mausoleum (ancient)</option>
+              <option value="Monolith / Monument / Obelisk (ancient)">(ancient) Monolith / Monument / Obelisk (ancient)</option>
+              <option value="Palace (ancient)">(ancient) Palace (ancient)</option>
+              <option value="Pyramid (ancient)">(ancient) Pyramid (ancient)</option>
+              <option value="Stone Circle (ancient)">(ancient) Stone Circle (ancient)</option>
+              <option value="Temple (ancient)">(ancient) Temple (ancient)</option>
+              <option value="Thermae (ancient)">(ancient) Thermae (ancient)</option>
+              <option value="Ziggurat (ancient)">(ancient) Ziggurat (ancient)</option>
               <option value="Other Ancient Site">Other Ancient Site </option>
             </optgroup>
 
