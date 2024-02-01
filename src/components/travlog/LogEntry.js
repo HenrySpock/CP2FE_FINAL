@@ -171,7 +171,7 @@ function LogEntry() {
   
     Promise.all(validations).then(results => {
       if (results.every(isValid => isValid)) {
-        setError(null);
+        if (error) setError(null);
       } else {
         setError('One or more image URLs are invalid. Please check and try again.');
       }
@@ -293,7 +293,9 @@ function LogEntry() {
       }
     } else {
       // Display an error message because some image URLs are invalid
+      // setError('One or more image URLs are invalid. Please check and try again.');
       setError('One or more image URLs are invalid. Please check and try again.');
+      setIsSubmitting(false);
     }
   };
 
