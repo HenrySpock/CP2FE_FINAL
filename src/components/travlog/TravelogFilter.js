@@ -15,7 +15,8 @@ function TravelogFilter() {
   });
   const [travelogs, setTravelogs] = useState([]); 
 
-  const [sortBy, setSortBy] = useState('created_at'); 
+  // const [sortBy, setSortBy] = useState('created_at'); 
+  const [sortBy, setSortBy] = useState('newest_first'); 
   const [filterClicked, setFilterClicked] = useState(false);
   const bottomRef = useRef(null);
 
@@ -70,15 +71,18 @@ function TravelogFilter() {
       if (filters.followedTravelogs) {
         await fetchData('followersTravelogs');
       }
- 
+
       newTravelogs.sort((a, b) => {
         switch (sortBy) {
-          case 'username':  
-            return a.user_id - b.user_id;
-            
+          case 'username':
+            return a.User.username.localeCompare(b.User.username);
           case 'country':
             return a.country.localeCompare(b.country);
-          case 'created_at':
+          case 'site':
+            return a.site.localeCompare(b.site);
+          case 'oldest_first':
+            return new Date(a.created_at) - new Date(b.created_at);
+          case 'newest_first':
           default:
             return new Date(b.created_at) - new Date(a.created_at);
         }
@@ -112,10 +116,11 @@ function TravelogFilter() {
             value={sortBy}
             onChange={(event) => setSortBy(event.target.value)}
           >
-            <option value="created_at">Newest First</option>
-            <option value="created_at">Oldest First</option>
+            <option value="newest_first">Newest First</option>
+            <option value="oldest_first">Oldest First</option>
             <option value="username">Username</option>
             <option value="country">Country</option>
+            <option value="site">Site</option>
           </select>
         </div>
         {/* Checkbox rendering... */}

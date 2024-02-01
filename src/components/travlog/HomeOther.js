@@ -68,7 +68,7 @@ function HomeOther() {
 
     // Get current items for the page 
     const currentItems = displayedTravelogs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-    
+
     // Apply secondary sorting
     const sortedCurrentItems = currentItems.sort((a, b) => {
       switch (secondarySortBy) {
@@ -134,30 +134,34 @@ function HomeOther() {
 
             <div className='other-view-container'>
                 <h2 className='other-title'>Sorted Travelogs</h2>
-                <div className="sort-by-selection">
-                  <label htmlFor="secondary-sort-by">Sort Travelogs by: </label>
-                  <select
-                    id="secondary-sort-by"
-                    value={secondarySortBy}
-                    onChange={(e) => setSecondarySortBy(e.target.value)}
-                  >
-                    <option value="site">Site</option>
-                    <option value="country">Country</option>
-                    <option value="username">Username</option>
-                    <option value="created_at">Newest First</option>
-                    <option value="oldest_first">Oldest First</option>
-                  </select>
+
+                <div className='view-controls'>
+                  <div className="sort-by-selection">
+                    <label htmlFor="secondary-sort-by">Sort Travelogs by: </label>
+                    <select
+                      id="secondary-sort-by"
+                      value={secondarySortBy}
+                      onChange={(e) => setSecondarySortBy(e.target.value)}
+                    >
+                      <option value="site">Site</option>
+                      <option value="country">Country</option>
+                      <option value="username">Username</option>
+                      <option value="created_at">Newest First</option>
+                      <option value="oldest_first">Oldest First</option>
+                    </select>
+                  </div>
+
+                  {/* Pagination Controls */}
+                  <div className="other-pagination-controls">
+                    <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
+                        Previous
+                    </button>
+                    <span>Page {currentPage} of {totalPages}</span>
+                    <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
+                        Next
+                    </button>
+                  </div> 
                 </div>
-                {/* Pagination Controls */}
-                <div className="other-pagination-controls">
-                  <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
-                      Previous
-                  </button>
-                  <span>Page {currentPage} of {totalPages}</span>
-                  <button onClick={() => handlePageChange(currentPage + 1)} disabled={currentPage === totalPages}>
-                      Next
-                  </button>
-                </div> 
 
               {/* Render Travelog Cards */}
               <div className="other-travelogs-list">

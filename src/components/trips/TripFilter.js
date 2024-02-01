@@ -65,7 +65,9 @@ function TripFilter() {
         switch (sortBy) {
           case 'username':
             return a.User.username.localeCompare(b.User.username);
-          case 'created_at':
+          case 'oldest_first':
+            return new Date(a.created_at) - new Date(b.created_at);
+          case 'newest_first':
           default:
             return new Date(b.created_at) - new Date(a.created_at);
         }
@@ -97,8 +99,8 @@ function TripFilter() {
             value={sortBy}
             onChange={(event) => setSortBy(event.target.value)}
           >
-            <option value="created_at">Newest First</option>
-            <option value="created_at">Oldest First</option>
+            <option value="newest_first">Newest First</option>
+            <option value="oldest_first">Oldest First</option>
             <option value="username">Username</option>
           </select>
         </div>
