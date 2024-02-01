@@ -9,43 +9,22 @@ import { useNavigate } from 'react-router-dom';
 import { applyMarkerOffset } from '../travlog/MarkerOffset'
 
 function HomeOther() {
-  const [travelogEntries, setTravelogEntries] = useState([]);
-  const [displayedTravelogs, setDisplayedTravelogs] = useState([]);
-  
-  const [sortBy, setSortBy] = useState('created_at');
+    const [travelogEntries, setTravelogEntries] = useState([]);
+    const [displayedTravelogs, setDisplayedTravelogs] = useState([]);
+    
+    const { user } = useContext(UserContext); 
+    const navigate = useNavigate();
+ 
+    // Pagination states
+    const itemsPerPage = 64;  
+    const [currentPage, setCurrentPage] = useState(1); 
+    const totalPages = Math.ceil(displayedTravelogs.length / itemsPerPage);
 
-  const { user } = useContext(UserContext); 
-  const navigate = useNavigate();
+    // Function to change page
+    const handlePageChange = (newPage) => {
+        setCurrentPage(newPage);
+    }; 
 
-  // Pagination states
-  const itemsPerPage = 64;  
-  const [currentPage, setCurrentPage] = useState(1); 
-  const totalPages = Math.ceil(displayedTravelogs.length / itemsPerPage);
-
-  // Function to change page
-  const handlePageChange = (newPage) => {
-      setCurrentPage(newPage);
-  }; 
-
-  const sortTravelogs = useCallback(() => {
-    const sorted = [...travelogEntries].sort((a, b) => {
-      switch (sortBy) {
-        case 'site':
-          return a.site.localeCompare(b.site);
-        case 'username':
-          return a.User.username.localeCompare(b.User.username);
-        case 'country':
-          return a.country.localeCompare(b.country);
-        case 'oldest_first':
-          return new Date(a.created_at) - new Date(b.created_at);
-        case 'created_at':
-        default:
-          return new Date(b.created_at) - new Date(a.created_at);
-      }
-    });
-    setDisplayedTravelogs(sorted);
-  }, [sortBy, travelogEntries]);
-  
   const fetchTravelogEntries = useCallback(async () => { 
     if (!user || !user.user_id) return;
 
@@ -68,10 +47,6 @@ function HomeOther() {
     // user, 
     fetchTravelogEntries]); // Depend on user object to refetch if it changes
   
-    useEffect(() => {
-      sortTravelogs();
-    }, [sortBy, sortTravelogs]);
-
     const handleTypeChange = (filteredTravelogs) => {
         setDisplayedTravelogs(filteredTravelogs);
     };
@@ -137,27 +112,6 @@ function HomeOther() {
               </MapContainer>
             </div>
           </div>
-
-            <div className='other-sort-div'>
-              <h2>Sort Travelogs By:</h2>
-              <MapSortingOther onTypeChange={handleTypeChange} travelogs={travelogEntries} />
-              
-              <div className="sort-by-selection">
-                <label htmlFor="sort-by">Sort Travelogs by: </label>
-                <select
-                  id="sort-by"
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                >
-                  <option value="site">Site</option>
-                  <option value="country">Country</option>
-                  <option value="username">Username</option>
-                  <option value="created_at">Newest First</option>
-                  <option value="oldest_first">Oldest First</option>                                       
-                </select>
-              </div>
-            </div>
-
 
             <div className='other-view-container'>
                 <h2 className='other-title'>Sorted Travelogs</h2>
