@@ -47,6 +47,9 @@ function HomeOther() {
     // user, 
     fetchTravelogEntries]); // Depend on user object to refetch if it changes
   
+    useEffect(() => {
+      sortTravelogs();
+    }, [sortBy, sortTravelogs]);
 
     const handleTypeChange = (filteredTravelogs) => {
         setDisplayedTravelogs(filteredTravelogs);
@@ -113,6 +116,27 @@ function HomeOther() {
               </MapContainer>
             </div>
           </div>
+
+            <div className='other-sort-div'>
+              <h2>Sort Travelogs By:</h2>
+              <MapSortingOther onTypeChange={handleTypeChange} travelogs={travelogEntries} />
+              
+              <div className="sort-by-selection">
+                <label htmlFor="sort-by">Sort Travelogs by: </label>
+                <select
+                  id="sort-by"
+                  value={sortBy}
+                  onChange={(e) => setSortBy(e.target.value)}
+                >
+                  <option value="site">Site</option>
+                  <option value="country">Country</option>
+                  <option value="username">Username</option>
+                  <option value="created_at">Newest First</option>
+                  <option value="oldest_first">Oldest First</option>                                       
+                </select>
+              </div>
+            </div>
+
 
             <div className='other-view-container'>
                 <h2 className='other-title'>Sorted Travelogs</h2>
