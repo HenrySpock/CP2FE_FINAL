@@ -794,6 +794,7 @@ return (
                             <p>&nbsp;by <Link to={`/public_profile/${user.username}`}>{user.username}</Link></p>
                           )}
                           <p>&nbsp;In {travelog.city}, {travelog.country}</p> 
+                          <p>&nbsp;# {index + 1}</p> 
                         </div>
                     </div>
                   </Link>
