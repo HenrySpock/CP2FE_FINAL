@@ -149,16 +149,22 @@ function LogEntry() {
   const updateImageUrl = (index, url) => {
     const updatedImageUrls = [...formData.imageUrls];
     updatedImageUrls[index] = url;
-    setFormData(prevState => ({
-      ...prevState,
-      imageUrls: updatedImageUrls,
-    }));
+    // setFormData(prevState => ({
+    //   ...prevState,
+    //   imageUrls: updatedImageUrls,
+    // }));
+    setFormData(prevState => {
+      const newFormData = { ...prevState, imageUrls: updatedImageUrls };
+      console.log("Updated Form Data:", newFormData); // Logging the updated form data
+      return newFormData;
+    });
   
     // Re-validate all image URLs
     validateImageUrls(updatedImageUrls);
   };
   
   const validateImageUrls = (imageUrls) => {
+    console.log("Validating Image URLs:", imageUrls);
     const validations = imageUrls.map(url => new Promise((resolve) => {
       isValidImageUrl(url, resolve);
     }));
@@ -240,7 +246,7 @@ function LogEntry() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+    console.log("Submitting Form:", formData);
     setIsSubmitting(true);
 
     // Clear any previous errors
