@@ -77,6 +77,8 @@ function Home() {
         return a.User.username.localeCompare(b.User.username);
       case 'country':
         return a.country.localeCompare(b.country);
+      case 'oldest_first':
+        return new Date(a.created_at) - new Date(b.created_at);
       case 'created_at':
       default:
         return new Date(b.created_at) - new Date(a.created_at);
@@ -88,6 +90,8 @@ function Home() {
     switch (sortByTrip) { 
       case 'username':
         return a.username.localeCompare(b.username); 
+      case 'oldest_first':
+        return new Date(a.created_at) - new Date(b.created_at);
       case 'created_at':
       default:
         return new Date(b.created_at) - new Date(a.created_at);
@@ -413,6 +417,7 @@ function Home() {
               >
                 <option value="username">Username</option>
                 <option value="created_at">Newest First</option>
+                <option value="oldest_first">Oldest First</option>
               </select>
             </div>
 
@@ -443,10 +448,11 @@ function Home() {
                     value={sortBy}
                     onChange={(event) => setSortBy(event.target.value)}
                 >
-                    <option value="site">Site</option>
-                    <option value="country">Country</option>
-                    <option value="username">Username</option>
-                    <option value="created_at">Newest First</option>                                       
+                  <option value="site">Site</option>
+                  <option value="country">Country</option>
+                  <option value="username">Username</option>
+                  <option value="created_at">Newest First</option>
+                  <option value="oldest_first">Oldest First</option>                                      
                 </select>
             </div>
 

@@ -98,6 +98,7 @@ function TripFilter() {
             onChange={(event) => setSortBy(event.target.value)}
           >
             <option value="created_at">Newest First</option>
+            <option value="created_at">Oldest First</option>
             <option value="username">Username</option>
           </select>
         </div>
