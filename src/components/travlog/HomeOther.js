@@ -15,6 +15,8 @@ function HomeOther() {
     const { user } = useContext(UserContext); 
     const navigate = useNavigate();
  
+    const [secondarySortBy, setSecondarySortBy] = useState('created_at');
+
     // Pagination states
     const itemsPerPage = 64;  
     const [currentPage, setCurrentPage] = useState(1); 
@@ -42,7 +44,7 @@ function HomeOther() {
 
     useEffect(() => {  
       fetchTravelogEntries();
-      // console.log(displayedTravelogs)
+      console.log(displayedTravelogs)
   }, [
     // user, 
     fetchTravelogEntries]); // Depend on user object to refetch if it changes
@@ -69,6 +71,23 @@ function HomeOther() {
 
     function TravelogCard({ travelog }) { 
   
+    // Apply secondary sorting
+    const sortedCurrentItems = currentItems.sort((a, b) => {
+      switch (secondarySortBy) {
+        case 'site':
+          return a.site.localeCompare(b.site);
+        case 'username':
+          return a.User.username.localeCompare(b.User.username);
+        case 'country':
+          return a.country.localeCompare(b.country);
+        case 'oldest_first':
+          return new Date(a.created_at) - new Date(b.created_at);
+        case 'created_at':
+        default:
+          return new Date(b.created_at) - new Date(a.created_at);
+      }
+    });
+
     return (
       <div className="other-trav-card" onClick={() => {
             if(user) {
@@ -116,6 +135,20 @@ function HomeOther() {
 
             <div className='other-view-container'>
                 <h2 className='other-title'>Sorted Travelogs</h2>
+                <div className="sort-by-selection">
+                  <label htmlFor="secondary-sort-by">Sort Travelogs by: </label>
+                  <select
+                    id="secondary-sort-by"
+                    value={secondarySortBy}
+                    onChange={(e) => setSecondarySortBy(e.target.value)}
+                  >
+                    <option value="site">Site</option>
+                    <option value="country">Country</option>
+                    <option value="username">Username</option>
+                    <option value="created_at">Newest First</option>
+                    <option value="oldest_first">Oldest First</option>
+                  </select>
+                </div>
                 {/* Pagination Controls */}
                 <div className="other-pagination-controls">
                   <button onClick={() => handlePageChange(currentPage - 1)} disabled={currentPage === 1}>
@@ -129,7 +162,7 @@ function HomeOther() {
 
               {/* Render Travelog Cards */}
               <div className="other-travelogs-list">
-                  {currentItems.map(travelog => (                   
+                  {sortedCurrentItems.map(travelog => (                   
                         <TravelogCard key={travelog.travelog_id} travelog={travelog} />                  
                   ))}
               </div>
