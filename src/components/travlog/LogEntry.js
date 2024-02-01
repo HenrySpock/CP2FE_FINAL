@@ -229,7 +229,7 @@ function LogEntry() {
       setYelpData(response.data.businesses);
     } catch (error) {
       console.error("Error fetching data:", error);
-      setError(<span>No locations found. You might check your spelling or limit key words. Additionally, Yelp! only operates in certain countries - <a href="https://www.yelp.com/locations" target="_blank" rel="noopener noreferrer">https://www.yelp.com/locations</a> this doesn't mean you can't log your visit, it just means you have to do it manually.</span>);
+      setError(<span>No locations found. Check spelling, key words, or specificity. Note Yelp! is not available everywhere - <a href="https://www.yelp.com/locations" target="_blank" rel="noopener noreferrer">https://www.yelp.com/locations</a>. If unavailable, log your visit manually.</span>);
     }
 
     setSearchCountry('');
