@@ -6,7 +6,7 @@ function MapSortingOther({ onTypeChange, travelogs }) {
   const handleRadioChange = (e) => {
     const filterType = e.target.value;
     let filteredTravelogs;
-    console.log('filteredTravelogs from mapsortingother: ', filteredTravelogs)
+
 
     switch (filterType) {
         case 'All':
@@ -24,7 +24,7 @@ function MapSortingOther({ onTypeChange, travelogs }) {
         default:
             filteredTravelogs = travelogs;
     }
-
+    console.log('filteredTravelogs from mapsortingother: ', filteredTravelogs)
     onTypeChange(filteredTravelogs);
 };
 
