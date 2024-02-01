@@ -52,7 +52,7 @@ function Register() {
         } else if (errorData.error === 'Email already in use') { 
           setErrorMessage('Email already in use, please try another email.');
         } else { 
-          setErrorMessage('Username already in use, lease choose another.');
+          setErrorMessage('Check form entry, passwords may not match.');
         }
       }
     } catch (error) {
