@@ -68,9 +68,7 @@ function HomeOther() {
 
     // Get current items for the page 
     const currentItems = displayedTravelogs.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-
-    function TravelogCard({ travelog }) { 
-  
+    
     // Apply secondary sorting
     const sortedCurrentItems = currentItems.sort((a, b) => {
       switch (secondarySortBy) {
@@ -88,6 +86,7 @@ function HomeOther() {
       }
     });
 
+    function TravelogCard({ travelog }) { 
     return (
       <div className="other-trav-card" onClick={() => {
             if(user) {
