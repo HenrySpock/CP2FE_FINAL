@@ -49,8 +49,6 @@ function TripDet() {
   const contextUser = user;
   const [isAccessCheckComplete, setIsAccessCheckComplete] = useState(false);
  
-  const [travelogSortBy, setTravelogSortBy] = useState('newest_first');
-
   useEffect(() => {
     // Parse the URL to get the comment ID
     const urlSearchParams = new URLSearchParams(window.location.search);
@@ -302,26 +300,6 @@ function TripDet() {
       fetchUserTravelogs();  
     }
   }, [user, trip_id]);   
-  
-  useEffect(() => {
-    const sortedTravelogs = [...travelogs].sort((a, b) => {
-      switch (travelogSortBy) {
-        case 'site':
-          return a.site.localeCompare(b.site);
-        case 'country':
-          return a.country.localeCompare(b.country);
-        case 'city':
-          return a.city.localeCompare(b.city);
-        case 'oldest_first':
-          return new Date(a.date_visited) - new Date(b.date_visited);
-        case 'newest_first':
-        default:
-          return new Date(b.date_visited) - new Date(a.date_visited);
-      }
-    });
-  
-    setTravelogs(sortedTravelogs);
-  }, [travelogs, travelogSortBy]);
   
   // Conditional rendering based on user loading state 
   if (isLoadingUser) {
@@ -793,22 +771,6 @@ return (
 
 
               <h2 className='trip-heading' >Travelogs For This Trip</h2>
-
-                <div className="travelog-sorting">
-                  <label htmlFor="travelog-sort-by">Sort Travelogs by: </label>
-                  <select
-                    id="travelog-sort-by"
-                    value={travelogSortBy}
-                    onChange={(e) => setTravelogSortBy(e.target.value)}
-                  >
-                    <option value="newest_first">Newest First</option>
-                    <option value="oldest_first">Oldest First</option>
-                    <option value="site">Site</option>
-                    <option value="country">Country</option>
-                    <option value="city">City</option>
-                  </select>
-                </div>
-
                 {travelogs.map((travelog, index) => (
                   <Link key={travelog.travelog_id} to={`/trav_det/${travelog.travelog_id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                     <div className="trip-det-mini-card">
