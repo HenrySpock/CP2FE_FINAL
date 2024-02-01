@@ -135,8 +135,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
   };
   
   const categories = [ 
-    { label: "Medieval Sites", isHeader: true },
-      { value: "Ancient", label: "Ancient" },
+    { label: "Medieval Sites", isHeader: true }, 
       { value: "Battlefield", label: "Battlefield" },
       { value: "Bazaar / Market", label: "Bazaar / Market" },
       { value: "Blacksmith / Tradesmith / Guild Shop / Factory", label: "Blacksmith / Tradesmith / Guild Shop / Factory" },
@@ -224,8 +223,7 @@ function MapSorting({ onVisibilityChange, travelogs, trips }) {
   ];
 
   const medievalCategories = [
-    { label: "Medieval Sites", isHeader: true },
-    { value: "Ancient", label: "Ancient" },
+    { label: "Medieval Sites", isHeader: true }, 
     { value: "Battlefield", label: "Battlefield" },
     { value: "Bazaar / Market", label: "Bazaar / Market" },
     { value: "Blacksmith / Tradesmith / Guild Shop / Factory", label: "Blacksmith / Tradesmith / Guild Shop / Factory" },

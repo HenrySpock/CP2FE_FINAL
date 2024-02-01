@@ -394,8 +394,7 @@ function LogEntry() {
 
             <option value="">Add Category?</option>
 
-            <optgroup label="Medieval Sites">  
-              <option value="Ancient">Ancient</option>
+            <optgroup label="Medieval Sites">   
               <option value="Battlefield">Battlefield</option>
               <option value="Bazaar / Market">Bazaar / Market</option>
               <option value="Blacksmith / Tradesmith / Guild Shop / Factory">Blacksmith / Tradesmith / Guild Shop / Factory</option>

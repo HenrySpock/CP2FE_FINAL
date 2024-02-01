@@ -580,8 +580,7 @@ function TravDet() {
                     > 
 
                     <option value="">None</option>
-                    <option value="">𝗠𝗲𝗱𝗶𝗲𝘃𝗮𝗹 𝗦𝗶𝘁𝗲𝘀</option>
-                      <option value="Ancient">Ancient</option>
+                    <option value="">𝗠𝗲𝗱𝗶𝗲𝘃𝗮𝗹 𝗦𝗶𝘁𝗲𝘀</option> 
                       <option value="Battlefield">Battlefield</option>
                       <option value="Bazaar / Market">Bazaar / Market</option>
                       <option value="Blacksmith / Tradesmith / Guild Shop / Factory">Blacksmith / Tradesmith / Guild Shop / Factory</option>
