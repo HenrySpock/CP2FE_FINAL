@@ -38,7 +38,7 @@ function HomeOther() {
     } catch (error) {
         console.error('Error fetching data:', error);
     }
-}, [user]);
+  }, [user]);
 
     useEffect(() => {  
       fetchTravelogEntries();
@@ -49,6 +49,7 @@ function HomeOther() {
   
     const handleTypeChange = (filteredTravelogs) => {
         setDisplayedTravelogs(filteredTravelogs);
+        console.log("Displayed Travelogs after filtering from home other:", displayedTravelogs);
     };
 
     const mapOptions = {
