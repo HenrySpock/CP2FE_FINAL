@@ -45,15 +45,19 @@ function Register() {
         const message = await response.text();  
         setRegistrationMessage(message);
         formElement.reset();
+      // } else {
+      //   const errorData = await response.json();
+      //   if (errorData.error === 'Username exists') { 
+      //     setErrorMessage('Username exists, try another.');
+      //   } else if (errorData.error === 'Email already in use') { 
+      //     setErrorMessage('Email already in use, please try another email.');
+      //   } else { 
+      //     setErrorMessage('Check form entry, passwords may not match.');
+      //   }
+      // }
       } else {
         const errorData = await response.json();
-        if (errorData.error === 'Username exists') { 
-          setErrorMessage('Username exists, try another.');
-        } else if (errorData.error === 'Email already in use') { 
-          setErrorMessage('Email already in use, please try another email.');
-        } else { 
-          setErrorMessage('Check form entry, passwords may not match.');
-        }
+        setErrorMessage(errorData.error || 'An unexpected error occurred. Please check your form entries.');
       }
     } catch (error) {
       console.error('Error:', error);
