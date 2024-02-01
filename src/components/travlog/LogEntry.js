@@ -134,16 +134,42 @@ function LogEntry() {
       img.src = url;
   };
 
+  // const updateImageUrl = (index, url) => {
+  //   if (error && error.startsWith("One or more image URLs are invalid")) {
+  //     setError(null);
+  //   }
+  //   const updatedImageUrls = [...formData.imageUrls];
+  //   updatedImageUrls[index] = url;
+  //   setFormData(prevState => ({
+  //     ...prevState,
+  //     imageUrls: updatedImageUrls,
+  //   }));
+  // };
+
   const updateImageUrl = (index, url) => {
-    if (error && error.startsWith("One or more image URLs are invalid")) {
-      setError(null);
-    }
     const updatedImageUrls = [...formData.imageUrls];
     updatedImageUrls[index] = url;
     setFormData(prevState => ({
       ...prevState,
       imageUrls: updatedImageUrls,
     }));
+  
+    // Re-validate all image URLs
+    validateImageUrls(updatedImageUrls);
+  };
+  
+  const validateImageUrls = (imageUrls) => {
+    const validations = imageUrls.map(url => new Promise((resolve) => {
+      isValidImageUrl(url, resolve);
+    }));
+  
+    Promise.all(validations).then(results => {
+      if (results.every(isValid => isValid)) {
+        setError(null);
+      } else {
+        setError('One or more image URLs are invalid. Please check and try again.');
+      }
+    });
   };
 
   const removeImageUrl = (index) => {
